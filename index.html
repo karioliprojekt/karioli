@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karioli – Gesundheit & Pflege</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #1a2b2e;
+    color: #f5f0e8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .logo-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #E8A020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-ring span {
+    font-size: 2rem;
+    color: #E8A020;
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: #E8A020;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #a0b8bc;
+    letter-spacing: 0.08em;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .apps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .app-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.1rem 1.6rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    border: 1px solid rgba(232, 160, 32, 0.25);
+  }
+
+  .app-btn:hover {
+    transform: translateX(6px);
+  }
+
+  .app-btn.gelb { background: rgba(232, 160, 32, 0.12); }
+  .app-btn.gelb:hover { background: rgba(232, 160, 32, 0.22); }
+
+  .app-btn.rot { background: rgba(180, 60, 60, 0.12); }
+  .app-btn.rot:hover { background: rgba(180, 60, 60, 0.22); }
+  .app-btn.rot { border-color: rgba(180, 60, 60, 0.3); }
+
+  .app-btn.gruen { background: rgba(60, 140, 100, 0.12); }
+  .app-btn.gruen:hover { background: rgba(60, 140, 100, 0.22); }
+  .app-btn.gruen { border-color: rgba(60, 140, 100, 0.3); }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-gelb { background: #E8A020; }
+  .dot-rot  { background: #c45050; }
+  .dot-gruen{ background: #3c8c64; }
+
+  .btn-text { flex: 1; }
+  .btn-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #f5f0e8;
+    letter-spacing: 0.03em;
+  }
+  .btn-sub {
+    font-size: 0.78rem;
+    color: #7a9ea4;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  .arrow {
+    color: #E8A020;
+    opacity: 0.6;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    margin-top: 3rem;
+    font-size: 0.72rem;
+    color: #3d5558;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-ring"><span>K</span></div>
+<h1>Karioli</h1>
+<p class="tagline">Gesundheit &amp; Pflege — App-Animationen</p>
+
+<div class="apps">
+
+  <a href="https://karioliprojekt.github.io/karioli/karipharm.html" class="app-btn gelb" target="_blank" rel="noopener">
+    <div class="dot dot-gelb"></div>
+    <div class="btn-text">
+      <div class="btn-name">kariPharm</div>
+      <div class="btn-sub">Medikamenten-Management · Projekt Gelb</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="https://karioliprojekt.github.io/karioli/karinurse.html" class="app-btn rot" target="_blank" rel="noopener">
+    <div class="dot dot-rot"></div>
+    <div class="btn-text">
+      <div class="btn-name">kariNurse</div>
+      <div class="btn-sub">Lern-Ökosystem Pflege · Projekt Rot</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="https://karioliprojekt.github.io/karioli/karicare.html" class="app-btn gruen" target="_blank" rel="noopener">
+    <div class="dot dot-gruen"></div>
+    <div class="btn-text">
+      <div class="btn-name">kariCare</div>
+      <div class="btn-sub">Pflegekoordination · Projekt Grün</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+
+</div>
+
+<footer>karioli.eu &nbsp;·&nbsp; Gartow, Deutschland &nbsp;·&nbsp; 2026</footer>
+
+</body>
+</html>
