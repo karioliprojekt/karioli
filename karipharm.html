@@ -337,7 +337,8 @@
 
   .input-method-row{display:flex;gap:10px;width:90%;margin:2px auto 6px;}
   .input-method-btn{flex:1;padding:9px 0;background:rgba(245,200,64,0.14);border:1px solid rgba(245,200,64,0.5);border-radius:10px;color:#F5C840;font-size:11px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;text-align:center;}
-  .input-method-btn:active{background:rgba(245,200,64,0.3);}
+  .skin-eleni .input-method-btn{background:#1A6FAD !important;border-color:#0A4A80 !important;color:#FFFFFF !important;}
+  .skin-eleni .input-method-btn:active{background:#0A4A80 !important;}
   .bpm-display{font-size:11px;color:#7A4800;margin-bottom:10px;font-family:'DM Mono',monospace;letter-spacing:.06em;}
 
   /* PIE-BUTTON (Benjamin, ersetzt scan-btn-wrap) */
@@ -529,6 +530,17 @@
     padding: 12px 0 6px;
     font-family: 'DM Mono', monospace;
   }
+  @keyframes eleni-ring-pulse {
+    0%   { box-shadow: 0 0 0 3px rgba(26,111,173,0.7), 0 0 18px rgba(26,111,173,0.3); border-color:#1A6FAD; }
+    50%  { box-shadow: 0 0 0 8px rgba(26,111,173,0.15), 0 0 28px rgba(26,111,173,0.15); border-color:rgba(26,111,173,0.6); }
+    100% { box-shadow: 0 0 0 3px rgba(26,111,173,0.7), 0 0 18px rgba(26,111,173,0.3); border-color:#1A6FAD; }
+  }
+  .skin-eleni .nina-scan-btn {
+    border-color: #1A6FAD !important;
+    animation: eleni-ring-pulse 1.04s ease-in-out infinite !important;
+  }
+  .skin-eleni .nina-scan-btn::after { color: #1A6FAD !important; }
+
   .skin-nina #alarmDemoBtn {
     background: rgba(200,16,46,0.18) !important;
     border-color: rgba(200,16,46,0.5) !important;
@@ -538,6 +550,61 @@
     background: #C8102E !important;
     color: #F5E0E0 !important;
   }
+  /* ── Eleni Skin · Santorini · Weiß / Ägäis-Blau / Bougainvillea ── */
+  .skin-eleni {
+    background: #F5F8FF !important;
+    border-color: #1A6FAD !important;
+    box-shadow: 0 0 0 3px #1A6FAD, 0 8px 40px #0A3A6EAA !important;
+  }
+  .skin-eleni .status-bar { position: relative; z-index: 2; }
+  .skin-eleni .content { position: relative; z-index: 2; }
+  .skin-eleni .left-sidebar { z-index: 12; }
+  .skin-eleni .right-sidebar { z-index: 12; }
+  .skin-eleni .bottom-bar .tab-btn.active {
+    background: #0A4A80 !important;
+    color: #FFFFFF !important;
+    border-bottom: 3px solid rgba(5,30,70,0.7) !important;
+  }
+  .skin-eleni .tab-btn.inactive {
+    background: #1A6FAD !important;
+    color: #FFFFFF !important;
+    border-bottom: 3px solid rgba(10,50,100,0.5) !important;
+  }
+  .skin-eleni .back-btn-light {
+    background: #1A6FAD !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-bottom: 3px solid rgba(10,50,100,0.5) !important;
+  }
+  .skin-eleni .brand {
+    color: #C8106A !important;
+    font-style: italic;
+    letter-spacing: 0.15em;
+  }
+  .skin-eleni .med-name { color: #0A4A80 !important; }
+  .skin-eleni .med-date { color: #1A6FAD !important; }
+  .skin-eleni .med-card {
+    background: rgba(26,111,173,0.08) !important;
+    border-color: rgba(26,111,173,0.35) !important;
+  }
+  .skin-eleni .mc-title { color: #0A4A80 !important; }
+  .skin-eleni .status-dot { background: #C8106A !important; box-shadow: 0 0 5px #C8106A !important; }
+  .skin-eleni .preset-tab {
+    background: #1A6FAD !important;
+    color: #FFFFFF !important;
+  }
+  @keyframes ipr-eleni{0%{transform:scale(.6);border-color:rgba(26,111,173,.75)}100%{transform:scale(1.18);border-color:rgba(26,111,173,0)}}
+  .skin-eleni .scan-pulse-ring{border-color:rgba(26,111,173,.75) !important;animation:ipr-eleni 1.04s ease-out infinite !important;}
+  .skin-eleni .med-header { border-bottom:1px solid rgba(26,111,173,0.35) !important; background:transparent !important; }
+  .skin-eleni .med-name { color:#0A4A80 !important; }
+  .skin-eleni .med-date { color:#1A6FAD !important; }
+  .skin-eleni #scannerHeader { border-bottom:1px solid rgba(26,111,173,0.35) !important; }
+  .skin-eleni .med-card { background:#FFFFFF !important; border-color:rgba(26,111,173,0.2) !important; }
+  .skin-eleni .msi { background:#FFFFFF !important; border-color:rgba(26,111,173,0.15) !important; }
+  .skin-eleni #archivListe { background:transparent !important; }
+  .skin-eleni .scan-overlay { background:#1A6FAD !important; }
+  .skin-eleni .btn-p { background:#1A6FAD !important; color:#FFFFFF !important; border-bottom:3px solid #C8106A !important; }
+  .skin-eleni .mc-warn { background:#1A6FAD !important; color:#FFFFFF !important; }
 
   /* ══ CORINNA SKIN · KORNBLUMENBLAU ══ */
   .skin-corinna {
@@ -735,6 +802,33 @@
     padding:8px 10px;
     border-radius:10px;
   }
+  .skin-eleni .lang-btn, .skin-eleni .lang-divider { display:none !important; }
+  .skin-eleni .timeline-wrap { border-bottom:1px solid rgba(26,111,173,0.3); background:rgba(26,111,173,0.06); border-radius:8px; }
+  .skin-eleni .tl-line { background:#1A6FAD; }
+  .skin-eleni .tl { color:#0A4A80; }
+  .skin-eleni .tl.hi { color:#1A6FAD; font-weight:700; }
+  .skin-eleni .tl-times { color:#1A6FAD; }
+  .skin-eleni .tab-btn { padding:7px 2px !important; font-size:10px !important; }
+  .skin-eleni .dash-btn { padding:7px 4px !important; font-size:10px !important; }
+  .skin-eleni #barEleni .tab-btn { padding:7px 2px !important; font-size:10px !important; }
+  .skin-eleni #dashRowEleni button { padding:7px 4px !important; font-size:10px !important; }
+  .skin-eleni .dashRowEleniOuttake button,
+  .skin-eleni #dashRowEleniIntake button,
+  .skin-eleni #dashRowEleniHistory button { padding:7px 4px !important; font-size:10px !important; }
+  .skin-eleni .bottom-bar { min-height:0 !important; }
+  /* ── Ελένη Toolbar ── */
+  .skin-eleni .tool-btn{
+    width:38px;height:48px;
+    background:transparent;
+    border:1px solid rgba(26,111,173,0.45);
+    border-right:none;
+    border-radius:10px 0 0 10px;
+    backdrop-filter:none;
+    box-shadow:none;
+  }
+  .skin-eleni .tool-btn:active{background:rgba(26,111,173,0.18);}
+  .skin-eleni .tool-icon{font-size:16px;}
+  .skin-eleni .tool-label{color:rgba(26,111,173,0.85);}
 
   /* Sprach-Buttons in der Werkzeugleiste */
   .lang-btn{
@@ -807,8 +901,8 @@
     scrollbar-width:thin; scrollbar-color:rgba(200,16,46,0.4) transparent;
   }
   .emma-dots{display:flex;justify-content:center;gap:5px;padding:4px 0 2px;flex-shrink:0;}
-  .emma-dot{width:7px;height:7px;border-radius:50%;background:rgba(200,16,46,0.3);transition:background .2s;}
-  .emma-dot.active{background:#C8102E;}
+  .emma-dot{width:7px;height:7px;border-radius:50%;background:rgba(26,111,173,0.3);transition:background .2s;}
+  .emma-dot.active{background:#1A6FAD;}
 
   /* Fix: #corinnaViewport selector war nicht vorhanden (orphaned CSS in v10) */
   #corinnaViewport {
@@ -1213,6 +1307,10 @@ body {
       <div class="pp-item-name" style="color:#1E3D52;">🫁 Herbert · Lungenfibrose</div>
       <div class="pp-item-sub" style="color:#2A5A7A;">Lungenfibrose · Diabetes · Bluthochdruck</div>
     </div>
+    <div class="pp-item" id="ppEleni" style="display:none;border-left:3px solid #1A6FAD;background:rgba(26,111,173,0.08);">
+      <div class="pp-item-name" style="color:#0A4A80;">👩 Ελένη · Σπαστική Διπληγία</div>
+      <div class="pp-item-sub" style="color:#1A6FAD;">Spastische Diplegie · 18 J.</div>
+    </div>
     <div class="pp-item" id="ppKonfiguration" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
       <div class="pp-item-name" style="color:#F5C840;">⚙ Konfiguration</div>
       <div class="pp-item-sub" style="color:#C8A060;">Einstellungen &amp; Anpassungen</div>
@@ -1400,21 +1498,17 @@ body {
   <!-- FORUM PANEL (Presets teilen) -->
   <div class="preset-panel" id="forumPanel">
     <div class="pp-title" data-i18n="forum_titel">FORUM <span class="pp-close" id="forumClose">✕</span></div>
-    <div class="pp-item" id="ppNina" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="forum_emma_name">👩 Emma · Behinderung</div>
-      <div class="pp-item-sub" style="color:#C8A060;" data-i18n="forum_emma_sub">Preset für Menschen mit Behinderung</div>
+    <div class="pp-item" id="ppForumHerbert" style="display:block;border-left:3px solid #4A7FA5;background:rgba(74,127,165,0.08);">
+      <div class="pp-item-name" style="color:#1E3D52;">🫁 Herbert · Lungenfibrose</div>
+      <div class="pp-item-sub" style="color:#2A5A7A;">Lungenfibrose · Diabetes · Bluthochdruck</div>
     </div>
-    <div class="pp-item" id="ppCorinna" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="forum_corinna_name">👩‍🦳 Corinna</div>
-      <div class="pp-item-sub" style="color:#C8A060;" data-i18n="forum_corinna_sub">Preset Corinna</div>
+    <div class="pp-item" id="ppForumBenjamin" style="display:none;border-left:3px solid #C8A010;background:rgba(200,160,10,0.08);">
+      <div class="pp-item-name" style="color:#5A4000;">👴 Benjamin · Parkinson</div>
+      <div class="pp-item-sub" style="color:#7A6020;">Parkinson · Diabetes · Pflegedienst Sonnenschein</div>
     </div>
-    <div class="pp-item" id="ppLisa" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="forum_lisa_name">🫁 Lisa · Lungenerkrankung</div>
-      <div class="pp-item-sub" style="color:#C8A060;" data-i18n="forum_lisa_sub">Preset für Lungenkranke</div>
-    </div>
-    <div class="pp-item" id="ppDPV" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="forum_dpv_name">🩺 dPV</div>
-      <div class="pp-item-sub" style="color:#C8A060;" data-i18n="forum_dpv_sub">Preset dPV</div>
+    <div class="pp-item" id="ppNina" style="border-left:3px solid #4A7FA5;background:rgba(74,127,165,0.12);">
+      <div class="pp-item-name" style="color:#4A7FA5;">👩 Ελένη · Σπαστική Διπληγία</div>
+      <div class="pp-item-sub" style="color:#6A9FBF;">Preset · Spastische Diplegie · 18 J.</div>
     </div>
     <div class="pp-close" id="forumClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
   </div>
@@ -1432,6 +1526,35 @@ body {
       <span class="tool-icon" style="color:#C85A30;">❤</span>
       <span class="tool-label">H:U:N:D</span>
       <div class="tool-tip">H:U:N:D Demo-Trigger</div>
+    </div>
+    <!-- Ελένη Toolbar Buttons -->
+    <div class="tool-btn" id="tbEleniSpotify" style="display:none;" onclick="window.open('https://open.spotify.com','_blank')">
+      <span class="tool-icon">🎵</span>
+      <span class="tool-label">SPOT</span>
+    </div>
+    <div class="tool-btn" id="tbEleniInstagram" style="display:none;" onclick="window.open('https://instagram.com','_blank')">
+      <span class="tool-icon">📷</span>
+      <span class="tool-label">INST</span>
+    </div>
+    <div class="tool-btn" id="tbEleniTikTok" style="display:none;" onclick="window.open('https://tiktok.com','_blank')">
+      <span class="tool-icon">🎬</span>
+      <span class="tool-label">TIKT</span>
+    </div>
+    <div class="tool-btn" id="tbEleniFacebook" style="display:none;" onclick="window.open('https://facebook.com','_blank')">
+      <span class="tool-icon">👥</span>
+      <span class="tool-label">FB</span>
+    </div>
+    <div class="tool-btn" id="tbEleniWhatsApp" style="display:none;" onclick="window.open('https://wa.me','_blank')">
+      <span class="tool-icon">💬</span>
+      <span class="tool-label">WA</span>
+    </div>
+    <div class="tool-btn" id="tbEleniTelefon" style="display:none;" onclick="zeigeGhostBeleg('📞','Telefon')">
+      <span class="tool-icon">📞</span>
+      <span class="tool-label">TEL</span>
+    </div>
+    <div class="tool-btn" id="tbEleniKamera" style="display:none;" onclick="zeigeGhostBeleg('📷','Kamera')">
+      <span class="tool-icon">📸</span>
+      <span class="tool-label">CAM</span>
     </div>
     <!-- Corinna Social Buttons -->
     <div class="tool-btn" id="tbTelegram" style="display:none;" onclick="window.open('https://telegram.org','_blank')">
@@ -1475,36 +1598,18 @@ body {
       <span class="tool-label">MUSIK</span>
       <div class="tool-tip">Spotify</div>
     </div>
-    <div class="tool-btn" id="tbNote" onclick="zeigeGhostBeleg('🎙️','Sprachsteuerung')">
-      <span class="tool-icon">🎙️</span>
-      <span class="tool-label">SPRACHE</span>
-      <div class="tool-tip">Sprachsteuerung</div>
-    </div>
+
     <div class="tool-btn" id="tbShare" onclick="zeigeGhostBeleg('🔒','Signal')">
       <span class="tool-icon">🔒</span>
       <span class="tool-label">SIGNAL</span>
       <div class="tool-tip">Signal</div>
     </div>
-    <!-- SPRACH-BUTTON + KLAPPE -->
-    <div class="lang-divider"></div>
-    <div class="lang-btn" id="langToggle" onclick="toggleLangPanel()">
-      <span style="font-size:16px;line-height:1;">🌐</span>
-      <span class="lang-code" id="langCurrentCode">DE</span>
+    <div class="tool-btn" id="tbNote" onclick="zeigeGhostBeleg('🎙️','Sprachsteuerung')">
+      <span class="tool-icon">🎙️</span>
+      <span class="tool-label">SPRACHE</span>
+      <div class="tool-tip">Sprachsteuerung</div>
     </div>
-    <div id="langPanel" style="display:none;flex-direction:column;align-items:center;gap:4px;margin-bottom:4px;">
-      <div class="lang-btn" id="langDE" onclick="setLanguage('de')">
-        <div class="lang-flag flag-de"></div>
-        <span class="lang-code">DE</span>
-      </div>
-      <div class="lang-btn" id="langEN" onclick="setLanguage('en')">
-        <div class="lang-flag flag-en"></div>
-        <span class="lang-code">EN</span>
-      </div>
-      <div class="lang-btn" id="langGR" onclick="setLanguage('gr')">
-        <div class="lang-flag flag-gr"></div>
-        <span class="lang-code">GR</span>
-      </div>
-    </div>
+    <!-- SPRACH-BUTTON + KLAPPE entfernt -->
   </div>
 
   <!-- GHOST-BELEG: kleines Demo-Fenster "Hier sitzt: App X" -->
@@ -1581,6 +1686,18 @@ body {
     <div class="tp-row"><span class="tp-icon">💬</span><span class="tp-rname">WhatsApp · Familie</span></div>
   </div>
 
+
+  <!-- ELENI HINWEIS-MODAL -->
+  <div id="eleniHinweisModal" style="display:none;position:absolute;inset:0;z-index:9000;background:rgba(10,74,128,0.45);align-items:center;justify-content:center;border-radius:20px;">
+    <div style="background:#F5F8FF;border-radius:16px;padding:28px 24px 20px;max-width:320px;width:90%;box-shadow:0 4px 24px rgba(26,111,173,0.18);border:1.5px solid #1A6FAD;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#0A4A80;margin-bottom:6px;letter-spacing:0.04em;">ΟΔΗΓΙΕΣ ΛHΨΗΣ</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:500;color:#0A4A80;margin-bottom:16px;">Βακλοφένη 10 mg</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:15px;color:#1A6FAD;background:#EAF3FB;border-radius:10px;padding:12px 14px;margin-bottom:20px;">
+        🍽 Με φαγητό<br>💧 Με ένα ποτήρι νερό
+      </div>
+      <button id="eleniHinweisClose" style="width:100%;padding:12px;background:#1A6FAD;color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;">✕ Κλείσιμο</button>
+    </div>
+  </div>
 
   <!-- UNVERTRÄGLICHKEITS-MODAL -->
   <div class="interact-modal" id="interactModal">
@@ -1778,7 +1895,7 @@ body {
         <button class="tab-btn inactive" data-tab="s-history" style="padding:14px 2px;font-size:12px;font-weight:600;background:rgba(200,16,46,0.2);color:#F0C0C8;border-bottom:3px solid rgba(100,0,0,0.5);">History</button>
       </div>
       <div class="dash-row" id="dashRowEmma" style="display:none;">
-        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:rgba(200,16,46,0.2);color:#F0C0C8;border-top:1px solid rgba(255,150,150,0.2);border-bottom:3px solid rgba(100,0,0,0.5);box-shadow:2px 3px 6px rgba(0,0,0,0.35);" onclick="show('s-dashboard'); switchDash(1);">📊 Dashboards</button>
+        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:linear-gradient(135deg,#1A6FAD 0%,#C8106A 100%);color:#FFFFFF;border-top:1px solid rgba(26,111,173,0.5);border-bottom:3px solid rgba(10,50,100,0.6);box-shadow:2px 3px 6px rgba(0,0,0,0.25);" onclick="show('s-dashboard'); switchDash(1);">📊 Dashboards</button>
       </div>
       <div class="dash-row" id="dashRowCorinna" style="display:none;">
         <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:rgba(30,50,160,0.45);color:#C0CCFF;border-top:1px solid rgba(106,143,239,0.25);border-bottom:3px solid rgba(20,40,140,0.5);box-shadow:2px 3px 6px rgba(0,0,0,0.35);" onclick="show('s-dashboard');">📊 Dashboards</button>
@@ -1798,6 +1915,15 @@ body {
       </div>
       <div class="dash-row" id="dashRowHerbert" style="display:none;">
         <button style="flex:1;padding:26px 4px;border-radius:16px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-align:center;background:rgba(74,127,165,0.20);color:#2A5A7A;border-top:1px solid rgba(74,127,165,0.25);border-left:1px solid rgba(74,127,165,0.15);border-right:1px solid rgba(74,127,165,0.2);border-bottom:5px solid rgba(42,90,122,0.3);box-shadow:2px 3px 8px rgba(74,127,165,0.15);" onclick="show('s-dashboard');">📊 Dashboards</button>
+      </div>
+      <!-- Ελένη Bottom Bar -->
+      <div class="bottom-bar" id="barEleni" style="display:none;">
+        <button class="tab-btn inactive" data-tab="s-intake" style="background:rgba(26,111,173,0.12);color:#1A6FAD;border-bottom:3px solid #C8106A;">ΑΠΟΘΕΜΑΤΑ</button>
+        <button class="tab-btn inactive" data-tab="s-outtake" style="background:rgba(26,111,173,0.12);color:#1A6FAD;border-bottom:3px solid #C8106A;">ΕΞΑΓΩΓΗ</button>
+        <button class="tab-btn inactive" data-tab="s-history" style="background:rgba(26,111,173,0.12);color:#1A6FAD;border-bottom:3px solid #C8106A;">ΑΡΧΕΊΟ</button>
+      </div>
+      <div class="dash-row" id="dashRowEleni" style="display:none;">
+        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#1A6FAD;color:#FFFFFF;border-top:1px solid rgba(26,111,173,0.4);border-bottom:3px solid #C8106A;box-shadow:2px 3px 6px rgba(0,0,0,0.2);" onclick="show('s-dashboard'); goToEmmaDash(0);">📊 Dashboards</button>
       </div>
       <div class="dash-row" id="dashRowDPV" style="display:none;">
         <button style="flex:1;padding:26px 4px;border-radius:16px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-align:center;background:rgba(200,106,0,0.35);color:#FFD080;border-top:1px solid rgba(245,160,48,0.25);border-left:1px solid rgba(245,160,48,0.15);border-right:1px solid rgba(0,0,0,0.3);border-bottom:5px solid rgba(0,0,0,0.4);box-shadow:2px 5px 10px rgba(0,0,0,0.4);" onclick="show('s-dashboard');">📋 Verzeichnis</button>
@@ -1839,6 +1965,9 @@ body {
       <div class="dash-row" id="dashRow2">
         <button class="back-btn-light" data-tab="s-scanner" data-i18n="nav_zurueck">← Zurück</button>
       </div>
+      <div class="dash-row" id="dashRowEleniOuttake" style="display:none;">
+        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#1A6FAD;color:#FFFFFF;border-top:1px solid rgba(26,111,173,0.4);border-bottom:3px solid #C8106A;box-shadow:2px 3px 6px rgba(0,0,0,0.2);padding:7px 4px !important;font-size:10px !important;" data-tab="s-scanner">← Πίσω</button>
+      </div>
       <div class="bottom-bar" id="barHerbertOuttake" style="display:none;">
         <button class="tab-btn inactive" data-tab="s-intake" data-i18n="nav_vorrat">Vorrat</button>
         <button class="tab-btn active" data-tab="s-outtake" data-i18n="nav_ausgabe">Ausgabe</button>
@@ -1871,6 +2000,9 @@ body {
       <div class="dash-row" id="dashRow3">
         <button class="back-btn-light" data-tab="s-scanner" data-i18n="nav_zurueck">← Zurück</button>
       </div>
+      <div class="dash-row" id="dashRowEleniIntake" style="display:none;">
+        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#1A6FAD;color:#FFFFFF;border-top:1px solid rgba(26,111,173,0.4);border-bottom:3px solid #C8106A;box-shadow:2px 3px 6px rgba(0,0,0,0.2);padding:7px 4px !important;font-size:10px !important;" data-tab="s-scanner">← Πίσω</button>
+      </div>
       <div class="bottom-bar" id="barHerbertIntake" style="display:none;">
         <button class="tab-btn active" data-tab="s-intake" data-i18n="nav_vorrat">Vorrat</button>
         <button class="tab-btn inactive" data-tab="s-outtake" data-i18n="nav_ausgabe">Ausgabe</button>
@@ -1896,6 +2028,9 @@ body {
       </div>
       <div class="dash-row" id="dashRow4">
         <button class="back-btn-light" data-tab="s-scanner" data-i18n="nav_zurueck">← Zurück</button>
+      </div>
+      <div class="dash-row" id="dashRowEleniHistory" style="display:none;">
+        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#1A6FAD;color:#FFFFFF;border-top:1px solid rgba(26,111,173,0.4);border-bottom:3px solid #C8106A;box-shadow:2px 3px 6px rgba(0,0,0,0.2);padding:7px 4px !important;font-size:10px !important;" data-tab="s-scanner">← Πίσω</button>
       </div>
       <div class="bottom-bar" id="barHerbertHistory" style="display:none;">
         <button class="tab-btn inactive" data-tab="s-intake" data-i18n="nav_vorrat">Vorrat</button>
@@ -2183,63 +2318,79 @@ body {
 
           <!-- E1: ÜBERSICHT -->
           <div class="emma-slide" id="dp-e1">
-            <div style="font-size:11px;color:#F0C0C8;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">ÜBERSICHT · HEUTE</div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">Medikation heute</div>
-              <div style="font-size:11px;color:#9AE090;margin-top:4px;">✓ L-Thyroxin 25µg · 07:00</div>
-              <div style="font-size:11px;color:#9AE090;margin-top:2px;">✓ Valproat 150mg + Vit D3 · 07:30</div>
-              <div style="font-size:11px;color:#F0A080;margin-top:2px;">⏱ Valproat + Macrogol · 20:00 ausstehend</div>
+            <div style="font-size:11px;color:#1A6FAD;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">ΕΠΙΣΚΌΠΗΣΗ · ΣΉΜΕΡΑ</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">Φαρμακευτική αγωγή σήμερα</div>
+              <div style="font-size:11px;color:#2A8A40;margin-top:4px;">✓ Baclofen 10mg · 07:30</div>
+              <div style="font-size:11px;color:#2A8A40;margin-top:2px;">✓ Trihexyphenidyl · 08:00</div>
+              <div style="font-size:11px;color:#C8106A;margin-top:2px;">⏱ Baclofen 10mg · 20:00 εκκρεμεί</div>
             </div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">Nächster Termin</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Mo 10:00 · Kinderklinik · Schilddrüsen-Labor</div>
-            </div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">Fahrdienst</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">🚐 Samariter · Mo 09:45 · bestätigt</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">Επόμενο ραντεβού</div>
+              <div style="font-size:11px;color:#4A7FA5;margin-top:3px;">Πέμ 14:30 · Φυσιοθεραπεία · Ορθοπεδική</div>
             </div>
           </div><!-- /dp-e1 -->
 
           <!-- E2: TERMINE -->
           <div class="emma-slide" id="dp-e2">
-            <div style="font-size:11px;color:#F0C0C8;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">TERMINE · DIESE WOCHE</div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">Mo 10:00 · Kinderklinik</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Schilddrüsen-Labor · TSH, fT3, fT4</div>
+            <div style="font-size:11px;color:#1A6FAD;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">ΡΑΝΤΕΒΟΎ · ΑΥΤΉ ΤΗΝ ΕΒΔΟΜΆΔΑ</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">🏊 Τρί 15:00 · Κολύμβηση</div>
+              <div style="font-size:11px;color:#4A7FA5;margin-top:3px;">Κολυμβητήριο</div>
             </div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">Mi 09:30 · Dr. Hoffmann</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Neuropädiatrie · Valproat-Spiegelkontrolle</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">🩺 Πέμ 14:30 · Φυσιοθεραπεία</div>
+              <div style="font-size:11px;color:#4A7FA5;margin-top:3px;">Ορθοπεδική</div>
             </div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">Fr 08:30 · Labor</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Blutbild · Blutgerinnung · Anämie-Check</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">💪 Τετ + Παρ 16:00 · Γυμναστήριο</div>
+              <div style="font-size:11px;color:#4A7FA5;margin-top:3px;">Community · Ομαδική προπόνηση</div>
             </div>
-            <div style="background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);border-radius:10px;padding:10px;">
-              <div style="font-size:11px;color:#A07080;font-weight:600;">In 3 Wochen · Endokrinologie</div>
-              <div style="font-size:11px;color:#907070;margin-top:2px;">Wachstum & Pubertätsentwicklung</div>
+            <div style="background:rgba(200,16,106,0.06);border:1px solid rgba(200,16,106,0.2);border-radius:10px;padding:10px;">
+              <div style="font-size:11px;color:#C8106A;font-weight:600;">Σε ~3 εβδομάδες · Γιατρός</div>
+              <div style="font-size:11px;color:#A05080;margin-top:2px;">Μηνιαίος έλεγχος</div>
             </div>
           </div><!-- /dp-e2 -->
 
           <!-- E3: FAHRDIENSTE -->
           <div class="emma-slide" id="dp-e3">
-            <div style="font-size:11px;color:#F0C0C8;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">FAHRDIENSTE · DIESE WOCHE</div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">🚐 Samariter · Mo 09:45</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Kinderklinik Schilddrüse · bestätigt</div>
+            <div style="font-size:11px;color:#1A6FAD;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">ΜΕΤΑΦΟΡΆ · ΑΥΤΉ ΤΗΝ ΕΒΔΟΜΆΔΑ</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">🚐 Costa · Πέμ 14:00</div>
+              <div style="font-size:11px;color:#4A7FA5;margin-top:3px;">Γιατρός · επιβεβαιωμένο</div>
             </div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;margin-bottom:6px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">🚐 Samariter · Mi 09:15</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Dr. Hoffmann Neuropädiatrie · bestätigt</div>
-            </div>
-            <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:10px;">
-              <div style="font-size:12px;color:#F0C0C8;font-weight:600;">🚐 Samariter · Fr 08:00</div>
-              <div style="font-size:11px;color:#C08088;margin-top:3px;">Labor Blutbild · bestätigt</div>
+            <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.3);border-radius:10px;padding:10px;">
+              <div style="font-size:12px;color:#0A4A80;font-weight:600;">🚐 Αφροδίτη · Πέμ 14:30</div>
+              <div style="font-size:11px;color:#4A7FA5;margin-top:3px;">Φυσιοθεραπεία · επιβεβαιωμένο</div>
             </div>
           </div><!-- /dp-e3 -->
 
-          <!-- E4-E6 -->
-          <div class="emma-slide" id="dp-e4"><div style="text-align:center;padding:40px 0;color:#C08088;font-size:13px;">E4 · Konfigurierbar</div></div>
+          <!-- E4: APPLEWATCH VITALDATEN -->
+          <div class="emma-slide" id="dp-e4">
+            <div style="font-size:11px;color:#1A6FAD;font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:8px;">ΒΙΟΜΕΤΡΙΚΆ · APPLE WATCH</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <div style="background:rgba(200,16,106,0.08);border:1px solid rgba(200,16,106,0.25);border-radius:10px;padding:10px;text-align:center;">
+                <div style="font-size:18px;">❤️</div>
+                <div style="font-size:17px;color:#C8106A;font-family:'DM Mono',monospace;font-weight:500;margin-top:2px;">72</div>
+                <div style="font-size:9px;color:#A05080;margin-top:1px;">bpm</div>
+              </div>
+              <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.25);border-radius:10px;padding:10px;text-align:center;">
+                <div style="font-size:18px;">🌙</div>
+                <div style="font-size:17px;color:#1A6FAD;font-family:'DM Mono',monospace;font-weight:500;margin-top:2px;">7:20</div>
+                <div style="font-size:9px;color:#4A7FA5;margin-top:1px;">Ύπνος</div>
+              </div>
+              <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.25);border-radius:10px;padding:10px;text-align:center;">
+                <div style="font-size:18px;">🔥</div>
+                <div style="font-size:17px;color:#1A6FAD;font-family:'DM Mono',monospace;font-weight:500;margin-top:2px;">187</div>
+                <div style="font-size:9px;color:#4A7FA5;margin-top:1px;">kcal</div>
+              </div>
+              <div style="background:rgba(26,111,173,0.08);border:1px solid rgba(26,111,173,0.25);border-radius:10px;padding:10px;text-align:center;">
+                <div style="font-size:18px;">💧</div>
+                <div style="font-size:17px;color:#1A6FAD;font-family:'DM Mono',monospace;font-weight:500;margin-top:2px;">98%</div>
+                <div style="font-size:9px;color:#4A7FA5;margin-top:1px;">SpO₂</div>
+              </div>
+            </div>
+          </div><!-- /dp-e4 -->
           <div class="emma-slide" id="dp-e5"><div style="text-align:center;padding:40px 0;color:#C08088;font-size:13px;">E5 · Konfigurierbar</div></div>
           <div class="emma-slide" id="dp-e6"><div style="text-align:center;padding:40px 0;color:#C08088;font-size:13px;">E6 · Konfigurierbar</div></div>
 
@@ -2258,7 +2409,7 @@ body {
 
       <!-- EMMA PUSHBACK -->
       <div class="bottom-bar" id="dashBottomEmma" style="display:none;">
-        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:rgba(140,0,20,0.5);color:#F0C0C8;border-top:1px solid rgba(255,150,150,0.2);border-bottom:3px solid rgba(80,0,0,0.5);box-shadow:2px 3px 6px rgba(0,0,0,0.35);" onclick="show('s-scanner');">← Zurück zum Start</button>
+        <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#1A6FAD;color:#FFFFFF;border-top:1px solid rgba(200,16,106,0.4);border-bottom:3px solid #C8106A;box-shadow:2px 3px 6px rgba(0,0,0,0.28);" onclick="show('s-scanner');">← Επιστροφή στην αρχή</button>
       </div>
 
       <!-- CORINNA VIEWPORT (swipeable, scrollable) -->
@@ -2836,51 +2987,66 @@ body {
 
     <div class="screen" id="s-emma">
     <div class="med-header">
-      <div class="med-name" style="color:#F0C0C8;">Emma</div>
-      <div class="med-date" style="color:#C08088;">DIESE WOCHE · TERMINE</div>
+      <div class="med-name" style="color:#1A6FAD;">Ελένη</div>
+      <div class="med-date" style="color:#C8106A;">DIESE WOCHE · TERMINE</div>
     </div>
     <div style="flex:1 1 0;overflow-y:auto;min-height:0;">
-      <div class="intake-section" style="color:#C8102E;">MONTAG</div>
-      <div class="msi" style="background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);">
-        <div><div class="msi-name" style="color:#C08088;">Termin · wird konfiguriert</div><div class="msi-sub">–</div></div>
+      <div class="intake-section" style="color:#1A6FAD;">ΔΕΥΤΕΡΑ · MONTAG</div>
+      <div class="msi" style="background:rgba(26,111,173,0.07);border:1px solid rgba(26,111,173,0.25);">
+        <div><div class="msi-name" style="color:#0A4A80;">🏫 Schule</div><div class="msi-sub">08:00 – 13:00 · Familien-Fahrdienst</div></div>
       </div>
-      <div class="intake-section" style="color:#C8102E;">DIENSTAG</div>
-      <div class="msi" style="background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);">
-        <div><div class="msi-name" style="color:#C08088;">Termin · wird konfiguriert</div><div class="msi-sub">–</div></div>
+      <div class="intake-section" style="color:#1A6FAD;">ΤΡΙΤΗ · DIENSTAG</div>
+      <div class="msi" style="background:rgba(26,111,173,0.07);border:1px solid rgba(26,111,173,0.25);">
+        <div><div class="msi-name" style="color:#0A4A80;">🏫 Schule</div><div class="msi-sub">08:00 – 13:00 · Familien-Fahrdienst</div></div>
       </div>
-      <div class="intake-section" style="color:#C8102E;">MITTWOCH</div>
-      <div class="msi" style="background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);">
-        <div><div class="msi-name" style="color:#C08088;">Termin · wird konfiguriert</div><div class="msi-sub">–</div></div>
+      <div class="msi" style="background:rgba(200,16,106,0.07);border:1px solid rgba(200,16,106,0.25);">
+        <div><div class="msi-name" style="color:#C8106A;">🏊 Schwimmen</div><div class="msi-sub">15:00 – 16:30 · Κολυμβητήριο</div></div>
       </div>
-      <div class="intake-section" style="color:#C8102E;">DONNERSTAG</div>
-      <div class="msi" style="background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);">
-        <div><div class="msi-name" style="color:#C08088;">Termin · wird konfiguriert</div><div class="msi-sub">–</div></div>
+      <div class="intake-section" style="color:#1A6FAD;">ΤΕΤΑΡΤΗ · MITTWOCH</div>
+      <div class="msi" style="background:rgba(26,111,173,0.07);border:1px solid rgba(26,111,173,0.25);">
+        <div><div class="msi-name" style="color:#0A4A80;">🏫 Schule</div><div class="msi-sub">08:00 – 13:00 · Familien-Fahrdienst</div></div>
       </div>
-      <div class="intake-section" style="color:#C8102E;">FREITAG</div>
-      <div class="msi" style="background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);">
-        <div><div class="msi-name" style="color:#C08088;">Termin · wird konfiguriert</div><div class="msi-sub">–</div></div>
+      <div class="msi" style="background:rgba(200,16,106,0.07);border:1px solid rgba(200,16,106,0.25);">
+        <div><div class="msi-name" style="color:#C8106A;">💪 Sportstudio Community</div><div class="msi-sub">16:00 – 17:30 · Gruppentraining</div></div>
       </div>
-      <div class="intake-section" style="color:#C8102E;">MEDIKAMENTE</div>
-      <div class="msi" style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);">
-        <div><div class="msi-name" style="color:#F0C0C8;">Valproat · morgens + abends</div><div class="msi-sub">mit der Mahlzeit · Blutspiegel prüfen</div></div>
+      <div class="intake-section" style="color:#1A6FAD;">ΠΕΜΠΤΗ · DONNERSTAG</div>
+      <div class="msi" style="background:rgba(26,111,173,0.07);border:1px solid rgba(26,111,173,0.25);">
+        <div><div class="msi-name" style="color:#0A4A80;">🏫 Schule</div><div class="msi-sub">08:00 – 13:00 · Familien-Fahrdienst</div></div>
       </div>
-      <div class="msi" style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);">
-        <div><div class="msi-name" style="color:#F0C0C8;">Macrogol · täglich</div><div class="msi-sub">mit viel Flüssigkeit · mind. 200 ml</div></div>
+      <div class="msi" style="background:rgba(26,111,173,0.12);border:1px solid rgba(26,111,173,0.35);">
+        <div><div class="msi-name" style="color:#0A4A80;">🩺 Physiotherapie</div><div class="msi-sub">14:30 – 15:30 · Ορθοπεδική</div></div>
       </div>
-      <div class="intake-section" style="color:#C8102E;">FAHRDIENSTE</div>
-      <div class="msi" style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);">
-        <div><div class="msi-name" style="color:#F0C0C8;">Samariter Fahrdienst</div><div class="msi-sub">Abholung · wird konfiguriert</div></div>
+      <div class="intake-section" style="color:#1A6FAD;">ΠΑΡΑΣΚΕΥΗ · FREITAG</div>
+      <div class="msi" style="background:rgba(26,111,173,0.07);border:1px solid rgba(26,111,173,0.25);">
+        <div><div class="msi-name" style="color:#0A4A80;">🏫 Schule</div><div class="msi-sub">08:00 – 13:00 · Familien-Fahrdienst</div></div>
+      </div>
+      <div class="msi" style="background:rgba(200,16,106,0.07);border:1px solid rgba(200,16,106,0.25);">
+        <div><div class="msi-name" style="color:#C8106A;">💪 Sportstudio Community</div><div class="msi-sub">16:00 – 17:30 · Gruppentraining</div></div>
+      </div>
+      <div class="intake-section" style="color:#1A6FAD;">ΦΑΡΜΑΚΑ · MEDIKAMENTE</div>
+      <div class="msi" style="background:rgba(26,111,173,0.1);border:1px solid rgba(26,111,173,0.35);">
+        <div><div class="msi-name" style="color:#0A4A80;">Baclofen · morgens + abends</div><div class="msi-sub">Muskelrelaxans · Dosis wird konfiguriert</div></div>
+      </div>
+      <div class="msi" style="background:rgba(26,111,173,0.1);border:1px solid rgba(26,111,173,0.35);">
+        <div><div class="msi-name" style="color:#0A4A80;">Trihexyphenidyl · täglich</div><div class="msi-sub">Dosis wird konfiguriert</div></div>
+      </div>
+      <div class="msi" style="background:rgba(26,111,173,0.1);border:1px solid rgba(26,111,173,0.35);">
+        <div><div class="msi-name" style="color:#0A4A80;">Diazepam · bei Bedarf</div><div class="msi-sub">Dosis wird konfiguriert</div></div>
+      </div>
+      <div class="intake-section" style="color:#1A6FAD;">ΜΕΤΑΦΟΡΑ · FAHRDIENST</div>
+      <div class="msi" style="background:rgba(26,111,173,0.1);border:1px solid rgba(26,111,173,0.35);">
+        <div><div class="msi-name" style="color:#0A4A80;">Familien-Fahrdienst</div><div class="msi-sub">Abholung · wird konfiguriert</div></div>
       </div>
     </div>
     <div class="bottom-bar">
-      <button class="tab-btn inactive" onclick="show('s-scanner')" style="flex:1.2;padding:14px 2px;font-size:12px;font-weight:600;background:rgba(200,16,46,0.25);color:#F0C0C8;border-bottom:3px solid rgba(100,0,0,0.5);">⌂ Start</button>
-      <button class="tab-btn active" style="padding:14px 2px;font-size:12px;font-weight:600;background:#C8102E;color:#F5E0E0;border-bottom:3px solid rgba(100,0,0,0.5);">Woche</button>
-      <button class="tab-btn inactive" data-tab="s-history" style="padding:14px 2px;font-size:12px;font-weight:600;background:rgba(200,16,46,0.2);color:#F0C0C8;border-bottom:3px solid rgba(100,0,0,0.5);">History</button>
+      <button class="tab-btn inactive" onclick="show('s-scanner')" style="flex:1.2;padding:14px 2px;font-size:12px;font-weight:600;background:#1A6FAD;color:#FFFFFF;border-bottom:3px solid rgba(10,50,100,0.6);">⌂ Start</button>
+      <button class="tab-btn active" style="padding:14px 2px;font-size:12px;font-weight:600;background:#0A4A80;color:#FFFFFF;border-bottom:3px solid rgba(5,30,70,0.7);">Woche</button>
+      <button class="tab-btn inactive" data-tab="s-history" style="padding:14px 2px;font-size:12px;font-weight:600;background:#1A6FAD;color:#FFFFFF;border-bottom:3px solid rgba(10,50,100,0.6);">History</button>
     </div>
     <div class="dash-row">
-      <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:rgba(140,0,20,0.5);color:#F0C0C8;border-top:1px solid rgba(255,150,150,0.2);border-bottom:3px solid rgba(80,0,0,0.5);box-shadow:2px 3px 6px rgba(0,0,0,0.35);" onclick="show('s-dashboard'); goToEmmaDash(0);">📊 Dashboards</button>
+      <button style="flex:1;padding:14px 4px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#1A6FAD;color:#FFFFFF;border-top:1px solid rgba(26,111,173,0.4);border-bottom:3px solid rgba(10,50,100,0.6);box-shadow:2px 3px 6px rgba(0,0,0,0.2);" onclick="show('s-dashboard'); goToEmmaDash(0);">📊 Dashboards</button>
     </div>
-    <div class="brand" style="color:#C8102E;font-style:italic;">kariPharm · Nina</div>
+    <div class="brand" style="color:#4A7FA5;font-style:italic;">kariPharm · Ελένη</div>
   </div><!-- /s-emma screen -->
 
     <!-- SCANNER ERGEBNIS: Ibuprofen ↔ Benjamin -->
@@ -2946,8 +3112,111 @@ body {
       <div class="brand" style="color:#C8A840;">kariPharm</div>
     </div><!-- /s-ibu-result -->
 
+    <!-- SCANNER ERGEBNIS: Ιβουπροφένη ↔ Ελένη -->
+    <div class="screen" id="s-ibu-result-eleni" style="background:#F5F8FF;">
+      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#0A4A80;">Αλληλεπιδράσεις</div>
+        <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;">ΙΒΟΥΠΡΟΦΕΝΗ 400mg · ΑΝΑΓΝΩΡΙΣΤΗΚΕ</div>
+      </div>
+      <div style="padding:0 2px 4px;font-size:9px;color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;">ΑΝΤΙΠΑΡΑΒΟΛΗ ΜΕ ΤΑ ΦΑΡΜΑΚΑ ΤΗΣ ΕΛΕΝΗΣ</div>
+      <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;">
+
+        <!-- Κάρτα 1: Βακλοφένη -->
+        <div style="background:#EEF4FF;border:1px solid #B8D0E8;border-radius:10px;padding:10px 12px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#0A4A80;font-family:'DM Sans',sans-serif;">Βακλοφένη 10 mg</div>
+              <div style="font-size:9px;color:#4A7FA5;font-family:'DM Mono',monospace;margin-top:1px;">Μυοχαλαρωτικό · Σπαστικότητα</div>
+            </div>
+            <div style="background:#D8E8FF;border:1px solid #1A6FAD;border-radius:6px;padding:2px 7px;font-size:9px;font-weight:600;color:#0A4A80;font-family:'DM Mono',monospace;white-space:nowrap;">ΜΕΤΡΙΟ</div>
+          </div>
+          <div style="font-size:10px;color:#0A4A80;font-family:'DM Sans',sans-serif;line-height:1.5;">Η ιβουπροφένη μπορεί να ενισχύσει την καταστολή του κεντρικού νευρικού συστήματος. Συνιστάται προσοχή σε δραστηριότητες που απαιτούν εγρήγορση.</div>
+          <div style="margin-top:6px;padding:6px 8px;background:#D8E8FF;border-left:2px solid #1A6FAD;border-radius:4px;font-size:9px;color:#0A4A80;font-family:'DM Mono',monospace;">⚠ Αποφύγετε την οδήγηση μετά τη λήψη</div>
+        </div>
+
+        <!-- Κάρτα 2: Τριεξυφαινιδύλη -->
+        <div style="background:#FFF0F8;border:1px solid #E8A0C8;border-radius:10px;padding:10px 12px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#7A0040;font-family:'DM Sans',sans-serif;">Τριεξυφαινιδύλη 2 mg</div>
+              <div style="font-size:9px;color:#A04080;font-family:'DM Mono',monospace;margin-top:1px;">Αντιχολινεργικό · Σπαστικότητα</div>
+            </div>
+            <div style="background:#FFD8F0;border:1px solid #C8106A;border-radius:6px;padding:2px 7px;font-size:9px;font-weight:600;color:#C8106A;font-family:'DM Mono',monospace;white-space:nowrap;">ΥΨΗΛΟ</div>
+          </div>
+          <div style="font-size:10px;color:#7A0040;font-family:'DM Sans',sans-serif;line-height:1.5;">Ο συνδυασμός με ιβουπροφένη μπορεί να επηρεάσει τη νεφρική λειτουργία. Σε μακροχρόνια χρήση ΜΣΑΦ συνιστάται παρακολούθηση νεφρικής λειτουργίας.</div>
+          <div style="margin-top:6px;padding:6px 8px;background:#FFD8F0;border-left:2px solid #C8106A;border-radius:4px;font-size:9px;color:#C8106A;font-family:'DM Mono',monospace;">⚠ Συμβουλευτείτε γιατρό ή φαρμακοποιό</div>
+        </div>
+
+      </div>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:#1A6FAD;border:none;border-bottom:3px solid #C8106A;border-radius:10px;color:#FFFFFF;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;margin-top:4px;">↩ Πίσω</button>
+      <div class="brand" style="color:#1A6FAD;">kariPharm · Ελένη</div>
+    </div><!-- /s-ibu-result-eleni -->
+
+    <div class="screen" id="s-ibu-result-herbert" style="background:#EEF4F8;">
+      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#1A3A50;">Wechselwirkungen</div>
+        <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;">IBUPROFEN 600mg · ERKANNT</div>
+      </div>
+      <div style="padding:0 2px 4px;font-size:9px;color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;">ABGLEICH MIT HERBERTS VORRAT</div>
+      <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;">
+
+        <!-- Karte 1: Nintedanib – HOCH -->
+        <div style="background:#FFF2EE;border:1px solid #E8A080;border-radius:10px;padding:10px 12px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#5A1800;font-family:'DM Sans',sans-serif;">Nintedanib</div>
+              <div style="font-size:9px;color:#A05030;font-family:'DM Mono',monospace;margin-top:1px;">Tyrosinkinase-Inhibitor · Lungenfibrose</div>
+            </div>
+            <div style="background:#FFD8C8;border:1px solid #C85A30;border-radius:6px;padding:2px 7px;font-size:9px;font-weight:600;color:#C85A30;font-family:'DM Mono',monospace;white-space:nowrap;">HOCH</div>
+          </div>
+          <div style="font-size:10px;color:#5A1800;font-family:'DM Sans',sans-serif;line-height:1.5;">Beide Wirkstoffe erhöhen das Risiko für Magen-Darm-Blutungen. Kombination nur nach ausdrücklicher Rücksprache mit Arzt oder Apotheker.</div>
+          <div style="margin-top:6px;padding:6px 8px;background:#FFE8E0;border-left:2px solid #C85A30;border-radius:4px;font-size:9px;color:#C85A30;font-family:'DM Mono',monospace;">⚠ Bitte mit Arzt oder Apotheker sprechen</div>
+        </div>
+
+        <!-- Karte 2: Metformin – MITTEL -->
+        <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:10px;padding:10px 12px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#3A1A00;font-family:'DM Sans',sans-serif;">Metformin</div>
+              <div style="font-size:9px;color:#A08040;font-family:'DM Mono',monospace;margin-top:1px;">500 mg · Biguanid · Diabetes</div>
+            </div>
+            <div style="background:#FFF0B0;border:1px solid #D4A800;border-radius:6px;padding:2px 7px;font-size:9px;font-weight:600;color:#7A5000;font-family:'DM Mono',monospace;white-space:nowrap;">MITTEL</div>
+          </div>
+          <div style="font-size:10px;color:#5A3800;font-family:'DM Sans',sans-serif;line-height:1.5;">Ibuprofen kann die Nierenfunktion einschränken und eine Metformin-Akkumulation begünstigen (Laktatazidose-Risiko). Einnahme nur kurzfristig und nach Rücksprache.</div>
+        </div>
+
+        <!-- Karte 3: Empagliflozin – MITTEL -->
+        <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:10px;padding:10px 12px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#3A1A00;font-family:'DM Sans',sans-serif;">Empagliflozin</div>
+              <div style="font-size:9px;color:#A08040;font-family:'DM Mono',monospace;margin-top:1px;">SGLT2-Hemmer · Diabetes</div>
+            </div>
+            <div style="background:#FFF0B0;border:1px solid #D4A800;border-radius:6px;padding:2px 7px;font-size:9px;font-weight:600;color:#7A5000;font-family:'DM Mono',monospace;white-space:nowrap;">MITTEL</div>
+          </div>
+          <div style="font-size:10px;color:#5A3800;font-family:'DM Sans',sans-serif;line-height:1.5;">NSAID und SGLT2-Hemmer belasten gemeinsam die Niere. Bei Zeichen von Dehydratation (Schwindel, Durst) sofort Arzt kontaktieren.</div>
+        </div>
+
+        <!-- Karte 4: Tiotropium / Salbutamol – NIEDRIG -->
+        <div style="background:#EEF6EE;border:1px solid #90C890;border-radius:10px;padding:10px 12px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#1A4020;font-family:'DM Sans',sans-serif;">Tiotropium · Salbutamol</div>
+              <div style="font-size:9px;color:#508050;font-family:'DM Mono',monospace;margin-top:1px;">Bronchodilatator · Inhalation</div>
+            </div>
+            <div style="background:#D0F0D0;border:1px solid #60B860;border-radius:6px;padding:2px 7px;font-size:9px;font-weight:600;color:#206020;font-family:'DM Mono',monospace;white-space:nowrap;">NIEDRIG</div>
+          </div>
+          <div style="font-size:10px;color:#2A5030;font-family:'DM Sans',sans-serif;line-height:1.5;">Keine klinisch relevante Wechselwirkung mit Ibuprofen bekannt. Inhalativa wie gewohnt anwenden.</div>
+        </div>
+
+      </div>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:#D8E8F0;border:1px solid #4A7FA5;border-radius:10px;color:#1A3A50;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;margin-top:4px;">↩ Zurück</button>
+      <div class="brand" style="color:#4A7FA5;">kariPharm</div>
+    </div><!-- /s-ibu-result-herbert -->
+
   </div><!-- /content -->
 </div><!-- /phone -->
+</div><!-- /kp-wrap -->
 
 <script>
 (function(){
@@ -3034,10 +3303,15 @@ body {
     { name: "Salbutamol 100 µg",   sub: "Bedarfsinhaler · SABA · bei Atemnot",              prozent: 85, tage: 26, farbe: "#4AE040" }
   ];
 
+  var vorratDatenEleni = [
+    { name: "Βακλοφένη 10 mg",         sub: "Σπαστικότητα · 3× ημερ · 07:00 / 13:00 / 20:00", prozent: 80, tage: 24, farbe: "#4AE040" },
+    { name: "Τριεξυφαινιδύλη 2 mg",    sub: "Αντισπασμωδικό · 2× ημερ · 07:30 / 19:00",       prozent: 55, tage: 16, farbe: "#4AE040" }
+  ];
+
   var vorratDaten = JSON.parse(JSON.stringify(vorratDatenBenjamin));
 
   function initVorratForSkin(skin) {
-    var src = (skin === 'herbert') ? vorratDatenHerbert : vorratDatenBenjamin;
+    var src = (skin === 'herbert') ? vorratDatenHerbert : (skin === 'eleni') ? vorratDatenEleni : vorratDatenBenjamin;
     vorratDaten = JSON.parse(JSON.stringify(src));
     vorratDatenDE = JSON.parse(JSON.stringify(src));
   }
@@ -3262,7 +3536,7 @@ body {
   });
 
   function show(id){
-    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-nk1','s-nk2','s-ibu-result'].forEach(function(s){
+    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-nk1','s-nk2','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
       document.getElementById(s).classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
@@ -3340,6 +3614,7 @@ body {
      bleiben erhalten (additive-only — Stufen-Ablauf & einBtn docken weiterhin daran an) */
   var benjaminLetzterAktStatus = null;
   function renderBenjaminZeitstrahl(){
+    if(ninaActive) return;
     var track = document.getElementById('timelineTrack');
     if(!track) return;
     var punkte = berechneBenjaminZeitstrahl();
@@ -3449,6 +3724,7 @@ body {
   }
 
   function renderBenjaminMedCard(time){
+    if(ninaActive) return;
     var list = document.getElementById('medCard1List');
     if(!list) return;
     list.innerHTML = '';
@@ -3492,6 +3768,7 @@ body {
     return gewaehlt;
   }
   function checkBenjaminZeit(){
+    if(ninaActive) return;
     var aktuell = ermittleAktuellenBenjaminZeitpunkt();
     if(aktuell !== aktiverBenjaminZeitpunkt){
       aktiverBenjaminZeitpunkt = aktuell;
@@ -3505,7 +3782,18 @@ body {
   setInterval(checkBenjaminZeit, 60000);
 
   document.getElementById('medCard1Info').addEventListener('click', function(){
-    zeigeInteractModal();
+    if(ninaActive){
+      var m = document.getElementById('eleniHinweisModal');
+      m.style.display = 'flex';
+    } else {
+      zeigeInteractModal();
+    }
+  });
+  document.getElementById('eleniHinweisClose').addEventListener('click', function(){
+    document.getElementById('eleniHinweisModal').style.display = 'none';
+  });
+  document.getElementById('eleniHinweisModal').addEventListener('click', function(e){
+    if(e.target === this) this.style.display = 'none';
   });
 
   // Wechselwirkungsfenster: je nach aktivem Zeitpunkt anderer Inhalt
@@ -3833,10 +4121,21 @@ body {
     { datum:'Letzte Woche', zeit:'Do', typ:'termin', icon:'🏃', text:'Lungenfunktionstest · Pneumologie · wahrgenommen', status:'ok' }
   ];
 
+  var archivEintraegeEleni = [
+    { datum:'Σήμερα', zeit:'07:00', typ:'medikament', icon:'💊', text:'Βακλοφένη 10mg · με νερό', status:'ok' },
+    { datum:'Σήμερα', zeit:'07:30', typ:'medikament', icon:'💊', text:'Τριεξυφαινιδύλη 2mg · με φαγητό', status:'ok' },
+    { datum:'Σήμερα', zeit:'13:00', typ:'medikament', icon:'💊', text:'Βακλοφένη 10mg · μεσημέρι', status:'ok' },
+    { datum:'Σήμερα', zeit:'14:30', typ:'termin', icon:'🏃', text:'Φυσιοθεραπεία · Ορθοπεδική · εκκρεμεί', status:'warn' },
+    { datum:'Σήμερα', zeit:'20:00', typ:'medikament', icon:'💊', text:'Βακλοφένη 10mg · βράδυ · εκκρεμεί', status:'warn' },
+    { datum:'Αυτή την εβδομάδα', zeit:'Τρί', typ:'termin', icon:'🏊', text:'Κολύμβηση · Κολυμβητήριο · πραγματοποιήθηκε', status:'ok' },
+    { datum:'Αυτή την εβδομάδα', zeit:'Τετ', typ:'termin', icon:'💪', text:'Γυμναστήριο · Ομαδική προπόνηση · πραγματοποιήθηκε', status:'ok' },
+    { datum:'Προηγούμενη εβδομάδα', zeit:'Πέμ', typ:'termin', icon:'🏃', text:'Φυσιοθεραπεία · Ορθοπεδική · πραγματοποιήθηκε', status:'ok' }
+  ];
+
   var archivEintraege = JSON.parse(JSON.stringify(archivEintraegeBenjamin));
 
   function initArchivForSkin(skin) {
-    var src = (skin === 'herbert') ? archivEintraegeHerbert : archivEintraegeBenjamin;
+    var src = (skin === 'herbert') ? archivEintraegeHerbert : (skin === 'eleni') ? archivEintraegeEleni : archivEintraegeBenjamin;
     archivEintraege = JSON.parse(JSON.stringify(src));
     archivEintraegeDE = archivEintraege.slice();
   }
@@ -4168,7 +4467,7 @@ body {
         setTimeout(function(){
           ov.classList.remove('active'); med.style.opacity='0';
           bar.style.width='0%'; line.style.top='0';
-          show('s-ibu-result');
+          show(ninaActive ? 's-ibu-result-eleni' : herbertActive ? 's-ibu-result-herbert' : 's-ibu-result');
         },900);
       }
     },25);
@@ -4400,8 +4699,8 @@ body {
     var title = document.getElementById('medCard1Title');
     var sub = document.getElementById('medCard1Sub');
     if(ninaActive){
-      if(title) title.textContent = 'Macrogol 13.125 g · 20:00 Uhr';
-      if(sub) sub.textContent = 'In 125 ml Wasser auflösen · zum Abendessen';
+      if(title) title.textContent = 'Τριεξυφαινιδύλη 2 mg · 19:00';
+      if(sub) sub.textContent = 'Με φαγητό · με νερό';
     } else if(lisaActive){
       if(title) title.textContent = 'Montelukast 10 mg · 22:00 Uhr';
       if(sub) sub.textContent = 'Abends · 1 Tablette · nächtliche Symptome';
@@ -4412,7 +4711,7 @@ body {
     // Stufen-Ablauf für den nächsten Punkt starten (Hinweis→Warnung→Handlungsbedarf→unbestätigt)
     startStageAblauf();
     setTimeout(function(){
-      btn.textContent = 'Eingenommen ✓';
+      btn.textContent = ninaActive ? 'Ελήφθη ✓' : 'Eingenommen ✓';
       btn.style.background = '';
       btn.style.color = '';
       btn.disabled = false;
@@ -4663,187 +4962,7 @@ body {
   var dpvActive     = false;  // dPV · Community · Amber
   var herbertActive = false;  // Herbert · Lungenfibrose · Blaugrau
 
-  function activateCorinnaSkin() {
-    corinnaActive = true;
-    ninaActive = false;
-    actions.setVariant('corinna'); // Phase 1: appState sync
-    document.getElementById('phone').classList.remove('skin-benjamin');
-    document.getElementById('phone').classList.remove('skin-nina');
-    document.getElementById('phone').classList.add('skin-corinna');
-    document.getElementById('ninaTattooBg').style.display = 'none';
-    document.getElementById('ninaScanBtn').style.display = 'none';
-    document.getElementById('scanBtn').style.display = 'none';
-    document.getElementById('spotifyBtn').style.display = 'flex';
-    document.getElementById('corinnaCycle').style.display = 'block';
-    // Alarm und Pflege ausblenden
-    document.getElementById('alarmDemoBtn').style.display = 'none';
-    document.getElementById('pflegeBlock').style.display = 'none';
-    // Timeline
-    document.getElementById('timelineTrack').innerHTML = '<div class="tl-line"></div>'
-      + '<div class="tm" style="left:14%"><div class="td done"></div><div class="tl">08:00<br>Vit.</div></div>'
-      + '<div class="tm" style="left:43%"><div class="td done" id="rampDot"></div><div class="tl">08:05<br>Mag.</div></div>'
-      + '<div class="tm" style="left:72%"><div class="td pend"></div><div class="tl">20:00<br>Vit.</div></div>';
-    // med-card
-    document.getElementById('medCard1Title').textContent = 'Supplement · wird konfiguriert';
-    document.getElementById('medCard1Sub').textContent = '30 Min. vor dem Essen · kein Eiweiß';
-    document.getElementById('intakeSection1').textContent = 'VITAMINE & MINERALIEN';
-    document.getElementById('intakeMed1').innerHTML = '<div><div class="msi-name">Supplement 1</div><div class="msi-sub">wird konfiguriert</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:0%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#808080;">– Tage</div></div>';
-    document.getElementById('intakeMed2').innerHTML = '<div><div class="msi-name">Magnesium + Zink</div><div class="msi-sub">Mineralien · 1x tägl</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:70%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">21 Tage</div></div>';
-    document.getElementById('intakeMed3').style.display = 'none';
-    document.getElementById('intakeMed4').style.display = 'none';
-    document.getElementById('intakeSection2').textContent = 'VORRAT';
-    document.getElementById('intakeRez1').innerHTML = '<div>📦</div><div><div class="msi-name">Supplement 1 · Vorrat</div><div class="msi-sub">3 Monatspackungen · ausreichend</div></div>';
-    document.getElementById('intakeRez2').innerHTML = '<div>🛒</div><div><div class="msi-name">Supplement 2 · Nachkauf</div><div class="msi-sub">Drogerie · in 21 Tagen</div></div>';
-    // dp1 dash-next
-    document.getElementById('dashNext1').innerHTML='<div style="font-size:16px;">⌚</div><div><div class="dn-text">Garmin · Puls 68 BPM · live</div><div class="dn-sub">HRV 48ms · Erholung gut</div></div>';
-    document.getElementById('dashNext2').innerHTML='<div style="font-size:16px;">🧡</div><div><div class="dn-text">Pflegedienst Sonnenschein · Do 14:00</div><div class="dn-sub">verbunden · Sync 08:15</div></div>';
-    document.getElementById('dashNext3').className='dash-next'; document.getElementById('dashNext3').style.background=''; document.getElementById('dashNext3').style.border='';
-    document.getElementById('dashNext3').innerHTML='<div style="font-size:16px;">💊</div><div><div class="dn-text">Supplement · 08:00</div><div class="dn-sub">eingenommen ✓</div></div>';
-    document.getElementById('medCard1Sub').textContent = '30 Min. vor dem Essen · kein Eiweiß';
-    document.getElementById('medCard1Warn').style.display = 'none';
-    var mc1b=document.getElementById('medCard1Btn'); if(mc1b) mc1b.style.display='none';
-    document.getElementById('histRow1').innerHTML = '<span class="mr-n">Supplement 1 08:04</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML = '<span class="mr-n">Supplement 2 08:05</span><span class="mr-s">dokumentiert</span>';
-    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el = document.getElementById(id); if(el) el.textContent = 'Corinna';
-    });
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent = 'kariPharm · Garmin'; });
-    document.getElementById('ghostBenjamin').style.display = 'none';
-    document.getElementById('ghostEmma').style.display = 'none';
-    document.getElementById('ghostCorinna').style.display = 'none';
-    document.getElementById('barBenjamin').style.display = 'none';
-    document.getElementById('barEmma').style.display = 'none';
-    var dre=document.getElementById('dashRowEmma'); if(dre) dre.style.display='none';
-    var drc=document.getElementById('dashRowCorinna'); if(drc) drc.style.display='block';
-    var tp=document.getElementById('tbPflege'); if(tp) tp.style.display='none';
-    var dbb2=document.getElementById('dashBottomBenjamin'); if(dbb2) dbb2.style.display='none';
-    // Bereinige Nina-Zustand (Nina→Corinna-Pfad: emmaViewport/Dots/dashBottomEmma verstecken)
-    var ev2=document.getElementById('emmaViewport');   if(ev2)  ev2.style.display='none';
-    var ed2=document.getElementById('emmaDots');        if(ed2)  ed2.style.display='none';
-    var dbe=document.getElementById('dashBottomEmma'); if(dbe)  dbe.style.display='none';
-    ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    ['barBenjaminOuttake','barBenjaminIntake','barBenjaminHistory'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    document.getElementById('dashBottomCorinna').style.display = 'flex';
-    // Dashboard header
-    var dashDate = document.querySelector('#s-dashboard .med-date');
-    if(dashDate) dashDate.textContent = 'GARMIN FORERUNNER · LIVE · 6 DASHBOARDS';
 
-    // Dashboard buttons
-    var dLabels = ['C1 · Vitalwerte','C2 · Aktivität','C3 · Schlaf','C4 · Training','C5 · Körper & Wellness','C6 · Supplements'];
-    var dIcons  = ['❤️','🏃','🌙','⚡','🧘','💊'];
-    for(var i=1;i<=6;i++){
-      var btn = document.getElementById('dashBtn'+i);
-      if(btn){
-        btn.style.display = 'flex';
-        btn.style.opacity = '1';
-        btn.querySelector('.tp-icon').textContent = dIcons[i-1];
-        btn.querySelector('.tp-rname').textContent = dLabels[i-1];
-      }
-    }
-    // Rechte Sidebar: Social statt Standard
-    ['tbContact','tbNote','tbShare'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.style.display='none';
-    });
-    ['tbTelegram','tbWhatsApp','tbSignal','tbFacebook'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.style.display='flex';
-    });
-    var bv = document.getElementById('benjaminViewport'); if(bv) bv.style.display='none';
-    var bd = document.getElementById('benjaminDots'); if(bd) bd.style.display='none';
-    var cv = document.getElementById('corinnaViewport');
-    if(cv){ cv.style.display = 'flex'; cv.style.overflow = 'hidden'; }
-    var cd = document.getElementById('corinnaDots');
-    if(cd) cd.style.display = 'flex';
-    goToCorinaDash(0);
-    // Start Spotify pulse synced to BPM
-    updateSpotifyPulse();
-    show('s-scanner');
-  }
-
-  function deactivateCorinnaSkin() {
-    corinnaActive = false;
-    actions.setVariant('benjamin'); // Phase 1: appState sync
-    document.getElementById('phone').classList.remove('skin-corinna');
-    document.getElementById('phone').classList.add('skin-benjamin');
-    document.getElementById('scanBtn').style.display = 'flex';
-    document.getElementById('spotifyBtn').style.display = 'none';
-    document.getElementById('corinnaCycle').style.display = 'none';
-    // Alarm und Pflege wiederherstellen
-    document.getElementById('alarmDemoBtn').style.display = 'block';
-    document.getElementById('pflegeBlock').style.display = 'flex';
-    // Sidebar wiederherstellen
-    ['tbContact','tbNote','tbShare'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.style.display='flex';
-    });
-    ['tbTelegram','tbWhatsApp','tbSignal','tbFacebook'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.style.display='none';
-    });
-    document.getElementById('intakeSection1').textContent = 'MEDIKAMENTE';
-    document.getElementById('intakeMed1').innerHTML = '<div><div class="msi-name">L-Dopa / Benserazid 100/25 mg</div><div class="msi-sub">Parkinson · 3× tgl · 07:00 / 12:00 / 16:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:65%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">19 Tage</div></div>';
-    document.getElementById('intakeMed2').innerHTML = '<div><div class="msi-name">Pramipexol 0,7 mg retardiert</div><div class="msi-sub">Dopaminagonist · 1× tgl · 07:30</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:80%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">24 Tage</div></div>';
-    document.getElementById('intakeMed3').style.display = '';
-    document.getElementById('intakeMed4').style.display = '';
-    document.getElementById('intakeSection2').textContent = 'REZEPTE';
-    document.getElementById('intakeRez1').innerHTML = '<div>⚠</div><div><div class="msi-name">Metformin · Folgerezept fällig</div><div class="msi-sub">Dr. Müller · Termin Do 14:30</div></div>';
-    document.getElementById('intakeRez2').innerHTML = '<div>🔄</div><div><div class="msi-name">Rezept 2</div><div class="msi-sub">wird konfiguriert</div></div>';
-    // Restore dp1
-    document.getElementById('dashNext1').innerHTML='<div style="font-size:15px;">💊</div><div><div style="font-size:12px;color:#33333D;font-weight:500;">L-Dopa / Benserazid · 16:00 Uhr</div><div style="font-size:10px;color:#9A9AA4;">30 Min. vor dem Essen · kein Eiweiß</div></div>';
-    document.getElementById('dashNext2').innerHTML='<div style="font-size:15px;">♥</div><div><div style="font-size:12px;color:#33333D;font-weight:500;">Pflegedienst Sonnenschein · Do 14:00</div><div style="font-size:10px;color:#2E9E4F;">verbunden · Sync 08:15</div></div>';
-    document.getElementById('dashNext3').style.background='#FDF0EE'; document.getElementById('dashNext3').style.border='1px solid #F0C4BC';
-    document.getElementById('dashNext3').innerHTML='<div style="font-size:15px;">⚠</div><div><div style="font-size:12px;color:#33333D;font-weight:500;">Vorrat · wird konfiguriert</div><div style="font-size:10px;color:#C23B2C;">wird konfiguriert</div></div>';
-    // Restore timeline
-    document.getElementById('timelineTrack').innerHTML = '<div class="tl-line"></div>'
-      + '<div class="tm" style="left:8%"><div class="td done"></div><div class="tl">––<br>Med. 1</div></div>'
-      + '<div class="tm" style="left:20%"><div class="td done"></div><div class="tl">07:30<br>Pramip.</div></div>'
-      + '<div class="tm" style="left:32%"><div class="td done"></div><div class="tl">07:30<br>Rasag.</div></div>'
-      + '<div class="tm" style="left:44%"><div class="td done"></div><div class="tl">08:00<br>Metfor.</div></div>'
-      + '<div class="tm" style="left:58%"><div class="td now" id="rampDot"></div><div class="tl hi">––<br>Med. 3</div></div>'
-      + '<div class="tm" style="left:72%"><div class="td pend" id="nextDot"></div><div class="tl">13:00<br>Metfor.</div></div>'
-      + '<div class="tm" style="left:86%"><div class="td pend"></div><div class="tl">––<br>Med. 4</div></div>';
-    // Restore medCard
-    document.getElementById('medCard1Title').textContent = 'L-Dopa / Benserazid 100/25 mg';
-    document.getElementById('medCard1Sub').textContent = '30 Min. vor dem Essen · kein Eiweiß';
-    document.getElementById('medCard1Warn').textContent = '';
-    document.getElementById('medCard1Sub').textContent = '30 Min. vor dem Essen · kein Eiweiß';
-    document.getElementById('medCard1Warn').style.display = 'inline-block';
-    var mc1b=document.getElementById('medCard1Btn'); if(mc1b) mc1b.style.display='inline-block';
-    document.getElementById('histRow1').innerHTML = '<span class="mr-n">L-Dopa 07:00</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML = '<span class="mr-n">Pramipexol + Rasagilin 07:30</span><span class="mr-s">dokumentiert</span>';
-    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el = document.getElementById(id); if(el) el.textContent = 'Benjamin';
-    });
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent = 'kariPharm'; });
-    document.getElementById('ghostBenjamin').style.display = 'none';
-    document.getElementById('ghostCorinna').style.display = 'none';
-    document.getElementById('barBenjamin').style.display = 'flex';
-    var drc=document.getElementById('dashRowCorinna'); if(drc) drc.style.display='none';
-    var tp=document.getElementById('tbPflege'); if(tp) tp.style.display='';
-    document.getElementById('dashBottomCorinna').style.display = 'none';
-    var dbb=document.getElementById('dashBottomBenjamin'); if(dbb) dbb.style.display='';
-    // Restore dashboard header
-    var dashDate = document.querySelector('#s-dashboard .med-date');
-    if(dashDate) dashDate.textContent = 'SAMSUNG WATCH · LIVE · KONFIGURIERBAR';
-
-    // Restore dashboard buttons
-    var dLabels = ['D1 · Vitalwerte','D2 · Termine','D3 · Soziales & Aktivität','D4 · Konfigurierbar','D5 · Konfigurierbar','D6 · Konfigurierbar'];
-    var dIcons  = ['📊','📅','🤝','⚙','⚙','⚙'];
-    for(var i=1;i<=6;i++){
-      var btn = document.getElementById('dashBtn'+i);
-      if(btn){
-        btn.querySelector('.tp-icon').textContent = dIcons[i-1];
-        btn.querySelector('.tp-rname').textContent = dLabels[i-1];
-        btn.style.display = (i<=3) ? 'flex' : 'none';
-        btn.style.opacity = '1';
-      }
-    }
-    // Corinna Viewport ausblenden
-    var cv = document.getElementById('corinnaViewport');
-    if(cv) cv.style.display = 'none';
-    var cd = document.getElementById('corinnaDots');
-    if(cd) cd.style.display = 'none';
-    var bv = document.getElementById('benjaminViewport'); if(bv) bv.style.display='';
-    var bd = document.getElementById('benjaminDots'); if(bd) bd.style.display='';
-    show('s-scanner');
-  }
 
   /* Spotify Button Puls-Animation — synchronisiert mit BPM */
   function updateSpotifyPulse(){
@@ -4917,32 +5036,46 @@ body {
     }, {passive:true});
   }
 
-  document.getElementById('ppCorinna').addEventListener('click', function() {
-    closeAllPanels();
-    if(!corinnaActive){ activateCorinnaSkin(); }
-    document.getElementById('presetPanel').classList.remove('open');
-  });
 
   function activateNinaSkin() {
     if(corinnaActive) deactivateCorinnaSkin();
     ninaActive = true;
     actions.setVariant('nina'); // Phase 1: appState sync
     document.getElementById('phone').classList.remove('skin-benjamin');
-    document.getElementById('phone').classList.add('skin-nina');
-    document.getElementById('ninaTattooBg').style.display = 'block';
+    document.getElementById('phone').classList.add('skin-eleni');
+    document.getElementById('ninaTattooBg').style.display = 'none';
     document.getElementById('ninaScanBtn').style.display = 'block';
     document.getElementById('scanBtn').style.display = 'none';
     ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el = document.getElementById(id); if(el) el.textContent = 'Emma';
+      var el = document.getElementById(id); if(el) el.textContent = 'Ελένη';
     });
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent = 'kariPharm · Nina'; });
+    var ptb = document.getElementById('presetTabBtn'); if(ptb) ptb.textContent='ΕΛΈΝΗ';
+    document.getElementById('ppBenjamin').style.display = 'none';
+    document.getElementById('ppHerbert').style.display = 'none';
+    document.getElementById('ppEleni').style.display = '';
+    document.querySelectorAll('.brand').forEach(function(el){ el.textContent = 'kariPharm'; });
     document.getElementById('ghostBenjamin').style.display = 'none';
     document.getElementById('ghostEmma').style.display = 'none';
     document.getElementById('barBenjamin').style.display = 'none';
-    document.getElementById('barEmma').style.display = 'flex';
-    var dre=document.getElementById('dashRowEmma'); if(dre) dre.style.display='';
+    document.getElementById('barEmma').style.display = 'none';
+    var dre=document.getElementById('dashRowEmma'); if(dre) dre.style.display='none';
     var dbb2=document.getElementById('dashBottomBenjamin'); if(dbb2) dbb2.style.display='none';
     ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
+    ['dashRowEleniOuttake','dashRowEleniIntake','dashRowEleniHistory'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display=''; });
+    var tbn=document.getElementById('tbBenjaminNotruf'); if(tbn) tbn.style.display='none';
+    ['tbEleniSpotify','tbEleniInstagram','tbEleniTikTok','tbEleniFacebook','tbEleniWhatsApp','tbEleniTelefon','tbEleniKamera'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='flex';});
+    var tbph=document.getElementById('tbPhone'); if(tbph) tbph.style.display='none';
+    var di=document.getElementById('date-intake'); if(di) di.textContent='ΑΠΟΘΕΜΑΤΑ · ΣΥΝΤΑΓΈΣ';
+    var dh=document.getElementById('date-history'); if(dh) dh.textContent='ΑΡΧΕΊΟ · 24 ΩΡ';
+    var s1=document.getElementById('intakeSection1'); if(s1) s1.textContent='ΦΆΡΜΑΚΑ';
+    var s2=document.getElementById('intakeSection2'); if(s2) s2.textContent='ΣΥΝΤΑΓΈΣ';
+    var imt=document.getElementById('inputMethodText'); if(imt) imt.textContent='Κείμενο';
+    var imv=document.getElementById('inputMethodVoice'); if(imv) imv.textContent='Φωνή';
+    var bb=document.getElementById('barBenjamin'); if(bb) bb.style.display='none';
+    var dr1=document.getElementById('dashRow1'); if(dr1) dr1.style.display='none';
+    var be=document.getElementById('barEleni'); if(be) be.style.display='flex';
+    var dre=document.getElementById('dashRowEleni'); if(dre) dre.style.display='flex';
+    ['tbWhatsAppStd','tbNote','tbShare','tbPflege'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
     // Emma viewport einblenden, Benjamin ausblenden
     var bv=document.getElementById('benjaminViewport'); if(bv) bv.style.display='none';
     var bd=document.getElementById('benjaminDots'); if(bd) bd.style.display='none';
@@ -4951,33 +5084,48 @@ body {
     var dbe=document.getElementById('dashBottomEmma'); if(dbe) dbe.style.display='flex';
     var pb=document.getElementById('pflegeBlock'); if(pb) pb.style.display='none';
     var ad=document.getElementById('alarmDemoBtn'); if(ad) ad.style.display='none';
-    // ── Emma · Medikationsdaten (Trisomie 21 · Rollstuhl)
+    // ── Ελένη · Medikationsdaten (Σπαστική Διπληγία)
     document.getElementById('timelineTrack').innerHTML = '<div class="tl-line"></div>'
-      + '<div class="tm" style="left:8%"><div class="td done"></div><div class="tl">07:00<br>L-Thyrox.</div></div>'
-      + '<div class="tm" style="left:45%"><div class="td now" id="rampDot"></div><div class="tl hi">07:30<br>Valproat</div></div>'
-      + '<div class="tm" style="left:85%"><div class="td pend" id="nextDot"></div><div class="tl">20:00<br>Valpr.+Mac.</div></div>';
-    document.getElementById('medCard1Title').textContent = 'Valproat 150 mg';
-    document.getElementById('medCard1Sub').textContent = 'Zum Frühstück · mit Wasser einnehmen';
-    document.getElementById('medCard1Warn').textContent = '⚠ Zusammen mit Vitamin D3 + Calcium einnehmen';
+      + '<div class="tm" style="left:8%"><div class="td done"></div><div class="tl">07:00<br>Βακλοφ.</div></div>'
+      + '<div class="tm" style="left:45%"><div class="td now" id="rampDot"></div><div class="tl hi">07:30<br>Τριεξ.</div></div>'
+      + '<div class="tm" style="left:85%"><div class="td pend" id="nextDot"></div><div class="tl">20:00<br>Βακλοφ.</div></div>';
+    document.getElementById('medCard1Title').textContent = 'Βακλοφένη 10 mg';
+    document.getElementById('medCard1Title').style.display = 'block';
+    document.getElementById('medCard1Sub').textContent = 'Με φαγητό · με νερό';
+    document.getElementById('medCard1Sub').style.display = 'block';
+    document.getElementById('medCard1Warn').textContent = '⚠ Μην οδηγείτε — προκαλεί υπνηλία';
     document.getElementById('medCard1Warn').style.display = 'inline-block';
-    document.getElementById('intakeSection1').textContent = 'MEDIKAMENTE';
-    document.getElementById('intakeMed1').innerHTML = '<div><div class="msi-name">L-Thyroxin 25 µg</div><div class="msi-sub">Schilddrüse · 1× tägl · 07:00 nüchtern</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:90%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">27 Tage</div></div>';
-    document.getElementById('intakeMed2').innerHTML = '<div><div class="msi-name">Valproat 150 mg</div><div class="msi-sub">Antikonvulsivum · 2× tägl · 07:30 / 20:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:63%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">19 Tage</div></div>';
-    document.getElementById('intakeMed3').style.display = '';
-    document.getElementById('intakeMed3').innerHTML = '<div><div class="msi-name">Macrogol 13.125 g</div><div class="msi-sub">Laxans · 1× tägl · 20:00 in Wasser</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:70%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">21 Tage</div></div>';
-    document.getElementById('intakeMed4').style.display = '';
-    document.getElementById('intakeMed4').innerHTML = '<div><div class="msi-name">Vit D3 1000 IE + Calcium</div><div class="msi-sub">Knochenstoffwechsel · 1× tägl · 07:30</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:85%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">42 Tage</div></div>';
-    document.getElementById('intakeSection2').textContent = 'REZEPTE';
-    document.getElementById('intakeRez1').innerHTML = '<div>⚠</div><div><div class="msi-name">L-Thyroxin · Rezept fällig</div><div class="msi-sub">Dr. Hoffmann · Fr 09:00</div></div>';
-    document.getElementById('intakeRez2').innerHTML = '<div>📦</div><div><div class="msi-name">Valproat · Vorrat ausreichend</div><div class="msi-sub">Apotheke · 19 Tage</div></div>';
-    document.getElementById('dashNext1').innerHTML='<div style="font-size:16px;">📅</div><div><div class="dn-text">Mo 10:00 · Kinderklinik</div><div class="dn-sub">Schilddrüsen-Labor · TSH fT3 fT4</div></div>';
-    document.getElementById('dashNext2').innerHTML='<div style="font-size:16px;">💊</div><div><div class="dn-text">Valproat + Macrogol · 20:00</div><div class="dn-sub">ausstehend</div></div>';
+    var ml=document.getElementById('medCard1List');
+    if(ml) ml.innerHTML='<div class="mc-row"><div class="mc-row-info"><div class="mc-row-name">Βακλοφένη 10 mg</div><div class="mc-row-dose">10 mg · 07:30</div></div><button class="mc-row-btn">Ελήφθη ✓</button></div>';
+    document.getElementById('intakeSection1').textContent = 'ΦΆΡΜΑΚΑ';
+    var im1=document.getElementById('intakeMed1'); if(im1) im1.innerHTML='<div><div class="msi-name">Βακλοφένη 10 mg</div><div class="msi-sub">Σπαστικότητα · 3× ημερ · 07:00 / 13:00 / 20:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:80%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">24 ημέρες</div></div>';
+    var im2=document.getElementById('intakeMed2'); if(im2) im2.innerHTML='<div><div class="msi-name">Τριεξυφαινιδύλη 2 mg</div><div class="msi-sub">Αντισπασμωδικό · 2× ημερ · 07:30 / 19:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:55%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">16 ημέρες</div></div>';
+    var im3=document.getElementById('intakeMed3'); if(im3){ im3.style.display='none'; }
+    var im4=document.getElementById('intakeMed4'); if(im4){ im4.style.display='none'; }
+    document.getElementById('intakeSection2').textContent = 'ΣΥΝΤΑΓΈΣ';
+    var ir1=document.getElementById('intakeRez1'); if(ir1) ir1.innerHTML='<div>⚠</div><div><div class="msi-name">Βακλοφένη · Συνταγή εκκρεμεί</div><div class="msi-sub">Ορθοπεδική · Πέμ 10:00</div></div>';
+    var ir2=document.getElementById('intakeRez2'); if(ir2) ir2.innerHTML='<div>📦</div><div><div class="msi-name">Τριεξυφαινιδύλη · Αποθεματικό επαρκές</div><div class="msi-sub">Φαρμακείο · 16 ημέρες</div></div>';
+    document.getElementById('dashNext1').innerHTML='<div style="font-size:16px;">📅</div><div><div class="dn-text">Πέμ 14:30 · Φυσιοθεραπεία</div><div class="dn-sub">Ορθοπεδική · Costa</div></div>';
+    document.getElementById('dashNext2').innerHTML='<div style="font-size:16px;">💊</div><div><div class="dn-text">Βακλοφένη · 20:00</div><div class="dn-sub">εκκρεμεί</div></div>';
     document.getElementById('dashNext3').className='dash-next'; document.getElementById('dashNext3').style.background=''; document.getElementById('dashNext3').style.border='';
-    document.getElementById('dashNext3').innerHTML='<div style="font-size:16px;">🚐</div><div><div class="dn-text">Samariter · Mo 09:45</div><div class="dn-sub">Kinderklinik · bestätigt</div></div>';
-    document.getElementById('histRow1').innerHTML = '<span class="mr-n">L-Thyroxin 07:00</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML = '<span class="mr-n">Valproat + Vit D3 07:33</span><span class="mr-s">dokumentiert</span>';
+    document.getElementById('dashNext3').innerHTML='<div style="font-size:16px;">🚐</div><div><div class="dn-text">Αφροδίτη · Πέμ 14:00</div><div class="dn-sub">Φυσιοθεραπεία · επιβεβαιωμένο</div></div>';
+    var hr1=document.getElementById('histRow1'); if(hr1) hr1.innerHTML='<span class="mr-n">Βακλοφένη 07:00</span><span class="mr-s">καταγράφηκε</span>';
+    var hr2=document.getElementById('histRow2'); if(hr2) hr2.innerHTML='<span class="mr-n">Τριεξυφαινιδύλη 07:30</span><span class="mr-s">καταγράφηκε</span>';
+    initArchivForSkin('eleni'); renderArchiv();
+    initVorratForSkin('eleni'); renderVorrat('ημέρες');
+    var eb=document.getElementById('einBtn'); if(eb) eb.textContent='Ελήφθη ✓';
+    ['barBenjaminOuttake','barBenjaminIntake','barBenjaminHistory'].forEach(function(barId){
+      var bar=document.getElementById(barId); if(!bar) return;
+      var btns=bar.querySelectorAll('.tab-btn');
+      var labels=['ΑΠΟΘΕΜΑΤΑ','ΕΞΑΓΩΓΗ','ΑΡΧΕΙΟ'];
+      btns.forEach(function(b,i){ if(labels[i]) b.textContent=labels[i]; });
+    });
     goToEmmaDash(0);
     show('s-scanner');
+    // Eleni aktiv → Benjamin + Herbert im Forum, Eleni versteckt
+    document.getElementById('ppForumBenjamin').style.display = 'block';
+    document.getElementById('ppForumHerbert').style.display = 'block';
+    document.getElementById('ppNina').style.display = 'none';
   }
 
   function deactivateNinaSkin() {
@@ -4986,18 +5134,48 @@ body {
     actions.setVariant('benjamin'); // Phase 1: appState sync
     document.getElementById('phone').classList.remove('skin-nina');
     document.getElementById('phone').classList.remove('skin-corinna');
+    document.getElementById('phone').classList.remove('skin-eleni');
     document.getElementById('phone').classList.add('skin-benjamin');
+    // Eleni-spezifische Toolbar zurücksetzen
+    ['tbEleniSpotify','tbEleniInstagram','tbEleniTikTok','tbEleniFacebook','tbEleniWhatsApp','tbEleniTelefon','tbEleniKamera'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+    var tbph=document.getElementById('tbPhone'); if(tbph) tbph.style.display='flex';
+    var tbn=document.getElementById('tbBenjaminNotruf'); if(tbn) tbn.style.display='flex';
+    ['tbWhatsAppStd','tbNote','tbShare','tbPflege'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='flex';});
+    // Eleni-Dashboard zurücksetzen
+    var be=document.getElementById('barEleni'); if(be) be.style.display='none';
+    var dre2=document.getElementById('dashRowEleni'); if(dre2) dre2.style.display='none';
+    ['dashRowEleniOuttake','dashRowEleniIntake','dashRowEleniHistory'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+    // Labels DE wiederherstellen
+    var di=document.getElementById('date-intake'); if(di) di.textContent='VORRAT · REZEPTE';
+    var dh=document.getElementById('date-history'); if(dh) dh.textContent='ARCHIV · 24 STD';
+    var s1=document.getElementById('intakeSection1'); if(s1) s1.textContent='MEDIKAMENTE';
+    var s2=document.getElementById('intakeSection2'); if(s2) s2.textContent='REZEPTE';
+    var imt=document.getElementById('inputMethodText'); if(imt) imt.textContent='Text';
+    var imv=document.getElementById('inputMethodVoice'); if(imv) imv.textContent='Sprache';
+    ['barBenjaminOuttake','barBenjaminIntake','barBenjaminHistory'].forEach(function(barId){
+      var bar=document.getElementById(barId); if(!bar) return;
+      var btns=bar.querySelectorAll('.tab-btn');
+      var labels=['Vorrat','Ausgabe','Archiv'];
+      btns.forEach(function(b,i){ if(labels[i]) b.textContent=labels[i]; });
+    });
     document.getElementById('spotifyBtn').style.display = 'none';
     document.getElementById('corinnaCycle').style.display = 'none';
     document.getElementById('dashBottomCorinna').style.display = 'none';
-    document.getElementById('alarmDemoBtn').style.display = 'block';
-    document.getElementById('pflegeBlock').style.display = 'flex';
+    document.getElementById('alarmDemoBtn').style.display = 'none';
+    document.getElementById('pflegeBlock').style.display = 'none';
     document.getElementById('medCard1Title').textContent = 'L-Dopa / Benserazid 100/25 mg';
     document.getElementById('medCard1Sub').textContent = '30 Min. vor dem Essen · kein Eiweiß';
     document.getElementById('medCard1Warn').style.display = 'inline-block';
     var mc1b=document.getElementById('medCard1Btn'); if(mc1b) mc1b.style.display='inline-block';
-    document.getElementById('histRow1').innerHTML = '<span class="mr-n">L-Dopa 07:00</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML = '<span class="mr-n">Pramipexol + Rasagilin 07:30</span><span class="mr-s">dokumentiert</span>';
+    var eb=document.getElementById('einBtn'); if(eb) eb.textContent='Eingenommen ✓';
+    var hr1=document.getElementById('histRow1'); if(hr1) hr1.innerHTML = '<span class="mr-n">L-Dopa 07:00</span><span class="mr-s">dokumentiert</span>';
+    var hr2=document.getElementById('histRow2'); if(hr2) hr2.innerHTML = '<span class="mr-n">Pramipexol + Rasagilin 07:30</span><span class="mr-s">dokumentiert</span>';
+    var ptb2 = document.getElementById('presetTabBtn'); if(ptb2) ptb2.textContent='PRESETS';
+    var dn1=document.getElementById('dashNext1'); if(dn1) dn1.innerHTML='<div style="font-size:15px;">💊</div><div><div style="font-size:12px;color:#33333D;font-weight:500;">L-Dopa / Benserazid · 16:00 Uhr</div><div style="font-size:10px;color:#9A9AA4;">30 Min. vor dem Essen · kein Eiweiß</div></div>';
+    var dn2=document.getElementById('dashNext2'); if(dn2) dn2.innerHTML='<div style="font-size:15px;">♥</div><div><div style="font-size:12px;color:#33333D;font-weight:500;">Pflegedienst Sonnenschein · Do 14:00</div><div style="font-size:10px;color:#2E9E4F;">verbunden · Sync 08:15</div></div>';
+    var dn3=document.getElementById('dashNext3'); if(dn3) dn3.innerHTML='<div style="font-size:15px;">⚠</div><div><div style="font-size:12px;color:#33333D;font-weight:500;">Metformin · Vorrat 10 Tage</div><div style="font-size:10px;color:#A87B1E;">Rezept bei Dr. Müller · Do 14:30</div></div>';
+    initVorratForSkin('benjamin'); renderVorrat();
+    initArchivForSkin('benjamin'); renderArchiv();
     document.getElementById('ninaTattooBg').style.display = 'none';
     document.getElementById('ninaScanBtn').style.display = 'none';
     document.getElementById('scanBtn').style.display = 'flex';
@@ -5019,6 +5197,13 @@ body {
     var dbe=document.getElementById('dashBottomEmma'); if(dbe) dbe.style.display='none';
     var bv=document.getElementById('benjaminViewport'); if(bv) bv.style.display='';
     var bd=document.getElementById('benjaminDots'); if(bd) bd.style.display='';
+    // Zurück zu Benjamin → Herbert + Eleni im Forum
+    document.getElementById('ppEleni').style.display = 'none';
+    document.getElementById('ppBenjamin').style.display = '';
+    document.getElementById('ppHerbert').style.display = 'none';
+    document.getElementById('ppForumHerbert').style.display = 'block';
+    document.getElementById('ppForumBenjamin').style.display = 'none';
+    document.getElementById('ppNina').style.display = 'block';
     goToBenjaminDash(0);
     show('s-scanner');
   }
@@ -5051,115 +5236,6 @@ body {
     }
   })();
 
-  function activateLisaSkin() {
-    if(corinnaActive) deactivateCorinnaSkin();
-    if(ninaActive)    deactivateNinaSkin();
-    lisaActive = true;
-    actions.setVariant('lisa');
-    document.getElementById('phone').classList.remove('skin-benjamin','skin-nina','skin-corinna');
-    document.getElementById('phone').classList.add('skin-lisa');
-    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.textContent='Lisa';
-    });
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent='kariPharm · Asthma'; });
-    // Scanner bars
-    document.getElementById('barBenjamin').style.display='none';
-    document.getElementById('barEmma').style.display='none';
-    document.getElementById('barLisa').style.display='flex';
-    ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    var dre=document.getElementById('dashRowEmma');    if(dre) dre.style.display='none';
-    var drc=document.getElementById('dashRowCorinna'); if(drc) drc.style.display='none';
-    var drl=document.getElementById('dashRowLisa');    if(drl) drl.style.display='block';
-    // Viewports
-    ['benjaminViewport','benjaminDots','emmaViewport','emmaDots','corinnaViewport','corinnaDots','dashBottomEmma'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    var lv=document.getElementById('lisaViewport'); if(lv){ lv.style.display='flex'; lv.style.overflow='hidden'; }
-    var ld=document.getElementById('lisaDots');     if(ld) ld.style.display='flex';
-    // Bottom bars
-    var dbb=document.getElementById('dashBottomBenjamin'); if(dbb) dbb.style.display='none';
-    var dbc=document.getElementById('dashBottomCorinna');  if(dbc) dbc.style.display='none';
-    // Misc
-    var pb=document.getElementById('pflegeBlock');  if(pb) pb.style.display='none';
-    var ad=document.getElementById('alarmDemoBtn'); if(ad) ad.style.display='block';
-    var tp=document.getElementById('tbPflege');     if(tp) tp.style.display='none';
-    ['tbTelegram','tbWhatsApp','tbSignal','tbFacebook'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    // Alarm-BPM-Schwelle für Lisa: 168
-    document.getElementById('phone').dataset.alarmBpm = '168';
-    // Medication data
-    document.getElementById('timelineTrack').innerHTML = '<div class="tl-line"></div>'
-      + '<div class="tm" style="left:8%"><div class="td done"></div><div class="tl">07:00<br>Symb.</div></div>'
-      + '<div class="tm" style="left:55%"><div class="td now" id="rampDot"></div><div class="tl hi">21:00<br>Symb.</div></div>'
-      + '<div class="tm" style="left:75%"><div class="td pend" id="nextDot"></div><div class="tl">22:00<br>Mont.</div></div>';
-    document.getElementById('medCard1Title').textContent = 'Symbicort 200/6 · 2 Hübe';
-    document.getElementById('medCard1Sub').textContent   = 'Abends · aufrecht inhalieren';
-    document.getElementById('medCard1Warn').textContent  = '⚠ Nach Inhalation Mund ausspülen · Soor-Prophylaxe';
-    document.getElementById('medCard1Warn').style.display='inline-block';
-    document.getElementById('intakeSection1').textContent='DAUERMEDIKATION';
-    document.getElementById('intakeMed1').innerHTML='<div><div class="msi-name">Symbicort 200/6</div><div class="msi-sub">ICS/LABA · 2 Hübe 2× tägl · 07:00 / 21:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:72%;background:#6AC98A;"></div></div><div class="msi-sub" style="color:#6AC98A;">22 Tage</div></div>';
-    document.getElementById('intakeMed2').innerHTML='<div><div class="msi-name">Montelukast 10 mg</div><div class="msi-sub">Leukotrienantagonist · 1 Tbl. · 22:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:85%;background:#6AC98A;"></div></div><div class="msi-sub" style="color:#6AC98A;">26 Tage</div></div>';
-    document.getElementById('intakeMed3').style.display='';
-    document.getElementById('intakeMed3').innerHTML='<div><div class="msi-name">Salbutamol 100 µg · SABA</div><div class="msi-sub">Bedarfsinhaler · 1–2 Hübe bei Akutanfall</div></div><div style="text-align:right;"><div class="msi-sub" style="color:#E8C060;font-size:10px;">Notfall</div></div>';
-    document.getElementById('intakeMed4').style.display='none';
-    document.getElementById('intakeSection2').textContent='REZEPTE';
-    document.getElementById('intakeRez1').innerHTML='<div>📦</div><div><div class="msi-name">Symbicort · Vorrat ausreichend</div><div class="msi-sub">Apotheke · 22 Tage</div></div>';
-    document.getElementById('intakeRez2').innerHTML='<div>⚠</div><div><div class="msi-name">Montelukast · Rezept fällig</div><div class="msi-sub">Hausarzt · Do 10:00</div></div>';
-    document.getElementById('dashNext1').innerHTML='<div style="font-size:16px;">📅</div><div><div class="dn-text">Hausarzt · Do 10:00</div><div class="dn-sub">Kontrolle · FeNO / Peak-Flow</div></div>';
-    document.getElementById('dashNext2').innerHTML='<div style="font-size:16px;">💨</div><div><div class="dn-text">Symbicort · 21:00 · ausstehend</div><div class="dn-sub">2 Hübe · abends</div></div>';
-    document.getElementById('dashNext3').className='dash-next'; document.getElementById('dashNext3').style.background=''; document.getElementById('dashNext3').style.border='';
-    document.getElementById('dashNext3').innerHTML='<div style="font-size:16px;">🌿</div><div><div class="dn-text">Pneumologe · nächste Woche</div><div class="dn-sub">Spirometrie · Stufenschema</div></div>';
-    document.getElementById('histRow1').innerHTML='<span class="mr-n">Symbicort 07:00</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML='<span class="mr-n">Peak-Flow 380 · grün</span><span class="mr-s">normal</span>';
-    document.getElementById('ghostBenjamin').style.display='none';
-    document.getElementById('ghostEmma').style.display='none';
-    document.getElementById('ghostCorinna').style.display='none';
-    goToLisaDash(0);
-    show('s-scanner');
-  }
-
-  function deactivateLisaSkin() {
-    lisaActive = false;
-    actions.setVariant('benjamin');
-    document.getElementById('phone').classList.remove('skin-lisa');
-    document.getElementById('phone').classList.add('skin-benjamin');
-    document.getElementById('phone').dataset.alarmBpm = '';
-    document.getElementById('barLisa').style.display='none';
-    document.getElementById('barBenjamin').style.display='flex';
-    var drl=document.getElementById('dashRowLisa'); if(drl) drl.style.display='none';
-    ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display=''; });
-    var lv=document.getElementById('lisaViewport'); if(lv) lv.style.display='none';
-    var ld=document.getElementById('lisaDots');     if(ld) ld.style.display='none';
-    var bv=document.getElementById('benjaminViewport'); if(bv) bv.style.display='';
-    var bd=document.getElementById('benjaminDots');     if(bd) bd.style.display='';
-    var dbl=document.getElementById('dashBottomLisa');     if(dbl) dbl.style.display='none';
-    var dbb=document.getElementById('dashBottomBenjamin'); if(dbb) dbb.style.display='';
-    var tp=document.getElementById('tbPflege'); if(tp) tp.style.display='';
-    var ad=document.getElementById('alarmDemoBtn'); if(ad) ad.style.display='block';
-    // Restore Benjamin medication data
-    document.getElementById('timelineTrack').innerHTML = '<div class="tl-line"></div>'
-      + '<div class="tm" style="left:8%"><div class="td done"></div><div class="tl">07:00<br>L-Dopa</div></div>'
-      + '<div class="tm" style="left:40%"><div class="td done"></div><div class="tl">09:00<br>Metform.</div></div>'
-      + '<div class="tm" style="left:58%"><div class="td now" id="rampDot"></div><div class="tl hi">––<br>Med. 3</div></div>'
-      + '<div class="tm" style="left:72%"><div class="td pend" id="nextDot"></div><div class="tl">13:00<br>Metfor.</div></div>'
-      + '<div class="tm" style="left:86%"><div class="td pend"></div><div class="tl">16:00<br>L-Dopa</div></div>';
-    document.getElementById('medCard1Title').textContent = 'L-Dopa / Benserazid 100/25 mg';
-    document.getElementById('medCard1Sub').textContent   = '30 Min. vor dem Essen · kein Eiweiß';
-    document.getElementById('medCard1Warn').textContent  = '⚠ Nicht mit Milch, Fleisch oder Hülsenfrüchten';
-    document.getElementById('medCard1Warn').style.display='inline-block';
-    document.getElementById('intakeSection1').textContent='MEDIKAMENTE';
-    document.getElementById('intakeMed1').innerHTML='<div><div class="msi-name">L-Dopa / Benserazid 100/25 mg</div><div class="msi-sub">Parkinson · 3× tgl · 07:00 / 12:00 / 16:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:65%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">19 Tage</div></div>';
-    document.getElementById('intakeMed2').innerHTML='<div><div class="msi-name">Pramipexol 0,7 mg retardiert</div><div class="msi-sub">Dopaminagonist · 1× tgl · 07:30</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:80%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">24 Tage</div></div>';
-    document.getElementById('intakeMed3').style.display='none';
-    document.getElementById('intakeMed4').style.display='none';
-    document.getElementById('intakeSection2').textContent='REZEPTE';
-    document.getElementById('intakeRez1').innerHTML='<div>⚠</div><div><div class="msi-name">Metformin · Folgerezept fällig</div><div class="msi-sub">Dr. Müller · Termin Do 14:30</div></div>';
-    document.getElementById('intakeRez2').innerHTML='<div>📋</div><div><div class="msi-name">L-Dopa · Rezept vorhanden</div><div class="msi-sub">Apotheke · abholbereit</div></div>';
-    document.getElementById('histRow1').innerHTML='<span class="mr-n">L-Dopa 07:00</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML='<span class="mr-n">Metformin 07:30</span><span class="mr-s">dokumentiert</span>';
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent='kariPharm'; });
-    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.textContent='Benjamin';
-    });
-    show('s-scanner');
-  }
 
   /* ── HERBERT SWIPE TRACK ── */
   (function(){
@@ -5205,102 +5281,7 @@ body {
     }
   })();
 
-  function activateDPVSkin() {
-    if(corinnaActive) deactivateCorinnaSkin();
-    if(ninaActive)    deactivateNinaSkin();
-    if(lisaActive)    deactivateLisaSkin();
-    dpvActive = true;
-    actions.setVariant('dpv');
-    document.getElementById('phone').classList.remove('skin-benjamin','skin-nina','skin-corinna','skin-lisa');
-    document.getElementById('phone').classList.add('skin-dpv');
-    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.textContent='dPV';
-    });
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent='kariPharm · dPV'; });
-    // Scanner
-    document.getElementById('barBenjamin').style.display='none';
-    document.getElementById('barEmma').style.display='none';
-    var dbl=document.getElementById('barLisa'); if(dbl) dbl.style.display='none';
-    ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    var dre=document.getElementById('dashRowEmma');    if(dre) dre.style.display='none';
-    var drc=document.getElementById('dashRowCorinna'); if(drc) drc.style.display='none';
-    var drl=document.getElementById('dashRowLisa');    if(drl) drl.style.display='none';
-    var drd=document.getElementById('dashRowDPV');     if(drd) drd.style.display='block';
-    // Viewports
-    ['benjaminViewport','benjaminDots','emmaViewport','emmaDots','corinnaViewport','corinnaDots','lisaViewport','lisaDots'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    var dv=document.getElementById('dpvViewport'); if(dv){ dv.style.display='flex'; dv.style.overflow='hidden'; }
-    var dd=document.getElementById('dpvDots');     if(dd) dd.style.display='flex';
-    // Dashboard bottom bars
-    var dbb=document.getElementById('dashBottomBenjamin'); if(dbb) dbb.style.display='none';
-    var dbc=document.getElementById('dashBottomCorinna');  if(dbc) dbc.style.display='none';
-    var dblisa=document.getElementById('dashBottomLisa');  if(dblisa) dblisa.style.display='none';
-    // Misc
-    var pb=document.getElementById('pflegeBlock');  if(pb) pb.style.display='none';
-    var ad=document.getElementById('alarmDemoBtn'); if(ad) ad.style.display='none';
-    var tp=document.getElementById('tbPflege');     if(tp) tp.style.display='none';
-    ['tbTelegram','tbWhatsApp','tbSignal','tbFacebook'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
-    // Community-Info in medCard
-    document.getElementById('medCard1Title').textContent='dPV · Parkinson Community';
-    document.getElementById('medCard1Sub').textContent='Charlottenburg · Ärzte · Physiotherapie · Ressourcen';
-    document.getElementById('medCard1Warn').style.display='none';
-    document.getElementById('einBtn').style.display='none';
-    document.getElementById('timelineTrack').innerHTML='<div style="text-align:center;padding:8px 0;font-size:10px;color:#C08040;font-family:\'DM Mono\',monospace;letter-spacing:.1em;">COMMUNITY-PRESET · KEINE MEDIKATION</div>';
-    document.getElementById('histRow1').innerHTML='<span class="mr-n">Neurologen · 5 Praxen gelistet</span><span class="mr-s">Charlottenburg</span>';
-    document.getElementById('histRow2').innerHTML='<span class="mr-n">Physiotherapie · 5 Praxen gelistet</span><span class="mr-s">Charlottenburg</span>';
-    document.getElementById('ghostBenjamin').style.display='none';
-    document.getElementById('ghostEmma').style.display='none';
-    document.getElementById('ghostCorinna').style.display='none';
-    goToDPVDash(0);
-    show('s-scanner');
-  }
 
-  function deactivateDPVSkin() {
-    dpvActive = false;
-    actions.setVariant('benjamin');
-    document.getElementById('phone').classList.remove('skin-dpv');
-    document.getElementById('phone').classList.add('skin-benjamin');
-    var drd=document.getElementById('dashRowDPV');    if(drd) drd.style.display='none';
-    var dv=document.getElementById('dpvViewport');    if(dv)  dv.style.display='none';
-    var dd=document.getElementById('dpvDots');        if(dd)  dd.style.display='none';
-    var dbd=document.getElementById('dashBottomDPV'); if(dbd) dbd.style.display='none';
-    document.getElementById('barBenjamin').style.display='flex';
-    var bv = document.getElementById('benjaminViewport'); if(bv) bv.style.display='';
-    var bd = document.getElementById('benjaminDots'); if(bd) bd.style.display='';
-    var dbb = document.getElementById('dashBottomBenjamin'); if(dbb) dbb.style.display='';
-    ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display=''; });
-    ['barBenjaminOuttake','barBenjaminIntake','barBenjaminHistory'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display=''; });
-    var bv=document.getElementById('benjaminViewport'); if(bv) bv.style.display='';
-    var bd=document.getElementById('benjaminDots');     if(bd) bd.style.display='';
-    var dbb=document.getElementById('dashBottomBenjamin'); if(dbb) dbb.style.display='';
-    var tp=document.getElementById('tbPflege'); if(tp) tp.style.display='';
-    var ad=document.getElementById('alarmDemoBtn'); if(ad) ad.style.display='block';
-    document.getElementById('einBtn').style.display='';
-    // Restore Benjamin data
-    renderBenjaminZeitstrahl();
-    document.getElementById('medCard1Title').textContent='L-Dopa / Benserazid 100/25 mg';
-    document.getElementById('medCard1Sub').textContent='30 Min. vor dem Essen · kein Eiweiß';
-    document.getElementById('medCard1Warn').textContent='⚠ Nicht mit Milch, Fleisch oder Hülsenfrüchten';
-    document.getElementById('medCard1Warn').style.display='inline-block';
-    document.getElementById('histRow1').innerHTML='<span class="mr-n">L-Dopa 07:00</span><span class="mr-s">dokumentiert</span>';
-    document.getElementById('histRow2').innerHTML='<span class="mr-n">Metformin 07:30</span><span class="mr-s">dokumentiert</span>';
-    document.querySelectorAll('.brand').forEach(function(el){ el.textContent='kariPharm'; });
-    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.textContent='Benjamin';
-    });
-    show('s-scanner');
-  }
-
-  document.getElementById('ppDPV').addEventListener('click', function() {
-    closeAllPanels();
-    if(!dpvActive){ activateDPVSkin(); }
-    document.getElementById('presetPanel').classList.remove('open');
-  });
-
-  document.getElementById('ppLisa').addEventListener('click', function() {
-    closeAllPanels();
-    if(!lisaActive){ activateLisaSkin(); }
-    document.getElementById('presetPanel').classList.remove('open');
-  });
 
   document.getElementById('ppBenjamin').addEventListener('click', function() {
     closeAllPanels();
@@ -5310,6 +5291,13 @@ body {
     else if (dpvActive)  { deactivateDPVSkin(); }
     else if (herbertActive) { deactivateHerbertSkin(); }
     document.getElementById('presetPanel').classList.remove('open');
+    // Benjamin aktiv → Herbert im presetPanel verstecken, im Forum zeigen
+    document.getElementById('ppHerbert').style.display = 'none';
+    document.getElementById('ppBenjamin').style.display = '';
+    document.getElementById('ppEleni').style.display = 'none';
+    document.getElementById('ppForumHerbert').style.display = 'block';
+    document.getElementById('ppForumBenjamin').style.display = 'none';
+    document.getElementById('ppNina').style.display = 'block';
   });
 
   function activateHerbertSkin() {
@@ -5362,6 +5350,9 @@ body {
     var bh = document.getElementById('barHerbert');      if(bh) bh.style.display='none';
     var drh = document.getElementById('dashRowHerbert'); if(drh) drh.style.display='none';
     document.getElementById('barBenjamin').style.display='flex';
+    var bv2 = document.getElementById('benjaminViewport'); if(bv2) bv2.style.display='';
+    var bd2 = document.getElementById('benjaminDots');     if(bd2) bd2.style.display='';
+    var dbb3 = document.getElementById('dashBottomBenjamin'); if(dbb3) dbb3.style.display='';
     ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display=''; });
     var ptb = document.getElementById('presetTabBtn'); if(ptb) ptb.textContent='PRESETS';
     ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
@@ -5369,6 +5360,19 @@ body {
     });
     var tbh = document.getElementById('tbHerbertHund'); if(tbh) tbh.style.display='none';
     var tbn = document.getElementById('tbBenjaminNotruf'); if(tbn) tbn.style.display='flex';
+    ['tbEleniSpotify','tbEleniInstagram','tbEleniTikTok','tbEleniFacebook','tbEleniWhatsApp','tbEleniTelefon','tbEleniKamera'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+    var tbph3=document.getElementById('tbPhone'); if(tbph3) tbph3.style.display='flex';
+    ['tbWhatsAppStd','tbNote','tbShare','tbPflege'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='flex';});
+    var di=document.getElementById('date-intake'); if(di) di.textContent='VORRAT · REZEPTE';
+    var dh=document.getElementById('date-history'); if(dh) dh.textContent='ARCHIV · 24 STD';
+    var s1=document.getElementById('intakeSection1'); if(s1) s1.textContent='MEDIKAMENTE';
+    var s2=document.getElementById('intakeSection2'); if(s2) s2.textContent='REZEPTE';
+    var imt=document.getElementById('inputMethodText'); if(imt) imt.textContent='Text';
+    var imv=document.getElementById('inputMethodVoice'); if(imv) imv.textContent='Sprache';
+    var bb=document.getElementById('barBenjamin'); if(bb) bb.style.display='';
+    var dr1=document.getElementById('dashRow1'); if(dr1) dr1.style.display='';
+    var be=document.getElementById('barEleni'); if(be) be.style.display='none';
+    var dre=document.getElementById('dashRowEleni'); if(dre) dre.style.display='none';
     var bhh = document.getElementById('barHerbertHistory'); if(bhh) bhh.style.display='none';
     var drhh = document.getElementById('dashRowHerbertHistory'); if(drhh) drhh.style.display='none';
     var bho = document.getElementById('barHerbertOuttake'); if(bho) bho.style.display='none';
@@ -5395,6 +5399,39 @@ body {
     else if (lisaActive) { deactivateLisaSkin(); }
     else if (dpvActive)  { deactivateDPVSkin(); }
     activateHerbertSkin();
+    // Herbert aktiv → Benjamin im presetPanel verstecken, im Forum zeigen
+    document.getElementById('ppBenjamin').style.display = 'none';
+    document.getElementById('ppHerbert').style.display = '';
+    document.getElementById('ppEleni').style.display = 'none';
+    document.getElementById('ppForumBenjamin').style.display = 'block';
+    document.getElementById('ppForumHerbert').style.display = 'none';
+    document.getElementById('ppNina').style.display = 'block';
+  });
+
+  // Initialzustand: Benjamin aktiv → Herbert + Eleni im Forum sichtbar
+  document.getElementById('ppHerbert').style.display = 'none';
+  document.getElementById('ppForumHerbert').style.display = 'block';
+  document.getElementById('ppForumBenjamin').style.display = 'none';
+  document.getElementById('ppNina').style.display = 'block';
+
+  // Forum-Einträge: Preset wechseln per Klick
+  document.getElementById('ppForumHerbert').addEventListener('click', function() {
+    document.getElementById('forumPanel').classList.remove('open');
+    document.getElementById('ppHerbert').click();
+  });
+  document.getElementById('ppForumBenjamin').addEventListener('click', function() {
+    document.getElementById('forumPanel').classList.remove('open');
+    document.getElementById('ppBenjamin').click();
+  });
+  document.getElementById('ppNina').addEventListener('click', function() {
+    document.getElementById('forumPanel').classList.remove('open');
+    if(herbertActive){ deactivateHerbertSkin(); }
+    activateNinaSkin();
+  });
+  document.getElementById('ppEleni').addEventListener('click', function() {
+    closeAllPanels();
+    if(herbertActive){ deactivateHerbertSkin(); }
+    activateNinaSkin();
   });
 
   /* Emma Woche Button — entfernt; Handler bleibt als toter Code mit Guard */
@@ -5403,23 +5440,9 @@ body {
     show('s-emma');
   });
 
-  // Nina scan button same as normal scan
+  // Nina scan button — 1. Scan → s-outtake, 2. Scan → s-ibu-result-eleni
   document.getElementById('ninaScanBtn').addEventListener('click', function() {
     actions.incrementScan();
-    if (appState.scan.count >= 2 && !appState.interaction.shown) {
-      setTimeout(function() {
-        var modal = document.getElementById('interactModal');
-        modal.classList.add('active');
-        actions.setInteractionShown();
-        var now = new Date();
-        var ts = now.getHours().toString().padStart(2,'0') + ':' +
-                 now.getMinutes().toString().padStart(2,'0') + ':' +
-                 now.getSeconds().toString().padStart(2,'0');
-        document.getElementById('imTimestamp').textContent =
-          'ERKANNT: ' + ts + ' · 28.04.2026 · PROTOKOLLIERT';
-      }, 2800);
-    }
-    // Trigger scan animation
     closeAllPanels();
     var ov = document.getElementById('scanOverlay');
     var bar = document.getElementById('scanBar');
@@ -5433,7 +5456,12 @@ body {
         clearInterval(iv); med.style.opacity = '1';
         setTimeout(function(){
           ov.classList.remove('active'); med.style.opacity = '0';
-          show('s-outtake');
+          bar.style.width = '0%'; line.style.top = '0';
+          if(appState.scan.count >= 2) {
+            show('s-ibu-result-eleni');
+          } else {
+            show('s-outtake');
+          }
         }, 800);
       }
     }, 18);
