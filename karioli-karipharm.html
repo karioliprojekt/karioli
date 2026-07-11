@@ -706,6 +706,7 @@
   .skin-herbert .herr                       { color:#C85A30 !important; }
   .skin-herbert #archivListe .intake-section{ color:#4A7FA5 !important; }
   .skin-herbert #s-alarm { background:#F0F6FF !important; }
+  .skin-herbert #herbertNotrufZeile { display:block !important; }
   .skin-herbert .dash-arrow { display:none !important; }
   .skin-herbert .a-hz  { color:#4A7FA5 !important; }
   .skin-herbert .a-bpm { color:#2A5A7A !important; }
@@ -2947,11 +2948,21 @@ body {
         <div class="timer-bar-bg"><div class="timer-bar-fill" id="timerBar"></div></div>
         <div class="timer-digits" id="timerDigits">00:00</div>
       </div>
-      <div class="a-q">Alles in Ordnung?</div>
-      <div class="a-i">Tippe in der richtigen Reihenfolge</div>
-      <div class="a-l">H · U · N · D</div>
-      <div class="puzzle-grid" id="puzzleGrid"></div>
-      <button class="a-hilfe" onclick="show('s-nk1')">Nicht in Ordnung — Hilfe rufen</button>
+      <div id="pulsPuzzleInhalt">
+        <div class="a-q">Alles in Ordnung?</div>
+        <div class="a-i">Tippe in der richtigen Reihenfolge</div>
+        <div class="a-l">H · U · N · D</div>
+        <div class="puzzle-grid" id="puzzleGrid"></div>
+        <button class="a-hilfe" onclick="herbertActive ? triggerHerbertNotruf() : triggerBenjaminNotruf()">Nicht in Ordnung — Hilfe rufen</button>
+      </div>
+      <div id="herbertNotrufZeile" style="display:none;margin:14px 0 4px;">
+        <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#2A5A7A;font-family:'DM Mono',monospace;margin-bottom:4px;">NOTRUFKETTE</div>
+        <div id="herbertContactChip" style="padding:8px 10px;background:rgba(74,127,165,0.08);border:1px solid rgba(74,127,165,0.3);border-radius:8px;font-size:var(--fs-sm);color:#2A5A7A;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📞 Sabine</div>
+      </div>
+      <div id="herbertAnrufInhalt" style="display:none;">
+        <div style="font-size:var(--fs-sm);color:#3CA860;font-family:'DM Mono',monospace;text-align:center;margin-bottom:14px;">Anruf läuft …</div>
+        <button onclick="herbertAnrufBeenden()" style="width:100%;padding:12px;background:#4A7FA5;border:none;border-radius:10px;color:#FFFFFF;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:400;cursor:pointer;">Anruf beendet</button>
+      </div>
     </div>
 
     <!-- S4 SOLVED -->
@@ -2965,34 +2976,62 @@ body {
     </div>
 
 
-    <!-- BENJAMIN NOTRUFKETTE — STUFE 1 -->
-    <div class="screen" id="s-nk1" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);">
-      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:6px;">NOTRUFKETTE · STUFE 1</div>
-      <div style="font-size:var(--fs-xl);font-weight:500;color:#3A1A00;font-family:'DM Sans',sans-serif;margin-bottom:4px;">Erste Nachricht</div>
-      <div style="font-size:var(--fs-sm);color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:16px;">Claudia</div>
-      <div style="font-size:var(--fs-sm);color:#5A3000;margin-bottom:12px;line-height:1.5;">Nachricht gesendet.<br>Wartet auf Rückruf — 30 Sekunden.</div>
-      <!-- Goldbalken -->
+    <!-- BENJAMIN NOTRUFKETTE — BEIDE STUFEN GESTAPELT, EIN SCREEN -->
+    <div class="screen" id="s-notrufkette" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:12px;text-align:center;">NOTRUFKETTE</div>
+
+      <!-- STUFE 1 -->
+      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 1 · ERSTE NACHRICHT</div>
+      <div id="nkContact1" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
       <div style="height:6px;background:rgba(200,130,10,0.2);border-radius:4px;margin-bottom:8px;overflow:hidden;">
-        <div id="nk1Bar" style="height:100%;width:100%;background:linear-gradient(90deg,#F5C840,#C8820A);border-radius:4px;transform-origin:left;transition:transform 30s linear;"></div>
+        <div id="nkBar" style="height:100%;width:100%;background:#F5C840;border-radius:4px;transform-origin:left;transition:transform 30s linear;"></div>
       </div>
-      <div id="nk1Digits" style="font-size:var(--fs-sm);color:#7A4800;font-family:'DM Mono',monospace;text-align:right;margin-bottom:16px;">0:30</div>
-      <button onclick="nkRueckruf()" style="width:100%;padding:12px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:#F5C840;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-bottom:8px;">● RÜCKRUF KAM</button>
-      <div style="font-size:var(--fs-xs);color:#A07830;text-align:center;font-family:'DM Mono',monospace;">Demo · Stufe 2 startet automatisch</div>
+      <div id="nkDigits" style="font-size:var(--fs-sm);color:#7A4800;font-family:'DM Mono',monospace;text-align:right;margin-bottom:12px;">0:30</div>
+      <button onclick="nkRueckruf()" style="width:100%;padding:12px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:#F5C840;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-bottom:20px;">● RÜCKRUF KAM</button>
+
+      <!-- STUFE 2 -->
+      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 2 · ALLE KONTAKTE GLEICHZEITIG</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+        <div id="nkContact2a" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
+        <div id="nkContact2b" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Constantin</div>
+        <div id="nkContact2c" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Emanuel</div>
+        <div id="nkContact2d" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Cornelia</div>
+      </div>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
     </div>
 
-    <!-- BENJAMIN NOTRUFKETTE — STUFE 2 -->
-    <div class="screen" id="s-nk2" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);">
-      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#C85A30;font-family:'DM Mono',monospace;margin-bottom:6px;">NOTRUFKETTE · STUFE 2</div>
-      <div style="font-size:var(--fs-xl);font-weight:500;color:#C85A30;font-family:'DM Sans',sans-serif;margin-bottom:4px;">2. Nachricht</div>
-      <div style="font-size:var(--fs-sm);color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:16px;">Alle Kontakte gleichzeitig</div>
-      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-        <div style="padding:8px 10px;background:rgba(200,90,48,0.15);border:1px solid rgba(200,90,48,0.3);border-radius:8px;font-size:var(--fs-sm);color:#E08060;font-family:'DM Sans',sans-serif;">📡 Claudia</div>
-        <div style="padding:8px 10px;background:rgba(200,90,48,0.15);border:1px solid rgba(200,90,48,0.3);border-radius:8px;font-size:var(--fs-sm);color:#E08060;font-family:'DM Sans',sans-serif;">📡 Constantin</div>
-        <div style="padding:8px 10px;background:rgba(200,90,48,0.15);border:1px solid rgba(200,90,48,0.3);border-radius:8px;font-size:var(--fs-sm);color:#E08060;font-family:'DM Sans',sans-serif;">📡 Emanuel</div>
-        <div style="padding:8px 10px;background:rgba(200,90,48,0.15);border:1px solid rgba(200,90,48,0.3);border-radius:8px;font-size:var(--fs-sm);color:#E08060;font-family:'DM Sans',sans-serif;">📡 Cornelia</div>
+    <!-- NOTRUFKETTE EINRICHTEN — Ketten-Bauer (Grundgerüst, S1) -->
+    <div class="screen" id="s-kette-bauer" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
+      <div id="kbBauer">
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">NOTRUFKETTE EINRICHTEN</div>
+
+      <div style="margin-bottom:12px;">
+        <div id="kbNameTrigger" onclick="kbToggleName()" style="display:flex;align-items:center;justify-content:space-between;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.3);border-radius:10px;padding:10px 12px;cursor:pointer;">
+          <span style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;">NAME DER KETTE</span>
+          <span id="kbNameWert" style="font-size:var(--fs-sm);color:#A07030;font-family:'DM Sans',sans-serif;flex:1;margin:0 10px;text-align:right;">Bitte wählen</span>
+          <span style="color:#C8860A;font-size:var(--fs-xs);">▾</span>
+        </div>
+        <div id="kbNameListe" style="display:none;margin-top:6px;">
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Claudia</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Cornelia</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Wochenende</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Urlaub</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Krise</div>
+        </div>
       </div>
-      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,90,48,0.2);border:1px solid rgba(200,90,48,0.5);border-radius:10px;color:#C85A30;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
-    </div>
+
+      <div id="kbStationen"></div>
+
+      <div id="kbAddBtn" onclick="kbAddStation()" style="display:flex;align-items:center;justify-content:center;background:rgba(200,130,10,0.06);border:1px dashed rgba(200,130,10,0.4);border-radius:10px;padding:12px;margin-bottom:12px;font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;cursor:pointer;">+ STATION</div>
+
+      <div id="kbBestBtn" onclick="kbBestaetigen()" style="display:flex;align-items:center;justify-content:center;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;padding:13px;margin-bottom:16px;font-size:var(--fs-sm);letter-spacing:.1em;color:#7A4800;font-family:'DM Mono',monospace;font-weight:500;cursor:pointer;">✓ BESTÄTIGEN</div>
+      </div><!-- /kbBauer -->
+
+      <div id="kbBuehne" style="display:none;"></div>
+
+      <button onclick="kbReset(); show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+    </div><!-- /s-kette-bauer -->
+
 
     <div class="screen" id="s-emma">
     <div class="med-header">
@@ -3671,7 +3710,7 @@ body {
   });
 
   function show(id){
-    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-nk1','s-nk2','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
+    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-notrufkette','s-kette-bauer','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
       document.getElementById(s).classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
@@ -4436,6 +4475,154 @@ body {
   document.getElementById('configSicherheitClose').addEventListener('click',function(){ document.getElementById('configSicherheitPanel').classList.remove('open'); });
   document.getElementById('configSicherheitClose2').addEventListener('click',function(){ document.getElementById('configSicherheitPanel').classList.remove('open'); });
 
+  document.getElementById('cfgNotrufkette').addEventListener('click',function(){
+    closeAllPanels();
+    show('s-kette-bauer');
+  });
+
+  // Ketten-Bauer: Name der Kette
+  function kbToggleName(){
+    document.getElementById('kbNameListe').style.display =
+      (document.getElementById('kbNameListe').style.display === 'none') ? 'block' : 'none';
+  }
+  function kbWaehleName(opt){
+    document.getElementById('kbNameWert').textContent = opt.textContent;
+    document.getElementById('kbNameWert').style.color = '#7A4800';
+    document.getElementById('kbNameListe').style.display = 'none';
+  }
+
+  // Ketten-Bauer: Stationen (WER · NACHRICHT · DANN WARTEN)
+  var kbStationNr = 0;
+  function kbRmHTML(label, opts, idx){
+    var lis = '';
+    opts.forEach(function(o){
+      lis += '<div onclick="kbWaehleRM(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:\'DM Sans\',sans-serif;cursor:pointer;">'+o+'</div>';
+    });
+    return '<div style="margin-bottom:8px;">'
+      + '<div onclick="kbToggleRM(this)" style="display:flex;align-items:center;justify-content:space-between;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.3);border-radius:10px;padding:9px 12px;cursor:pointer;">'
+      + '<span style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:\'DM Mono\',monospace;">'+label+'</span>'
+      + '<span class="kb-wert" style="font-size:var(--fs-sm);color:#A07030;font-family:\'DM Sans\',sans-serif;flex:1;margin:0 10px;text-align:right;">Bitte wählen</span>'
+      + '<span style="color:#C8860A;font-size:var(--fs-xs);">▾</span></div>'
+      + '<div class="kb-liste" style="display:none;margin-top:6px;">'+lis+'</div></div>';
+  }
+  function kbStationHTML(nr){
+    return '<div class="kb-station" style="background:rgba(245,200,64,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:10px;padding:12px 12px 4px;margin-bottom:12px;">'
+      + '<div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);letter-spacing:.1em;color:#7A4800;font-family:\'DM Mono\',monospace;margin-bottom:10px;">'
+      + '<span class="kb-station-kopf">STATION '+nr+'</span><span onclick="kbLoeschStation(this)" style="cursor:pointer;color:#A07030;">✕</span></div>'
+      + kbRmHTML('WER', ['Cornelia','Claudia','Emanuel','→ 112'])
+      + kbRmHTML('NACHRICHT', ['Benjamin braucht dich','Bitte ruf ihn an','Bitte übernimm','Rettungsdienst rufen'])
+      + kbRmHTML('DANN WARTEN', ['2 Min','5 Min','10 Min'])
+      + '</div>';
+  }
+  function kbAddStation(){
+    kbStationNr++;
+    document.getElementById('kbStationen').insertAdjacentHTML('beforeend', kbStationHTML(kbStationNr));
+  }
+  function kbLoeschStation(x){
+    x.closest('.kb-station').remove();
+    var koepfe = document.querySelectorAll('.kb-station-kopf');
+    koepfe.forEach(function(k,i){ k.textContent = 'STATION '+(i+1); });
+    kbStationNr = koepfe.length;
+  }
+  function kbToggleRM(trigger){
+    var liste = trigger.nextElementSibling;
+    var warOffen = (liste.style.display === 'block');
+    document.querySelectorAll('#kbStationen .kb-liste').forEach(function(l){ l.style.display = 'none'; });
+    liste.style.display = warOffen ? 'none' : 'block';
+  }
+  function kbWaehleRM(opt){
+    var liste = opt.parentElement;
+    var trigger = liste.previousElementSibling;
+    trigger.querySelector('.kb-wert').textContent = opt.textContent;
+    trigger.querySelector('.kb-wert').style.color = '#7A4800';
+    liste.style.display = 'none';
+  }
+
+  // Ketten-Bauer: Bestätigen → Ablauf-Bühne
+  var kbKette = [];
+  var kbHatAktiveKette = false;
+  var kbTimer = null;
+  function kbMinZuSek(str){
+    var n = parseInt(str, 10);
+    return isNaN(n) ? 0 : n; // Testwert: "5 Min" → 5 Test-Sekunden
+  }
+  function kbFormat(sek){
+    var m = Math.floor(sek/60), s = sek % 60;
+    return m + ':' + (s<10 ? '0'+s : s);
+  }
+  function kbBestaetigen(){
+    var stationen = [];
+    document.querySelectorAll('#kbStationen .kb-station').forEach(function(st){
+      var w = st.querySelectorAll('.kb-wert');
+      stationen.push({ wer:w[0].textContent, warten:kbMinZuSek(w[2].textContent) });
+    });
+    if(stationen.length === 0) return;
+    kbKette = stationen;
+    kbHatAktiveKette = true;
+    kbStarteAblauf();
+  }
+  function kbStarteAblauf(){
+    document.getElementById('kbBauer').style.display = 'none';
+    var buehne = document.getElementById('kbBuehne');
+    buehne.style.display = 'block';
+    buehne.innerHTML = '<div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:\'DM Mono\',monospace;margin-bottom:16px;text-align:center;">HILFERUF LÄUFT</div><div id="kbKurs"></div>';
+    kbZeigeStation(0);
+  }
+  function kbZeigeStation(i){
+    var st = kbKette[i];
+    var kurs = document.getElementById('kbKurs');
+    kurs.insertAdjacentHTML('beforeend',
+      '<div style="background:rgba(245,200,64,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:10px;padding:10px 12px;margin-bottom:10px;">'
+      + '<div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:\'DM Mono\',monospace;margin-bottom:3px;">STATION '+(i+1)+'</div>'
+      + '<div style="font-size:var(--fs-md);color:#7A4800;font-family:\'DM Sans\',sans-serif;font-weight:500;">→ '+st.wer+'</div></div>');
+    var letzte = (i === kbKette.length-1);
+    if(letzte || st.warten<=0){
+      kurs.insertAdjacentHTML('beforeend','<div style="text-align:center;color:#7A4800;font-family:\'DM Sans\',sans-serif;font-weight:500;margin-top:4px;">✓ Kurs zu Ende</div>');
+      return;
+    }
+    kbStarteWarten(st.warten, function(){ kbZeigeStation(i+1); });
+  }
+  function kbStarteWarten(sek, fertig){
+    var kurs = document.getElementById('kbKurs');
+    kurs.insertAdjacentHTML('beforeend',
+      '<div style="text-align:center;margin-bottom:12px;">'
+      + '<div id="kbCd" style="font-family:\'DM Mono\',monospace;font-size:32px;font-weight:500;color:#7A4800;margin-bottom:10px;">'+kbFormat(sek)+'</div>'
+      + '<div style="width:100%;height:8px;background:rgba(200,130,10,0.15);border-radius:6px;overflow:hidden;"><div id="kbFuell" style="height:100%;width:100%;background:linear-gradient(90deg,#C8860A,#F5C840);border-radius:6px;"></div></div>'
+      + '<button id="kbRueckBtn" onclick="kbRueckrufKam()" style="margin-top:10px;width:100%;padding:11px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:#7A4800;font-family:\'DM Sans\',sans-serif;font-size:var(--fs-sm);font-weight:500;cursor:pointer;">● RÜCKRUF KAM</button></div>');
+    var start = Date.now(), dauerMs = sek*1000;
+    kbTimer = setInterval(function(){
+      var uebrig = Math.max(0, dauerMs - (Date.now()-start));
+      document.getElementById('kbFuell').style.width = (uebrig/dauerMs*100)+'%';
+      document.getElementById('kbCd').textContent = kbFormat(Math.ceil(uebrig/1000));
+      if(uebrig<=0){
+        clearInterval(kbTimer);
+        var b = document.getElementById('kbRueckBtn'); if(b) b.remove();
+        fertig();
+      }
+    }, 50);
+  }
+  function kbRueckrufKam(){
+    clearInterval(kbTimer);
+    var b = document.getElementById('kbRueckBtn'); if(b) b.remove();
+    document.getElementById('kbKurs').insertAdjacentHTML('beforeend',
+      '<div style="text-align:center;color:#3CA860;font-family:\'DM Sans\',sans-serif;font-weight:500;margin-top:4px;">✓ Rückruf da, alles gut</div>');
+  }
+  function kbReset(){
+    clearInterval(kbTimer);
+    document.getElementById('kbBauer').style.display = 'block';
+    document.getElementById('kbBuehne').style.display = 'none';
+    document.getElementById('kbBuehne').innerHTML = '';
+  }
+  window.kbToggleName = kbToggleName;
+  window.kbWaehleName = kbWaehleName;
+  window.kbAddStation = kbAddStation;
+  window.kbLoeschStation = kbLoeschStation;
+  window.kbToggleRM = kbToggleRM;
+  window.kbWaehleRM = kbWaehleRM;
+  window.kbBestaetigen = kbBestaetigen;
+  window.kbRueckrufKam = kbRueckrufKam;
+  window.kbReset = kbReset;
+
   document.getElementById('cfgEingabemethoden').addEventListener('click',function(){
     closeAllPanels();
     document.getElementById('configEingabePanel').classList.add('open');
@@ -4930,7 +5117,8 @@ body {
     if(appState.timer.seconds >= appState.timer.limit){
       actions.stopTimer();
       appState.timer.alarmTriggered = true;
-      timerDigits.textContent='ALARM!'; timerDigits.style.color='#FF3030';
+      timerDigits.textContent='NOTRUF!'; timerDigits.style.color='#FF3030';
+      setTimeout(function(){ herbertActive ? triggerHerbertNotruf() : triggerBenjaminNotruf(); }, 600);
     }
   }
   function startTimer(){
@@ -4949,6 +5137,16 @@ body {
   var shuffled=[];
   var tapped=[];
   function initPuzzle(){
+    var puzzle = document.getElementById('pulsPuzzleInhalt');
+    var anruf  = document.getElementById('herbertAnrufInhalt');
+    var chip   = document.getElementById('herbertContactChip');
+    if (puzzle) puzzle.style.display = 'block';
+    if (anruf)  anruf.style.display  = 'none';
+    if (chip) {
+      chip.style.background   = 'rgba(74,127,165,0.08)';
+      chip.style.borderColor   = 'rgba(74,127,165,0.3)';
+      chip.style.color         = '#2A5A7A';
+    }
     shuffled=['H','U','N','D'];
     var att=0;
     do{ for(var i=shuffled.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=x; } att++; }
@@ -4996,34 +5194,82 @@ body {
   var nkTimer = null;
   var nkSeconds = 30;
 
+  function nkSetContactColor(el, state) {
+    if (!el) return;
+    if (state === 'green') {
+      el.style.background   = 'rgba(60,168,96,0.15)';
+      el.style.borderColor   = '#3CA860';
+      el.style.color         = '#3CA860';
+    } else if (state === 'red') {
+      el.style.background   = 'rgba(232,80,48,0.15)';
+      el.style.borderColor   = '#E85030';
+      el.style.color         = '#E85030';
+    } else {
+      el.style.background   = 'rgba(200,130,10,0.08)';
+      el.style.borderColor   = 'rgba(200,130,10,0.25)';
+      el.style.color         = '#7A4800';
+    }
+  }
+
+  function nkBarFarbe(anteil) {
+    // Interpoliert von Gold (#F5C840) zu Rot (#E85030) über die Laufzeit
+    var gold = [0xF5,0xC8,0x40];
+    var rot  = [0xE8,0x50,0x30];
+    var mix = gold.map(function(v,i){ return Math.round(v + (rot[i]-v)*anteil); });
+    return 'rgb(' + mix.join(',') + ')';
+  }
+
+  function nkStufe2Aktivieren() {
+    nkSetContactColor(document.getElementById('nkContact2a'), 'green');
+    nkSetContactColor(document.getElementById('nkContact2b'), 'green');
+    nkSetContactColor(document.getElementById('nkContact2c'), 'green');
+    nkSetContactColor(document.getElementById('nkContact2d'), 'green');
+  }
+
   function nkTick() {
-    var bar    = document.getElementById('nk1Bar');
-    var digits = document.getElementById('nk1Digits');
+    var bar    = document.getElementById('nkBar');
+    var digits = document.getElementById('nkDigits');
     if (!digits) return;
     nkSeconds--;
     var s = nkSeconds < 0 ? 0 : nkSeconds;
     var m = Math.floor(s / 60);
     digits.textContent = m + ':' + (s % 60 < 10 ? '0' : '') + (s % 60);
+    if (bar) bar.style.background = nkBarFarbe((30 - s) / 30);
     if (nkSeconds <= 0) {
       clearInterval(nkTimer);
       nkTimer = null;
-      // Stufe 2: Broadcast + Glocke
+      // Kein Rückruf: Claudia wird rot, danach Stufe 2 grün
+      nkSetContactColor(document.getElementById('nkContact1'), 'red');
       setTimeout(function() {
         gloeckchen();
-        show('s-nk2');
+        nkStufe2Aktivieren();
       }, 400);
     }
   }
 
   function triggerBenjaminNotruf() {
+    if (kbHatAktiveKette) {
+      show('s-kette-bauer');
+      kbStarteAblauf();
+      return;
+    }
     if (nkTimer) { clearInterval(nkTimer); nkTimer = null; }
     nkSeconds = 30;
-    show('s-nk1');
+    show('s-notrufkette');
+    // Neutralzustand herstellen, falls vorher schon durchgelaufen
+    nkSetContactColor(document.getElementById('nkContact1'), 'neutral');
+    nkSetContactColor(document.getElementById('nkContact2a'), 'neutral');
+    nkSetContactColor(document.getElementById('nkContact2b'), 'neutral');
+    nkSetContactColor(document.getElementById('nkContact2c'), 'neutral');
+    nkSetContactColor(document.getElementById('nkContact2d'), 'neutral');
+    // Nachricht raus: Claudia sofort grün
+    nkSetContactColor(document.getElementById('nkContact1'), 'green');
     // Goldbalken zurücksetzen, dann starten
     setTimeout(function() {
-      var bar = document.getElementById('nk1Bar');
-      var digits = document.getElementById('nk1Digits');
+      var bar = document.getElementById('nkBar');
+      var digits = document.getElementById('nkDigits');
       if (bar) {
+        bar.style.background = '#F5C840';
         bar.style.transition = 'none';
         bar.style.transform  = 'scaleX(1)';
         void bar.offsetWidth; // reflow
@@ -5040,6 +5286,35 @@ body {
     if (nkTimer) { clearInterval(nkTimer); nkTimer = null; }
     show('s-scanner');
   }
+
+  function triggerHerbertNotruf() {
+    var puzzle = document.getElementById('pulsPuzzleInhalt');
+    var anruf  = document.getElementById('herbertAnrufInhalt');
+    var chip   = document.getElementById('herbertContactChip');
+    if (puzzle) puzzle.style.display = 'none';
+    if (anruf)  anruf.style.display  = 'block';
+    if (chip) {
+      chip.style.background   = 'rgba(60,168,96,0.15)';
+      chip.style.borderColor   = '#3CA860';
+      chip.style.color         = '#3CA860';
+    }
+  }
+  window.triggerHerbertNotruf = triggerHerbertNotruf;
+
+  function herbertAnrufBeenden() {
+    var puzzle = document.getElementById('pulsPuzzleInhalt');
+    var anruf  = document.getElementById('herbertAnrufInhalt');
+    var chip   = document.getElementById('herbertContactChip');
+    if (anruf)  anruf.style.display  = 'none';
+    if (puzzle) puzzle.style.display = 'block';
+    if (chip) {
+      chip.style.background   = 'rgba(74,127,165,0.08)';
+      chip.style.borderColor   = 'rgba(74,127,165,0.3)';
+      chip.style.color         = '#2A5A7A';
+    }
+    show('s-scanner');
+  }
+  window.herbertAnrufBeenden = herbertAnrufBeenden;
 
   window.triggerBenjaminNotruf = triggerBenjaminNotruf;
   window.nkRueckruf = nkRueckruf;
