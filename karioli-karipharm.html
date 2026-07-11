@@ -595,7 +595,7 @@
     border-color: rgba(26,111,173,0.35) !important;
   }
   .skin-eleni .mc-title { color: #0A4A80 !important; }
-  .skin-eleni .status-dot { background: #C8106A !important; box-shadow: 0 0 5px #C8106A !important; }
+  .skin-eleni .status-dot { background: #4AE040 !important; box-shadow: 0 0 5px #4AE040 !important; }
   .skin-eleni .preset-tab {
     background: #1A6FAD !important;
     color: #FFFFFF !important;
@@ -673,6 +673,7 @@
     border-color: #4A7FA5 !important;
   }
   .skin-herbert .status-bar  { background:rgba(74,127,165,0.12) !important; border-bottom:1px solid rgba(74,127,165,0.2) !important; }
+  .skin-herbert #s-scanner   { background:#EEF4F8 !important; }
   .skin-herbert .status-dot  { background:#4AE040 !important; box-shadow:0 0 5px #4AE040 !important; }
   .skin-herbert #wifiIcon path { stroke:#4A7FA5 !important; }
   .skin-herbert .brand       { color:#2A5A7A !important; }
@@ -1284,7 +1285,7 @@ body {
   <div class="status-bar">
     <div class="status-left">
       <div class="status-dot"></div>
-      <span class="status-gps">GPS</span>
+      <span class="status-gps" id="statusGpsLabel">GPS</span>
     </div>
     <div style="display:flex;align-items:center;gap:6px;">
       <span class="status-gear" id="settingsBtn" title="Einstellungen" style="display:none;">⚙</span>
@@ -1294,6 +1295,7 @@ body {
         <path d="M3.4 6.1 Q9 1.5 14.6 6.1" stroke="#4AE040" stroke-width="1.5" stroke-linecap="round" fill="none"/>
         <path d="M0.6 3.4 Q9 -2 17.4 3.4" stroke="#4AE040" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
+      <span class="status-gps" id="statusWlanLabel">WLAN</span>
     </div>
   </div>
 
@@ -3057,6 +3059,90 @@ body {
   </div><!-- /s-emma screen -->
 
     <!-- SCANNER ERGEBNIS: Ibuprofen ↔ Benjamin -->
+    <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Scan/Sprache/Text) -->
+    <div class="screen" id="s-scan-confirm" style="background:#FFF8E4;">
+      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#3A1A00;font-size:18px;">Ibuprofen 400mg</div>
+        <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;" id="scanConfirmName">20 Filmtabletten</div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
+        <div style="font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
+        <div style="font-size:var(--fs-md);color:#3A1A00;font-family:'DM Sans',sans-serif;line-height:1.6;">
+          <p><strong>Anwendungsgebiete:</strong> Leichte bis mäßig starke Schmerzen, Fieber, entzündliche Prozesse.</p>
+          <p><strong>Dosierung:</strong> Erwachsene 400 mg, bei Bedarf alle 4–6 Stunden. Höchstdosis 1200 mg pro Tag ohne ärztliche Rücksprache nicht überschreiten.</p>
+          <p><strong>Gegenanzeigen:</strong> Magen-Darm-Geschwüre, schwere Leber- oder Nierenfunktionsstörung, bekannte Überempfindlichkeit gegen NSAR.</p>
+          <p><strong>Nebenwirkungen:</strong> Übelkeit, Sodbrennen, Kopfschmerzen. Bei starken Magenschmerzen oder schwarzem Stuhl sofort ärztlichen Rat einholen.</p>
+          <p><strong>Wechselwirkungen:</strong> Kann die Wirkung anderer Medikamente beeinflussen — siehe Prüfung im nächsten Schritt.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="scanConfirmCorrect" style="background:transparent;border:1px solid #C8A840;color:#7A4800;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="scanConfirmYes" style="font-weight:400;">Bestätigen ✓</button>
+      </div>
+      <div class="brand" style="color:#C8A840;">kariPharm</div>
+    </div><!-- /s-scan-confirm -->
+
+    <!-- BESTÄTIGUNG: DOSIERUNG -->
+    <div class="screen" id="s-dose-confirm" style="background:#FFF8E4;">
+      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#3A1A00;font-size:18px;">Dosierung</div>
+        <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
+        <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
+          <div id="doseConfirmText" style="font-size:var(--fs-xl);font-weight:500;color:#3A1A00;font-family:'DM Sans',sans-serif;">3× täglich · 2 Tabletten</div>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="doseConfirmCorrect" style="background:transparent;border:1px solid #C8A840;color:#7A4800;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="doseConfirmYes" style="font-weight:400;">Bestätigen ✓</button>
+      </div>
+      <div class="brand" style="color:#C8A840;">kariPharm</div>
+    </div><!-- /s-dose-confirm -->
+
+    <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Herbert) -->
+    <div class="screen" id="s-scan-confirm-herbert" style="background:#EEF4F8;">
+      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#1A3A50;font-size:18px;">Ibuprofen 600mg</div>
+        <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">20 Filmtabletten</div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
+        <div style="font-size:var(--fs-sm);color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
+        <div style="font-size:var(--fs-md);color:#1A3A50;font-family:'DM Sans',sans-serif;line-height:1.6;">
+          <p><strong>Anwendungsgebiete:</strong> Leichte bis mäßig starke Schmerzen, Fieber, entzündliche Prozesse.</p>
+          <p><strong>Dosierung:</strong> Erwachsene 600 mg, bei Bedarf alle 6–8 Stunden. Höchstdosis 1800 mg pro Tag ohne ärztliche Rücksprache nicht überschreiten.</p>
+          <p><strong>Gegenanzeigen:</strong> Magen-Darm-Geschwüre, schwere Leber- oder Nierenfunktionsstörung, bekannte Überempfindlichkeit gegen NSAR.</p>
+          <p><strong>Nebenwirkungen:</strong> Übelkeit, Sodbrennen, Kopfschmerzen. Bei starken Magenschmerzen oder schwarzem Stuhl sofort ärztlichen Rat einholen.</p>
+          <p><strong>Wechselwirkungen:</strong> Kann die Wirkung anderer Medikamente beeinflussen — siehe Prüfung im nächsten Schritt.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="scanConfirmCorrectHerbert" style="background:transparent;border:1px solid #4A7FA5;color:#1A3A50;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="scanConfirmYesHerbert" style="background:#4A7FA5;color:#FFFFFF;font-weight:400;">Bestätigen ✓</button>
+      </div>
+      <div class="brand" style="color:#4A7FA5;">kariPharm</div>
+    </div><!-- /s-scan-confirm-herbert -->
+
+    <!-- BESTÄTIGUNG: DOSIERUNG (Herbert) -->
+    <div class="screen" id="s-dose-confirm-herbert" style="background:#EEF4F8;">
+      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#1A3A50;font-size:18px;">Dosierung</div>
+        <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
+        <div style="background:#D8E8F0;border:1px solid #B0C8DC;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
+          <div style="font-size:var(--fs-xl);font-weight:500;color:#1A3A50;font-family:'DM Sans',sans-serif;">3× täglich · 2 Tabletten</div>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="doseConfirmCorrectHerbert" style="background:transparent;border:1px solid #4A7FA5;color:#1A3A50;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="doseConfirmYesHerbert" style="background:#4A7FA5;color:#FFFFFF;font-weight:400;">Bestätigen ✓</button>
+      </div>
+      <div class="brand" style="color:#4A7FA5;">kariPharm</div>
+    </div><!-- /s-dose-confirm-herbert -->
+
     <div class="screen" id="s-ibu-result" style="background:#FDFBF3;">
       <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
         <div class="med-name" style="color:#3A1A00;">Wechselwirkungen</div>
@@ -3120,6 +3206,48 @@ body {
     </div><!-- /s-ibu-result -->
 
     <!-- SCANNER ERGEBNIS: Ιβουπροφένη ↔ Ελένη -->
+    <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Eleni) -->
+    <div class="screen" id="s-scan-confirm-eleni" style="background:#F5F8FF;">
+      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#0A4A80;font-size:18px;">Ιβουπροφένη 400mg</div>
+        <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">20 δισκία</div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
+        <div style="font-size:var(--fs-sm);color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">ΦΥΛΛΟ ΟΔΗΓΙΩΝ</div>
+        <div style="font-size:var(--fs-md);color:#0A4A80;font-family:'DM Sans',sans-serif;line-height:1.6;">
+          <p><strong>Ενδείξεις:</strong> Ήπιος έως μέτριος πόνος, πυρετός, φλεγμονώδεις καταστάσεις.</p>
+          <p><strong>Δοσολογία:</strong> Ενήλικες 400 mg, κάθε 4–6 ώρες εφόσον χρειάζεται. Μέγιστη δόση 1200 mg ημερησίως χωρίς ιατρική συμβουλή.</p>
+          <p><strong>Αντενδείξεις:</strong> Έλκος στομάχου/εντέρου, σοβαρή ηπατική ή νεφρική ανεπάρκεια, γνωστή υπερευαισθησία σε ΜΣΑΦ.</p>
+          <p><strong>Παρενέργειες:</strong> Ναυτία, καούρα, πονοκέφαλος. Σε έντονο κοιλιακό πόνο ή μαύρα κόπρανα, άμεση ιατρική συμβουλή.</p>
+          <p><strong>Αλληλεπιδράσεις:</strong> Μπορεί να επηρεάσει άλλα φάρμακα — έλεγχος στο επόμενο βήμα.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="scanConfirmCorrectEleni" style="background:transparent;border:1px solid #1A6FAD;color:#0A4A80;font-weight:400;">Διόρθωση</button>
+        <button class="btn-p" id="scanConfirmYesEleni" style="background:#1A6FAD;color:#FFFFFF;font-weight:400;">Επιβεβαίωση ✓</button>
+      </div>
+      <div class="brand" style="color:#1A6FAD;">kariPharm</div>
+    </div><!-- /s-scan-confirm-eleni -->
+
+    <!-- BESTÄTIGUNG: DOSIERUNG (Eleni) -->
+    <div class="screen" id="s-dose-confirm-eleni" style="background:#F5F8FF;">
+      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#0A4A80;font-size:18px;">Δοσολογία</div>
+        <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">ΠΑΡΑΚΑΛΩ ΕΠΙΒΕΒΑΙΩΣΤΕ</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
+        <div style="background:#EEF4FF;border:1px solid #B8D0E8;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
+          <div style="font-size:var(--fs-xl);font-weight:500;color:#0A4A80;font-family:'DM Sans',sans-serif;">3× ημερησίως · 2 δισκία</div>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="doseConfirmCorrectEleni" style="background:transparent;border:1px solid #1A6FAD;color:#0A4A80;font-weight:400;">Διόρθωση</button>
+        <button class="btn-p" id="doseConfirmYesEleni" style="background:#1A6FAD;color:#FFFFFF;font-weight:400;">Επιβεβαίωση ✓</button>
+      </div>
+      <div class="brand" style="color:#1A6FAD;">kariPharm</div>
+    </div><!-- /s-dose-confirm-eleni -->
+
     <div class="screen" id="s-ibu-result-eleni" style="background:#F5F8FF;">
       <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
         <div class="med-name" style="color:#0A4A80;">Αλληλεπιδράσεις</div>
@@ -3543,7 +3671,7 @@ body {
   });
 
   function show(id){
-    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-nk1','s-nk2','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
+    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-nk1','s-nk2','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
       document.getElementById(s).classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
@@ -4474,10 +4602,55 @@ body {
         setTimeout(function(){
           ov.classList.remove('active'); med.style.opacity='0';
           bar.style.width='0%'; line.style.top='0';
-          show(ninaActive ? 's-ibu-result-eleni' : herbertActive ? 's-ibu-result-herbert' : 's-ibu-result');
+          show(herbertActive ? 's-scan-confirm-herbert' : 's-scan-confirm');
         },900);
       }
     },25);
+  });
+
+  document.getElementById('scanConfirmYes').addEventListener('click', function(){
+    show('s-dose-confirm');
+  });
+  document.getElementById('scanConfirmCorrect').addEventListener('click', function(){
+    show('s-scanner');
+    document.getElementById('inputMethodVoice').click();
+  });
+
+  document.getElementById('doseConfirmYes').addEventListener('click', function(){
+    var btn = this;
+    btn.style.background = '#3CA860';
+    btn.style.color = '#FFFFFF';
+    gloeckchen();
+    setTimeout(function(){
+      show(ninaActive ? 's-ibu-result-eleni' : herbertActive ? 's-ibu-result-herbert' : 's-ibu-result');
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 700);
+  });
+  document.getElementById('doseConfirmCorrect').addEventListener('click', function(){
+    show('s-scanner');
+    document.getElementById('inputMethodVoice').click();
+  });
+
+  document.getElementById('scanConfirmYesHerbert').addEventListener('click', function(){
+    show('s-dose-confirm-herbert');
+  });
+  document.getElementById('scanConfirmCorrectHerbert').addEventListener('click', function(){
+    show('s-scanner');
+    document.getElementById('inputMethodVoice').click();
+  });
+  document.getElementById('doseConfirmYesHerbert').addEventListener('click', function(){
+    var btn = this;
+    btn.style.background = '#3CA860';
+    gloeckchen();
+    setTimeout(function(){
+      show('s-ibu-result-herbert');
+      btn.style.background = '#4A7FA5';
+    }, 700);
+  });
+  document.getElementById('doseConfirmCorrectHerbert').addEventListener('click', function(){
+    show('s-scanner');
+    document.getElementById('inputMethodVoice').click();
   });
 
   /* ALARM DEMO BUTTON */
@@ -4693,9 +4866,10 @@ body {
     document.getElementById('einBtn').addEventListener('click',function(){
     var btn = document.getElementById('einBtn');
     btn.textContent = '✓ Dokumentiert';
-    btn.style.background = '#4AE040';
-    btn.style.color = '#1A4000';
+    btn.style.setProperty('background', '#4AE040', 'important');
+    btn.style.setProperty('color', '#1A4000', 'important');
     btn.disabled = true;
+    gloeckchen();
     // Aktueller Punkt → grün, Ablauf stoppen
     var dot = document.getElementById(aktiverPunkt);
     if(dot){ dot.className = 'td done'; }
@@ -4719,8 +4893,8 @@ body {
     startStageAblauf();
     setTimeout(function(){
       btn.textContent = ninaActive ? 'Ελήφθη ✓' : 'Eingenommen ✓';
-      btn.style.background = '';
-      btn.style.color = '';
+      btn.style.removeProperty('background');
+      btn.style.removeProperty('color');
       btn.disabled = false;
     }, 2200);
   });
@@ -5050,6 +5224,7 @@ body {
     actions.setVariant('nina'); // Phase 1: appState sync
     document.getElementById('phone').classList.remove('skin-benjamin');
     document.getElementById('phone').classList.add('skin-eleni');
+    var sgl = document.getElementById('statusGpsLabel'); if(sgl) sgl.textContent = 'Online';
     document.getElementById('ninaTattooBg').style.display = 'none';
     document.getElementById('ninaScanBtn').style.display = 'block';
     document.getElementById('scanBtn').style.display = 'none';
@@ -5103,7 +5278,16 @@ body {
     document.getElementById('medCard1Warn').textContent = '⚠ Μην οδηγείτε — προκαλεί υπνηλία';
     document.getElementById('medCard1Warn').style.display = 'inline-block';
     var ml=document.getElementById('medCard1List');
-    if(ml) ml.innerHTML='<div class="mc-row"><div class="mc-row-info"><div class="mc-row-name">Βακλοφένη 10 mg</div><div class="mc-row-dose">10 mg · 07:30</div></div><button class="mc-row-btn">Ελήφθη ✓</button></div>';
+    if(ml){
+      ml.innerHTML='<div class="mc-row"><div class="mc-row-info"><div class="mc-row-name">Βακλοφένη 10 mg</div><div class="mc-row-dose">10 mg · 07:30</div></div><button class="mc-row-btn">Ελήφθη ✓</button></div>';
+      var elBtn = ml.querySelector('.mc-row-btn');
+      elBtn.addEventListener('click', function(){
+        elBtn.textContent = '✓ Καταγράφηκε';
+        elBtn.classList.add('done');
+        elBtn.disabled = true;
+        gloeckchen();
+      });
+    }
     document.getElementById('intakeSection1').textContent = 'ΦΆΡΜΑΚΑ';
     var im1=document.getElementById('intakeMed1'); if(im1) im1.innerHTML='<div><div class="msi-name">Βακλοφένη 10 mg</div><div class="msi-sub">Σπαστικότητα · 3× ημερ · 07:00 / 13:00 / 20:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:80%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">24 ημέρες</div></div>';
     var im2=document.getElementById('intakeMed2'); if(im2) im2.innerHTML='<div><div class="msi-name">Τριεξυφαινιδύλη 2 mg</div><div class="msi-sub">Αντισπασμωδικό · 2× ημερ · 07:30 / 19:00</div></div><div style="text-align:right;"><div class="sbar"><div class="sbar-fill" style="width:55%;background:#4AE040;"></div></div><div class="msi-sub" style="color:#4AE040;">16 ημέρες</div></div>';
@@ -5143,6 +5327,7 @@ body {
     document.getElementById('phone').classList.remove('skin-corinna');
     document.getElementById('phone').classList.remove('skin-eleni');
     document.getElementById('phone').classList.add('skin-benjamin');
+    var sgl2 = document.getElementById('statusGpsLabel'); if(sgl2) sgl2.textContent = 'GPS';
     // Eleni-spezifische Toolbar zurücksetzen
     ['tbEleniSpotify','tbEleniInstagram','tbEleniTikTok','tbEleniFacebook','tbEleniWhatsApp','tbEleniTelefon','tbEleniKamera'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
     var tbph=document.getElementById('tbPhone'); if(tbph) tbph.style.display='flex';
@@ -5447,9 +5632,8 @@ body {
     show('s-emma');
   });
 
-  // Nina scan button — 1. Scan → s-outtake, 2. Scan → s-ibu-result-eleni
+  // Nina scan button — jetzt gleicher Ablauf wie Benjamin/Herbert: Scan → Bestätigung → Dosierung → Wechselwirkung
   document.getElementById('ninaScanBtn').addEventListener('click', function() {
-    actions.incrementScan();
     closeAllPanels();
     var ov = document.getElementById('scanOverlay');
     var bar = document.getElementById('scanBar');
@@ -5464,14 +5648,31 @@ body {
         setTimeout(function(){
           ov.classList.remove('active'); med.style.opacity = '0';
           bar.style.width = '0%'; line.style.top = '0';
-          if(appState.scan.count >= 2) {
-            show('s-ibu-result-eleni');
-          } else {
-            show('s-outtake');
-          }
+          show('s-scan-confirm-eleni');
         }, 800);
       }
     }, 18);
+  });
+
+  document.getElementById('scanConfirmYesEleni').addEventListener('click', function(){
+    show('s-dose-confirm-eleni');
+  });
+  document.getElementById('scanConfirmCorrectEleni').addEventListener('click', function(){
+    show('s-scanner');
+    document.getElementById('inputMethodVoice').click();
+  });
+  document.getElementById('doseConfirmYesEleni').addEventListener('click', function(){
+    var btn = this;
+    btn.style.setProperty('background', '#3CA860', 'important');
+    gloeckchen();
+    setTimeout(function(){
+      show('s-ibu-result-eleni');
+      btn.style.setProperty('background', '#1A6FAD', 'important');
+    }, 700);
+  });
+  document.getElementById('doseConfirmCorrectEleni').addEventListener('click', function(){
+    show('s-scanner');
+    document.getElementById('inputMethodVoice').click();
   });
 
 
