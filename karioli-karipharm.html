@@ -1377,6 +1377,14 @@ body {
       <div class="pp-item-name" style="color:#F5C840;">📞 Notrufkette</div>
       <div class="pp-item-sub" style="color:#C8A060;">Eskalation &amp; Kontakte</div>
     </div>
+    <div class="pp-item" id="cfgKontaktvorrat" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:#F5C840;">👥 Kontaktvorrat</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Zentrale Kontaktliste</div>
+    </div>
+    <div class="pp-item" id="cfgStammblatt" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:#F5C840;">📋 Stammblatt</div>
+      <div class="pp-item-sub" style="color:#C8A060;">WO · WER · LAGE</div>
+    </div>
     <div class="pp-close" id="configSicherheitClose2" style="text-align:right;margin-top:4px;">Schließen</div>
   </div>
 
@@ -3032,6 +3040,57 @@ body {
       <button onclick="kbReset(); show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
     </div><!-- /s-kette-bauer -->
 
+    <!-- KONTAKTVORRAT — zentrale Kontaktliste (S1) -->
+    <div class="screen" id="s-kontaktvorrat" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">KONTAKTVORRAT</div>
+
+      <div id="kvListe"></div>
+
+      <div id="kvAddBtn" onclick="kvAddKontakt()" style="display:flex;align-items:center;justify-content:center;background:rgba(200,130,10,0.06);border:1px dashed rgba(200,130,10,0.4);border-radius:10px;padding:12px;margin-bottom:16px;font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;cursor:pointer;">+ KONTAKT</div>
+
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+
+      <div id="kvFairOverlay" style="display:none;position:fixed;inset:0;background:rgba(60,40,10,0.35);align-items:center;justify-content:center;z-index:500;padding:20px;">
+        <div style="width:260px;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:12px;padding:20px 18px;">
+          <div style="font-size:var(--fs-xs);letter-spacing:.14em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">EINE FAIRE FRAGE</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;line-height:1.5;text-align:center;margin-bottom:8px;">Diese Nummer heißt:<br><b id="kvFairName">der Kontakt</b> wird in deinem Notfall gerufen.</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-xs);color:#A07030;text-align:center;margin-bottom:16px;">Fair ist: frag ihn vorher.</div>
+          <div onclick="kvBestaetigeFair()" style="background:rgba(74,224,64,0.12);border:1px solid rgba(74,224,64,0.5);border-radius:10px;padding:13px;text-align:center;cursor:pointer;margin-bottom:8px;font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.08em;color:#2d9b6f;font-weight:500;">✓ HAB GEFRAGT — EINVERSTANDEN</div>
+          <div onclick="kvSchliesseFair()" style="text-align:center;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:var(--fs-xs);color:#A07030;">✕ Zurück</div>
+        </div>
+      </div>
+    </div><!-- /s-kontaktvorrat -->
+
+    <!-- STAMMBLATT — WO / WER / LAGE (S1) -->
+    <div class="screen" id="s-stammblatt" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">STAMMBLATT</div>
+
+      <div style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:13px 12px;margin-bottom:12px;">
+        <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;margin-bottom:9px;">WO <span style="color:#C8A060;">· das Wichtigste</span></div>
+        <input type="text" placeholder="Straße &amp; Hausnummer" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="text" placeholder="PLZ &amp; Ort" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="text" placeholder="Stockwerk" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="text" placeholder="Eingang / Schlüssel" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+      </div>
+
+      <div style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:13px 12px;margin-bottom:12px;">
+        <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;margin-bottom:9px;">WER</div>
+        <input type="text" placeholder="Name" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="tel" placeholder="Rückrufnummer" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:#7A4800;">
+      </div>
+
+      <div style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:13px 12px;margin-bottom:16px;">
+        <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;margin-bottom:9px;">LAGE</div>
+        <input type="text" placeholder="Vorerkrankung" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <div id="smSchalter" onclick="smToggleSchalter(this)" style="display:flex;align-items:center;gap:9px;cursor:pointer;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;">
+          <span class="smKasten" style="width:16px;height:16px;border-radius:5px;flex-shrink:0;border:1px solid rgba(200,130,10,0.4);background:#FFF8E4;display:flex;align-items:center;justify-content:center;font-size:11px;color:#FDFBF3;">✓</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#A07030;">kann nicht sprechen</span>
+        </div>
+      </div>
+
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+    </div><!-- /s-stammblatt -->
+
 
     <div class="screen" id="s-emma">
     <div class="med-header">
@@ -3710,7 +3769,7 @@ body {
   });
 
   function show(id){
-    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-notrufkette','s-kette-bauer','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
+    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-notrufkette','s-kette-bauer','s-kontaktvorrat','s-stammblatt','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
       document.getElementById(s).classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
@@ -4479,6 +4538,73 @@ body {
     closeAllPanels();
     show('s-kette-bauer');
   });
+
+  document.getElementById('cfgKontaktvorrat').addEventListener('click',function(){
+    closeAllPanels();
+    show('s-kontaktvorrat');
+  });
+
+  document.getElementById('cfgStammblatt').addEventListener('click',function(){
+    closeAllPanels();
+    show('s-stammblatt');
+  });
+
+  // Stammblatt: Schalter "kann nicht sprechen"
+  function smToggleSchalter(el){
+    var kasten = el.querySelector('.smKasten');
+    var an = kasten.style.background === 'rgb(245, 200, 64)';
+    kasten.style.background = an ? '#FFF8E4' : '#F5C840';
+    kasten.style.borderColor = an ? 'rgba(200,130,10,0.4)' : '#F5C840';
+    kasten.style.color = an ? '#FDFBF3' : '#7A4800';
+  }
+  window.smToggleSchalter = smToggleSchalter;
+
+  // Kontaktvorrat: ein Kontakt-Block (Name + Telefonnummer)
+  function kvKontaktHTML(){
+    return ''
+      + '<div class="kv-kontakt" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">'
+      + '  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
+      + '    <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:rgba(200,130,10,0.2);flex-shrink:0;"></span>'
+      + '    <input type="text" placeholder="Name" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:\'DM Sans\',sans-serif;font-size:var(--fs-sm);color:#7A4800;">'
+      + '    <span onclick="kvLoeschKontakt(this)" style="font-family:\'DM Sans\',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>'
+      + '  </div>'
+      + '  <input type="tel" placeholder="Telefonnummer" onblur="kvPruefeNummer(this)" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:\'DM Mono\',monospace;font-size:var(--fs-sm);color:#7A4800;">'
+      + '</div>';
+  }
+  function kvAddKontakt(){
+    document.getElementById('kvListe').insertAdjacentHTML('beforeend', kvKontaktHTML());
+  }
+  function kvLoeschKontakt(x){
+    x.closest('.kv-kontakt').remove();
+  }
+
+  // Einwilligung: Nummer eingetippt + Feld verlassen → Faire Frage stellen
+  var kvAktiverKontakt = null;
+  function kvPruefeNummer(input){
+    var k = input.closest('.kv-kontakt');
+    if(input.value.trim() === '') return;
+    if(k.dataset.ok === '1') return;
+    kvAktiverKontakt = k;
+    var name = k.querySelector('input[type="text"]').value.trim();
+    document.getElementById('kvFairName').textContent = name || 'der Kontakt';
+    document.getElementById('kvFairOverlay').style.display = 'flex';
+  }
+  function kvBestaetigeFair(){
+    if(kvAktiverKontakt){
+      kvAktiverKontakt.dataset.ok = '1';
+      kvAktiverKontakt.querySelector('.kv-punkt').style.background = '#F5C840';
+    }
+    kvSchliesseFair();
+  }
+  function kvSchliesseFair(){
+    document.getElementById('kvFairOverlay').style.display = 'none';
+    kvAktiverKontakt = null;
+  }
+  window.kvAddKontakt = kvAddKontakt;
+  window.kvLoeschKontakt = kvLoeschKontakt;
+  window.kvPruefeNummer = kvPruefeNummer;
+  window.kvBestaetigeFair = kvBestaetigeFair;
+  window.kvSchliesseFair = kvSchliesseFair;
 
   // Ketten-Bauer: Name der Kette
   function kbToggleName(){
