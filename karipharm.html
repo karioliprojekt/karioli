@@ -18,6 +18,17 @@
     --fs-md: 15px;
     --fs-sm: 12px;
     --fs-xs: 10px;
+
+    /* Neutrale Gerüst-Palette — Startwerte = heutige Benjamin-Farben.
+       Noch NICHT im Code verwendet; Rollen-Namen, keine feste Deutung.
+       Wird Scheibchen für Scheibchen an bestehende Stellen angeschlossen. */
+    --color-bg-hell:     #FFFCF3;
+    --color-bg-tief:     #FFF8E4;
+    --color-text:        #3A1A00;
+    --color-akzent:      #F5C840;
+    --color-akzent-tief: #C8860A;
+    --color-warn:        #C85A30;
+    --color-akzent-dunkel: #7A4800;
   }
 
   .kp-wrap{display:flex;justify-content:center;padding:1.5rem 0 2rem;font-family:'DM Sans',sans-serif;}
@@ -41,7 +52,7 @@
   .status-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 2px;}
   .status-left{display:flex;align-items:center;gap:5px;}
   .status-dot{width:8px;height:8px;border-radius:50%;background:#4AE040;box-shadow:0 0 5px #4AE040;}
-  .status-gps{font-size:var(--fs-xs);color:#7A4800;letter-spacing:.1em;font-family:'DM Mono',monospace;}
+  .status-gps{font-size:var(--fs-xs);color:var(--color-akzent-dunkel);letter-spacing:.1em;font-family:'DM Mono',monospace;}
   .status-gear{
     font-size:var(--fs-xl); cursor:pointer; color:rgba(255,255,255,0.6);
     line-height:1; user-select:none;
@@ -175,8 +186,8 @@
   /* Tool tooltip */
   .tool-tip{
     position:absolute;right:44px;top:50%;transform:translateY(-50%);
-    background:#3A1A00;border:1px solid #C8860A;
-    color:#F5C840;font-size:var(--fs-sm);font-family:'DM Sans',sans-serif;font-weight:600;
+    background:var(--color-text);border:1px solid var(--color-akzent-tief);
+    color:var(--color-akzent);font-size:var(--fs-sm);font-family:'DM Sans',sans-serif;font-weight:600;
     padding:4px 8px;border-radius:6px;white-space:nowrap;
     opacity:0;pointer-events:none;transition:opacity .15s;
   }
@@ -189,7 +200,7 @@
   .screen.active{display:flex;flex-direction:column;flex:1 1 0;min-height:0;}
 
   #s-dashboard{position:relative;}
-  .dash-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(245,200,64,0.92);border:none;color:#3A1A00;font-size:var(--fs-xl);font-weight:700;line-height:1;cursor:pointer;z-index:30;box-shadow:2px 3px 6px rgba(0,0,0,0.3);align-items:center;justify-content:center;}
+  .dash-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(245,200,64,0.92);border:none;color:var(--color-text);font-size:var(--fs-xl);font-weight:700;line-height:1;cursor:pointer;z-index:30;box-shadow:2px 3px 6px rgba(0,0,0,0.3);align-items:center;justify-content:center;}
   .dash-arrow-left{left:4px;}
   .dash-arrow-right{right:4px;}
   @media (hover:hover) and (pointer:fine){ .dash-arrow{display:flex;} }
@@ -207,18 +218,18 @@
     letter-spacing:.01em;
   }
   .tab-btn.active{
-    background:#5A3000; color:#F5C840;
+    background:#5A3000; color:var(--color-akzent);
     border-top-color:rgba(255,210,80,0.4);
     border-bottom-color:rgba(0,0,0,0.5);
     box-shadow:inset 0 2px 4px rgba(0,0,0,0.3);
   }
-  .tab-btn.inactive{background:#C8860A; color:#3A1800;}
+  .tab-btn.inactive{background:var(--color-akzent-tief); color:#3A1800;}
   .dash-row{display:flex;gap:4px;padding-top:4px;flex-shrink:0;}
   .dash-btn{
     flex:1; padding:26px 4px; border-radius:16px;
     font-family:'DM Sans',sans-serif; font-size:var(--fs-xl); font-weight:700;
     cursor:pointer; text-align:center; line-height:1.2;
-    background:#3A2200; color:#F5C840;
+    background:#3A2200; color:var(--color-akzent);
     border-top:1px solid rgba(245,200,64,0.3);
     border-left:1px solid rgba(245,200,64,0.2);
     border-right:1px solid rgba(0,0,0,0.4);
@@ -233,7 +244,7 @@
     background:rgba(245,200,64,0.14);
     border:1px solid rgba(245,200,64,0.5);
     border-radius:10px;
-    color:#3A1A00;
+    color:var(--color-text);
     box-shadow:none;
   }
   #dashRow1 .dash-btn:active{background:rgba(245,200,64,0.3);}
@@ -241,7 +252,7 @@
     flex:1; padding:18px 4px; border-radius:14px;
     font-family:'DM Sans',sans-serif; font-size:var(--fs-md); font-weight:500;
     cursor:pointer; text-align:center; line-height:1.2;
-    background:rgba(255,255,255,0.08); color:#F5C840;
+    background:rgba(255,255,255,0.08); color:var(--color-akzent);
     border:1px solid rgba(245,200,64,0.35);
     box-shadow:none;
     letter-spacing:.02em;
@@ -263,25 +274,25 @@
     background:rgba(245,200,64,0.14);
     border:1px solid rgba(245,200,64,0.5);
     border-radius:10px;
-    color:#3A1A00;
+    color:var(--color-text);
     box-shadow:none;
   }
   #barBenjamin .tab-btn:active{background:rgba(245,200,64,0.3);}
-  #barBenjamin .tab-btn.active{background:rgba(245,200,64,0.32);color:#3A1A00;}
-  .brand{text-align:center;font-size:var(--fs-xs);letter-spacing:.18em;color:#7A4800;margin-top:4px;font-family:'DM Mono',monospace;}
+  #barBenjamin .tab-btn.active{background:rgba(245,200,64,0.32);color:var(--color-text);}
+  .brand{text-align:center;font-size:var(--fs-xs);letter-spacing:.18em;color:var(--color-akzent-dunkel);margin-top:4px;font-family:'DM Mono',monospace;}
 
   /* TOOL PANELS */
   #panelSettings {
     position:absolute; left:36px; top:52px;
     width:220px; z-index:40;
-    background:#3A1A00; border:1px solid #C8860A;
+    background:var(--color-text); border:1px solid var(--color-akzent-tief);
     border-radius:0 12px 12px 12px;
     padding:10px 10px 12px;
     box-shadow:4px 8px 20px rgba(0,0,0,0.6);
     display:none;
   }
   #panelSettings.open{ display:block; }
-  .sp-title{font-size:var(--fs-sm);font-family:'DM Mono',monospace;letter-spacing:.14em;color:#F5C840;margin-bottom:8px;font-weight:700;}
+  .sp-title{font-size:var(--fs-sm);font-family:'DM Mono',monospace;letter-spacing:.14em;color:var(--color-akzent);margin-bottom:8px;font-weight:700;}
   .sp-item{display:flex;align-items:center;gap:10px;padding:9px 8px;border-radius:8px;cursor:pointer;color:rgba(255,255,255,0.85);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:600;transition:background .15s;}
   .sp-item:active{background:rgba(245,200,64,0.18);}
   .sp-icon{font-size:var(--fs-xl);width:20px;text-align:center;flex-shrink:0;}
@@ -290,9 +301,9 @@
     position:absolute;right:32px;top:76px;
     width:160px;
     max-width:calc(100% - 70px);
-    background:#3A1A00;
+    background:var(--color-text);
     border-radius:12px 0 0 12px;
-    border:1px solid #C8860A;
+    border:1px solid var(--color-akzent-tief);
     border-right:none;
     padding:10px;
     z-index:15;
@@ -300,11 +311,11 @@
     box-shadow:-4px 4px 16px rgba(0,0,0,0.5);
   }
   .tool-panel.open{display:block;}
-  .tp-title{font-size:var(--fs-xs);letter-spacing:.12em;color:#C8860A;font-family:'DM Mono',monospace;margin-bottom:10px;display:flex;justify-content:space-between;}
-  .tp-close{cursor:pointer;color:#7A4800;}
+  .tp-title{font-size:var(--fs-xs);letter-spacing:.12em;color:var(--color-akzent-tief);font-family:'DM Mono',monospace;margin-bottom:10px;display:flex;justify-content:space-between;}
+  .tp-close{cursor:pointer;color:var(--color-akzent-dunkel);}
   .tp-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #5A3000;cursor:pointer;}
   .tp-row:last-child{border-bottom:none;}
-  .tp-row:hover .tp-rname{color:#F5C840;}
+  .tp-row:hover .tp-rname{color:var(--color-akzent);}
   .tp-icon{font-size:var(--fs-md);width:20px;text-align:center;}
   .tp-rname{font-size:var(--fs-sm);color:#C8A040;font-family:'DM Sans',sans-serif;}
 
@@ -312,9 +323,9 @@
   #ghostBelegModal{
     position:absolute;right:32px;top:76px;
     width:170px;
-    background:#3A1A00;
+    background:var(--color-text);
     border-radius:12px 0 0 12px;
-    border:1px solid #C8860A;
+    border:1px solid var(--color-akzent-tief);
     border-right:none;
     padding:12px 14px;
     z-index:50;
@@ -322,8 +333,8 @@
     box-shadow:-4px 4px 16px rgba(0,0,0,0.5);
   }
   #ghostBelegIcon{font-size:var(--fs-xl);line-height:1;flex-shrink:0;}
-  .gb-label{font-size:var(--fs-xs);letter-spacing:.12em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:2px;}
-  #ghostBelegName{font-size:var(--fs-md);color:#F5C840;font-family:'DM Sans',sans-serif;font-weight:700;}
+  .gb-label{font-size:var(--fs-xs);letter-spacing:.12em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:2px;}
+  #ghostBelegName{font-size:var(--fs-md);color:var(--color-akzent);font-family:'DM Sans',sans-serif;font-weight:700;}
   #ghostBelegModal .tp-close{position:absolute;top:6px;right:8px;font-size:var(--fs-sm);}
 
   /* SCANNER */
@@ -340,79 +351,79 @@
     transition:transform .12s;
   }
   .scan-btn-inner:active{transform:scale(.95);}
-  .scan-label{font-size:var(--fs-xl);font-weight:500;color:#3A1A00;letter-spacing:.14em;font-family:'DM Mono',monospace;text-shadow:0 1px 3px rgba(255,220,100,.3);}
+  .scan-label{font-size:var(--fs-xl);font-weight:500;color:var(--color-text);letter-spacing:.14em;font-family:'DM Mono',monospace;text-shadow:0 1px 3px rgba(255,220,100,.3);}
 
   .input-method-row{display:flex;gap:10px;width:90%;margin:2px auto 6px;}
-  .input-method-btn{flex:1;padding:9px 0;background:rgba(245,200,64,0.14);border:1px solid rgba(245,200,64,0.5);border-radius:10px;color:#3A1A00;font-size:var(--fs-xl);font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;text-align:center;}
+  .input-method-btn{flex:1;padding:9px 0;background:rgba(245,200,64,0.14);border:1px solid rgba(245,200,64,0.5);border-radius:10px;color:var(--color-text);font-size:var(--fs-xl);font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;text-align:center;}
   .skin-eleni .input-method-btn{background:#1A6FAD !important;border-color:#0A4A80 !important;color:#FFFFFF !important;}
   .skin-eleni .input-method-btn:active{background:#0A4A80 !important;}
-  .bpm-display{font-size:var(--fs-sm);color:#7A4800;margin-bottom:10px;font-family:'DM Mono',monospace;letter-spacing:.06em;}
+  .bpm-display{font-size:var(--fs-sm);color:var(--color-akzent-dunkel);margin-bottom:10px;font-family:'DM Mono',monospace;letter-spacing:.06em;}
 
   /* PIE-BUTTON (Benjamin, ersetzt scan-btn-wrap) */
   .pie-wrap{margin:10px auto 8px;filter:drop-shadow(2px 3px 6px rgba(0,0,0,.5));}
   .pie-seg{fill:url(#pieGoldGrad);stroke:#1E0E00;stroke-width:1.5;cursor:pointer;transition:fill .15s;}
-  .pie-seg:hover,.pie-seg.active{fill:#F5C840;}
+  .pie-seg:hover,.pie-seg.active{fill:var(--color-akzent);}
   .pie-ico{font-size:var(--fs-xl);text-anchor:middle;dominant-baseline:central;pointer-events:none;}
-  .pie-hub{fill:#0A0A14;stroke:#F5C840;stroke-width:2;pointer-events:none;}
+  .pie-hub{fill:#0A0A14;stroke:var(--color-akzent);stroke-width:2;pointer-events:none;}
   #pieMethodModal{position:fixed;inset:0;background:rgba(10,10,20,.85);display:none;align-items:center;justify-content:center;z-index:55;}
   #pieMethodModal.on{display:flex;}
   .pmm-card{background:#1E0E00;border:2px solid #C8820A;border-radius:10px;padding:30px 26px;text-align:center;min-width:220px;box-shadow:2px 3px 8px rgba(0,0,0,.5);}
   .pmm-icon{font-size:var(--fs-xl);line-height:1;}
-  .pmm-title{margin:14px 0 20px;font-size:var(--fs-md);font-weight:500;color:#F5C840;font-family:'DM Sans',sans-serif;}
+  .pmm-title{margin:14px 0 20px;font-size:var(--fs-md);font-weight:500;color:var(--color-akzent);font-family:'DM Sans',sans-serif;}
   .pmm-back{font-family:'DM Sans',sans-serif;font-size:var(--fs-md);color:#F5F5F5;background:#0A0A14;border:1px solid #C8820A;border-radius:10px;padding:9px 22px;cursor:pointer;}
   .pmm-back:active{background:#C8820A;}
 
   /* SCAN OVERLAY */
   .scan-overlay{position:absolute;inset:0;background:#C8820A;border-radius:37px;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:25;opacity:0;pointer-events:none;transition:opacity .25s;}
   .scan-overlay.active{opacity:1;pointer-events:all;}
-  .scan-box{width:90px;height:90px;border:2px solid #F5C840;border-radius:10px;position:relative;overflow:hidden;}
-  .scan-line{position:absolute;left:0;right:0;height:2px;background:#F5C840;top:0;}
+  .scan-box{width:90px;height:90px;border:2px solid var(--color-akzent);border-radius:10px;position:relative;overflow:hidden;}
+  .scan-line{position:absolute;left:0;right:0;height:2px;background:var(--color-akzent);top:0;}
   .scan-progress{width:130px;height:3px;background:#A06008;border-radius:2px;margin-top:14px;overflow:hidden;}
-  .scan-bar-inner{height:100%;background:#F5C840;width:0%;}
-  .scan-med-name{font-size:var(--fs-sm);font-weight:500;color:#F5C840;margin-top:10px;opacity:0;font-family:'DM Mono',monospace;letter-spacing:.1em;transition:opacity .4s;}
+  .scan-bar-inner{height:100%;background:var(--color-akzent);width:0%;}
+  .scan-med-name{font-size:var(--fs-sm);font-weight:500;color:var(--color-akzent);margin-top:10px;opacity:0;font-family:'DM Mono',monospace;letter-spacing:.1em;transition:opacity .4s;}
 
   /* MEDIKATION */
-  .med-header{text-align:center;padding:2px 0 6px;border-bottom:1px solid #C8860A;flex-shrink:0;}
-  .med-name{font-size:var(--fs-md);font-weight:500;color:#3A1A00;}
-  .med-date{font-size:var(--fs-xs);color:#7A4800;margin-top:1px;font-family:'DM Mono',monospace;}
-  .timeline-wrap{padding:7px 0;border-bottom:1px solid #C8860A;}
+  .med-header{text-align:center;padding:2px 0 6px;border-bottom:1px solid var(--color-akzent-tief);flex-shrink:0;}
+  .med-name{font-size:var(--fs-md);font-weight:500;color:var(--color-text);}
+  .med-date{font-size:var(--fs-xs);color:var(--color-akzent-dunkel);margin-top:1px;font-family:'DM Mono',monospace;}
+  .timeline-wrap{padding:7px 0;border-bottom:1px solid var(--color-akzent-tief);}
   .timeline-track{position:relative;height:42px;margin:0 4px;}
-  .tl-line{position:absolute;top:24px;left:0;right:0;height:1px;background:#C8860A;}
+  .tl-line{position:absolute;top:24px;left:0;right:0;height:1px;background:var(--color-akzent-tief);}
   .tm{position:absolute;bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;}
-  .td{width:12px;height:12px;border-radius:50%;border:2px solid #F5C840;transition:background .5s,box-shadow .5s;}
+  .td{width:12px;height:12px;border-radius:50%;border:2px solid var(--color-akzent);transition:background .5s,box-shadow .5s;}
   .td.done{background:#4AE040;border-color:#4AE040;}
   .td.unbestaetigt{background:transparent;border-color:#4AE040;}
-  .td.now{background:#F5C840;border-color:#F5C840;box-shadow:0 0 6px #F5C840;}
+  .td.now{background:var(--color-akzent);border-color:var(--color-akzent);box-shadow:0 0 6px var(--color-akzent);}
   .td.pend{background:transparent;border-color:#F5E040;}
-  .td.next{background:#F5C840;border-color:#F5C840;opacity:0.5;}
+  .td.next{background:var(--color-akzent);border-color:var(--color-akzent);opacity:0.5;}
   .td.warn-yellow{background:#F5E040;border-color:#F5E040;animation:blinkYellow 0.8s ease-in-out infinite;}
   .td.warn-red{background:#E85030;border-color:#E85030;animation:blinkRed 0.5s ease-in-out infinite;}
   @keyframes blinkYellow{0%,100%{box-shadow:0 0 4px #F5E04088;opacity:1;}50%{box-shadow:0 0 10px #F5E040;opacity:0.6;}}
   @keyframes blinkRed{0%,100%{box-shadow:0 0 6px #E8503088;opacity:1;}50%{box-shadow:0 0 14px #E85030;opacity:0.5;}}
   .tl{font-size:var(--fs-xs);color:#FFFFFF;font-family:'DM Mono',monospace;white-space:nowrap;text-align:center;line-height:1.3;}
   .tl.hi{color:#FFFFFF;font-weight:500;}
-  .tl-times{display:flex;justify-content:space-between;margin:2px 4px 0;font-size:var(--fs-xs);color:#7A4800;font-family:'DM Mono',monospace;}
+  .tl-times{display:flex;justify-content:space-between;margin:2px 4px 0;font-size:var(--fs-xs);color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;}
 
   .med-card{background:#FDFBF3;border:1px solid rgba(43,43,40,0.12);box-shadow:none;border-radius:10px;padding:9px 10px;margin:7px 0;}
   .mc-title{font-size:var(--fs-md);font-weight:700;color:#2B2B28;}
   .mc-sub{font-size:var(--fs-sm);color:#2B2B28;opacity:.7;margin-top:3px;}
-  .mc-warn{display:inline-block;margin-top:6px;font-size:var(--fs-sm);background:#C8860A;color:#3A1A00;padding:3px 9px;border-radius:6px;font-weight:700;}
+  .mc-warn{display:inline-block;margin-top:6px;font-size:var(--fs-sm);background:var(--color-akzent-tief);color:var(--color-text);padding:3px 9px;border-radius:6px;font-weight:700;}
   .mc-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid rgba(43,43,40,0.12);}
   .mc-row:last-child{border-bottom:none;}
   .mc-row-info{flex:1;}
   .mc-row-name{font-size:var(--fs-md);font-weight:700;color:#2B2B28;}
   .mc-row-dose{font-size:var(--fs-sm);color:#2B2B28;opacity:.65;margin-top:2px;}
-  .mc-row-btn{flex-shrink:0;padding:4px 8px;background:#F5C840;border:none;border-radius:10px;color:#3A1A00;font-size:var(--fs-sm);font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;}
+  .mc-row-btn{flex-shrink:0;padding:4px 8px;background:var(--color-akzent);border:none;border-radius:10px;color:var(--color-text);font-size:var(--fs-sm);font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;}
   .mc-row-btn.done{background:#4AE040;color:#1A4000;}
   .mc-info-btn{display:block;margin-top:6px;width:22px;height:22px;border-radius:50%;background:#2196F3;border:none;color:#FFFFFF;font-size:var(--fs-md);font-family:'DM Sans',sans-serif;cursor:pointer;line-height:1;}
   .mc-actions{display:flex;gap:7px;margin-top:10px;width:100%;}
-  .btn-s{flex:1;padding:6px 0;background:#5A3000;border:1px solid #C8860A;border-radius:8px;color:#C8860A;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;cursor:pointer;}
-  .btn-p{flex:1;padding:14px 0;background:#F5C840;border:none;border-radius:12px;color:#3A1A00;font-size:var(--fs-xl);font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;width:100%;}
-  .h-lbl{font-size:var(--fs-xs);letter-spacing:.12em;color:#7A4800;font-family:'DM Mono',monospace;margin:5px 0 3px;}
-  .mr{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #C8860A;}
-  .mr-n{font-size:var(--fs-xs);color:#3A1A00;}
-  .mr-s{font-size:var(--fs-sm);color:#3A1A00;font-family:'DM Mono',monospace;opacity:.8;}
-  .med-config-note{font-size:var(--fs-sm);color:#7A4800;font-family:'DM Mono',monospace;margin-top:5px;opacity:.8;font-style:italic;}
+  .btn-s{flex:1;padding:6px 0;background:#5A3000;border:1px solid var(--color-akzent-tief);border-radius:8px;color:var(--color-akzent-tief);font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;cursor:pointer;}
+  .btn-p{flex:1;padding:14px 0;background:var(--color-akzent);border:none;border-radius:12px;color:var(--color-text);font-size:var(--fs-xl);font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;width:100%;}
+  .h-lbl{font-size:var(--fs-xs);letter-spacing:.12em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin:5px 0 3px;}
+  .mr{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--color-akzent-tief);}
+  .mr-n{font-size:var(--fs-xs);color:var(--color-text);}
+  .mr-s{font-size:var(--fs-sm);color:var(--color-text);font-family:'DM Mono',monospace;opacity:.8;}
+  .med-config-note{font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-top:5px;opacity:.8;font-style:italic;}
 
   /* ALARM */
   /* Fix: margin/width kompensiert jetzt korrekt die 32px .content-Ränder */
@@ -429,21 +440,21 @@
   .timer-bar-bg{width:200px;height:7px;background:#5A1A00;border-radius:4px;overflow:hidden;}
   .timer-bar-fill{height:100%;width:0%;border-radius:4px;transition:width .9s linear,background .9s linear;}
   .timer-digits{font-size:var(--fs-md);font-family:'DM Mono',monospace;margin-top:3px;letter-spacing:.08em;transition:color .9s linear;color:#4AE040;}
-  .a-q{text-align:center;font-size:var(--fs-md);font-weight:500;color:#F5C840;margin:5px 0 2px;}
+  .a-q{text-align:center;font-size:var(--fs-md);font-weight:500;color:var(--color-akzent);margin:5px 0 2px;}
   .a-i{text-align:center;font-size:var(--fs-md);color:#C84030;margin-bottom:2px;}
   .a-l{text-align:center;font-size:var(--fs-sm);letter-spacing:.3em;color:#E85030;font-family:'DM Mono',monospace;margin-bottom:7px;}
   .puzzle-grid{display:flex;flex-direction:row;gap:8px;justify-content:center;margin:0 auto 10px;}
-  .puzzle-tile{width:46px;height:52px;background:#F5C840;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:var(--fs-xl);font-weight:600;color:#3A1A00;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .15s,background .15s;user-select:none;-webkit-user-select:none;}
+  .puzzle-tile{width:46px;height:52px;background:var(--color-akzent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:var(--fs-xl);font-weight:600;color:var(--color-text);cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .15s,background .15s;user-select:none;-webkit-user-select:none;}
   .puzzle-tile.correct{background:#A8E840;color:#1A4000;}
   .puzzle-tile:active{transform:scale(.92);}
-  .a-hilfe{width:100%;padding:9px;background:#8A1010;border:none;border-radius:10px;color:#F5C840;font-size:var(--fs-sm);font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;}
+  .a-hilfe{width:100%;padding:9px;background:#8A1010;border:none;border-radius:10px;color:var(--color-akzent);font-size:var(--fs-sm);font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;}
 
   /* SOLVED */
   #s-solved{align-items:center;justify-content:center;text-align:center;}
   .sol-icon{width:72px;height:72px;border-radius:50%;background:#3A5800;border:2px solid #8AB840;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:var(--fs-xl);color:#C8F040;}
-  .sol-title{font-size:var(--fs-xl);font-weight:500;color:#3A1A00;margin-bottom:6px;}
-  .sol-sub{font-size:var(--fs-xs);color:#7A4800;line-height:1.7;margin-bottom:18px;font-family:'DM Mono',monospace;}
-  .restart-btn{padding:9px 26px;background:#7A4800;border:none;border-radius:10px;color:#F5C840;font-size:var(--fs-sm);font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;}
+  .sol-title{font-size:var(--fs-xl);font-weight:500;color:var(--color-text);margin-bottom:6px;}
+  .sol-sub{font-size:var(--fs-xs);color:var(--color-akzent-dunkel);line-height:1.7;margin-bottom:18px;font-family:'DM Mono',monospace;}
+  .restart-btn{padding:9px 26px;background:var(--color-akzent-dunkel);border:none;border-radius:10px;color:var(--color-akzent);font-size:var(--fs-sm);font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;}
 
   /* DASHBOARD PANELS */
   .dash-panel { display: none !important; }
@@ -853,7 +864,7 @@
     border-color:rgba(245,200,64,0.5);
   }
   .lang-flag{width:26px;height:18px;border-radius:2px;overflow:hidden;flex-shrink:0;}
-  .flag-de{background:linear-gradient(to bottom,#000 33%,#D00 33%,#D00 66%,#F5C840 66%);}
+  .flag-de{background:linear-gradient(to bottom,#000 33%,#D00 33%,#D00 66%,var(--color-akzent) 66%);}
   .flag-en{background:#012169;position:relative;}
   .flag-en::before{content:'';position:absolute;inset:0;
     background:linear-gradient(to bottom,transparent 38%,#fff 38%,#fff 62%,transparent 62%),
@@ -865,7 +876,7 @@
   .flag-gr::before{content:'';position:absolute;left:0;top:0;width:44%;height:55%;
     background:#0D5EAF;box-shadow:inset 15px 0 0 #fff,inset 0 8px 0 #fff;}
   .lang-btn .lang-code{font-size:var(--fs-xs);color:rgba(255,255,255,0.6);font-family:'DM Mono',monospace;letter-spacing:.08em;}
-  .lang-btn.lang-active .lang-code{color:#F5C840;}
+  .lang-btn.lang-active .lang-code{color:var(--color-akzent);}
   .lang-divider{width:32px;height:1px;background:rgba(255,255,255,0.1);margin:4px auto 8px auto;}
 
   /* Benjamin Dashboard Swipe */
@@ -889,7 +900,7 @@
   .benjamin-slide::-webkit-scrollbar{width:0;height:0;}
   .benjamin-dots{display:flex;justify-content:center;gap:5px;padding:4px 0 2px;flex-shrink:0;}
   .benjamin-dot{width:7px;height:7px;border-radius:50%;background:rgba(200,134,10,0.3);transition:background .2s;}
-  .benjamin-dot.active{background:#C8860A;}
+  .benjamin-dot.active{background:var(--color-akzent-tief);}
 
   /* Emma Dashboard Swipe */
   #emmaViewport {
@@ -1025,14 +1036,14 @@ body {
   }
 }
 
-  .intake-section{font-size:var(--fs-md);font-weight:700;letter-spacing:.08em;color:#C8860A;font-family:'DM Sans',sans-serif;margin:10px 0 5px;}
+  .intake-section{font-size:var(--fs-md);font-weight:700;letter-spacing:.08em;color:var(--color-akzent-tief);font-family:'DM Sans',sans-serif;margin:10px 0 5px;}
   .msi{background:#FDFBF3;border:1px solid rgba(43,43,40,0.12);border-radius:9px;padding:7px 9px;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;}
   .msi-name{font-size:var(--fs-md);font-weight:700;color:#2B2B28;}
   .msi-sub{font-size:var(--fs-sm);color:#6A5A30;font-family:'DM Sans',sans-serif;}
   .sbar{width:55px;height:4px;background:rgba(43,43,40,0.12);border-radius:2px;margin-top:3px;}
   .sbar-fill{height:100%;border-radius:2px;}
   #archivListe{background:#FDFBF3;border-radius:10px;padding:14px 16px;}
-  #archivListe .intake-section{color:#C8860A;}
+  #archivListe .intake-section{color:var(--color-akzent-tief);}
   .hist-row{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid rgba(43,43,40,0.1);}
   .ht{font-size:var(--fs-md);color:#7A5A10;font-family:'DM Mono',monospace;width:52px;flex-shrink:0;font-weight:400;}
   .he{font-size:var(--fs-md);color:#2B2B28;flex:1;line-height:1.4;}
@@ -1224,8 +1235,8 @@ body {
     cursor: pointer;
   }
   .im-btn-abort.armed {
-    background: #F5C840;
-    color: #3A1A00;
+    background: var(--color-akzent);
+    color: var(--color-text);
   }
   .im-btn-abort.done {
     background: #4AE040;
@@ -1313,7 +1324,7 @@ body {
       <div class="pp-item-name" style="color:#5A4000;">👴 Benjamin · Parkinson</div>
       <div class="pp-item-sub" style="color:#7A6020;">Parkinson · Diabetes · Pflegedienst Sonnenschein</div>
     </div>
-    <div class="pp-item" id="ppHerbert" style="border-left:3px solid #4A7FA5;background:rgba(74,127,165,0.08);">
+    <div class="pp-item" id="ppHerbert" style="display:none;border-left:3px solid #4A7FA5;background:rgba(74,127,165,0.08);">
       <div class="pp-item-name" style="color:#1E3D52;">🫁 Herbert · Lungenfibrose</div>
       <div class="pp-item-sub" style="color:#2A5A7A;">Lungenfibrose · Diabetes · Bluthochdruck</div>
     </div>
@@ -1321,12 +1332,16 @@ body {
       <div class="pp-item-name" style="color:#0A4A80;">👩 Ελένη · Σπαστική Διπληγία</div>
       <div class="pp-item-sub" style="color:#1A6FAD;">Spastische Diplegie · 18 J.</div>
     </div>
+    <div class="pp-item" id="ppMia" style="display:none;border-left:3px solid #8A8A8A;background:rgba(138,138,138,0.08);">
+      <div class="pp-item-name" style="color:#1A1A1A;">👶 Mia · Kind-Preset</div>
+      <div class="pp-item-sub" style="color:#8A8A8A;">Epilepsie · 8 J.</div>
+    </div>
     <div class="pp-item" id="ppKonfiguration" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
-      <div class="pp-item-name" style="color:#F5C840;">⚙ Konfiguration</div>
+      <div class="pp-item-name" style="color:var(--color-akzent);">⚙ Konfiguration</div>
       <div class="pp-item-sub" style="color:#C8A060;">Einstellungen &amp; Anpassungen</div>
     </div>
     <div class="pp-item" id="ppForum" style="border-left:3px solid #C8820A;background:rgba(200,130,10,0.12);">
-      <div class="pp-item-name" style="color:#F5C840;">💬 Forum</div>
+      <div class="pp-item-name" style="color:var(--color-akzent);">💬 Forum</div>
       <div class="pp-item-sub" style="color:#C8A060;">Austausch &amp; Community</div>
     </div>
     <div class="pp-close" id="ppClose2" style="text-align:right;margin-top:4px;">Schließen</div>
@@ -1335,28 +1350,28 @@ body {
   <!-- KONFIGURATION PANEL (Platzhalter) -->
   <div class="preset-panel" id="configPanel">
     <div class="pp-title" data-i18n="cfg_titel">KONFIGURATION <span class="pp-close" id="configClose">✕</span></div>
-    <div class="pp-item" id="cfgNotfallketten" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="cfg_sicherheit_name">🆘 Sicherheitsmeldungen</div>
+    <div class="pp-item" id="cfgNotfallketten" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="cfg_sicherheit_name">🆘 Sicherheitsmeldungen</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="cfg_sicherheit_sub">Schwellenwerte · Erinnerungen</div>
     </div>
-    <div class="pp-item" id="cfgMedikamentenvergabe" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="cfg_med_name">💊 Medikamentenvergabe</div>
+    <div class="pp-item" id="cfgMedikamentenvergabe" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="cfg_med_name">💊 Medikamentenvergabe</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="cfg_med_sub">Einnahme &amp; Zeitplan</div>
     </div>
-    <div class="pp-item" id="cfgEingabemethoden" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="cfg_eingabe_name">🎙 Eingabemethoden</div>
+    <div class="pp-item" id="cfgEingabemethoden" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="cfg_eingabe_name">🎙 Eingabemethoden</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="cfg_eingabe_sub">Scannen · Sprechen · Tippen</div>
     </div>
-    <div class="pp-item" id="cfgDesign" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="cfg_design_name">🎨 Design</div>
+    <div class="pp-item" id="cfgDesign" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="cfg_design_name">🎨 Design</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="cfg_design_sub">Optik &amp; Anzeige</div>
     </div>
-    <div class="pp-item" id="cfgSchnittstellen" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="cfg_schnitt_name">🔌 Schnittstellen</div>
+    <div class="pp-item" id="cfgSchnittstellen" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="cfg_schnitt_name">🔌 Schnittstellen</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="cfg_schnitt_sub">Berechtigte Personen &amp; Geräte</div>
     </div>
-    <div class="pp-item" id="cfgInstallation" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="cfg_install_name">⚙ Installation</div>
+    <div class="pp-item" id="cfgInstallation" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="cfg_install_name">⚙ Installation</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="cfg_install_sub">Einrichtung &amp; Setup</div>
     </div>
     <div class="pp-close" id="configClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
@@ -1365,24 +1380,24 @@ body {
   <!-- SICHERHEITSMELDUNGEN PANEL (4. Ebene — 3 Bereiche, vorerst nur Eingänge ohne Funktion) -->
   <div class="preset-panel" id="configSicherheitPanel">
     <div class="pp-title">SICHERHEITSMELDUNGEN <span class="pp-close" id="configSicherheitClose">✕</span></div>
-    <div class="pp-item" id="cfgSchwellenwerte" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;">📊 Schwellenwerte</div>
+    <div class="pp-item" id="cfgSchwellenwerte" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">📊 Schwellenwerte</div>
       <div class="pp-item-sub" style="color:#C8A060;">Grenzwerte &amp; Auslöser</div>
     </div>
-    <div class="pp-item" id="cfgErinnerungen" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;">🔔 Erinnerungen</div>
+    <div class="pp-item" id="cfgErinnerungen" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">🔔 Erinnerungen</div>
       <div class="pp-item-sub" style="color:#C8A060;">Benachrichtigungen &amp; Töne</div>
     </div>
-    <div class="pp-item" id="cfgNotrufkette" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;">📞 Notrufkette</div>
+    <div class="pp-item" id="cfgNotrufkette" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">📞 Notrufkette</div>
       <div class="pp-item-sub" style="color:#C8A060;">Eskalation &amp; Kontakte</div>
     </div>
-    <div class="pp-item" id="cfgKontaktvorrat" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;">👥 Kontaktvorrat</div>
+    <div class="pp-item" id="cfgKontaktvorrat" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">👥 Kontaktvorrat</div>
       <div class="pp-item-sub" style="color:#C8A060;">Zentrale Kontaktliste</div>
     </div>
-    <div class="pp-item" id="cfgStammblatt" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;">📋 Stammblatt</div>
+    <div class="pp-item" id="cfgStammblatt" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">📋 Stammblatt</div>
       <div class="pp-item-sub" style="color:#C8A060;">WO · WER · LAGE</div>
     </div>
     <div class="pp-close" id="configSicherheitClose2" style="text-align:right;margin-top:4px;">Schließen</div>
@@ -1391,16 +1406,16 @@ body {
   <!-- EINGABEMETHODEN PANEL (4. Ebene) -->
   <div class="preset-panel" id="configEingabePanel">
     <div class="pp-title" data-i18n="e4_eingabe_titel">EINGABEMETHODEN <span class="pp-close" id="configEingabeClose">✕</span></div>
-    <div class="pp-item" id="cfgEingabeText" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_text_name">⌨ Text</div>
+    <div class="pp-item" id="cfgEingabeText" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_text_name">⌨ Text</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_text_sub">Eingabe per Tastatur</div>
     </div>
-    <div class="pp-item" id="cfgEingabeScanner" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_scan_name">📷 Scanner</div>
+    <div class="pp-item" id="cfgEingabeScanner" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_scan_name">📷 Scanner</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_scan_sub">Erfassung per Foto/Scan</div>
     </div>
-    <div class="pp-item" id="cfgEingabeSprache" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_voice_name">🎙 Spracheingabe</div>
+    <div class="pp-item" id="cfgEingabeSprache" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_voice_name">🎙 Spracheingabe</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_voice_sub">Erfassung per Sprechen</div>
     </div>
     <div class="pp-close" id="configEingabeClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
@@ -1409,16 +1424,16 @@ body {
   <!-- MEDIKAMENTENVERGABE PANEL (4. Ebene) -->
   <div class="preset-panel" id="configMedikamentenPanel">
     <div class="pp-title" data-i18n="e4_medi_titel">MEDIKAMENTENVERGABE <span class="pp-close" id="configMedikamentenClose">✕</span></div>
-    <div class="pp-item" id="cfgMedZeitplan" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_zeitplan_name">🕐 Zeitplan</div>
+    <div class="pp-item" id="cfgMedZeitplan" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_zeitplan_name">🕐 Zeitplan</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_zeitplan_sub">Einnahmezeiten</div>
     </div>
-    <div class="pp-item" id="cfgMedDosierung" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_dosierung_name">⚖ Dosierung</div>
+    <div class="pp-item" id="cfgMedDosierung" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_dosierung_name">⚖ Dosierung</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_dosierung_sub">Menge &amp; Stärke</div>
     </div>
-    <div class="pp-item" id="cfgMedVorrat" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_vorrat_name">📦 Vorrat</div>
+    <div class="pp-item" id="cfgMedVorrat" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_vorrat_name">📦 Vorrat</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_vorrat_sub">Verknüpfung mit Vorrat</div>
     </div>
     <div class="pp-close" id="configMedikamentenClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
@@ -1427,34 +1442,80 @@ body {
   <!-- DESIGN PANEL (4. Ebene) -->
   <div class="preset-panel" id="configDesignPanel">
     <div class="pp-title" data-i18n="e4_design_titel">DESIGN <span class="pp-close" id="configDesignClose">✕</span></div>
-    <div class="pp-item" id="cfgDesignFarbschema" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_farbe_name">🎨 Farbschema</div>
+    <div class="pp-item" id="cfgDesignFarbschema" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_farbe_name">🎨 Farbschema</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_farbe_sub">Theme &amp; Akzentfarben</div>
     </div>
-    <div class="pp-item" id="cfgDesignSchrift" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_schrift_name">🔠 Schriftgröße</div>
+    <div class="pp-item" id="cfgDesignSchrift" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_schrift_name">🔠 Schriftgröße</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_schrift_sub">Lesbarkeit anpassen</div>
     </div>
-    <div class="pp-item" id="cfgDesignLayout" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_layout_name">▦ Layout</div>
+    <div class="pp-item" id="cfgDesignLayout" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_layout_name">▦ Layout</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_layout_sub">Anordnung der Elemente</div>
     </div>
+    <div class="pp-item" id="cfgDesignAusloeser" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">⚡ Auslöser</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Wort · Messwert · Ereignis</div>
+    </div>
     <div class="pp-close" id="configDesignClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
+  </div>
+
+  <!-- FARBSCHEMA PANEL (5. Ebene — Gerüst-Palette) -->
+  <div class="preset-panel" id="configFarbschemaPanel">
+    <div class="pp-title">FARBSCHEMA <span class="pp-close" id="configFarbschemaClose">✕</span></div>
+    <div class="pp-item" id="paletteWarmgold" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">☀️ Warmgold</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Creme &amp; Gold — Standard</div>
+    </div>
+    <div class="pp-item" id="paletteSteelblue" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);">🌊 Steel-Blue</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Kühles Blau</div>
+    </div>
+    <div class="pp-close" id="configFarbschemaClose2" style="text-align:right;margin-top:4px;">Schließen</div>
+  </div>
+
+  <!-- AUSLÖSER PANEL (Gerüst — Achse 2, nur Anzeige) -->
+  <div class="preset-panel" id="configAusloeserPanel">
+    <div class="pp-title">AUSLÖSER <span class="pp-close" id="configAusloeserClose">✕</span></div>
+    <div class="pp-item ausloeser-klickbar" id="ausloeserBenjaminWort" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);cursor:pointer;">
+      <div class="pp-item-name" style="color:var(--color-akzent);">🗣️ Benjamin — Wort</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Typ: wort</div>
+      <div class="ausloeser-detail" id="ausloeserBenjaminWortDetail" style="display:none;color:#C8A060;font-size:11px;margin-top:4px;">Wort: „SKATA"</div>
+    </div>
+    <div class="pp-item ausloeser-klickbar" id="ausloeserHerbertMesswert" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);cursor:pointer;">
+      <div class="pp-item-name" style="color:var(--color-akzent);">📊 Herbert — Messwert</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Typ: messwert</div>
+      <div class="ausloeser-detail" id="ausloeserHerbertMesswertDetail" style="display:none;color:#C8A060;font-size:11px;margin-top:4px;">Feld: bpm · Schwelle: ≥ 120</div>
+    </div>
+    <div class="pp-item ausloeser-klickbar" id="ausloeserKindEreignis" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);cursor:pointer;">
+      <div class="pp-item-name" style="color:var(--color-akzent);">⏰ Kind — Ereignis</div>
+      <div class="pp-item-sub" style="color:#C8A060;">Typ: ereignis</div>
+      <div class="ausloeser-detail" id="ausloeserKindEreignisDetail" style="display:none;color:#C8A060;font-size:11px;margin-top:4px;">
+        Wenn: „bestätigt"
+        <div style="margin-top:8px;font-size:10px;letter-spacing:.08em;color:#C8A060;">MUTTER BENACHRICHTIGEN</div>
+        <div style="display:flex;gap:6px;margin-top:4px;">
+          <div id="kindMutterImmer" onclick="event.stopPropagation();setKindMutterModus('immer')" style="flex:1;text-align:center;padding:6px 4px;border-radius:8px;border:1px solid rgba(200,160,80,0.4);background:rgba(200,160,80,0.15);color:var(--color-akzent);cursor:pointer;">Immer</div>
+          <div id="kindMutterAusbleiben" onclick="event.stopPropagation();setKindMutterModus('ausbleiben')" style="flex:1;text-align:center;padding:6px 4px;border-radius:8px;border:1px solid rgba(200,160,80,0.4);background:transparent;color:#C8A060;cursor:pointer;">Nur bei Ausbleiben</div>
+        </div>
+      </div>
+    </div>
+    <div class="pp-close" id="configAusloeserClose2" style="text-align:right;margin-top:4px;">Schließen</div>
   </div>
 
   <!-- SCHNITTSTELLEN PANEL (4. Ebene) -->
   <div class="preset-panel" id="configSchnittstellenPanel">
     <div class="pp-title" data-i18n="e4_schnitt_titel">SCHNITTSTELLEN <span class="pp-close" id="configSchnittstellenClose">✕</span></div>
-    <div class="pp-item" id="cfgSchnittstellenPersonen" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_personen_name">👥 Berechtigte Personen</div>
+    <div class="pp-item" id="cfgSchnittstellenPersonen" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_personen_name">👥 Berechtigte Personen</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_personen_sub">Wer sieht was</div>
     </div>
-    <div class="pp-item" id="cfgSchnittstellenGeraete" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_geraete_name">📱 Geräte-Kopplung</div>
+    <div class="pp-item" id="cfgSchnittstellenGeraete" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_geraete_name">📱 Geräte-Kopplung</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_geraete_sub">Verbundene Geräte</div>
     </div>
-    <div class="pp-item" id="cfgSchnittstellenApps" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_apps_name">🔗 Externe Apps</div>
+    <div class="pp-item" id="cfgSchnittstellenApps" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_apps_name">🔗 Externe Apps</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_apps_sub">Anbindung &amp; Schnittstellen</div>
     </div>
     <div class="pp-close" id="configSchnittstellenClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
@@ -1463,24 +1524,24 @@ body {
   <!-- INSTALLATION PANEL (4. Ebene) -->
   <div class="preset-panel" id="configInstallationPanel">
     <div class="pp-title" data-i18n="e4_install_titel">INSTALLATION <span class="pp-close" id="configInstallationClose">✕</span></div>
-    <div class="pp-item" id="cfgInstallOnboarding" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_onboard_name">🚀 Ersteinrichtung</div>
+    <div class="pp-item" id="cfgInstallOnboarding" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_onboard_name">🚀 Ersteinrichtung</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_onboard_sub">Onboarding</div>
     </div>
-    <div class="pp-item" id="cfgInstallUpdates" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_updates_name">🔄 Updates</div>
+    <div class="pp-item" id="cfgInstallUpdates" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_updates_name">🔄 Updates</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_updates_sub">Versionierung</div>
     </div>
-    <div class="pp-item" id="cfgInstallBackup" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_backup_name">💾 Backup</div>
+    <div class="pp-item" id="cfgInstallBackup" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_backup_name">💾 Backup</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_backup_sub">Datenexport</div>
     </div>
-    <div class="pp-item" id="cfgInstallDatenschutz" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_dsz_name">🔒 Datenschutz</div>
+    <div class="pp-item" id="cfgInstallDatenschutz" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_dsz_name">🔒 Datenschutz</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_dsz_sub">Privatsphäre &amp; Schutz</div>
     </div>
-    <div class="pp-item" id="cfgInstallSprache" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);">
-      <div class="pp-item-name" style="color:#F5C840;" data-i18n="e4_sprache_name">🌐 Sprache</div>
+    <div class="pp-item" id="cfgInstallSprache" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);">
+      <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e4_sprache_name">🌐 Sprache</div>
       <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e4_sprache_sub">folgt dem Gerät · individuell wählbar</div>
     </div>
     <div class="pp-close" id="configInstallationClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
@@ -1489,23 +1550,23 @@ body {
   <!-- DATENSCHUTZ PANEL (5. Ebene) -->
   <div class="preset-panel" id="configDatenschutzPanel">
     <div class="pp-title" data-i18n="e5_dsz_titel">DATENSCHUTZ <span class="pp-close" id="configDatenschutzClose">✕</span></div>
-    <div class="pp-item dsz-row" id="cfgDszErklaerung" onclick="dszToggle(this)" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+    <div class="pp-item dsz-row" id="cfgDszErklaerung" onclick="dszToggle(this)" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
       <div>
-        <div class="pp-item-name" style="color:#F5C840;" data-i18n="e5_erklaerung_name">📄 Datenschutzerklärung</div>
+        <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e5_erklaerung_name">📄 Datenschutzerklärung</div>
         <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e5_erklaerung_sub">Gelesen &amp; verstanden</div>
       </div>
       <div class="dsz-check" style="font-size:var(--fs-xl);color:#3A3A52;">○</div>
     </div>
-    <div class="pp-item dsz-row" id="cfgDszEinwilligung" onclick="dszToggle(this)" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+    <div class="pp-item dsz-row" id="cfgDszEinwilligung" onclick="dszToggle(this)" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
       <div>
-        <div class="pp-item-name" style="color:#F5C840;" data-i18n="e5_einwilligung_name">🤝 Einwilligung</div>
+        <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e5_einwilligung_name">🤝 Einwilligung</div>
         <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e5_einwilligung_sub">Datenverarbeitung</div>
       </div>
       <div class="dsz-check" style="font-size:var(--fs-xl);color:#3A3A52;">○</div>
     </div>
-    <div class="pp-item dsz-row" id="cfgDszAgb" onclick="dszToggle(this)" style="border-left:3px solid #F5C840;background:rgba(200,160,80,0.15);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+    <div class="pp-item dsz-row" id="cfgDszAgb" onclick="dszToggle(this)" style="border-left:3px solid var(--color-akzent);background:rgba(200,160,80,0.15);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
       <div>
-        <div class="pp-item-name" style="color:#F5C840;" data-i18n="e5_agb_name">📋 Nutzungsbedingungen</div>
+        <div class="pp-item-name" style="color:var(--color-akzent);" data-i18n="e5_agb_name">📋 Nutzungsbedingungen</div>
         <div class="pp-item-sub" style="color:#C8A060;" data-i18n="e5_agb_sub">AGB</div>
       </div>
       <div class="dsz-check" style="font-size:var(--fs-xl);color:#3A3A52;">○</div>
@@ -1520,13 +1581,17 @@ body {
       <div class="pp-item-name" style="color:#1E3D52;">🫁 Herbert · Lungenfibrose</div>
       <div class="pp-item-sub" style="color:#2A5A7A;">Lungenfibrose · Diabetes · Bluthochdruck</div>
     </div>
+    <div class="pp-item" id="ppForumMia" style="display:block;border-left:3px solid #8A8A8A;background:rgba(138,138,138,0.08);">
+      <div class="pp-item-name" style="color:#1A1A1A;">👶 Mia · Kind-Preset</div>
+      <div class="pp-item-sub" style="color:#8A8A8A;">Epilepsie · 8 J.</div>
+    </div>
     <div class="pp-item" id="ppForumBenjamin" style="display:none;border-left:3px solid #C8A010;background:rgba(200,160,10,0.08);">
       <div class="pp-item-name" style="color:#5A4000;">👴 Benjamin · Parkinson</div>
       <div class="pp-item-sub" style="color:#7A6020;">Parkinson · Diabetes · Pflegedienst Sonnenschein</div>
     </div>
-    <div class="pp-item" id="ppNina" style="border-left:3px solid #4A7FA5;background:rgba(74,127,165,0.12);">
-      <div class="pp-item-name" style="color:#4A7FA5;">👩 Ελένη · Σπαστική Διπληγία</div>
-      <div class="pp-item-sub" style="color:#6A9FBF;">Preset · Spastische Diplegie · 18 J.</div>
+    <div class="pp-item" id="ppNina" style="display:block;border-left:3px solid #1A6FAD;background:rgba(26,111,173,0.08);">
+      <div class="pp-item-name" style="color:#0A4A80;">👩 Ελένη · Σπαστική Διπληγία</div>
+      <div class="pp-item-sub" style="color:#1A6FAD;">Spastische Diplegie · 18 J.</div>
     </div>
     <div class="pp-close" id="forumClose2" style="text-align:right;margin-top:4px;" data-i18n="pp_schliessen">Schließen</div>
   </div>
@@ -1535,7 +1600,7 @@ body {
   <div class="right-sidebar">
     <!-- Benjamin Notrufkette Trigger -->
     <div class="tool-btn" id="tbBenjaminNotruf" style="display:flex;" onclick="triggerBenjaminNotruf()">
-      <span class="tool-icon" style="color:#F5C840;">📡</span>
+      <span class="tool-icon" style="color:var(--color-akzent);">📡</span>
       <span class="tool-label">KETTE</span>
       <div class="tool-tip">Notrufkette Demo-Trigger</div>
     </div>
@@ -1594,6 +1659,23 @@ body {
       <span class="tool-icon">👥</span>
       <span class="tool-label">FB</span>
       <div class="tool-tip">Facebook öffnen</div>
+    </div>
+    <!-- Mia Buttons -->
+    <div class="tool-btn" id="tbMiaTikTok" style="display:none;" onclick="window.open('https://tiktok.com','_blank')">
+      <span class="tool-icon">🎬</span>
+      <span class="tool-label">TIKT</span>
+    </div>
+    <div class="tool-btn" id="tbMiaInsta" style="display:none;" onclick="window.open('https://instagram.com','_blank')">
+      <span class="tool-icon">📸</span>
+      <span class="tool-label">INST</span>
+    </div>
+    <div class="tool-btn" id="tbMiaSpotify" style="display:none;" onclick="window.open('https://open.spotify.com','_blank')">
+      <span class="tool-icon">🎵</span>
+      <span class="tool-label">SPOT</span>
+    </div>
+    <div class="tool-btn" id="tbMiaTelefon" style="display:none;" onclick="zeigeGhostBeleg('📞','Mama anrufen')">
+      <span class="tool-icon">📞</span>
+      <span class="tool-label">MAMA</span>
     </div>
     <!-- Standard Buttons -->
     <div class="tool-btn" id="tbPflege">
@@ -1705,12 +1787,23 @@ body {
   </div>
 
 
+  <!-- GHOST PANEL MIA -->
+  <div class="tool-panel" id="ghostMia" style="display:none;">
+    <div class="tp-title">MIA <span class="tp-close" data-panel="ghostMia">✕</span></div>
+    <div class="tp-row"><span class="tp-icon">📱</span><span class="tp-rname">TikTok · öffnen</span></div>
+    <div class="tp-row"><span class="tp-icon">📸</span><span class="tp-rname">Instagram · öffnen</span></div>
+    <div class="tp-row"><span class="tp-icon">🎵</span><span class="tp-rname">Spotify · öffnen</span></div>
+    <div class="tp-row"><span class="tp-icon">📞</span><span class="tp-rname">Telefon · Mama anrufen</span></div>
+    <div class="tp-row"><span class="tp-icon">📷</span><span class="tp-rname">Kamera · öffnen</span></div>
+  </div>
+
+
   <!-- ELENI HINWEIS-MODAL -->
   <div id="eleniHinweisModal" style="display:none;position:absolute;inset:0;z-index:9000;background:rgba(10,74,128,0.45);align-items:center;justify-content:center;border-radius:20px;">
-    <div style="background:#F5F8FF;border-radius:16px;padding:28px 24px 20px;max-width:320px;width:90%;box-shadow:0 4px 24px rgba(26,111,173,0.18);border:1.5px solid #1A6FAD;">
-      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;color:#0A4A80;margin-bottom:6px;letter-spacing:0.04em;">ΟΔΗΓΙΕΣ ΛHΨΗΣ</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-xl);font-weight:500;color:#0A4A80;margin-bottom:16px;">Βακλοφένη 10 mg</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-md);color:#1A6FAD;background:#EAF3FB;border-radius:10px;padding:12px 14px;margin-bottom:20px;">
+    <div id="eleniHinweisCard" style="background:#F5F8FF;border-radius:16px;padding:28px 24px 20px;max-width:320px;width:90%;box-shadow:0 4px 24px rgba(26,111,173,0.18);border:1.5px solid #1A6FAD;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;color:#0A4A80;margin-bottom:6px;letter-spacing:0.04em;" id="eleniHinweisLabel">ΟΔΗΓΙΕΣ ΛHΨΗΣ</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-xl);font-weight:500;color:#0A4A80;margin-bottom:16px;" id="eleniHinweisMedName">Βακλοφένη 10 mg</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-md);color:#1A6FAD;background:#EAF3FB;border-radius:10px;padding:12px 14px;margin-bottom:20px;" id="eleniHinweisMedInfo">
         🍽 Με φαγητό<br>💧 Με ένα ποτήρι νερό
       </div>
       <button id="eleniHinweisClose" style="width:100%;padding:12px;background:#1A6FAD;color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">✕ Κλείσιμο</button>
@@ -1827,7 +1920,7 @@ body {
 
   <!-- SCAN OVERLAY -->
   <div class="scan-overlay" id="scanOverlay">
-    <div style="font-size:var(--fs-sm);color:#7A4800;letter-spacing:.1em;font-family:'DM Mono',monospace;margin-bottom:12px;">IDENTIFIZIERE</div>
+    <div style="font-size:var(--fs-sm);color:var(--color-akzent-dunkel);letter-spacing:.1em;font-family:'DM Mono',monospace;margin-bottom:12px;">IDENTIFIZIERE</div>
     <div class="scan-box"><div class="scan-line" id="scanLine"></div></div>
     <div class="scan-progress"><div class="scan-bar-inner" id="scanBar"></div></div>
     <div class="scan-med-name" id="scanMedName">IBUPROFEN 400mg</div>
@@ -1838,7 +1931,7 @@ body {
 
     <!-- S1 SCANNER -->
     <div class="screen active" id="s-scanner">
-      <div class="med-header" id="scannerHeader" style="text-align:center;padding:2px 0 4px;border-bottom:1px solid #C8860A;margin-bottom:4px;">
+      <div class="med-header" id="scannerHeader" style="text-align:center;padding:2px 0 4px;border-bottom:1px solid var(--color-akzent-tief);margin-bottom:4px;">
         <div class="med-name" id="scannerName">Benjamin</div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
@@ -1885,7 +1978,7 @@ body {
             <path d="M0,18 C10,18 15,16 20,12 C28,6 32,4 36,4 C40,4 44,6 50,14 C56,18 60,19 70,19 C80,19 85,18 100,15 C115,12 125,8 135,6 C145,4 150,4 160,8 C170,12 175,16 185,18 C190,19 195,19 200,19" fill="none" stroke="rgba(106,143,239,0.5)" stroke-width="1.5"/>
             <line x1="128" y1="4" x2="128" y2="22" stroke="rgba(106,143,239,0.4)" stroke-width="0.8" stroke-dasharray="2,2"/>
             <circle cx="128" cy="7" r="2.5" fill="#6A8FEF" opacity="0.9"/>
-            <circle cx="100" cy="15" r="2" fill="#F5C840" opacity="0.85"/>
+            <circle cx="100" cy="15" r="2" fill="var(--color-akzent)" opacity="0.85"/>
           </svg>
         </div>
 
@@ -1894,7 +1987,7 @@ body {
         <div id="pflegeBlock" style="display:none;align-items:center;gap:8px;background:rgba(122,72,0,0.35);border-radius:14px;padding:7px 14px;margin:6px auto 0;pointer-events:none;animation:pflegePulse 2.4s ease-in-out infinite;">
           <svg width="28" height="26" viewBox="0 0 28 26"><circle cx="14" cy="13" r="13" fill="#F5A800"/><text x="14" y="17" text-anchor="middle" font-size="8" font-weight="600" fill="#7A3000" font-family="Arial">♥</text></svg>
           <div style="text-align:left;">
-            <div style="font-size:var(--fs-sm);font-weight:700;color:#F5C840;font-family:'DM Sans',sans-serif;">PFLEGEDIENST SONNENSCHEIN</div>
+            <div style="font-size:var(--fs-sm);font-weight:700;color:var(--color-akzent);font-family:'DM Sans',sans-serif;">PFLEGEDIENST SONNENSCHEIN</div>
             <div style="font-size:var(--fs-sm);color:#C89040;font-family:'DM Sans',sans-serif;">verbunden · Do 14:00</div>
           </div>
         </div>
@@ -1962,7 +2055,7 @@ body {
             <div class="tm" style="left:36%"><div class="td now" id="rampDot"></div><div class="tl hi">12:00<br>L-Dopa</div></div>
             <div class="tm" style="left:64%"><div class="td pend" id="nextDot"></div><div class="tl">13:00<br>Metfor.</div></div>
           </div>
-          <div class="tl-times"><span>11:00</span><span>14:00</span></div>
+          <div class="tl-times" id="tlTimes"><span>11:00</span><span>14:00</span></div>
         </div>
         <div class="med-card" id="medCard1">
           <div class="mc-title" id="medCard1Title" style="display:none;">L-Dopa / Benserazid 100/25 mg</div>
@@ -2317,6 +2410,18 @@ body {
             <div style="text-align:center;padding:40px 0;color:#808060;font-size:var(--fs-md);font-family:'DM Sans',sans-serif;">D6 · Konfigurierbar</div>
           </div><!-- /dp6 -->
 
+          <!-- MIA DASHBOARD -->
+          <div class="benjamin-slide" id="dp-mia" style="display:none;">
+            <div style="background:#F7F7FA;border-radius:16px;padding:16px;margin-bottom:7px;">
+              <div style="font-size:var(--fs-sm);font-weight:700;letter-spacing:.06em;color:#5A5A66;margin-bottom:12px;">NÄCHSTER TERMIN</div>
+              <div style="background:#FFFFFF;border:1px solid #E8E4DC;border-radius:14px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                <div style="font-size:var(--fs-sm);font-weight:700;letter-spacing:.06em;color:#5A5A66;margin-bottom:4px;">KINDERNEUROLOGIE</div>
+                <div style="font-size:var(--fs-xl);font-weight:500;font-family:'DM Sans',sans-serif;color:#3A1A00;margin-bottom:4px;" id="miaNaechsterTermin">—</div>
+                <div style="font-size:var(--fs-sm);color:#8A8A8A;font-family:'DM Sans',sans-serif;">Alle 14 Tage · wiederkehrend</div>
+              </div>
+            </div>
+          </div><!-- /dp-mia -->
+
         </div><!-- /benjaminTrack -->
       </div><!-- /benjaminViewport -->
 
@@ -2444,8 +2549,8 @@ body {
             <div class="dash-card"><div class="dv" style="color:#FF6B9D;font-size:var(--fs-md);">98%</div><div class="du">SpO₂</div><div class="dl">SAUERSTOFF</div>
               <svg width="100%" height="18" viewBox="0 0 80 18"><polyline points="0,9 20,8 40,10 60,8 80,9" fill="none" stroke="#FF6B9D" stroke-width="1.2"/></svg>
             </div>
-            <div class="dash-card"><div class="dv" style="color:#F5C840;">36.7</div><div class="du">°C</div><div class="dl">TEMP</div>
-              <svg width="100%" height="18" viewBox="0 0 80 18"><polyline points="0,9 20,8 40,10 50,8 80,9" fill="none" stroke="#F5C840" stroke-width="1.2"/></svg>
+            <div class="dash-card"><div class="dv" style="color:var(--color-akzent);">36.7</div><div class="du">°C</div><div class="dl">TEMP</div>
+              <svg width="100%" height="18" viewBox="0 0 80 18"><polyline points="0,9 20,8 40,10 50,8 80,9" fill="none" stroke="var(--color-akzent)" stroke-width="1.2"/></svg>
             </div>
             <div class="dash-card"><div class="dv" style="color:#C080FF;font-size:var(--fs-md);">116/74</div><div class="du">mmHg</div><div class="dl">BLUTDRUCK</div>
               <svg width="100%" height="18" viewBox="0 0 80 18"><polyline points="0,9 16,8 32,10 48,8 64,9 80,9" fill="none" stroke="#C080FF" stroke-width="1.2"/></svg>
@@ -2486,7 +2591,7 @@ body {
           <div class="dash-card" style="margin-bottom:0;">
             <div style="font-size:var(--fs-sm);color:#6A8FEF;font-family:'DM Sans',sans-serif;font-weight:600;margin-bottom:3px;">ETAGEN HEUTE</div>
             <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div class="dv" style="color:#F5C840;font-size:var(--fs-xl);">12</div>
+              <div class="dv" style="color:var(--color-akzent);font-size:var(--fs-xl);">12</div>
               <div style="font-size:var(--fs-sm);color:#C0CFFF;font-family:'DM Mono',monospace;">Ziel 10 · ✓ erreicht</div>
             </div>
           </div>
@@ -2537,7 +2642,7 @@ body {
             <div style="font-size:var(--fs-sm);color:#E0E8FF;font-family:'DM Mono',monospace;margin-bottom:3px;">🏃 LAUF · HEUTE 06:45</div>
             <div style="display:flex;justify-content:space-between;">
               <div><div class="dv" style="color:#4AE040;font-size:var(--fs-xl);">8.1</div><div class="du">km</div></div>
-              <div style="text-align:right;"><div class="dv" style="color:#F5C840;font-size:var(--fs-xl);">42:18</div><div class="du">Zeit</div></div>
+              <div style="text-align:right;"><div class="dv" style="color:var(--color-akzent);font-size:var(--fs-xl);">42:18</div><div class="du">Zeit</div></div>
               <div style="text-align:right;"><div class="dv" style="color:#FF8C42;font-size:var(--fs-xl);">5:13</div><div class="du">Pace/km</div></div>
             </div>
           </div>
@@ -2566,7 +2671,7 @@ body {
             <div class="dash-card"><div style="font-size:var(--fs-sm);color:#FF8C42;font-family:'DM Sans',sans-serif;font-weight:600;">STRESS</div><div class="dv" style="color:#4AE040;font-size:var(--fs-xl);">24</div><div class="du">niedrig</div></div>
             <div class="dash-card"><div style="font-size:var(--fs-sm);color:#60CFFF;font-family:'DM Sans',sans-serif;font-weight:600;">KÖRPERENERGIE</div><div class="dv" style="color:#4AE040;font-size:var(--fs-xl);">74</div><div class="du">gut</div></div>
             <div class="dash-card"><div style="font-size:var(--fs-sm);color:#A070FF;font-family:'DM Sans',sans-serif;font-weight:600;">HRV STATUS</div><div class="dv" style="color:#4AE040;font-size:var(--fs-md);">48ms</div><div class="du">ausgewogen</div></div>
-            <div class="dash-card"><div style="font-size:var(--fs-sm);color:#F5C840;font-family:'DM Sans',sans-serif;font-weight:600;">HYDRATION</div><div class="dv" style="color:#60CFFF;font-size:var(--fs-xl);">1.4L</div><div class="du">Ziel: 2.0L</div>
+            <div class="dash-card"><div style="font-size:var(--fs-sm);color:var(--color-akzent);font-family:'DM Sans',sans-serif;font-weight:600;">HYDRATION</div><div class="dv" style="color:#60CFFF;font-size:var(--fs-xl);">1.4L</div><div class="du">Ziel: 2.0L</div>
               <div style="margin-top:3px;background:rgba(0,0,0,0.2);border-radius:3px;height:4px;"><div style="width:70%;height:100%;background:#60CFFF;border-radius:3px;"></div></div>
             </div>
           </div>
@@ -2616,8 +2721,8 @@ body {
             </div>
             <div class="dash-card" style="padding:5px 7px;">
               <div style="font-size:var(--fs-sm);color:#E0E8FF;font-family:'DM Mono',monospace;">Kohlenhydrate</div>
-              <div style="font-size:var(--fs-md);color:#F5C840;font-weight:600;">204g</div>
-              <div style="background:rgba(0,0,0,0.2);border-radius:2px;height:3px;margin-top:2px;"><div style="width:60%;height:100%;background:#F5C840;border-radius:2px;"></div></div>
+              <div style="font-size:var(--fs-md);color:var(--color-akzent);font-weight:600;">204g</div>
+              <div style="background:rgba(0,0,0,0.2);border-radius:2px;height:3px;margin-top:2px;"><div style="width:60%;height:100%;background:var(--color-akzent);border-radius:2px;"></div></div>
             </div>
             <div class="dash-card" style="padding:5px 7px;">
               <div style="font-size:var(--fs-sm);color:#E0E8FF;font-family:'DM Mono',monospace;">Fett</div>
@@ -2628,7 +2733,7 @@ body {
           <div class="dash-card" style="margin-bottom:0;">
             <div style="font-size:var(--fs-sm);color:#E0E8FF;font-family:'DM Mono',monospace;margin-bottom:2px;">VITAMIN D · SPIEGEL</div>
             <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div class="dv" style="color:#F5C840;font-size:var(--fs-xl);">38 ng/ml</div>
+              <div class="dv" style="color:var(--color-akzent);font-size:var(--fs-xl);">38 ng/ml</div>
               <div style="font-size:var(--fs-sm);color:#4AE040;font-family:'DM Sans',sans-serif;font-weight:700;">optimal ✓</div>
             </div>
           </div>
@@ -2792,7 +2897,7 @@ body {
             <!-- BZ Demo-Knopf -->
             <div style="display:flex;gap:5px;margin-top:-2px;">
               <button onclick="setBzAlarm('normal')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(74,200,64,0.15);color:#4AE040;border:1px solid rgba(74,200,64,0.3);">Normal</button>
-              <button onclick="setBzAlarm('hoch')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(245,200,64,0.15);color:#F5C840;border:1px solid rgba(245,200,64,0.3);">Überzucker</button>
+              <button onclick="setBzAlarm('hoch')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(245,200,64,0.15);color:var(--color-akzent);border:1px solid rgba(245,200,64,0.3);">Überzucker</button>
               <button onclick="setBzAlarm('tief')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(200,90,48,0.15);color:#C85A30;border:1px solid rgba(200,90,48,0.3);">Unterzucker</button>
             </div>
             <!-- SpO2 -->
@@ -2814,7 +2919,7 @@ body {
             <!-- SpO2 Demo-Knöpfe -->
             <div style="display:flex;gap:5px;margin-top:-2px;">
               <button onclick="setSpo2Alarm('normal')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(74,200,64,0.15);color:#4AE040;border:1px solid rgba(74,200,64,0.3);">Normal</button>
-              <button onclick="setSpo2Alarm('kritisch')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(245,200,64,0.15);color:#F5C840;border:1px solid rgba(245,200,64,0.3);">Kritisch</button>
+              <button onclick="setSpo2Alarm('kritisch')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(245,200,64,0.15);color:var(--color-akzent);border:1px solid rgba(245,200,64,0.3);">Kritisch</button>
               <button onclick="setSpo2Alarm('akut')" style="flex:1;padding:5px 2px;border-radius:8px;font-size:var(--fs-xs);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;background:rgba(200,90,48,0.15);color:#C85A30;border:1px solid rgba(200,90,48,0.3);">Akut</button>
             </div>
             <!-- HF 24h -->
@@ -2986,45 +3091,45 @@ body {
 
     <!-- BENJAMIN NOTRUFKETTE — BEIDE STUFEN GESTAPELT, EIN SCREEN -->
     <div class="screen" id="s-notrufkette" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
-      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:12px;text-align:center;">NOTRUFKETTE</div>
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:12px;text-align:center;">NOTRUFKETTE</div>
 
       <!-- STUFE 1 -->
-      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 1 · ERSTE NACHRICHT</div>
-      <div id="nkContact1" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
+      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 1 · ERSTE NACHRICHT</div>
+      <div id="nkContact1" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
       <div style="height:6px;background:rgba(200,130,10,0.2);border-radius:4px;margin-bottom:8px;overflow:hidden;">
-        <div id="nkBar" style="height:100%;width:100%;background:#F5C840;border-radius:4px;transform-origin:left;transition:transform 30s linear;"></div>
+        <div id="nkBar" style="height:100%;width:100%;background:var(--color-akzent);border-radius:4px;transform-origin:left;transition:transform 30s linear;"></div>
       </div>
-      <div id="nkDigits" style="font-size:var(--fs-sm);color:#7A4800;font-family:'DM Mono',monospace;text-align:right;margin-bottom:12px;">0:30</div>
-      <button onclick="nkRueckruf()" style="width:100%;padding:12px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:#F5C840;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-bottom:20px;">● RÜCKRUF KAM</button>
+      <div id="nkDigits" style="font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;text-align:right;margin-bottom:12px;">0:30</div>
+      <button onclick="nkRueckruf()" style="width:100%;padding:12px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:var(--color-akzent);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-bottom:20px;">● RÜCKRUF KAM</button>
 
       <!-- STUFE 2 -->
-      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 2 · ALLE KONTAKTE GLEICHZEITIG</div>
+      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 2 · ALLE KONTAKTE GLEICHZEITIG</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-        <div id="nkContact2a" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
-        <div id="nkContact2b" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Constantin</div>
-        <div id="nkContact2c" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Emanuel</div>
-        <div id="nkContact2d" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Cornelia</div>
+        <div id="nkContact2a" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
+        <div id="nkContact2b" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Constantin</div>
+        <div id="nkContact2c" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Emanuel</div>
+        <div id="nkContact2d" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Cornelia</div>
       </div>
-      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
     </div>
 
     <!-- NOTRUFKETTE EINRICHTEN — Ketten-Bauer (Grundgerüst, S1) -->
     <div class="screen" id="s-kette-bauer" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
       <div id="kbBauer">
-      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">NOTRUFKETTE EINRICHTEN</div>
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">NOTRUFKETTE EINRICHTEN</div>
 
       <div style="margin-bottom:12px;">
         <div id="kbNameTrigger" onclick="kbToggleName()" style="display:flex;align-items:center;justify-content:space-between;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.3);border-radius:10px;padding:10px 12px;cursor:pointer;">
           <span style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;">NAME DER KETTE</span>
           <span id="kbNameWert" style="font-size:var(--fs-sm);color:#A07030;font-family:'DM Sans',sans-serif;flex:1;margin:0 10px;text-align:right;">Bitte wählen</span>
-          <span style="color:#C8860A;font-size:var(--fs-xs);">▾</span>
+          <span style="color:var(--color-akzent-tief);font-size:var(--fs-xs);">▾</span>
         </div>
         <div id="kbNameListe" style="display:none;margin-top:6px;">
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Claudia</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Cornelia</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Wochenende</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Urlaub</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;font-size:var(--fs-sm);color:#7A4800;font-family:'DM Sans',sans-serif;cursor:pointer;">Krise</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Claudia</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Cornelia</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Wochenende</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Urlaub</div>
+          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Krise</div>
         </div>
       </div>
 
@@ -3032,28 +3137,28 @@ body {
 
       <div id="kbAddBtn" onclick="kbAddStation()" style="display:flex;align-items:center;justify-content:center;background:rgba(200,130,10,0.06);border:1px dashed rgba(200,130,10,0.4);border-radius:10px;padding:12px;margin-bottom:12px;font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;cursor:pointer;">+ STATION</div>
 
-      <div id="kbBestBtn" onclick="kbBestaetigen()" style="display:flex;align-items:center;justify-content:center;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;padding:13px;margin-bottom:16px;font-size:var(--fs-sm);letter-spacing:.1em;color:#7A4800;font-family:'DM Mono',monospace;font-weight:500;cursor:pointer;">✓ BESTÄTIGEN</div>
+      <div id="kbBestBtn" onclick="kbBestaetigen()" style="display:flex;align-items:center;justify-content:center;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;padding:13px;margin-bottom:16px;font-size:var(--fs-sm);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;font-weight:500;cursor:pointer;">✓ BESTÄTIGEN</div>
       </div><!-- /kbBauer -->
 
       <div id="kbBuehne" style="display:none;"></div>
 
-      <button onclick="kbReset(); show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+      <button onclick="kbReset(); show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
     </div><!-- /s-kette-bauer -->
 
     <!-- KONTAKTVORRAT — zentrale Kontaktliste (S1) -->
     <div class="screen" id="s-kontaktvorrat" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
-      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">KONTAKTVORRAT</div>
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">KONTAKTVORRAT</div>
 
       <div id="kvListe"></div>
 
       <div id="kvAddBtn" onclick="kvAddKontakt()" style="display:flex;align-items:center;justify-content:center;background:rgba(200,130,10,0.06);border:1px dashed rgba(200,130,10,0.4);border-radius:10px;padding:12px;margin-bottom:16px;font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;cursor:pointer;">+ KONTAKT</div>
 
-      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
 
       <div id="kvFairOverlay" style="display:none;position:fixed;inset:0;background:rgba(60,40,10,0.35);align-items:center;justify-content:center;z-index:500;padding:20px;">
         <div style="width:260px;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:12px;padding:20px 18px;">
-          <div style="font-size:var(--fs-xs);letter-spacing:.14em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">EINE FAIRE FRAGE</div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;line-height:1.5;text-align:center;margin-bottom:8px;">Diese Nummer heißt:<br><b id="kvFairName">der Kontakt</b> wird in deinem Notfall gerufen.</div>
+          <div style="font-size:var(--fs-xs);letter-spacing:.14em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">EINE FAIRE FRAGE</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);line-height:1.5;text-align:center;margin-bottom:8px;">Diese Nummer heißt:<br><b id="kvFairName">der Kontakt</b> wird in deinem Notfall gerufen.</div>
           <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-xs);color:#A07030;text-align:center;margin-bottom:16px;">Fair ist: frag ihn vorher.</div>
           <div onclick="kvBestaetigeFair()" style="background:rgba(74,224,64,0.12);border:1px solid rgba(74,224,64,0.5);border-radius:10px;padding:13px;text-align:center;cursor:pointer;margin-bottom:8px;font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.08em;color:#2d9b6f;font-weight:500;">✓ HAB GEFRAGT — EINVERSTANDEN</div>
           <div onclick="kvSchliesseFair()" style="text-align:center;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:var(--fs-xs);color:#A07030;">✕ Zurück</div>
@@ -3061,34 +3166,102 @@ body {
       </div>
     </div><!-- /s-kontaktvorrat -->
 
+    <!-- KIND-NOTFALLKETTE — Medikamenten-Erinnerung (Gerüst, Schritt 1: bestätigt-Zweig) -->
+    <div class="screen" id="s-kind-notfallkette" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:12px;text-align:center;">KIND · MEDIKAMENTEN-ERINNERUNG</div>
+
+      <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:6px;">HEUTE · 10:30 · SCHULPAUSE</div>
+      <div style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;margin-bottom:16px;">💊 Zeit für deine Medizin</div>
+
+      <button id="kindBestaetigenBtn" onclick="triggerKindBestaetigt()" style="width:100%;padding:12px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:var(--color-akzent);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-bottom:16px;">✓ MEDIZIN GENOMMEN</button>
+
+      <div id="kindCountdown" style="display:none;font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:16px;text-align:center;">⏳ Noch keine Rückmeldung … <span id="kindCountdownZahl">6</span>s bis 10:45</div>
+
+      <div id="kindNachrichtMutter" style="display:none;padding:8px 10px;background:rgba(60,168,96,0.12);border:1px solid rgba(60,168,96,0.4);border-radius:8px;font-size:var(--fs-sm);color:#3CA860;font-family:'DM Sans',sans-serif;margin-bottom:16px;">📱 Mutter: „Medizin genommen ✓"</div>
+
+      <div id="kindNachrichtAusbleiben" style="display:none;padding:8px 10px;background:rgba(200,90,48,0.12);border:1px solid rgba(200,90,48,0.4);border-radius:8px;font-size:var(--fs-sm);color:#C85A30;font-family:'DM Sans',sans-serif;margin-bottom:16px;">📱 Mutter: „10:45 · noch nicht genommen" 📞</div>
+
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+    </div><!-- /s-kind-notfallkette -->
+
+
+
+    <!-- KIND-PRESET — eigener Screen, weiß, sachlich (Schritt 1: Grundgerüst) -->
+    <div class="screen" id="s-kind-preset" style="background:#FFFFFF;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
+      <div style="font-size:14px;letter-spacing:.1em;color:#1A1A1A;font-family:'DM Sans',sans-serif;font-weight:500;margin-bottom:2px;text-align:center;">KIND</div>
+      <div style="font-size:11px;letter-spacing:.08em;color:#8A8A8A;font-family:'DM Mono',monospace;margin-bottom:18px;text-align:center;">HEUTE</div>
+
+      <!-- Zeitstrahl 6:00-20:00 (14h), Termin 10:30 -->
+      <div style="border:1px solid #F5C840;border-radius:10px;padding:14px 12px 10px;margin-bottom:10px;">
+        <div style="font-size:11px;letter-spacing:.08em;color:#8A8A8A;font-family:'DM Mono',monospace;margin-bottom:14px;">ZEITSTRAHL</div>
+        <div style="position:relative;height:2px;background:#F5C840;margin:0 4px 6px;">
+          <div style="position:absolute;left:calc((10.5 - 6) / 14 * 100%);top:-4px;width:10px;height:10px;border-radius:50%;background:#1A1A1A;transform:translateX(-50%);"></div>
+        </div>
+        <div style="position:relative;height:16px;margin:0 4px;">
+          <div style="position:absolute;left:calc((10.5 - 6) / 14 * 100%);top:0;font-size:11px;color:#1A1A1A;font-family:'DM Mono',monospace;transform:translateX(-50%);white-space:nowrap;">10:30</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#8A8A8A;font-family:'DM Mono',monospace;margin:2px 4px 0;">
+          <span>6:00</span><span>13:00</span><span>20:00</span>
+        </div>
+      </div>
+
+      <div style="border:1px solid #F5C840;border-radius:10px;padding:12px;margin-bottom:10px;">
+        <div style="font-size:11px;letter-spacing:.08em;color:#8A8A8A;font-family:'DM Mono',monospace;margin-bottom:8px;">10:30 · ZUR GROSSEN PAUSE</div>
+        <div style="font-size:14px;color:#1A1A1A;font-family:'DM Sans',sans-serif;font-weight:500;margin-bottom:2px;">Levetiracetam 500 mg</div>
+        <div style="font-size:11px;color:#8A8A8A;font-family:'DM Sans',sans-serif;margin-bottom:8px;">Filmtablette · ½ Tablette (250 mg)</div>
+        <div style="font-size:11px;color:#8A8A8A;font-family:'DM Sans',sans-serif;">Mit einem Glas Wasser einnehmen. Nicht zerkauen.</div>
+      </div>
+
+      <div onclick="show('s-intake')" style="border:1px solid #F5C840;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;">
+        <div style="font-size:11px;letter-spacing:.08em;color:#8A8A8A;font-family:'DM Mono',monospace;">VORRAT</div>
+      </div>
+
+      <div onclick="show('s-outtake')" style="border:1px solid #F5C840;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;">
+        <div style="font-size:11px;letter-spacing:.08em;color:#8A8A8A;font-family:'DM Mono',monospace;">AUSGABE</div>
+      </div>
+
+      <div onclick="show('s-history')" style="border:1px solid #F5C840;border-radius:10px;padding:12px;margin-bottom:16px;cursor:pointer;">
+        <div style="font-size:11px;letter-spacing:.08em;color:#8A8A8A;font-family:'DM Mono',monospace;">ARCHIV</div>
+      </div>
+
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:#F5F5F5;border:1px solid #F5C840;border-radius:10px;color:#1A1A1A;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;">↩ Zurück</button>
+
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <div style="flex:1;text-align:center;padding:10px 4px;border:1px solid #F5C840;border-radius:10px;color:#B5B5B5;font-size:18px;">📞</div>
+        <div style="flex:1;text-align:center;padding:10px 4px;border:1px solid #F5C840;border-radius:10px;color:#B5B5B5;font-size:18px;">🎵</div>
+        <div style="flex:1;text-align:center;padding:10px 4px;border:1px solid #F5C840;border-radius:10px;color:#B5B5B5;font-size:18px;">💬</div>
+        <div style="flex:1;text-align:center;padding:10px 4px;border:1px solid #F5C840;border-radius:10px;color:#B5B5B5;font-size:18px;">🎬</div>
+      </div>
+    </div><!-- /s-kind-preset -->
+
     <!-- STAMMBLATT — WO / WER / LAGE (S1) -->
     <div class="screen" id="s-stammblatt" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
-      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">STAMMBLATT</div>
+      <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">STAMMBLATT</div>
 
       <div style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:13px 12px;margin-bottom:12px;">
         <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;margin-bottom:9px;">WO <span style="color:#C8A060;">· das Wichtigste</span></div>
-        <input type="text" placeholder="Straße &amp; Hausnummer" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
-        <input type="text" placeholder="PLZ &amp; Ort" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
-        <input type="text" placeholder="Stockwerk" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
-        <input type="text" placeholder="Eingang / Schlüssel" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="text" placeholder="Straße &amp; Hausnummer" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        <input type="text" placeholder="PLZ &amp; Ort" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        <input type="text" placeholder="Stockwerk" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        <input type="text" placeholder="Eingang / Schlüssel" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
       </div>
 
       <div style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:13px 12px;margin-bottom:12px;">
         <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;margin-bottom:9px;">WER</div>
-        <input type="text" placeholder="Name" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
-        <input type="tel" placeholder="Rückrufnummer" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="text" placeholder="Name" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        <input type="tel" placeholder="Rückrufnummer" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
       </div>
 
       <div style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:13px 12px;margin-bottom:16px;">
         <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;margin-bottom:9px;">LAGE</div>
-        <input type="text" placeholder="Vorerkrankung" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#7A4800;">
+        <input type="text" placeholder="Vorerkrankung" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
         <div id="smSchalter" onclick="smToggleSchalter(this)" style="display:flex;align-items:center;gap:9px;cursor:pointer;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;">
           <span class="smKasten" style="width:16px;height:16px;border-radius:5px;flex-shrink:0;border:1px solid rgba(200,130,10,0.4);background:#FFF8E4;display:flex;align-items:center;justify-content:center;font-size:11px;color:#FDFBF3;">✓</span>
           <span style="font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:#A07030;">kann nicht sprechen</span>
         </div>
       </div>
 
-      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
     </div><!-- /s-stammblatt -->
 
 
@@ -3160,12 +3333,12 @@ body {
     <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Scan/Sprache/Text) -->
     <div class="screen" id="s-scan-confirm" style="background:#FFF8E4;">
       <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#3A1A00;font-size:18px;">Ibuprofen 400mg</div>
+        <div class="med-name" style="color:var(--color-text);font-size:18px;">Ibuprofen 400mg</div>
         <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;" id="scanConfirmName">20 Filmtabletten</div>
       </div>
       <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
         <div style="font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
-        <div style="font-size:var(--fs-md);color:#3A1A00;font-family:'DM Sans',sans-serif;line-height:1.6;">
+        <div style="font-size:var(--fs-md);color:var(--color-text);font-family:'DM Sans',sans-serif;line-height:1.6;">
           <p><strong>Anwendungsgebiete:</strong> Leichte bis mäßig starke Schmerzen, Fieber, entzündliche Prozesse.</p>
           <p><strong>Dosierung:</strong> Erwachsene 400 mg, bei Bedarf alle 4–6 Stunden. Höchstdosis 1200 mg pro Tag ohne ärztliche Rücksprache nicht überschreiten.</p>
           <p><strong>Gegenanzeigen:</strong> Magen-Darm-Geschwüre, schwere Leber- oder Nierenfunktionsstörung, bekannte Überempfindlichkeit gegen NSAR.</p>
@@ -3174,7 +3347,7 @@ body {
         </div>
       </div>
       <div style="display:flex;gap:8px;padding-top:6px;">
-        <button class="btn-p" id="scanConfirmCorrect" style="background:transparent;border:1px solid #C8A840;color:#7A4800;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="scanConfirmCorrect" style="background:transparent;border:1px solid #C8A840;color:var(--color-akzent-dunkel);font-weight:400;">Korrigieren</button>
         <button class="btn-p" id="scanConfirmYes" style="font-weight:400;">Bestätigen ✓</button>
       </div>
       <div class="brand" style="color:#C8A840;">kariPharm</div>
@@ -3183,17 +3356,17 @@ body {
     <!-- BESTÄTIGUNG: DOSIERUNG -->
     <div class="screen" id="s-dose-confirm" style="background:#FFF8E4;">
       <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#3A1A00;font-size:18px;">Dosierung</div>
+        <div class="med-name" style="color:var(--color-text);font-size:18px;">Dosierung</div>
         <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
       </div>
       <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
         <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
-          <div id="doseConfirmText" style="font-size:var(--fs-xl);font-weight:500;color:#3A1A00;font-family:'DM Sans',sans-serif;">3× täglich · 2 Tabletten</div>
+          <div id="doseConfirmText" style="font-size:var(--fs-xl);font-weight:500;color:var(--color-text);font-family:'DM Sans',sans-serif;">3× täglich · 2 Tabletten</div>
         </div>
       </div>
       <div style="flex:1;"></div>
       <div style="display:flex;gap:8px;padding-top:6px;">
-        <button class="btn-p" id="doseConfirmCorrect" style="background:transparent;border:1px solid #C8A840;color:#7A4800;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="doseConfirmCorrect" style="background:transparent;border:1px solid #C8A840;color:var(--color-akzent-dunkel);font-weight:400;">Korrigieren</button>
         <button class="btn-p" id="doseConfirmYes" style="font-weight:400;">Bestätigen ✓</button>
       </div>
       <div class="brand" style="color:#C8A840;">kariPharm</div>
@@ -3243,7 +3416,7 @@ body {
 
     <div class="screen" id="s-ibu-result" style="background:#FDFBF3;">
       <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#3A1A00;">Wechselwirkungen</div>
+        <div class="med-name" style="color:var(--color-text);">Wechselwirkungen</div>
         <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">IBUPROFEN 400mg · ERKANNT</div>
       </div>
       <div style="padding:0 2px 4px;font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;letter-spacing:.1em;">ABGLEICH MIT BENJAMINS VORRAT</div>
@@ -3253,7 +3426,7 @@ body {
         <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:10px;padding:10px 12px;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
             <div>
-              <div style="font-size:var(--fs-md);font-weight:600;color:#3A1A00;font-family:'DM Sans',sans-serif;">L-Dopa / Benserazid</div>
+              <div style="font-size:var(--fs-md);font-weight:600;color:var(--color-text);font-family:'DM Sans',sans-serif;">L-Dopa / Benserazid</div>
               <div style="font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;margin-top:1px;">Parkinson · Dopaminvorstufe</div>
             </div>
             <div style="background:#FFF0B0;border:1px solid #D4A800;border-radius:6px;padding:2px 7px;font-size:var(--fs-sm);font-weight:600;color:#7A5000;font-family:'DM Mono',monospace;white-space:nowrap;">MITTEL</div>
@@ -3265,7 +3438,7 @@ body {
         <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:10px;padding:10px 12px;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
             <div>
-              <div style="font-size:var(--fs-md);font-weight:600;color:#3A1A00;font-family:'DM Sans',sans-serif;">Pramipexol</div>
+              <div style="font-size:var(--fs-md);font-weight:600;color:var(--color-text);font-family:'DM Sans',sans-serif;">Pramipexol</div>
               <div style="font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;margin-top:1px;">Dopaminagonist · Parkinson</div>
             </div>
             <div style="background:#FFF0B0;border:1px solid #D4A800;border-radius:6px;padding:2px 7px;font-size:var(--fs-sm);font-weight:600;color:#7A5000;font-family:'DM Mono',monospace;white-space:nowrap;">MITTEL</div>
@@ -3299,7 +3472,7 @@ body {
         </div>
 
       </div>
-      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:#F5F0E0;border:1px solid #C8A840;border-radius:10px;color:#7A4800;font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-top:4px;">↩ Zurück</button>
+      <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:#F5F0E0;border:1px solid #C8A840;border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;margin-top:4px;">↩ Zurück</button>
       <div class="brand" style="color:#C8A840;">kariPharm</div>
     </div><!-- /s-ibu-result -->
 
@@ -3345,6 +3518,48 @@ body {
       </div>
       <div class="brand" style="color:#1A6FAD;">kariPharm</div>
     </div><!-- /s-dose-confirm-eleni -->
+
+    <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Mia) -->
+    <div class="screen" id="s-scan-confirm-mia" style="background:#FAFAFA;">
+      <div class="med-header" style="border-bottom:1px solid #D0D0D0;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#3A1A00;font-size:18px;">Levetiracetam 500 mg</div>
+        <div class="med-date" style="color:#6A6A6A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">50 Filmtabletten · Epilepsie</div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
+        <div style="font-size:var(--fs-sm);color:#8A8A8A;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
+        <div style="font-size:var(--fs-md);color:#3A1A00;font-family:'DM Sans',sans-serif;line-height:1.6;">
+          <p><strong>Anwendungsgebiete:</strong> Behandlung von Epilepsie (fokale Anfälle mit oder ohne Generalisierung) ab 4 Jahren.</p>
+          <p><strong>Dosierung:</strong> 1× täglich 500 mg · zur Schulpause (10:30 Uhr) · mit einem Glas Wasser einnehmen. Kann mit oder ohne Mahlzeit eingenommen werden.</p>
+          <p><strong>Gegenanzeigen:</strong> Bekannte Überempfindlichkeit gegen Levetiracetam oder Pyrrolidon-Derivate.</p>
+          <p><strong>Nebenwirkungen:</strong> Häufig: Schläfrigkeit, Müdigkeit, Schwindel. Zu Behandlungsbeginn: Reizbarkeit, Magen-Darm-Beschwerden. Selten: psychische Veränderungen — sofort Arzt informieren.</p>
+          <p><strong>Wichtig:</strong> Nicht eigenmächtig absetzen — Rücksprache mit Kinderneurologe erforderlich.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="scanConfirmCorrectMia" style="background:transparent;border:1px solid #8A8A8A;color:#3A1A00;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="scanConfirmYesMia" style="background:#6B6B6B;color:#FFFFFF;font-weight:400;">Bestätigen ✓</button>
+      </div>
+      <div class="brand" style="color:#8A8A8A;">kariPharm</div>
+    </div><!-- /s-scan-confirm-mia -->
+
+    <!-- BESTÄTIGUNG: DOSIERUNG (Mia) -->
+    <div class="screen" id="s-dose-confirm-mia" style="background:#FAFAFA;">
+      <div class="med-header" style="border-bottom:1px solid #D0D0D0;margin-bottom:6px;padding-bottom:6px;">
+        <div class="med-name" style="color:#3A1A00;font-size:18px;">Dosierung</div>
+        <div class="med-date" style="color:#6A6A6A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
+        <div style="background:#F5F5F5;border:1px solid #D0D0D0;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
+          <div style="font-size:var(--fs-xl);font-weight:500;color:#3A1A00;font-family:'DM Sans',sans-serif;">1× täglich · 1 Tablette</div>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+      <div style="display:flex;gap:8px;padding-top:6px;">
+        <button class="btn-p" id="doseConfirmCorrectMia" style="background:transparent;border:1px solid #8A8A8A;color:#3A1A00;font-weight:400;">Korrigieren</button>
+        <button class="btn-p" id="doseConfirmYesMia" style="background:#6B6B6B;color:#FFFFFF;font-weight:400;">Bestätigen ✓</button>
+      </div>
+      <div class="brand" style="color:#8A8A8A;">kariPharm</div>
+    </div><!-- /s-dose-confirm-mia -->
 
     <div class="screen" id="s-ibu-result-eleni" style="background:#F5F8FF;">
       <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
@@ -3410,7 +3625,7 @@ body {
         <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:10px;padding:10px 12px;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
             <div>
-              <div style="font-size:var(--fs-md);font-weight:600;color:#3A1A00;font-family:'DM Sans',sans-serif;">Metformin</div>
+              <div style="font-size:var(--fs-md);font-weight:600;color:var(--color-text);font-family:'DM Sans',sans-serif;">Metformin</div>
               <div style="font-size:var(--fs-xs);color:#A08040;font-family:'DM Mono',monospace;margin-top:1px;">500 mg · Biguanid · Diabetes</div>
             </div>
             <div style="background:#FFF0B0;border:1px solid #D4A800;border-radius:6px;padding:2px 7px;font-size:var(--fs-xs);font-weight:600;color:#7A5000;font-family:'DM Mono',monospace;white-space:nowrap;">MITTEL</div>
@@ -3422,7 +3637,7 @@ body {
         <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:10px;padding:10px 12px;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
             <div>
-              <div style="font-size:var(--fs-md);font-weight:600;color:#3A1A00;font-family:'DM Sans',sans-serif;">Empagliflozin</div>
+              <div style="font-size:var(--fs-md);font-weight:600;color:var(--color-text);font-family:'DM Sans',sans-serif;">Empagliflozin</div>
               <div style="font-size:var(--fs-xs);color:#A08040;font-family:'DM Mono',monospace;margin-top:1px;">SGLT2-Hemmer · Diabetes</div>
             </div>
             <div style="background:#FFF0B0;border:1px solid #D4A800;border-radius:6px;padding:2px 7px;font-size:var(--fs-xs);font-weight:600;color:#7A5000;font-family:'DM Mono',monospace;white-space:nowrap;">MITTEL</div>
@@ -3460,6 +3675,85 @@ body {
   setAppHeight();
   window.addEventListener('resize', setAppHeight);
   window.addEventListener('orientationchange', function(){ setTimeout(setAppHeight, 100); });
+
+  /* ─────────────────────────────────────────────
+     GERÜST-PALETTE  ·  Achse 1 (Skin)
+     Reine Mechanik. Noch keine Oberfläche.
+     setPalette(name) schreibt die 7 CSS-Variablen
+     im :root neu — Struktur bleibt unverändert.
+  ───────────────────────────────────────────── */
+  var geruestPaletten = {
+    warmgold: {
+      '--color-bg-hell':       '#FFFCF3',
+      '--color-bg-tief':       '#FFF8E4',
+      '--color-text':          '#3A1A00',
+      '--color-akzent':        '#F5C840',
+      '--color-akzent-tief':   '#C8860A',
+      '--color-warn':          '#C85A30',
+      '--color-akzent-dunkel': '#7A4800'
+    },
+    steelblue: {
+      '--color-bg-hell':       '#F0F6FF',
+      '--color-bg-tief':       '#E4EEFC',
+      '--color-text':          '#1A2E3A',
+      '--color-akzent':        '#4A7FA5',
+      '--color-akzent-tief':   '#2A5A7A',
+      '--color-warn':          '#C85A30',
+      '--color-akzent-dunkel': '#2A5A7A'
+    }
+  };
+
+  function setPalette(name) {
+    var palette = geruestPaletten[name];
+    if (!palette) return;
+    var root = document.documentElement.style;
+    for (var key in palette) {
+      root.setProperty(key, palette[key]);
+    }
+    try { localStorage.setItem('kp_palette', name); } catch(e) {}
+  }
+
+  try {
+    var gespeichertePalette = localStorage.getItem('kp_palette');
+    if (gespeichertePalette) setPalette(gespeichertePalette);
+  } catch(e) {}
+
+  /* ─────────────────────────────────────────────
+     GERÜST-AUSLÖSER  ·  Achse 2 (Auslöser)
+     Reine Ablage. Noch keine Funktion, keine Optik.
+     Beschreibt, WAS einen Auslöser ausmacht —
+     unabhängig davon, welche Kette/Aktion folgt.
+  ───────────────────────────────────────────── */
+  var geruestAusloeser = {
+    benjaminWort: { typ: 'wort', wert: 'SKATA' },
+    herbertMesswert: { typ: 'messwert', feld: 'bpm', schwelle: 120 },
+    kindEreignis: { typ: 'ereignis', wenn: 'bestaetigt' } // Alternative: 'ausbleiben'
+  };
+
+  function pruefeAusloeser(name, wert) {
+    var a = geruestAusloeser[name];
+    if (!a) return false;
+    if (a.typ === 'wort') return wert === a.wert;
+    if (a.typ === 'messwert') return wert >= a.schwelle;
+    if (a.typ === 'ereignis') return wert === a.wenn;
+    return false;
+  }
+
+  /* Achse 2 → Achse 3: feste Verdrahtung Auslöser → Kette.
+     kindEreignis hat noch keine Kette — bewusst nicht belegt. */
+  var ausloeserKette = {
+    benjaminWort: function(){ triggerBenjaminNotruf(); },
+    herbertMesswert: function(){ triggerHerbertNotruf(); }
+  };
+
+  function verarbeiteAusloeser(name, wert) {
+    if (!pruefeAusloeser(name, wert)) return false;
+    var kette = ausloeserKette[name];
+    if (kette) kette();
+    return true;
+  }
+  window.verarbeiteAusloeser = verarbeiteAusloeser;
+  window.pruefeAusloeser = pruefeAusloeser;
 
   /* ─────────────────────────────────────────────
      APP STATE  ·  Phase 1 Migration
@@ -3525,12 +3819,12 @@ body {
     { name: "L-Dopa / Benserazid 100/25 mg", sub: "Parkinson · 3× tgl · 07:00 / 12:00 / 16:00", prozent: 65, tage: 19, farbe: "#4AE040" },
     { name: "Pramipexol 0,7 mg retardiert",  sub: "Dopaminagonist · 1× tgl · 07:30",            prozent: 80, tage: 24, farbe: "#4AE040" },
     { name: "Rasagilin 1 mg",                sub: "MAO-B-Hemmer · 1× tgl · 07:30",              prozent: 55, tage: 16, farbe: "#4AE040" },
-    { name: "Metformin 500 mg",              sub: "Diabetes · 2× tgl · 08:00 / 13:00",          prozent: 35, tage: 10, farbe: "#F5C840" }
+    { name: "Metformin 500 mg",              sub: "Diabetes · 2× tgl · 08:00 / 13:00",          prozent: 35, tage: 10, farbe: "var(--color-akzent)" }
   ];
 
   var vorratDatenHerbert = [
     { name: "Nintedanib 150 mg",   sub: "Lungenfibrose · 2× tgl · 07:00 / 19:00",         prozent: 60, tage: 18, farbe: "#4AE040" },
-    { name: "Metformin 500 mg",    sub: "Diabetes · 2× tgl · 08:00 / 13:00",               prozent: 35, tage: 10, farbe: "#F5C840" },
+    { name: "Metformin 500 mg",    sub: "Diabetes · 2× tgl · 08:00 / 13:00",               prozent: 35, tage: 10, farbe: "var(--color-akzent)" },
     { name: "Empagliflozin 10 mg", sub: "Diabetes · SGLT2-Hemmer · 1× tgl · 08:00", prozent: 70, tage: 21, farbe: "#4AE040" },
     { name: "Tiotropium 18 µg",    sub: "Bronchodilatator · Inhalation · 1× tgl · 08:00", prozent: 50, tage: 15, farbe: "#4AE040" },
     { name: "Salbutamol 100 µg",   sub: "Bedarfsinhaler · SABA · bei Atemnot",              prozent: 85, tage: 26, farbe: "#4AE040" }
@@ -3541,10 +3835,14 @@ body {
     { name: "Τριεξυφαινιδύλη 2 mg",    sub: "Αντισπασμωδικό · 2× ημερ · 07:30 / 19:00",       prozent: 55, tage: 16, farbe: "#4AE040" }
   ];
 
+  var vorratDatenMia = [
+    { name: "Levetiracetam 500 mg", sub: "Epilepsie · 1× tgl · 10:30", prozent: 70, tage: 21, farbe: "#4AE040" }
+  ];
+
   var vorratDaten = JSON.parse(JSON.stringify(vorratDatenBenjamin));
 
   function initVorratForSkin(skin) {
-    var src = (skin === 'herbert') ? vorratDatenHerbert : (skin === 'eleni') ? vorratDatenEleni : vorratDatenBenjamin;
+    var src = (skin === 'herbert') ? vorratDatenHerbert : (skin === 'eleni') ? vorratDatenEleni : (skin === 'mia') ? vorratDatenMia : vorratDatenBenjamin;
     vorratDaten = JSON.parse(JSON.stringify(src));
     vorratDatenDE = JSON.parse(JSON.stringify(src));
   }
@@ -3602,7 +3900,7 @@ body {
     if (!grid) return;
     grid.innerHTML = '';
     vorratDaten.forEach(function(m, i) {
-      var warn = m.farbe === '#F5C840' ? ' ⚠' : '';
+      var warn = m.farbe === 'var(--color-akzent)' ? ' ⚠' : '';
       var row = document.createElement('div');
       row.className = 'msi';
       row.id = 'intakeMed' + (i + 1);
@@ -3628,10 +3926,12 @@ body {
     { icon: "📋", name: "Nintedanib · Rezept vorhanden",        sub: "Apotheke · abholbereit" }
   ];
 
+  var rezeptDatenMia = []; // Mia: aktuell keine Rezept-Einträge
+
   var rezeptDaten = JSON.parse(JSON.stringify(rezeptDatenBenjamin));
 
   function initRezeptForSkin(skin) {
-    var src = (skin === 'herbert') ? rezeptDatenHerbert : rezeptDatenBenjamin;
+    var src = (skin === 'herbert') ? rezeptDatenHerbert : (skin === 'mia') ? rezeptDatenMia : rezeptDatenBenjamin;
     rezeptDaten = JSON.parse(JSON.stringify(src));
     rezeptDatenDE = JSON.parse(JSON.stringify(src));
   }
@@ -3769,7 +4069,7 @@ body {
   });
 
   function show(id){
-    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-notrufkette','s-kette-bauer','s-kontaktvorrat','s-stammblatt','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
+    ['s-scanner','s-outtake','s-intake','s-history','s-dashboard','s-alarm','s-solved','s-emma','s-notrufkette','s-kette-bauer','s-kontaktvorrat','s-stammblatt','s-kind-notfallkette','s-kind-preset','s-scan-confirm','s-dose-confirm','s-scan-confirm-herbert','s-dose-confirm-herbert','s-scan-confirm-eleni','s-dose-confirm-eleni','s-scan-confirm-mia','s-dose-confirm-mia','s-ibu-result','s-ibu-result-eleni','s-ibu-result-herbert'].forEach(function(s){
       document.getElementById(s).classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
@@ -3780,7 +4080,7 @@ body {
       var homeBtn = document.getElementById(hid);
       if(!homeBtn) return;
       if(id === 's-dashboard'){
-        homeBtn.textContent = '← Zurück'; homeBtn.style.flex='2'; homeBtn.style.background='#3A2200'; homeBtn.style.color='#F5C840';
+        homeBtn.textContent = '← Zurück'; homeBtn.style.flex='2'; homeBtn.style.background='#3A2200'; homeBtn.style.color='var(--color-akzent)';
       } else {
         homeBtn.textContent = '⌂ Start'; homeBtn.style.flex='1.5'; homeBtn.style.background=''; homeBtn.style.color='';
       }
@@ -3790,7 +4090,7 @@ body {
 
   function closeAllPanels(){
     document.querySelectorAll('.tool-panel').forEach(function(p){
-      if(p.id === 'ghostBenjamin' || p.id === 'ghostEmma') return;
+      if(p.id === 'ghostBenjamin' || p.id === 'ghostEmma' || p.id === 'ghostMia') return;
       p.classList.remove('open');
       p.style.display = 'none';
     });
@@ -3802,6 +4102,7 @@ body {
     var cep = document.getElementById('configEingabePanel'); if(cep) cep.classList.remove('open');
     var cmp = document.getElementById('configMedikamentenPanel'); if(cmp) cmp.classList.remove('open');
     var cdp = document.getElementById('configDesignPanel'); if(cdp) cdp.classList.remove('open');
+    var cfp = document.getElementById('configFarbschemaPanel'); if(cfp) cfp.classList.remove('open');
     var csp2 = document.getElementById('configSchnittstellenPanel'); if(csp2) csp2.classList.remove('open');
     var cip = document.getElementById('configInstallationPanel'); if(cip) cip.classList.remove('open');
     var cdzp = document.getElementById('configDatenschutzPanel'); if(cdzp) cdzp.classList.remove('open');
@@ -3848,6 +4149,7 @@ body {
   var benjaminLetzterAktStatus = null;
   function renderBenjaminZeitstrahl(){
     if(ninaActive) return;
+    if(presetActive) return; // Gerüst-Preset aktiv — Zeitstrahl nicht überschreiben
     var track = document.getElementById('timelineTrack');
     if(!track) return;
     var punkte = berechneBenjaminZeitstrahl();
@@ -3958,6 +4260,7 @@ body {
 
   function renderBenjaminMedCard(time){
     if(ninaActive) return;
+    if(presetActive) return; // Gerüst-Preset aktiv — Medikamentenkarte nicht überschreiben
     var list = document.getElementById('medCard1List');
     if(!list) return;
     list.innerHTML = '';
@@ -4015,7 +4318,7 @@ body {
   setInterval(checkBenjaminZeit, 60000);
 
   document.getElementById('medCard1Info').addEventListener('click', function(){
-    if(ninaActive){
+    if(ninaActive || (presetActive === presetGeruest.mia)){
       var m = document.getElementById('eleniHinweisModal');
       m.style.display = 'flex';
     } else {
@@ -4035,13 +4338,13 @@ body {
     {
       drug: 'L-Dopa / Benserazid',
       klasse: 'Parkinson · Dopaminvorstufe',
-      sevWert: 'MITTEL', sevProzent: '55%', sevFarbe: '#F5C840',
+      sevWert: 'MITTEL', sevProzent: '55%', sevFarbe: 'var(--color-akzent)',
       text: 'Ibuprofen kann die Resorption von L-Dopa verzögern und Off-Phasen verlängern. Einnahmeabstand von mind. 1–2 Std. empfohlen.'
     },
     {
       drug: 'Pramipexol',
       klasse: 'Dopaminagonist · Parkinson',
-      sevWert: 'MITTEL', sevProzent: '50%', sevFarbe: '#F5C840',
+      sevWert: 'MITTEL', sevProzent: '50%', sevFarbe: 'var(--color-akzent)',
       text: 'Ibuprofen kann die Nierenfunktion beeinflussen und den Pramipexol-Spiegel erhöhen. Auf Schwindel und verstärkte Nebenwirkungen achten.'
     },
     {
@@ -4098,14 +4401,14 @@ body {
     }
   };
   var pramipexolZusatz = {
-    sevWert: 'MITTEL', sevProzent: '55%', sevFarbe: '#F5C840',
+    sevWert: 'MITTEL', sevProzent: '55%', sevFarbe: 'var(--color-akzent)',
     section1: 'Häufigste Nebenwirkungen',
     text1: 'Übelkeit, Erbrechen und Verstopfung; Schwindel und extreme Müdigkeit.',
     symptome: ['Plötzliche Einschlafattacken · Achtung Straßenverkehr', 'Blutdruckabfall beim Aufstehen', 'Schlafstörungen · Verhaltensänderungen', 'Selten: Halluzinationen'],
     text2: 'Bei Müdigkeit oder Einschlafattacken nicht Auto fahren. Mit Arzt besprechen.'
   };
   var rasagilinZusatz = {
-    sevWert: 'MITTEL', sevProzent: '55%', sevFarbe: '#F5C840',
+    sevWert: 'MITTEL', sevProzent: '55%', sevFarbe: 'var(--color-akzent)',
     section1: 'Häufigste Nebenwirkungen',
     text1: 'Kopfschmerzen, Schwindel und Mundtrockenheit; Verdauungsbeschwerden wie Übelkeit oder Verstopfung.',
     symptome: ['Schlafstörungen', 'Blutdruckabfall beim Aufstehen', 'Selten: Halluzinationen oder Verwirrtheit'],
@@ -4365,6 +4668,11 @@ body {
     { datum:'Προηγούμενη εβδομάδα', zeit:'Πέμ', typ:'termin', icon:'🏃', text:'Φυσιοθεραπεία · Ορθοπεδική · πραγματοποιήθηκε', status:'ok' }
   ];
 
+  var archivEintraegeMia = [
+    { datum:'Heute', zeit:'10:30', typ:'medikament', icon:'💊', text:'Levetiracetam 500 mg · zur Schulpause eingenommen', status:'ok' },
+    { datum:'Diese Woche', zeit:'Di', typ:'termin', icon:'♥', text:'Kinderneurologie · Kontrolltermin · wahrgenommen', status:'ok' }
+  ];
+
   var archivEintraege = JSON.parse(JSON.stringify(archivEintraegeBenjamin));
 
   function initArchivForSkin(skin) {
@@ -4508,6 +4816,13 @@ body {
   }, {passive: false});
 
   document.getElementById('presetTabBtn').addEventListener('click',function(){
+    if(presetActive === presetGeruest.mia){
+      var gm = document.getElementById('ghostMia');
+      var isOpen = gm && gm.style.display !== 'none';
+      closeAllPanels();
+      if(!isOpen && gm) gm.style.display = 'block';
+      return;
+    }
     var p=document.getElementById('presetPanel');
     var open=p.classList.contains('open');
     closeAllPanels();
@@ -4553,9 +4868,9 @@ body {
   function smToggleSchalter(el){
     var kasten = el.querySelector('.smKasten');
     var an = kasten.style.background === 'rgb(245, 200, 64)';
-    kasten.style.background = an ? '#FFF8E4' : '#F5C840';
-    kasten.style.borderColor = an ? 'rgba(200,130,10,0.4)' : '#F5C840';
-    kasten.style.color = an ? '#FDFBF3' : '#7A4800';
+    kasten.style.background = an ? '#FFF8E4' : 'var(--color-akzent)';
+    kasten.style.borderColor = an ? 'rgba(200,130,10,0.4)' : 'var(--color-akzent)';
+    kasten.style.color = an ? '#FDFBF3' : 'var(--color-akzent-dunkel)';
   }
   window.smToggleSchalter = smToggleSchalter;
 
@@ -4565,10 +4880,10 @@ body {
       + '<div class="kv-kontakt" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">'
       + '  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
       + '    <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:rgba(200,130,10,0.2);flex-shrink:0;"></span>'
-      + '    <input type="text" placeholder="Name" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:\'DM Sans\',sans-serif;font-size:var(--fs-sm);color:#7A4800;">'
+      + '    <input type="text" placeholder="Name" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:\'DM Sans\',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">'
       + '    <span onclick="kvLoeschKontakt(this)" style="font-family:\'DM Sans\',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>'
       + '  </div>'
-      + '  <input type="tel" placeholder="Telefonnummer" onblur="kvPruefeNummer(this)" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:\'DM Mono\',monospace;font-size:var(--fs-sm);color:#7A4800;">'
+      + '  <input type="tel" placeholder="Telefonnummer" onblur="kvPruefeNummer(this)" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:\'DM Mono\',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">'
       + '</div>';
   }
   function kvAddKontakt(){
@@ -4592,7 +4907,7 @@ body {
   function kvBestaetigeFair(){
     if(kvAktiverKontakt){
       kvAktiverKontakt.dataset.ok = '1';
-      kvAktiverKontakt.querySelector('.kv-punkt').style.background = '#F5C840';
+      kvAktiverKontakt.querySelector('.kv-punkt').style.background = 'var(--color-akzent)';
     }
     kvSchliesseFair();
   }
@@ -4613,7 +4928,7 @@ body {
   }
   function kbWaehleName(opt){
     document.getElementById('kbNameWert').textContent = opt.textContent;
-    document.getElementById('kbNameWert').style.color = '#7A4800';
+    document.getElementById('kbNameWert').style.color = 'var(--color-akzent-dunkel)';
     document.getElementById('kbNameListe').style.display = 'none';
   }
 
@@ -4622,18 +4937,18 @@ body {
   function kbRmHTML(label, opts, idx){
     var lis = '';
     opts.forEach(function(o){
-      lis += '<div onclick="kbWaehleRM(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:#7A4800;font-family:\'DM Sans\',sans-serif;cursor:pointer;">'+o+'</div>';
+      lis += '<div onclick="kbWaehleRM(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:\'DM Sans\',sans-serif;cursor:pointer;">'+o+'</div>';
     });
     return '<div style="margin-bottom:8px;">'
       + '<div onclick="kbToggleRM(this)" style="display:flex;align-items:center;justify-content:space-between;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.3);border-radius:10px;padding:9px 12px;cursor:pointer;">'
       + '<span style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:\'DM Mono\',monospace;">'+label+'</span>'
       + '<span class="kb-wert" style="font-size:var(--fs-sm);color:#A07030;font-family:\'DM Sans\',sans-serif;flex:1;margin:0 10px;text-align:right;">Bitte wählen</span>'
-      + '<span style="color:#C8860A;font-size:var(--fs-xs);">▾</span></div>'
+      + '<span style="color:var(--color-akzent-tief);font-size:var(--fs-xs);">▾</span></div>'
       + '<div class="kb-liste" style="display:none;margin-top:6px;">'+lis+'</div></div>';
   }
   function kbStationHTML(nr){
     return '<div class="kb-station" style="background:rgba(245,200,64,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:10px;padding:12px 12px 4px;margin-bottom:12px;">'
-      + '<div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);letter-spacing:.1em;color:#7A4800;font-family:\'DM Mono\',monospace;margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:\'DM Mono\',monospace;margin-bottom:10px;">'
       + '<span class="kb-station-kopf">STATION '+nr+'</span><span onclick="kbLoeschStation(this)" style="cursor:pointer;color:#A07030;">✕</span></div>'
       + kbRmHTML('WER', ['Cornelia','Claudia','Emanuel','→ 112'])
       + kbRmHTML('NACHRICHT', ['Benjamin braucht dich','Bitte ruf ihn an','Bitte übernimm','Rettungsdienst rufen'])
@@ -4660,7 +4975,7 @@ body {
     var liste = opt.parentElement;
     var trigger = liste.previousElementSibling;
     trigger.querySelector('.kb-wert').textContent = opt.textContent;
-    trigger.querySelector('.kb-wert').style.color = '#7A4800';
+    trigger.querySelector('.kb-wert').style.color = 'var(--color-akzent-dunkel)';
     liste.style.display = 'none';
   }
 
@@ -4691,7 +5006,7 @@ body {
     document.getElementById('kbBauer').style.display = 'none';
     var buehne = document.getElementById('kbBuehne');
     buehne.style.display = 'block';
-    buehne.innerHTML = '<div style="font-size:var(--fs-xs);letter-spacing:.15em;color:#7A4800;font-family:\'DM Mono\',monospace;margin-bottom:16px;text-align:center;">HILFERUF LÄUFT</div><div id="kbKurs"></div>';
+    buehne.innerHTML = '<div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:\'DM Mono\',monospace;margin-bottom:16px;text-align:center;">HILFERUF LÄUFT</div><div id="kbKurs"></div>';
     kbZeigeStation(0);
   }
   function kbZeigeStation(i){
@@ -4700,10 +5015,10 @@ body {
     kurs.insertAdjacentHTML('beforeend',
       '<div style="background:rgba(245,200,64,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:10px;padding:10px 12px;margin-bottom:10px;">'
       + '<div style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:\'DM Mono\',monospace;margin-bottom:3px;">STATION '+(i+1)+'</div>'
-      + '<div style="font-size:var(--fs-md);color:#7A4800;font-family:\'DM Sans\',sans-serif;font-weight:500;">→ '+st.wer+'</div></div>');
+      + '<div style="font-size:var(--fs-md);color:var(--color-akzent-dunkel);font-family:\'DM Sans\',sans-serif;font-weight:500;">→ '+st.wer+'</div></div>');
     var letzte = (i === kbKette.length-1);
     if(letzte || st.warten<=0){
-      kurs.insertAdjacentHTML('beforeend','<div style="text-align:center;color:#7A4800;font-family:\'DM Sans\',sans-serif;font-weight:500;margin-top:4px;">✓ Kurs zu Ende</div>');
+      kurs.insertAdjacentHTML('beforeend','<div style="text-align:center;color:var(--color-akzent-dunkel);font-family:\'DM Sans\',sans-serif;font-weight:500;margin-top:4px;">✓ Kurs zu Ende</div>');
       return;
     }
     kbStarteWarten(st.warten, function(){ kbZeigeStation(i+1); });
@@ -4712,9 +5027,9 @@ body {
     var kurs = document.getElementById('kbKurs');
     kurs.insertAdjacentHTML('beforeend',
       '<div style="text-align:center;margin-bottom:12px;">'
-      + '<div id="kbCd" style="font-family:\'DM Mono\',monospace;font-size:32px;font-weight:500;color:#7A4800;margin-bottom:10px;">'+kbFormat(sek)+'</div>'
-      + '<div style="width:100%;height:8px;background:rgba(200,130,10,0.15);border-radius:6px;overflow:hidden;"><div id="kbFuell" style="height:100%;width:100%;background:linear-gradient(90deg,#C8860A,#F5C840);border-radius:6px;"></div></div>'
-      + '<button id="kbRueckBtn" onclick="kbRueckrufKam()" style="margin-top:10px;width:100%;padding:11px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:#7A4800;font-family:\'DM Sans\',sans-serif;font-size:var(--fs-sm);font-weight:500;cursor:pointer;">● RÜCKRUF KAM</button></div>');
+      + '<div id="kbCd" style="font-family:\'DM Mono\',monospace;font-size:32px;font-weight:500;color:var(--color-akzent-dunkel);margin-bottom:10px;">'+kbFormat(sek)+'</div>'
+      + '<div style="width:100%;height:8px;background:rgba(200,130,10,0.15);border-radius:6px;overflow:hidden;"><div id="kbFuell" style="height:100%;width:100%;background:linear-gradient(90deg,var(--color-akzent-tief),var(--color-akzent));border-radius:6px;"></div></div>'
+      + '<button id="kbRueckBtn" onclick="kbRueckrufKam()" style="margin-top:10px;width:100%;padding:11px;background:rgba(245,200,64,0.15);border:1px solid rgba(245,200,64,0.4);border-radius:10px;color:var(--color-akzent-dunkel);font-family:\'DM Sans\',sans-serif;font-size:var(--fs-sm);font-weight:500;cursor:pointer;">● RÜCKRUF KAM</button></div>');
     var start = Date.now(), dauerMs = sek*1000;
     kbTimer = setInterval(function(){
       var uebrig = Math.max(0, dauerMs - (Date.now()-start));
@@ -4769,6 +5084,30 @@ body {
   });
   document.getElementById('configDesignClose').addEventListener('click',function(){ document.getElementById('configDesignPanel').classList.remove('open'); });
   document.getElementById('configDesignClose2').addEventListener('click',function(){ document.getElementById('configDesignPanel').classList.remove('open'); });
+
+  document.getElementById('cfgDesignFarbschema').addEventListener('click',function(){
+    document.getElementById('configDesignPanel').classList.remove('open');
+    document.getElementById('configFarbschemaPanel').classList.add('open');
+  });
+  document.getElementById('configFarbschemaClose').addEventListener('click',function(){ document.getElementById('configFarbschemaPanel').classList.remove('open'); });
+  document.getElementById('configFarbschemaClose2').addEventListener('click',function(){ document.getElementById('configFarbschemaPanel').classList.remove('open'); });
+
+  document.getElementById('cfgDesignAusloeser').addEventListener('click',function(){
+    document.getElementById('configDesignPanel').classList.remove('open');
+    document.getElementById('configAusloeserPanel').classList.add('open');
+  });
+  document.getElementById('configAusloeserClose').addEventListener('click',function(){ document.getElementById('configAusloeserPanel').classList.remove('open'); });
+  document.getElementById('configAusloeserClose2').addEventListener('click',function(){ document.getElementById('configAusloeserPanel').classList.remove('open'); });
+
+  // Scheibchen 6: Ausl\u00f6ser-Eintr\u00e4ge klickbar \u2014 reine Detail-Anzeige, kein Wert \u00e4nderbar
+  ['ausloeserBenjaminWort','ausloeserHerbertMesswert','ausloeserKindEreignis'].forEach(function(id){
+    document.getElementById(id).addEventListener('click',function(){
+      var detail = document.getElementById(id + 'Detail');
+      detail.style.display = (detail.style.display === 'none') ? 'block' : 'none';
+    });
+  });
+  document.getElementById('paletteWarmgold').addEventListener('click',function(){ setPalette('warmgold'); });
+  document.getElementById('paletteSteelblue').addEventListener('click',function(){ setPalette('steelblue'); });
 
   document.getElementById('cfgSchnittstellen').addEventListener('click',function(){
     closeAllPanels();
@@ -4915,10 +5254,26 @@ body {
         setTimeout(function(){
           ov.classList.remove('active'); med.style.opacity='0';
           bar.style.width='0%'; line.style.top='0';
-          show(herbertActive ? 's-scan-confirm-herbert' : 's-scan-confirm');
+          show(herbertActive ? 's-scan-confirm-herbert' : (presetActive === presetGeruest.mia) ? 's-scan-confirm-mia' : 's-scan-confirm');
         },900);
       }
     },25);
+  });
+
+  document.getElementById('scanConfirmYesMia').addEventListener('click', function(){
+    show('s-dose-confirm-mia');
+  });
+  document.getElementById('scanConfirmCorrectMia').addEventListener('click', function(){
+    show('s-scanner');
+  });
+  document.getElementById('doseConfirmYesMia').addEventListener('click', function(){
+    var btn = this;
+    btn.style.background = '#3CA860'; btn.style.color = '#FFFFFF';
+    gloeckchen();
+    setTimeout(function(){ show('s-scanner'); btn.style.background='#6B6B6B'; }, 1200);
+  });
+  document.getElementById('doseConfirmCorrectMia').addEventListener('click', function(){
+    show('s-scanner');
   });
 
   document.getElementById('scanConfirmYes').addEventListener('click', function(){
@@ -5058,20 +5413,20 @@ body {
     if (!mark) return;
     var isChecked = mark.textContent.trim() === '✓';
     mark.textContent = isChecked ? '○' : '✓';
-    mark.style.color = isChecked ? '#3A3A52' : '#F5C840';
+    mark.style.color = isChecked ? '#3A3A52' : 'var(--color-akzent)';
   }
 
   document.getElementById('alarmDemoBtn').addEventListener('click',function(){
     var dbpm = document.getElementById('bpmDisplay');
     var steps = [68, 82, 101, 124, 148, 174];
     var i = 0;
-    dbpm.style.color = '#F5C840';
+    dbpm.style.color = 'var(--color-akzent)';
     var iv = setInterval(function(){
       i++;
       if(i < steps.length){
         dbpm.textContent = steps[i] + ' BPM';
         if(steps[i] > 140) dbpm.style.color = '#E84030';
-        else if(steps[i] > 100) dbpm.style.color = '#F5C840';
+        else if(steps[i] > 100) dbpm.style.color = 'var(--color-akzent)';
       } else {
         clearInterval(iv);
         setTimeout(function(){
@@ -5333,7 +5688,7 @@ body {
     } else {
       el.style.background   = 'rgba(200,130,10,0.08)';
       el.style.borderColor   = 'rgba(200,130,10,0.25)';
-      el.style.color         = '#7A4800';
+      el.style.color         = 'var(--color-akzent-dunkel)';
     }
   }
 
@@ -5395,7 +5750,7 @@ body {
       var bar = document.getElementById('nkBar');
       var digits = document.getElementById('nkDigits');
       if (bar) {
-        bar.style.background = '#F5C840';
+        bar.style.background = 'var(--color-akzent)';
         bar.style.transition = 'none';
         bar.style.transform  = 'scaleX(1)';
         void bar.offsetWidth; // reflow
@@ -5427,6 +5782,59 @@ body {
   }
   window.triggerHerbertNotruf = triggerHerbertNotruf;
 
+  /* Kind-Notfallkette — Gerüst, Schritt 2: ausbleiben-Zweig ergänzt.
+     Mock-Countdown 6 Sek. statt 15 Min (10:30→10:45). Noch offen: Einstellung Mutter-Benachrichtigung. */
+  /* Kind-Notfallkette — Gerüst, Schritt 3: Einstellung Mutter-Benachrichtigung (immer / nur bei Ausbleiben). */
+  var kindMutterModus = 'ausbleiben'; // Vorgabe: nur bei Ausbleiben
+
+  function setKindMutterModus(modus) {
+    kindMutterModus = modus;
+    var immerEl = document.getElementById('kindMutterImmer');
+    var ausbleibenEl = document.getElementById('kindMutterAusbleiben');
+    if (modus === 'immer') {
+      immerEl.style.background = 'rgba(200,160,80,0.15)';
+      ausbleibenEl.style.background = 'transparent';
+    } else {
+      immerEl.style.background = 'transparent';
+      ausbleibenEl.style.background = 'rgba(200,160,80,0.15)';
+    }
+  }
+  window.setKindMutterModus = setKindMutterModus;
+
+  var kindCountdownTimer = null;
+
+  function triggerKindNotruf() {
+    document.getElementById('kindNachrichtMutter').style.display = 'none';
+    document.getElementById('kindNachrichtAusbleiben').style.display = 'none';
+    document.getElementById('kindCountdown').style.display = 'block';
+    var sek = 6;
+    document.getElementById('kindCountdownZahl').textContent = sek;
+    if (kindCountdownTimer) clearInterval(kindCountdownTimer);
+    kindCountdownTimer = setInterval(function(){
+      sek--;
+      if (sek <= 0) {
+        clearInterval(kindCountdownTimer);
+        kindCountdownTimer = null;
+        document.getElementById('kindCountdown').style.display = 'none';
+        document.getElementById('kindNachrichtAusbleiben').style.display = 'block';
+        return;
+      }
+      document.getElementById('kindCountdownZahl').textContent = sek;
+    }, 1000);
+    show('s-kind-notfallkette');
+  }
+  window.triggerKindNotruf = triggerKindNotruf;
+
+  function triggerKindBestaetigt() {
+    if (kindCountdownTimer) { clearInterval(kindCountdownTimer); kindCountdownTimer = null; }
+    document.getElementById('kindCountdown').style.display = 'none';
+    document.getElementById('kindNachrichtAusbleiben').style.display = 'none';
+    if (kindMutterModus === 'immer') {
+      document.getElementById('kindNachrichtMutter').style.display = 'block';
+    }
+  }
+  window.triggerKindBestaetigt = triggerKindBestaetigt;
+
   function herbertAnrufBeenden() {
     var puzzle = document.getElementById('pulsPuzzleInhalt');
     var anruf  = document.getElementById('herbertAnrufInhalt');
@@ -5455,11 +5863,11 @@ body {
       feld.style.background   = 'rgba(200,160,0,0.18)';
       feld.style.borderColor  = 'rgba(245,200,64,0.55)';
       wert.innerHTML          = '273<span style="font-size:var(--fs-xl);color:#C8A000;margin-left:4px;">mg/dL</span>';
-      wert.style.color        = '#F5C840';
+      wert.style.color        = 'var(--color-akzent)';
       pfeil.textContent       = '↑';
-      pfeil.style.color       = '#F5C840';
+      pfeil.style.color       = 'var(--color-akzent)';
       warn.style.display      = 'block';
-      warn.style.color        = '#F5C840';
+      warn.style.color        = 'var(--color-akzent)';
       warn.textContent        = '⚠ Überzucker · > 250 mg/dL';
     } else if (state === 'tief') {
       feld.style.background   = 'rgba(200,90,48,0.18)';
@@ -5504,11 +5912,11 @@ body {
       feld.style.background  = 'rgba(200,160,0,0.15)';
       feld.style.borderColor = 'rgba(245,200,64,0.45)';
       wert.innerHTML         = '94<span style="font-size:var(--fs-xl);color:#C8A000;margin-left:4px;">%</span>';
-      wert.style.color       = '#F5C840';
+      wert.style.color       = 'var(--color-akzent)';
       pfeil.textContent      = '↓';
-      pfeil.style.color      = '#F5C840';
+      pfeil.style.color      = 'var(--color-akzent)';
       warn.textContent       = '⚠ Kritisch · 90–94% · ärztl. Kontrolle';
-      warn.style.color       = '#F5C840';
+      warn.style.color       = 'var(--color-akzent)';
     } else {
       feld.style.background  = 'rgba(200,90,48,0.18)';
       feld.style.borderColor = 'rgba(200,90,48,0.55)';
@@ -5544,7 +5952,98 @@ body {
   var dpvActive     = false;  // dPV · Community · Amber
   var herbertActive = false;  // Herbert · Lungenfibrose · Blaugrau
 
+  // ── Gerüst-Konzept (S43): generische Preset-Befüllung, neutrale Oberfläche
+  // Konfigurierbar: nur name, medikation, notfallkette. Optik bleibt immer Benjamins Struktur.
+  var presetActive = null; // aktueller Gerüst-Schlüssel, z.B. 'mia' — oder null
+  var presetGeruest = {
+    mia: {
+      name: 'Mia',
+      vorratSkin: 'mia', // schlüsselt vorratDatenMia (Levetiracetam 500mg)
+      notfallkette: null // folgt: Kind-Notfallkette aus S40/S41
+    }
+  };
 
+  function activatePresetSkin(config) {
+    presetActive = config;
+    ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
+      var el = document.getElementById(id); if(el) el.textContent = config.name;
+    });
+    var ptb = document.getElementById('presetTabBtn'); if(ptb) ptb.textContent = config.name.toUpperCase();
+    if (config.vorratSkin) {
+      initVorratForSkin(config.vorratSkin);
+      renderVorrat();
+      initRezeptForSkin(config.vorratSkin);
+      renderRezepte();
+      if(config.vorratSkin === 'mia'){
+        archivEintraege = JSON.parse(JSON.stringify(archivEintraegeMia));
+        renderArchiv();
+      }
+    }
+    if (config.vorratSkin === 'mia') {
+      // ── Mia · Ausgabe (Levetiracetam 500mg)
+      document.getElementById('timelineTrack').innerHTML = '<div class="tl-line"></div>'
+        + '<div class="tm" style="left:28%"><div class="td now" id="rampDot"></div><div class="tl hi">10:30<br>Levetir.</div></div>';
+      var tlt = document.getElementById('tlTimes'); if(tlt) tlt.innerHTML = '<span>09:00</span><span>12:00</span>';
+      var dt = document.getElementById('date-outtake'); if(dt) dt.textContent = 'LEVETIRACETAM · 1× TGL';
+      var mt = document.getElementById('medCard1Title'); if(mt){ mt.textContent='Levetiracetam 500 mg'; mt.style.display='block'; }
+      var ms = document.getElementById('medCard1Sub'); if(ms){ ms.textContent='Epilepsie · 1× tgl · 10:30'; ms.style.display='block'; }
+      var mw = document.getElementById('medCard1Warn'); if(mw){ mw.style.display='none'; }
+      var ml2 = document.getElementById('medCard1List');
+      if(ml2) ml2.innerHTML='<div class="mc-row"><div class="mc-row-info"><div class="mc-row-name">Levetiracetam 500 mg</div><div class="mc-row-dose">500 mg · 10:30</div></div><button class="mc-row-btn">Eingenommen ✓</button></div>';
+      if(ml2){
+        var miaBtn = ml2.querySelector('.mc-row-btn');
+        miaBtn.addEventListener('click', function(){
+          miaBtn.textContent = '✓ Dokumentiert';
+          miaBtn.classList.add('done');
+          miaBtn.disabled = true;
+          gloeckchen();
+          // Meldepunkt 10:30 → Nachricht an Mutter
+          var track = document.getElementById('timelineTrack');
+          if(track){
+            var mp = document.createElement('div');
+            mp.className = 'tm';
+            mp.style.left = '28%';
+            mp.innerHTML = '<div class="td done" style="background:#F5C840;border-color:#C8820A;"></div><div class="tl">10:30<br>📩 Mama</div>';
+            track.appendChild(mp);
+          }
+        });
+      }
+      var ehl = document.getElementById('eleniHinweisLabel'); if(ehl) ehl.textContent = 'HINWEISE';
+      var ehn = document.getElementById('eleniHinweisMedName'); if(ehn) ehn.textContent = 'Levetiracetam 500 mg';
+      var ehi = document.getElementById('eleniHinweisMedInfo');
+      if(ehi) ehi.innerHTML = 'Häufig: Schläfrigkeit, Müdigkeit, Schwindel, Kopfschmerzen<br>Zu Beginn: Magen-Darm-Beschwerden, Reizbarkeit<br>⚠️ Selten: psychische Veränderungen';
+      var ehc = document.getElementById('eleniHinweisCard');
+      if(ehc) ehc.style.border = '1.5px solid #8A8A8A';
+      var ehm = document.getElementById('eleniHinweisModal');
+      if(ehm) ehm.style.background = 'rgba(60,60,60,0.45)';
+      if(ehl) ehl.style.color = '#4A4A4A';
+      if(ehn) ehn.style.color = '#3A1A00';
+      if(ehi){ ehi.style.color = '#3A1A00'; ehi.style.background = '#F5F5F5'; }
+      var ehcl = document.getElementById('eleniHinweisClose');
+      if(ehcl){ ehcl.textContent = '✕ Schließen'; ehcl.style.background = '#6B6B6B'; }
+      // ── Dashboard: Benjamin-Slides ausblenden, Mia-Slide einblenden
+      ['dp1','dp2','dp3','dp4','dp5','dp6'].forEach(function(id){
+        var el = document.getElementById(id); if(el) el.style.display = 'none';
+      });
+      var dpMia = document.getElementById('dp-mia'); if(dpMia) dpMia.style.display = '';
+      // Preset-Panel: Mia aktiv
+      setAktivesPreset('mia');
+      // Toolbar: Benjamin-Buttons aus, Mia-Buttons ein
+      ['tbBenjaminNotruf','tbPflege','tbPhone','tbWhatsAppStd','tbContact','tbShare','tbNote'].forEach(function(id){
+        var el=document.getElementById(id); if(el) el.style.display='none';
+      });
+      ['tbMiaTikTok','tbMiaInsta','tbMiaSpotify','tbMiaTelefon'].forEach(function(id){
+        var el=document.getElementById(id); if(el) el.style.display='flex';
+      });
+      // Nächsten Termin berechnen: heute + 14 Tage
+      var heute = new Date();
+      heute.setDate(heute.getDate() + 14);
+      var tage = ['So','Mo','Di','Mi','Do','Fr','Sa'];
+      var monate = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+      var terminStr = tage[heute.getDay()] + ', ' + heute.getDate() + '. ' + monate[heute.getMonth()] + ' · 10:30';
+      var mnt = document.getElementById('miaNaechsterTermin'); if(mnt) mnt.textContent = terminStr;
+    }
+  }
 
   /* Spotify Button Puls-Animation — synchronisiert mit BPM */
   function updateSpotifyPulse(){
@@ -5622,6 +6121,14 @@ body {
   function activateNinaSkin() {
     if(corinnaActive) deactivateCorinnaSkin();
     ninaActive = true;
+    presetActive = null; // Gerüst-Reset: Eleni ist kein Gerüst-Preset
+    var ehl0 = document.getElementById('eleniHinweisLabel'); if(ehl0){ ehl0.textContent='ΟΔΗΓΙΕΣ ΛHΨΗΣ'; ehl0.style.color='#0A4A80'; }
+    var ehn0 = document.getElementById('eleniHinweisMedName'); if(ehn0){ ehn0.textContent='Βακλοφένη 10 mg'; ehn0.style.color='#0A4A80'; }
+    var ehi0 = document.getElementById('eleniHinweisMedInfo');
+    if(ehi0){ ehi0.innerHTML='🍽 Με φαγητό<br>💧 Με ένα ποτήρι νερό'; ehi0.style.color='#1A6FAD'; ehi0.style.background='#EAF3FB'; }
+    var ehc0 = document.getElementById('eleniHinweisCard'); if(ehc0) ehc0.style.border='1.5px solid #1A6FAD';
+    var ehm0 = document.getElementById('eleniHinweisModal'); if(ehm0) ehm0.style.background='rgba(10,74,128,0.45)';
+    var ehcl0 = document.getElementById('eleniHinweisClose'); if(ehcl0){ ehcl0.textContent='✕ Κλείσιμο'; ehcl0.style.background='#1A6FAD'; }
     actions.setVariant('nina'); // Phase 1: appState sync
     document.getElementById('phone').classList.remove('skin-benjamin');
     document.getElementById('phone').classList.add('skin-eleni');
@@ -5633,9 +6140,7 @@ body {
       var el = document.getElementById(id); if(el) el.textContent = 'Ελένη';
     });
     var ptb = document.getElementById('presetTabBtn'); if(ptb) ptb.textContent='ΕΛΈΝΗ';
-    document.getElementById('ppBenjamin').style.display = 'none';
-    document.getElementById('ppHerbert').style.display = 'none';
-    document.getElementById('ppEleni').style.display = '';
+    setAktivesPreset('eleni');
     document.querySelectorAll('.brand').forEach(function(el){ el.textContent = 'kariPharm'; });
     document.getElementById('ghostBenjamin').style.display = 'none';
     document.getElementById('ghostEmma').style.display = 'none';
@@ -5714,10 +6219,7 @@ body {
     });
     goToEmmaDash(0);
     show('s-scanner');
-    // Eleni aktiv → Benjamin + Herbert im Forum, Eleni versteckt
-    document.getElementById('ppForumBenjamin').style.display = 'block';
-    document.getElementById('ppForumHerbert').style.display = 'block';
-    document.getElementById('ppNina').style.display = 'none';
+    setAktivesPreset('eleni');
   }
 
   function deactivateNinaSkin() {
@@ -5790,14 +6292,22 @@ body {
     var dbe=document.getElementById('dashBottomEmma'); if(dbe) dbe.style.display='none';
     var bv=document.getElementById('benjaminViewport'); if(bv) bv.style.display='';
     var bd=document.getElementById('benjaminDots'); if(bd) bd.style.display='';
-    // Zurück zu Benjamin → Herbert + Eleni im Forum
-    document.getElementById('ppEleni').style.display = 'none';
-    document.getElementById('ppBenjamin').style.display = '';
-    document.getElementById('ppHerbert').style.display = 'none';
-    document.getElementById('ppForumHerbert').style.display = 'block';
-    document.getElementById('ppForumBenjamin').style.display = 'none';
-    document.getElementById('ppNina').style.display = 'block';
+    // Zurück zu Benjamin
+    setAktivesPreset('benjamin');
     goToBenjaminDash(0);
+    // Mia-Dashboard-Reset
+    var dpMiaOff = document.getElementById('dp-mia'); if(dpMiaOff) dpMiaOff.style.display = 'none';
+    ['dp1','dp2','dp3','dp4','dp5','dp6'].forEach(function(id){
+      var el = document.getElementById(id); if(el) el.style.display = '';
+    });
+    var gm = document.getElementById('ghostMia'); if(gm) gm.style.display = 'none';
+    // Toolbar: Mia-Buttons aus, Benjamin-Buttons ein
+    ['tbMiaTikTok','tbMiaInsta','tbMiaSpotify','tbMiaTelefon'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.style.display='none';
+    });
+    ['tbBenjaminNotruf','tbPflege','tbPhone','tbWhatsAppStd','tbContact','tbShare','tbNote'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.style.display='flex';
+    });
     show('s-scanner');
   }
 
@@ -5884,13 +6394,7 @@ body {
     else if (dpvActive)  { deactivateDPVSkin(); }
     else if (herbertActive) { deactivateHerbertSkin(); }
     document.getElementById('presetPanel').classList.remove('open');
-    // Benjamin aktiv → Herbert im presetPanel verstecken, im Forum zeigen
-    document.getElementById('ppHerbert').style.display = 'none';
-    document.getElementById('ppBenjamin').style.display = '';
-    document.getElementById('ppEleni').style.display = 'none';
-    document.getElementById('ppForumHerbert').style.display = 'block';
-    document.getElementById('ppForumBenjamin').style.display = 'none';
-    document.getElementById('ppNina').style.display = 'block';
+    setAktivesPreset('benjamin');
   });
 
   function activateHerbertSkin() {
@@ -5992,25 +6496,42 @@ body {
     else if (lisaActive) { deactivateLisaSkin(); }
     else if (dpvActive)  { deactivateDPVSkin(); }
     activateHerbertSkin();
-    // Herbert aktiv → Benjamin im presetPanel verstecken, im Forum zeigen
-    document.getElementById('ppBenjamin').style.display = 'none';
-    document.getElementById('ppHerbert').style.display = '';
-    document.getElementById('ppEleni').style.display = 'none';
-    document.getElementById('ppForumBenjamin').style.display = 'block';
-    document.getElementById('ppForumHerbert').style.display = 'none';
-    document.getElementById('ppNina').style.display = 'block';
+    setAktivesPreset('herbert');
   });
 
-  // Initialzustand: Benjamin aktiv → Herbert + Eleni im Forum sichtbar
-  document.getElementById('ppHerbert').style.display = 'none';
-  document.getElementById('ppForumHerbert').style.display = 'block';
-  document.getElementById('ppForumBenjamin').style.display = 'none';
-  document.getElementById('ppNina').style.display = 'block';
+  // ── Zentrale Preset-Panel-Steuerung (S44)
+  // aktiv: 'benjamin' | 'herbert' | 'eleni' | 'mia'
+  // Hauptpanel zeigt nur das aktive Preset, Forum zeigt alle anderen.
+  var presetDefs = {
+    benjamin: { hauptId:'ppBenjamin', forumId:'ppForumBenjamin' },
+    herbert:  { hauptId:'ppHerbert',  forumId:'ppForumHerbert'  },
+    eleni:    { hauptId:'ppEleni',    forumId:'ppNina'           },
+    mia:      { hauptId:'ppMia',      forumId:'ppForumMia'       }
+  };
+  function setAktivesPreset(aktiv) {
+    Object.keys(presetDefs).forEach(function(key){
+      var d = presetDefs[key];
+      var h = document.getElementById(d.hauptId);
+      var f = document.getElementById(d.forumId);
+      if(key === aktiv){
+        if(h) h.style.display = '';
+        if(f) f.style.display = 'none';
+      } else {
+        if(h) h.style.display = 'none';
+        if(f) f.style.display = 'block';
+      }
+    });
+  }
+  setAktivesPreset('benjamin'); // Start-Zustand
 
   // Forum-Einträge: Preset wechseln per Klick
   document.getElementById('ppForumHerbert').addEventListener('click', function() {
     document.getElementById('forumPanel').classList.remove('open');
     document.getElementById('ppHerbert').click();
+  });
+  document.getElementById('ppForumMia').addEventListener('click', function() {
+    document.getElementById('forumPanel').classList.remove('open');
+    document.getElementById('ppMia').click();
   });
   document.getElementById('ppForumBenjamin').addEventListener('click', function() {
     document.getElementById('forumPanel').classList.remove('open');
@@ -6025,6 +6546,10 @@ body {
     closeAllPanels();
     if(herbertActive){ deactivateHerbertSkin(); }
     activateNinaSkin();
+  });
+  document.getElementById('ppMia').addEventListener('click', function() {
+    closeAllPanels();
+    activatePresetSkin(presetGeruest.mia);
   });
 
   /* Emma Woche Button — entfernt; Handler bleibt als toter Code mit Guard */
