@@ -20,22 +20,10 @@
     padding: 2rem;
   }
 
-  .logo-ring {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #E8A020;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .logo-ring span {
-    font-size: 2rem;
-    color: #E8A020;
-    font-weight: 600;
-    letter-spacing: -1px;
+  .logo-img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 1.2rem;
   }
 
   h1 {
@@ -78,6 +66,35 @@
   .app-btn:hover {
     transform: translateX(6px);
   }
+
+  .app-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  .app-row .app-btn { flex: 1; min-width: 0; }
+
+  .info-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    border-radius: 12px;
+    border: 1px solid rgba(232, 160, 32, 0.25);
+    background: rgba(232, 160, 32, 0.08);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .info-btn:hover {
+    background: rgba(232, 160, 32, 0.22);
+    transform: translateY(-2px);
+  }
+  .info-btn svg { width: 18px; height: 18px; }
+  .info-btn.rot { border-color: rgba(180, 60, 60, 0.3); background: rgba(180, 60, 60, 0.1); }
+  .info-btn.rot:hover { background: rgba(180, 60, 60, 0.22); }
+  .info-btn.gruen { border-color: rgba(60, 140, 100, 0.3); background: rgba(60, 140, 100, 0.1); }
+  .info-btn.gruen:hover { background: rgba(60, 140, 100, 0.22); }
 
   .app-btn.gelb { background: rgba(232, 160, 32, 0.12); }
   .app-btn.gelb:hover { background: rgba(232, 160, 32, 0.22); }
@@ -130,38 +147,65 @@
 </head>
 <body>
 
-<div class="logo-ring"><span>K</span></div>
+<img src="karioli-logo.png" alt="Karioli Logo" class="logo-img">
 <h1>Karioli</h1>
 <p class="tagline">App-Architekturen und Animationen</p>
 
 <div class="apps">
 
-  <a href="https://karioliprojekt.github.io/karioli/karioli-karipharm.html" class="app-btn gelb" target="_blank" rel="noopener">
-    <div class="dot dot-gelb"></div>
-    <div class="btn-text">
-      <div class="btn-name">kariPharm</div>
-      <div class="btn-sub">Autonomie und Selbstmanagement · Projekt Gelb</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>
+  <div class="app-row">
+    <a href="https://karioliprojekt.github.io/karioli/karipharm.html" class="app-btn gelb" target="_blank" rel="noopener">
+      <div class="dot dot-gelb"></div>
+      <div class="btn-text">
+        <div class="btn-name">kariPharm</div>
+        <div class="btn-sub">Autonomie und Selbstmanagement · Projekt Gelb</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://karioliprojekt.github.io/karioli/karioli-karipharm.html" class="info-btn" target="_blank" rel="noopener" title="Info-Mappe lesen" aria-label="kariPharm Info-Mappe lesen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9.5"/>
+        <line x1="12" y1="11" x2="12" y2="16.5"/>
+        <circle cx="12" cy="7.5" r="0.6" fill="#E8A020"/>
+      </svg>
+    </a>
+  </div>
 
-  <a href="https://karioliprojekt.github.io/karioli/karinurse.html" class="app-btn rot" target="_blank" rel="noopener">
-    <div class="dot dot-rot"></div>
-    <div class="btn-text">
-      <div class="btn-name">kariNurse</div>
-      <div class="btn-sub">Sprachbarrieren in der Pflegeausbildung · Projekt Rot</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>
+  <div class="app-row">
+    <a href="https://karioliprojekt.github.io/karioli/karinurse.html" class="app-btn rot" target="_blank" rel="noopener">
+      <div class="dot dot-rot"></div>
+      <div class="btn-text">
+        <div class="btn-name">kariNurse</div>
+        <div class="btn-sub">Sprachbarrieren in der Pflegeausbildung · Projekt Rot</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://karioliprojekt.github.io/karioli/karioli-karinurse.html" class="info-btn rot" target="_blank" rel="noopener" title="Info-Mappe lesen" aria-label="kariNurse Info-Mappe lesen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c45050" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9.5"/>
+        <line x1="12" y1="11" x2="12" y2="16.5"/>
+        <circle cx="12" cy="7.5" r="0.6" fill="#c45050"/>
+      </svg>
+    </a>
+  </div>
 
-  <a href="https://karioliprojekt.github.io/karioli/karicare.html" class="app-btn gruen" target="_blank" rel="noopener">
-    <div class="dot dot-gruen"></div>
-    <div class="btn-text">
-      <div class="btn-name">kariCare</div>
-      <div class="btn-sub">Katastrophenmanagement · Projekt Grün</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>
+  <div class="app-row">
+    <a href="https://karioliprojekt.github.io/karioli/karicare.html" class="app-btn gruen" target="_blank" rel="noopener">
+      <div class="dot dot-gruen"></div>
+      <div class="btn-text">
+        <div class="btn-name">kariCare</div>
+        <div class="btn-sub">Katastrophenmanagement · Projekt Grün</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://karioliprojekt.github.io/karioli/karioli-karicare.html" class="info-btn gruen" target="_blank" rel="noopener" title="Info-Mappe lesen" aria-label="kariCare Info-Mappe lesen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#3c8c64" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9.5"/>
+        <line x1="12" y1="11" x2="12" y2="16.5"/>
+        <circle cx="12" cy="7.5" r="0.6" fill="#3c8c64"/>
+      </svg>
+    </a>
+  </div>
 
 </div>
 
