@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karioli · Das Atelier, die drei Apps, der Fonds</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1a2b2e;
+    --bg-card: rgba(232, 160, 32, 0.08);
+    --border-card: rgba(232, 160, 32, 0.25);
+    --ink: #f5f0e8;
+    --ink-muted: #a0b8bc;
+    --ink-faint: #7a9ea4;
+    --gold: #E8A020;
+    --footer: #3d5558;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.2rem 1.4rem 4rem;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    margin-bottom: 2.2rem;
+    transition: color 0.2s ease;
+  }
+  .back:hover { color: var(--gold); }
+
+  header.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.6rem;
+  }
+
+  .logo-img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 1.3rem;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 0.9rem;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    max-width: 46ch;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+  .meta span:not(:last-child)::after {
+    content: '·';
+    margin-left: 1rem;
+    color: var(--footer);
+  }
+
+  hr.divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent 65%);
+    opacity: 0.5;
+    margin: 2.6rem 0;
+  }
+
+  section.chapter {
+    margin-bottom: 3rem;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .kapitel-num {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1.3rem;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 1.6rem 0 0.6rem;
+  }
+
+  p {
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+    max-width: 62ch;
+  }
+
+  p.lead {
+    font-style: italic;
+    color: var(--ink);
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0 1.6rem;
+  }
+  .card p {
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .card p + p { margin-top: 0.6rem; }
+
+  .data-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0 1.6rem;
+  }
+  .data-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    background: rgba(245, 240, 232, 0.04);
+    border: 1px solid rgba(245, 240, 232, 0.08);
+  }
+  .data-row .k {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .data-row .v {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  @media (min-width: 560px) {
+    .data-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .data-row .k { flex: 0 0 auto; min-width: 12rem; }
+    .data-row .v { text-align: right; }
+  }
+
+  /* App links within the apps overview */
+  .app-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 1.2rem 0 1.6rem;
+  }
+  .app-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(245, 240, 232, 0.1);
+    background: rgba(245, 240, 232, 0.03);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .app-link:hover { transform: translateX(4px); }
+  .app-link .ring { width: 20px; height: auto; flex-shrink: 0; opacity: 0.95; }
+  .app-link .name { font-weight: 600; color: var(--ink); font-size: 0.98rem; }
+  .app-link .desc { color: var(--ink-faint); font-size: 0.85rem; }
+
+  footer.page-footer {
+    margin-top: 3.5rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    font-size: 0.75rem;
+    color: var(--footer);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a href="index.html" class="back">&larr; Karioli</a>
+
+  <header class="hero">
+    <img src="karioli-logo.png" alt="Karioli Logo" class="logo-img">
+    <div class="eyebrow">Über Karioli</div>
+    <h1>Das Atelier, die drei Apps, der Fonds</h1>
+    <p class="tagline">Karioli entwickelt Apps, die der Gemeinschaft dienen — und überträgt die Verantwortung einem gemeinnützigen Fonds, den die Träger gestalten.</p>
+    <div class="meta">
+      <span>Erstellt von Karioli / Emanuel Schaeffer, Gartow</span>
+      <span>17. Juni 2026</span>
+      <span>DOC-KO-INTRO-DE-001 · Version 1.0</span>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section class="chapter" id="was-karioli-ist">
+    <div class="kapitel-num">Kapitel 1</div>
+    <h2>Was Karioli ist</h2>
+    <p class="lead">Ein virtuelles Atelier, kein Unternehmen.</p>
+    <p>Karioli ist ein virtuelles Atelier, in dem ein Entwickler mit stabilen KI-Agenten arbeitet, mit voller Kontrolle, komplex und kreativ, ohne bei jedem Schritt neu ansetzen zu müssen. Bei Karioli entstehen alle Apps aus der Nutzerperspektive. Aus dieser Arbeitsweise sind bislang drei App-Konzepte entstanden: kariPharm, kariNurse und kariCare. Jedes für sich als Architektur vollständig durchdacht und als interaktive Animation realisiert.</p>
+    <p>Karioli produziert die Apps nicht selbst. Die eigene technische Produktion ist wenig sinnvoll und derzeit auch unrealistisch. Was im Atelier entsteht, ist das Konzept, aber nicht die Programmierung, der Serverbetrieb oder die Skalierung.</p>
+
+    <h3>Warum gemeinnützig</h3>
+    <p>Es entstehen auch immer wieder Ideen zu anderen, kommerziellen Anwendungen. Diese motivieren aber nicht. Was zählt, sind die gemeinnützigen Projekte: Etwas zu verschenken, statt es zu verwerten.</p>
+
+    <h3>Der vierte Ring</h3>
+    <p>Das Karioli-Logo zeigt vier verschlungene Ringe. Drei sind vergeben — kariPharm, kariNurse und kariCare. Der vierte, blaue Ring bleibt vorerst frei: Platz für etwas, was schon da ist, aber noch nicht Gestalt angenommen hat.</p>
+
+    <h3>Drei Bedingungen</h3>
+    <p>Der Entwickler stellt an jede künftige Trägerschaft der Apps drei Bedingungen — bindend, nicht verhandelbar:</p>
+
+    <div class="data-table">
+      <div class="data-row"><div class="k">Nicht verkäuflich</div><div class="v">Karioli und die Apps können nicht an kommerzielle Akteure veräußert werden</div></div>
+      <div class="data-row"><div class="k">Gemeinnützig</div><div class="v">Rechtsform und Zweck bleiben dauerhaft non-profit</div></div>
+      <div class="data-row"><div class="k">Datenschutz gewährleistet</div><div class="v">Unabhängig von künftigen Mitgliedern oder Entwicklungen</div></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="die-drei-apps">
+    <div class="kapitel-num">Kapitel 2</div>
+    <h2>Die drei Apps</h2>
+    <p class="lead">Drei Geschwister, eine Haltung.</p>
+    <p>Alle drei Apps entstehen aus der Sicht und Erfahrungswelt des Nutzers. Das führt im Detail zu anderen, ungewöhnlichen Lösungsansätzen.</p>
+
+    <div class="app-links">
+      <a href="karioli-karipharm.html" class="app-link" target="_blank" rel="noopener">
+        <img src="karioli-ring-gold.png" class="ring" alt="">
+        <div>
+          <div class="name">kariPharm</div>
+          <div class="desc">Medikamenten- und Pflegekoordination für chronisch kranke Menschen und ihre Angehörigen</div>
+        </div>
+      </a>
+      <a href="karioli-karinurse.html" class="app-link" target="_blank" rel="noopener">
+        <img src="karioli-ring-red.png" class="ring" alt="">
+        <div>
+          <div class="name">kariNurse</div>
+          <div class="desc">Sprachbrücke für Auszubildende mit Migrationshintergrund in Pflegeberufen</div>
+        </div>
+      </a>
+      <a href="karioli-karicare.html" class="app-link" target="_blank" rel="noopener">
+        <img src="karioli-ring-green.png" class="ring" alt="">
+        <div>
+          <div class="name">kariCare</div>
+          <div class="desc">Orientierung in Krisensituationen, wenn gewohnte Kommunikationswege nicht mehr funktionieren</div>
+        </div>
+      </a>
+    </div>
+
+    <p>Alle drei Apps sind auf demselben Entwicklungsstand: konzeptionell und architektonisch fertig gedacht, aber fortlaufend weiter zu entfalten.</p>
+  </section>
+
+  <section class="chapter" id="der-karioli-fonds">
+    <div class="kapitel-num">Kapitel 3</div>
+    <h2>Der Karioli-Fonds</h2>
+    <p>Da der Entwickler nicht auf Dauer zur Verfügung steht und Karioli keine Institution ist, ist die Überführung in einen gemeinnützigen Karioli-Fonds vorgesehen. Die Träger bestimmen Mitgliedschaft und Struktur des Fonds. Der Entwickler setzt die oben genannten drei Bedingungen voraus: Unveräußerlichkeit, Gemeinnützigkeit und Datenschutz.</p>
+    <p>Der Fonds ist als Drei-Säulen-Struktur passend zu den drei Apps angelegt:</p>
+
+    <div class="data-table">
+      <div class="data-row"><div class="k">kariPharm</div><div class="v">Krankenkassen, Pflegedienste</div></div>
+      <div class="data-row"><div class="k">kariNurse</div><div class="v">Pflegeschulen, Krankenhäuser, ggf. Gewerkschaften</div></div>
+      <div class="data-row"><div class="k">kariCare</div><div class="v">Feuerwehr, THW, DRK, Kommunen</div></div>
+    </div>
+
+    <h3>Aufgabenteilung</h3>
+    <p>Der Fonds übernimmt die bürokratische Verwaltung sowie die Vermarktungs- und Finanzierungsstruktur. Er beauftragt die technische Produktion (Universität oder IT-Firma, je nach Kostenanalyse der einzelnen App-Mappe).</p>
+    <p>Karioli, das Atelier, übernimmt exklusiv die kreative Weiterentwicklung der Apps, entwickelt neue Presets, Anwendungsfälle und Funktionsideen und bewahrt die DNA der Apps. Karioli prüft und kontrolliert außerdem, ob die technische Umsetzung durch Universität oder IT-Firma dieser DNA entspricht, und begleitet die wissenschaftlichen Studien zur Validierung der Apps.</p>
+
+    <div class="card">
+      <p>Der Entwickler selbst bleibt Konzeptgeber und Botschafter. Er ist nicht Teil der Fonds-Geschäftsführung oder -Governance.</p>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <div>Karioli · Gartow, Deutschland</div>
+    <div>Open Source · Gemeinnützig · Soziales Projekt · Öffentlich</div>
+    <div>DOC-KO-INTRO-DE-001 · Version 1.0 · Kontakt karioli.projekt@gmail.com</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
