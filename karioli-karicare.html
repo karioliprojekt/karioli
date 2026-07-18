@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kariCare · Karioli</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1a2b2e;
+    --bg-card: rgba(60, 140, 100, 0.08);
+    --border-card: rgba(60, 140, 100, 0.25);
+    --ink: #f5f0e8;
+    --ink-muted: #a0b8bc;
+    --ink-faint: #7a9ea4;
+    --accent: #3c8c64;
+    --footer: #3d5558;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.2rem 1.4rem 4rem;
+  }
+
+  /* ---------- Header ---------- */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    margin-left: -0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    margin-bottom: 2.2rem;
+    transition: opacity 0.2s ease;
+  }
+  .back:hover { opacity: 0.75; }
+
+  header.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.6rem;
+  }
+
+  .logo-img {
+    width: 56px;
+    height: auto;
+    margin-bottom: 1.3rem;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    max-width: 46ch;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+  .meta span:not(:last-child)::after {
+    content: '·';
+    margin-left: 1rem;
+    color: var(--footer);
+  }
+
+  hr.divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent 65%);
+    opacity: 0.5;
+    margin: 2.6rem 0;
+  }
+
+  /* ---------- Chapters ---------- */
+  section.chapter {
+    margin-bottom: 3rem;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .kapitel-num {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 1.3rem;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 1.6rem 0 0.6rem;
+  }
+
+  p {
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+    max-width: 62ch;
+  }
+
+  p.lead {
+    font-style: italic;
+    color: var(--ink);
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--ink); }
+
+  /* ---------- Cards / note boxes ---------- */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0 1.6rem;
+  }
+  .card p {
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .card p + p { margin-top: 0.6rem; }
+
+  /* ---------- Scene timeline (kariCare Szenario) ---------- */
+  .scene {
+    margin: 0 0 1.3rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border-card);
+  }
+  .scene .scene-time {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+  }
+  .scene p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Data table (reflows to stacked cards on mobile) ---------- */
+  .data-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0 1.6rem;
+  }
+  .data-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    background: rgba(245, 240, 232, 0.04);
+    border: 1px solid rgba(245, 240, 232, 0.08);
+  }
+  .data-row .k {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .data-row .v {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  @media (min-width: 560px) {
+    .data-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .data-row .k { flex: 0 0 auto; min-width: 12rem; }
+    .data-row .v { text-align: right; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer.page-footer {
+    margin-top: 3.5rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    font-size: 0.75rem;
+    color: var(--footer);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a href="index.html" class="back">&larr; Karioli</a>
+
+  <header class="hero">
+    <img src="karioli-ring-green.png" alt="kariCare" class="logo-img">
+    <div class="eyebrow">Projekt Grün</div>
+    <h1>kariCare</h1>
+    <p class="tagline">Orientierung in der Krise, wenn gewohnte Ordnungsstrukturen nicht mehr tragen.</p>
+    <div class="meta">
+      <span>Erstellt von Karioli / Emanuel Schaeffer, Gartow</span>
+      <span>18. Juli 2026</span>
+      <span>DOC-KC-EXP-DE-003 · Version 3.0</span>
+      <span>Ersetzt DOC-KC-EXP-DE-002 (18.07.2026)</span>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section class="chapter" id="einleitung">
+    <div class="kapitel-num">Kapitel 1</div>
+    <h2>Einleitung</h2>
+    <p class="lead">kariCare entstand aus der Frage: Woher wissen Menschen, was zu tun ist, wenn die gewohnten Ordnungsstrukturen nicht mehr tragen oder nicht mehr existieren? Die Türkei 2023 und die Ukraine seit 2022 zeigen dieselbe Lücke: Rettungskräfte wissen nicht, wo sie suchen sollen. Betroffene wissen nicht, ob sie gesehen werden.</p>
+    <p>kariCare ist eines von drei Karioli-Projekten. Neben kariPharm (Medikamenten- und Pflegekoordination) und kariNurse (Sprachbrücke für Auszubildende in Pflegeberufen) steht kariCare für Koordination und Selbstmanagement in Krisensituationen. Alle drei Apps entstehen aus der Nutzer-Perspektive und verstehen sich als Werkzeuge, die Menschen in schwierigen Situationen begleiten.</p>
+    <p>kariCare ist kein Warnsystem. Es tritt nicht in Konkurrenz zu staatlichen Systemen wie NINA oder Cell Broadcast, die die Bevölkerung vor einer Gefahr warnen. kariCare setzt an der Stelle an, die diese Systeme nicht abdecken: den Stunden <em>nach</em> der Warnung, in denen Menschen nicht wissen, wohin sie sollen, ob sie gesehen werden, und ob ihre Angehörigen sicher sind.</p>
+  </section>
+
+  <section class="chapter" id="szenario">
+    <div class="kapitel-num">Kapitel 2</div>
+    <h2>Das Szenario</h2>
+    <p>Das folgende Szenario ist fiktiv. Name, Ort und Einrichtung sind erfunden. Es folgt jedoch wiederkehrenden Mustern aus mehreren unabhängigen, öffentlich dokumentierten Berichten von Betroffenen der Ahrtal-Flut 2021: Kommunikationsausfall durch überlastete Mobilfunknetze, Rettungskräfte, die durch andere Einsätze gebunden sind, und die Ungewissheit, ob überhaupt jemand von der eigenen Lage weiß.</p>
+
+    <h3>Matthias Berger, Seniorenresidenz Talblick, Illingen an der Weser</h3>
+    <p>Matthias Berger leitet eine Seniorenresidenz mit 38 Bewohnern, sechs davon mit eingeschränkter Mobilität. Seit Tagen regnet es ununterbrochen.</p>
+
+    <div class="scene">
+      <div class="scene-time">21:40 · S2 · Warnung</div>
+      <p>Der Pegel überschreitet den kritischen Grenzwert. kariCare sendet eine verifizierte Katastrophenwarnung an alle registrierten Nutzer im betroffenen Gebiet. Berger erhält die Meldung: „Hochwassergefahr. Erdgeschossbereiche umgehend räumen."</p>
+    </div>
+    <div class="scene">
+      <div class="scene-time">21:52 · S1 · Lagemeldung</div>
+      <p>Berger öffnet kariCare und gibt die Lagemeldung ein: 38 Bewohner, davon 6 mit eingeschränkter Mobilität, keine Verletzten. GPS bestimmt seinen Standort lokal, unabhängig von jeder Netzverbindung.</p>
+    </div>
+    <div class="scene">
+      <div class="scene-time">22:03 · Netzausfall</div>
+      <p>Das Mobilfunknetz bricht unter der Last zusammen, weil zu viele Menschen gleichzeitig versuchen, Hilfe zu rufen oder Angehörige zu erreichen. Die Lagemeldung bleibt im Ausgang hängen. Berger weiß weiterhin genau, wo er ist. Die Leitstelle weiß es noch nicht.</p>
+    </div>
+    <div class="scene">
+      <div class="scene-time">22:15 · Kontaktversuch</div>
+      <p>Berger erreicht über eine Nebenstrecke kurz eine Feuerwache. Die Antwort: Alle verfügbaren Kräfte sind bereits weiter oben im Tal gebunden. Er muss warten, denn es handelt sich um begrenzte Kapazität in einer echten Krise, kein Systemversagen.</p>
+    </div>
+    <div class="scene">
+      <div class="scene-time">22:40 · S4 · Unruhe und Panik</div>
+      <p>Zwei Bewohner geraten in Panik. kariCare bietet, vollständig lokal gespeichert und ohne Netz nutzbar, eine psychologisch fundierte und erprobte Anleitung* zur Beruhigung in akuter Angst und Panik: ruhige Ansprache, einfache Sätze, Nähe herstellen. Berger nutzt sie.</p>
+    </div>
+    <div class="scene">
+      <div class="scene-time">23:20 · Netz kehrt teilweise zurück</div>
+      <p>Für wenige Minuten steht wieder eine Verbindung. Die Lagemeldung geht raus: 38 Personen, Standort Talblick, 6 eingeschränkt mobil. Die Leitstelle sieht jetzt, was vorher unsichtbar war.</p>
+    </div>
+    <div class="scene">
+      <div class="scene-time">00:10 · S1 · Profi-Modus, Leitstelle</div>
+      <p>Auf der taktischen Karte erscheint ein orangener Marker: Seniorenresidenz, 38 Personen, davon 6 kritisch eingeschränkt. Das nächste verfügbare Team wird gezielt dorthin geleitet — nicht zufällig, sondern weil die Information jetzt vorliegt.</p>
+    </div>
+
+    <div class="card">
+      <p>Rechercheur-Hinweis: kariCare ist wie jedes mobilfunkbasierte System auf ein funktionierendes Netz angewiesen. GPS bestimmt den eigenen Standort auch offline, die Übermittlung an eine Leitstelle jedoch nicht. Aus genau diesem Grund setzen Einsatzkräfte wie das THW auf eigene Funktechnik (u. a. Digitalfunk BOS) als Rückfallebene, eine branchenübliche Auslegung, nicht Gegenstand einer Einzelquelle. kariCare ergänzt diese Systeme, ersetzt sie aber nicht.</p>
+    </div>
+    <p style="font-size: 0.85rem; font-style: italic;">* Die Inhalte zum Umgang mit Panik, Angst und innerer Unruhe werden von psychologischen Fachinstituten bereitgestellt und validiert, kein allgemeiner Wellness-Ratgeber, sondern eine fachlich geprüfte Deeskalations- und Kommunikationsanleitung.</p>
+  </section>
+
+  <section class="chapter" id="rahmen">
+    <div class="kapitel-num">Kapitel 3</div>
+    <h2>Rechtlicher Rahmen &amp; Finanzierung</h2>
+    <p class="lead">Ein Ergänzungssystem, kein Ersatz für staatliche Warnsysteme.</p>
+    <p>kariCare ist als opt-in-basiertes Ergänzungssystem zu staatlichen Warnsystemen wie NINA und Cell Broadcast konzipiert. Es warnt nicht selbst, sondern orientiert in den Stunden danach. Alle datenschutzrelevanten Funktionen (GPS-Übermittlung, Vitaldaten) sind vollständig konfigurierbar und werden nur mit ausdrücklicher, granularer und jederzeit widerrufbarer Zustimmung aktiviert.</p>
+
+    <div class="card">
+      <p>Bewusste Abgrenzung: Eine mögliche behördliche Zertifizierung oder Akkreditierung von kariCare (etwa für den Profi-Modus im Zusammenspiel mit Leitstellen) wird in dieser Mappe nicht bewertet. Diese Entscheidung obliegt ausdrücklich dem Karioli-Fonds, den beteiligten Einsatzorganisationen und den von ihnen beauftragten Fachleuten.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="relevanz">
+    <div class="kapitel-num">Kapitel 4</div>
+    <h2>Gesellschaftliche Relevanz</h2>
+    <p class="lead">Warnsysteme warnen. kariCare orientiert.</p>
+    <p>Diese Mappe beschränkt sich bewusst auf Deutschland und die Europäische Union. Eine internationale oder globale Einordnung würde eine eigene, vom Karioli-Fonds beauftragte Studie erfordern und ist nicht Gegenstand dieses Dokuments.</p>
+
+    <h3>Deutschland</h3>
+    <p>Die Flutkatastrophe vom Juli 2021 kostete im Ahrtal (Landkreis Ahrweiler) 135 Menschen das Leben (134 im Landkreis Ahrweiler, eine weitere Person im Bereich Trier); deutschlandweit starben durch dasselbe Unwetterereignis mehr als 180 Menschen, davon 49 in Nordrhein-Westfalen. Der wirtschaftliche Gesamtschaden wird von verschiedenen Studien unterschiedlich beziffert. Die Schätzungen reichen von rund 33 bis 46 Milliarden Euro, je nach Studie und Bezugsgebiet: Eine Studie im Auftrag des Bundeswirtschaftsministeriums beziffert 33,4 Milliarden Euro direkte sowie 7,1 Milliarden Euro indirekte Folgeschäden, zusammen rund 40,5 Milliarden Euro. Der Rückversicherer Munich Re kommt einschließlich Nachbarländer auf rund 46 Milliarden Euro. Diese Bandbreite ist bewusst gewählt statt einer einzelnen Zahl, denn seriöse Quellen kommen hier zu unterschiedlichen Werten, je nachdem, ob nur direkte Schäden oder auch Folgeschäden und Nachbarländer einbezogen werden.</p>
+    <p>Der Bundeshaushalt für Inneres und Bevölkerungsschutz sollte 2026 laut Regierungsentwurf auf rund 15,4 Milliarden Euro steigen, über eine Milliarde Euro mehr als im Vorjahr. Nach Abschluss der Haushaltsberatungen hat der Bundestag den Etat am 27. November 2025 mit rund 15,76 Milliarden Euro final beschlossen. Zusätzlich hat das Bundeskabinett am 20. Mai 2026 die Eckpunkte für einen eigenständigen „Pakt für den Bevölkerungsschutz" mit geplanten Investitionen von zehn Milliarden Euro bis 2029 beschlossen, darunter rund drei Milliarden Euro für ein Bauprogramm des Technischen Hilfswerks (THW). Ein entsprechendes Gesetzgebungsverfahren steht zum Zeitpunkt dieser Mappe noch aus. Die Budgets von Bundesamt für Bevölkerungsschutz und Katastrophenhilfe (BBK) und THW sind seit 2019 in mehreren Schritten deutlich gewachsen, beim THW etwa von 249 Millionen Euro (2019) auf rund 643 bis 728 Millionen Euro (2026, je nach Entwurfs- oder Ist-Stand), beim BBK allein von 2025 auf 2026 um 82 Prozent auf rund 606 bis 610 Millionen Euro. In der Summe kommt dies einer Verdopplung bis annähernden Verdreifachung nahe.</p>
+    <p>Diese Investitionen bauen Warnsysteme (Sirenennetze, Cell Broadcast), Ausrüstung und Personal aus. Sie adressieren die erste Phase einer Katastrophe. Was danach kommt, die Stunden, in denen Menschen wie in Berger's Szenario ausharren, suchen und nicht wissen, bleibt strukturell ungelöst. Ein System wie kariCare dürfte sich in die bestehende Logik ergänzender, privater Warn- und Orientierungsangebote einfügen, wie sie das BBK grundsätzlich nicht ausschließt.</p>
+
+    <h3>Europäische Union</h3>
+    <p>Auch auf europäischer Ebene fehlt eine gemeinsame Plattform zur Bürgerorientierung in der Krise. Erdbeben in der Türkei, Waldbrände in Südeuropa und Überschwemmungen in Mitteleuropa zeigen wiederkehrend dieselbe Lücke zwischen staatlicher Warnung und individueller Orientierung.</p>
+
+    <div class="data-table">
+      <div class="data-row"><div class="k">Horizon Europe · Cluster 3 (Zivile Sicherheit)</div><div class="v">Fördert Forschungs- und Innovationsmaßnahmen; für gemeinnützige Einrichtungen gilt nach den allgemeinen Horizon-Europe-Regeln eine Förderquote von bis zu 100 %. Dies ist eine Standardregel des Programms, keine kariCare-spezifische Zusage.</div></div>
+      <div class="data-row"><div class="k">EU Civil Protection Mechanism (ECHO)</div><div class="v">Fördert Projekte zur Verbesserung der Reaktionsfähigkeit bei Katastrophen.</div></div>
+    </div>
+
+    <div class="card">
+      <p>Quellen: DKKV, Opfer- und Schadensdaten der Flut 2021 (Anfrage bei der ADD Rheinland-Pfalz, 01.02.2022); Amtsgericht Bad Neuenahr-Ahrweiler (amtliche Bestätigung, Juni 2023); Bundesregierung.de, Gedenken zum 5. Jahrestag der Flut (2026); bpb.de, „Nach der Flut an der Ahr 2021" und „Jahrhunderthochwasser 2021 in Deutschland"; Studie im Auftrag des Bundeswirtschaftsministeriums zu Wetterextremschäden 2000–2021; Munich Re (Schadensschätzung 2021); BMI-Pressemitteilung „Mehr Geld für Sicherheit und Bevölkerungsschutz" (30.07.2025); Deutscher Bundestag, Kurzmeldungen zu Einzelplan 06 (25.09.2025, 27.11.2025); BMI-Eckpunktepapier „Pakt für den Bevölkerungsschutz" und Pressemitteilung der Bundesregierung (20.05.2026); Europäische Kommission (Horizon Europe Regelwerk, ECHO). Angaben zum Gesamtschaden bewusst als Bandbreite dargestellt, da Studien hier voneinander abweichen; Haushaltszahlen mit Stand (Entwurf/beschlossen) gekennzeichnet.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="kosten">
+    <div class="kapitel-num">Kapitel 5</div>
+    <h2>Kosten und Realisierung</h2>
+    <p class="lead">Anhaltswerte zur Orientierung — keine Kalkulation.</p>
+    <p>Die folgenden Angaben sind grobe Anhaltswerte auf Basis öffentlich verfügbarer Marktdaten und Vergleichswerte. Sie dienen ausschließlich der Orientierung und ersetzen keine verbindliche Angebotskalkulation. Die endgültige Bewertung der Produktionskosten obliegt dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p>
+
+    <div class="data-table">
+      <div class="data-row"><div class="k">Universitäre Kooperation</div><div class="v">180.000 – 260.000 €</div></div>
+      <div class="data-row"><div class="k">Kommerzielle IT-Firma (Deutschland)</div><div class="v">380.000 – 550.000 €</div></div>
+    </div>
+
+    <p>kariCare ist technisch das anspruchsvollste Projekt im Karioli-Ökosystem: Anders als bei kariPharm und kariNurse liegt hier nicht die App, sondern die Infrastruktur im Zentrum der Kosten. Ein System, das in einer echten Krise unter extremer Gleichzeitigkeit stabil bleiben muss, erfordert eine Hochverfügbarkeits-Architektur, deren Anteil an den Gesamtkosten auf 40–50 % geschätzt wird — deutlich mehr als die 20–30 %, die bei vergleichbaren Consumer-Apps üblich sind.</p>
+
+    <div class="card">
+      <p>Methodischer Hinweis: Die genannten Kostenspannen sowie der Infrastruktur-Anteil von 40–50 % sind Schätzwerte auf Basis von Marktvergleichen (analog zur Methodik der kariPharm- und kariNurse-Kostenanalysen), keine Werte aus einer öffentlich einsehbaren Einzelquelle. Eine belastbare Angebotskalkulation kann erst nach konkreter Leistungsbeschreibung durch den Karioli-Fonds erfolgen.</p>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <div>Karioli · Gartow · Deutschland</div>
+    <div>Open Source · Gemeinnützig · Soziales Projekt · Öffentlich</div>
+    <div>DOC-KC-EXP-DE-003 · Version 3.0 · Kontakt karioli.projekt@gmail.com</div>
+  </footer>
+
+</div>
+
+</body>
+</html>

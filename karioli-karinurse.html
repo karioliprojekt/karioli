@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kariNurse · Karioli</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1a2b2e;
+    --bg-card: rgba(196, 80, 80, 0.08);
+    --border-card: rgba(196, 80, 80, 0.25);
+    --ink: #f5f0e8;
+    --ink-muted: #a0b8bc;
+    --ink-faint: #7a9ea4;
+    --accent: #C45050;
+    --footer: #3d5558;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.2rem 1.4rem 4rem;
+  }
+
+  /* ---------- Header ---------- */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    margin-left: -0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    margin-bottom: 2.2rem;
+    transition: opacity 0.2s ease;
+  }
+  .back:hover { opacity: 0.75; }
+
+  header.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.6rem;
+  }
+
+  .logo-img {
+    width: 56px;
+    height: auto;
+    margin-bottom: 1.3rem;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    max-width: 46ch;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+  .meta span:not(:last-child)::after {
+    content: '·';
+    margin-left: 1rem;
+    color: var(--footer);
+  }
+
+  hr.divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent 65%);
+    opacity: 0.5;
+    margin: 2.6rem 0;
+  }
+
+  /* ---------- Chapters ---------- */
+  section.chapter {
+    margin-bottom: 3rem;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .kapitel-num {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 1.3rem;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 1.6rem 0 0.6rem;
+  }
+
+  p {
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+    max-width: 62ch;
+  }
+
+  p.lead {
+    font-style: italic;
+    color: var(--ink);
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Cards / note boxes ---------- */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0 1.6rem;
+  }
+  .card p {
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .card p + p { margin-top: 0.6rem; }
+
+  /* ---------- Data table (reflows to stacked cards on mobile) ---------- */
+  .data-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0 1.6rem;
+  }
+  .data-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    background: rgba(245, 240, 232, 0.04);
+    border: 1px solid rgba(245, 240, 232, 0.08);
+  }
+  .data-row .k {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .data-row .v {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  @media (min-width: 560px) {
+    .data-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .data-row .k { flex: 0 0 auto; min-width: 12rem; }
+    .data-row .v { text-align: right; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer.page-footer {
+    margin-top: 3.5rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    font-size: 0.75rem;
+    color: var(--footer);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a href="index.html" class="back">&larr; Karioli</a>
+
+  <header class="hero">
+    <img src="karioli-ring-red.png" alt="kariNurse" class="logo-img">
+    <div class="eyebrow">Projekt Rot</div>
+    <h1>kariNurse</h1>
+    <p class="tagline">kariNurse unterstützt Auszubildende mit Migrationshintergrund in Pflegeberufen bei der Bewältigung von Sprachbarrieren.</p>
+    <div class="meta">
+      <span>Erstellt von Karioli / Emanuel Schaeffer, Gartow</span>
+      <span>17. Juni 2026</span>
+      <span>DOC-KN-EXP-DE-001 · Version 1.0</span>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section class="chapter" id="einleitung">
+    <div class="kapitel-num">Kapitel 1</div>
+    <h2>Einleitung</h2>
+    <p class="lead">kariNurse ist eine Art Schweizermesser für Menschen, die in der Ausbildung zur Pflegefachperson mit Sprachbarrieren zu kämpfen haben.</p>
+    <p>kariNurse ist eines von drei Karioli-Projekten. Neben kariPharm (Medikamenten- und Pflegekoordination) und kariCare (Echtzeit-Koordination in Krisenszenarien) steht kariNurse als Werkzeug, das Auszubildende mit Migrationshintergrund in Pflegeberufen unterstützt. Alle drei Apps teilen dieselbe Grundhaltung: Sie entstehen aus der Perspektive des Nutzers. Das führt mitunter zu ungewöhnlichen Lösungsansätzen.</p>
+    <p>Eine Ausbildung in der Pflege ist für jeden Auszubildenden anspruchsvoll. Wer zusätzlich in einer fremden Sprache lernen muss, trägt eine doppelte Last. kariNurse setzt an genau diesem Punkt an und behandelt das Verstehen von Zusammenhängen und das Lernen von Vokabeln als zwei getrennte Vorgänge.</p>
+    <p>Diese Mappe stellt die App vor, ordnet sie rechtlich und finanzierungsseitig ein und benennt die gesellschaftliche Relevanz auf Basis verifizierter Daten.</p>
+  </section>
+
+  <section class="chapter" id="profil">
+    <div class="kapitel-num">Kapitel 2</div>
+    <h2>Das Profil</h2>
+    <p class="lead">kariNurse ist Pflegequartett für clevere Azubis.</p>
+    <p>Anders als bei kariPharm beruht das Profil bei kariNurse nicht auf einer realen, anonymisierten Person, sondern auf einer bewusst fiktiven, illustrativen Figur, die als Ausgangspunkt für die Entwicklung diente.</p>
+
+    <h3>Aleyna</h3>
+    <p>Aleyna ist 22 Jahre alt, kommt aus Syrien und befindet sich im zweiten Jahr ihrer Pflegeausbildung. Ihr Alltagsdeutsch ist gut entwickelt, doch die Fachsprache der Pflege stellt sie vor eine dreifache Hürde: Alltagsdeutsch, medizinisches Latein und englische Fachliteratur überlagern sich, und jede Ebene ist ein eigenes System.</p>
+    <p>Sie ist eine selbstbewusste junge Frau. Sie nutzt kariNurse und passt die App als unterstützendes Werkzeug ihren Bedürfnissen an.</p>
+
+    <h3>Die App-Umgebung</h3>
+    <p>Links zeigt kariNurse den vollständigen Rahmenausbildungsplan der Fachkommission nach § 53 PflBG als Orientierung. In der Mitte werden bewusst nur die Inhalte des aktuellen Ausbildungsblocks angezeigt, nicht der gesamte Stoff der dreijährigen Ausbildung. Diese Reduktion ist kein technisches Detail, sondern eine gezielte psychologische Entlastung: Der gewaltige Ausbildungsumfang soll leicht, transparent und nicht überwältigend wirken. kariNurse soll Freude an der Arbeit mit dem Hilfsmittel erzeugen, keine zusätzliche Last.</p>
+
+    <h3>Verstehen vor Vokabellernen</h3>
+    <p>Das zentrale didaktische Prinzip von kariNurse trennt zwei Vorgänge, die in klassischen Sprachlern-Apps meist vermischt werden: das Verstehen einer Anleitung und das Erlernen einer Vokabel. kariNurse ermöglicht es, eine fachliche Anleitung zunächst in der Muttersprache vollständig zu erfassen und erst danach, etwa auf dem Weg nach Hause, die passende deutsche Vokabel zu lernen. Ein Begriff wie „Thrombozytopenie" wird dabei in seine Wurzelbedeutung zerlegt (Thrombo-Zyt-Penie), statt als reine Lautfolge auswendig gelernt zu werden.</p>
+
+    <h3>Bild, Ton und Text</h3>
+    <p>Jeder Begriff in kariNurse ist über drei gleichwertige Kanäle zugänglich: Bild, gesprochene Aussprache und Text in beiden Sprachen. Welcher Kanal im Moment zählt, entscheidet Aleyna selbst, je nachdem, wo sie sich gerade befindet und was in der Situation möglich ist.</p>
+    <p>Eine typische Szene: Aleyna sitzt in der U-Bahn und scrollt durch ihre rot markierten Begriffe. Sie klickt „Verbandschere" an, sieht das Bild der typischen gebogenen Schere, hört über Kopfhörer fünfmal das deutsche Wort, spricht es nach und liest auf Arabisch, wie diese Schere verwendet wird. Alle drei Kanäle in einer einzigen Alltagssituation, ohne Schreibtisch und ohne Unterrichtsraum.</p>
+
+    <h3>Das Mikrofon</h3>
+    <p>Das Mikrofon funktioniert in kariNurse in zwei Richtungen. Als Suche: Aleyna spricht einen Begriff, den sie gerade gehört hat, etwa „Verbandschere", und die App zeigt ihr sofort das passende Bild sowie ein PDF oder Fenster mit der Verwendungsbeschreibung, zweisprachig in Deutsch und Muttersprache. Als Eingabe: Aleyna kann eigene Inhalte per Mikrofon aufnehmen und in ihrem persönlichen Vorrat ablegen, wahlweise auf Deutsch oder in ihrer Muttersprache. Spracheingabe ersetzt hier die Tastatur, was besonders unterwegs und bei noch unsicherer Schreibfertigkeit in der Zweitsprache den Unterschied macht.</p>
+
+    <h3>Das Marker-System</h3>
+    <p>Jede Vokabel erhält einen Lernstands-Marker, den Aleyna selbst vergibt, jederzeit reversibel:</p>
+
+    <div class="data-table">
+      <div class="data-row"><div class="k">Rot</div><div class="v">Keine Ahnung</div></div>
+      <div class="data-row"><div class="k">Gelb</div><div class="v">In der Muttersprache erfasst und verstanden</div></div>
+      <div class="data-row"><div class="k">Grün</div><div class="v">Perfekt in Muttersprache und Deutsch</div></div>
+    </div>
+
+    <p>Der Lernfortschritt wird in farbigen Balkendiagrammen dokumentiert. Es gibt keinen Vergleich mit anderen Lernenden. Der einzige Wettbewerb ist der gegen den eigenen Fortschritt.</p>
+
+    <h3>Institute und der Rahmenlehrplan</h3>
+    <p>Pflegeausbildung ist national wie regional unterschiedlich organisiert: In Deutschland gilt der Rahmenlehrplan der Fachkommission nach § 53 PflBG über drei Ausbildungsjahre, dessen konkrete Umsetzung die Bundesländer selbst bestimmen. Im europäischen Ausland ist eine vierjährige Ausbildung die Regel. kariNurse bildet diese Vielfalt nicht als ein starres Schema ab, sondern als anpassbare Struktur: Jedes Institut ordnet seine eigenen Inhalte entsprechend der eigenen Ausbildungsordnung ein. Gegenstände in den jeweiligen Lehrräumen werden gescannt und den passenden Lerninhalten zugeordnet.</p>
+
+    <h3>Das Forum</h3>
+    <p>Das Forum trennt zwei Bereiche mit unterschiedlichem Charakter. Im zertifizierten Bereich stellen Institute ihre geprüften Inhalte ein: Ausbildungsblöcke und Lehrräume, für die das Institut die Verantwortung trägt. Im Austauschbereich teilen Auszubildende untereinander, informell und von Peer zu Peer: eigene Lerneinheiten, Foto-Glossare, Übersetzungen für andere mit derselben Muttersprache. Aleynas eigene Beiträge gehören in diesen zweiten Bereich. Sie trägt bei, ohne dass ihre Inhalte den Status institutionell geprüften Materials beanspruchen.</p>
+
+    <div class="card">
+      <p>Rechercheur-Hinweis: Aleyna ist ausdrücklich eine fiktive, illustrative Figur. Der Grundsatz „Presets beruhen auf realen, anonymisierten Situationen", der für kariPharm gilt, wird hier bewusst nicht angewendet.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="relevanz">
+    <div class="kapitel-num">Kapitel 3</div>
+    <h2>Gesellschaftliche Relevanz</h2>
+    <p class="lead">Die Zahlen hinter der Sprachbarriere: Deutschland und EU.</p>
+    <p>Diese Mappe beschränkt sich bewusst auf Deutschland und die Europäische Union. Eine internationale oder globale Einordnung würde eine eigene, vom Karioli-Fonds beauftragte Studie erfordern und ist nicht Gegenstand dieses Dokuments.</p>
+
+    <h3>Deutschland</h3>
+    <p>2024 arbeiteten mehr als 300.000 ausländische Pflegekräfte in Deutschland, 17,8 Prozent der rund 1,7 Millionen sozialversicherungspflichtig Beschäftigten in der Pflege, also fast jede fünfte Pflegekraft. 2013 waren es rund 75.000 (5,5 Prozent), eine Vervierfachung innerhalb von elf Jahren.</p>
+    <p>Nach der Pflegekräftevorausberechnung des Statistischen Bundesamts (2024) könnten je nach Szenario zwischen 280.000 und 690.000 Pflegekräfte bis zum Jahr 2049 fehlen.</p>
+    <p>Die Abbruchquote in der Pflegeausbildung wird uneinheitlich berichtet: Werte reichen von rund 15 Prozent (offizielle Auswertung der nach 2020 begonnenen generalistischen Ausbildung, Land Brandenburg) bis zu 46 Prozent (regionale Sonderauswertung, NRW). Sprachbarrieren sind ein dokumentierter Abbruchgrund: In einem Landkreis mit hohem Migrationsanteil unter den Auszubildenden (bis 70 Prozent) wurden Sprachschwierigkeiten als Hauptgrund für Abbrüche benannt.</p>
+    <p>Die Rekrutierungskosten für eine internationale Pflegekraft liegen nach mehreren unabhängigen Quellen bei 8.000 bis 20.000 Euro pro Person (Sprachkurse, Vermittlung, Visum, Anerkennungsverfahren, Wohnungssuche). Bei gescheiterter Integration ist das ein verlorenes Investment.</p>
+
+    <h3>Europäische Union</h3>
+    <p>Ein Bericht der Europäischen Kommission und der OECD dokumentiert einen Anstieg des Anteils außerhalb der EU ausgebildeter Pflegekräfte in der EU um 72 Prozent zwischen 2019 und 2022. Der Bericht weist für 15 EU-Länder einen Mangel an Pflegepersonal aus. Ein weiterer OECD-Bericht beziffert für Deutschland rund 240.000 ausländische Pflegekräfte im Jahr 2021, eine Verdreifachung binnen zwei Jahrzehnten.</p>
+
+    <p>Relevante EU-Förderinstrumente für ein mögliches kariNurse-Pilotprojekt:</p>
+    <div class="data-table">
+      <div class="data-row"><div class="k">Erasmus+ Kooperationspartnerschaften (KA220-VET)</div><div class="v">Feste Pauschalbeträge: 120.000 € / 250.000 € / 400.000 € pro Projekt</div></div>
+      <div class="data-row"><div class="k">ESF Plus</div><div class="v">Reguläre EU-Kofinanzierung 40–60 Prozent je nach Regionenkategorie (höhere Sätze bis 90–95 Prozent nur für spezifische Programme)</div></div>
+    </div>
+
+    <div class="card">
+      <p>Quellen: Statistisches Bundesamt (Pflegekräftevorausberechnung 2024); Bundesagentur für Arbeit / Mediendienst Integration (2025); Konzertierte Aktion Pflege der Bundesregierung; Europäische Kommission / OECD-Bericht zu Gesundheitsfachkräften in der EU; DAAD / Erasmus+ Nationale Agentur; Bundesministerium für Arbeit und Soziales (ESF Plus). Alle Angaben mit Bandbreite dargestellt, wo die Datenlage uneinheitlich ist.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="kosten">
+    <div class="kapitel-num">Kapitel 4</div>
+    <h2>Kosten und Realisierung</h2>
+    <p class="lead">Anhaltswerte zur Orientierung, keine Kalkulation.</p>
+    <p>Die folgenden Angaben sind grobe Anhaltswerte auf Basis öffentlich verfügbarer Marktdaten und Vergleichswerte. Sie dienen ausschließlich der Orientierung und ersetzen keine verbindliche Angebotskalkulation. Die endgültige Bewertung der Produktionskosten obliegt dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p>
+
+    <div class="data-table">
+      <div class="data-row"><div class="k">Universitäre Kooperation</div><div class="v">65.000 – 95.000 €</div></div>
+      <div class="data-row"><div class="k">Kommerzielle IT-Firma (Deutschland)</div><div class="v">160.000 – 220.000 €</div></div>
+    </div>
+
+    <p>kariNurse verfügt gegenüber kariPharm über keine sicherheitskritischen Echtzeit-Schnittstellen (kein Notfallsystem, keine Medikamentendatenbank), was die Komplexität tendenziell reduziert. Gleichzeitig entstehen eigene Kostenpositionen durch mehrsprachige Spracherkennung mit medizinischem Fachvokabular und den Aufbau der initialen Lerninhalte.</p>
+  </section>
+
+  <footer class="page-footer">
+    <div>Karioli · Gartow · Deutschland</div>
+    <div>Open Source · Gemeinnützig · Soziales Projekt · Öffentlich</div>
+    <div>DOC-KN-EXP-DE-001 · Version 1.0 · Kontakt karioli.projekt@gmail.com</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
