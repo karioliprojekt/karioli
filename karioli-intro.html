@@ -9,14 +9,14 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #1a2b2e;
-    --bg-card: rgba(232, 160, 32, 0.08);
-    --border-card: rgba(232, 160, 32, 0.25);
-    --ink: #f5f0e8;
-    --ink-muted: #a0b8bc;
-    --ink-faint: #7a9ea4;
-    --gold: #E8A020;
-    --footer: #3d5558;
+    --bg: #FAF8F4;
+    --bg-card: rgba(145, 106, 8, 0.08);
+    --border-card: rgba(145, 106, 8, 0.35);
+    --ink: #1B3A57;
+    --ink-muted: #3F5A72;
+    --ink-faint: #5F7586;
+    --gold: #916A08;
+    --footer: #5F7586;
   }
 
   html { scroll-behavior: smooth; }
@@ -40,14 +40,16 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--ink-faint);
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    margin-left: -0.5rem;
+    color: var(--gold);
     text-decoration: none;
     letter-spacing: 0.03em;
     margin-bottom: 2.2rem;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
   }
-  .back:hover { color: var(--gold); }
+  .back:hover { opacity: 0.75; }
 
   header.hero {
     display: flex;
@@ -181,8 +183,8 @@
     gap: 0.15rem;
     padding: 0.8rem 1rem;
     border-radius: 10px;
-    background: rgba(245, 240, 232, 0.04);
-    border: 1px solid rgba(245, 240, 232, 0.08);
+    background: rgba(27, 58, 87, 0.05);
+    border: 1px solid rgba(27, 58, 87, 0.15);
   }
   .data-row .k {
     font-size: 0.75rem;
@@ -220,8 +222,8 @@
     padding: 0.85rem 1.1rem;
     border-radius: 10px;
     text-decoration: none;
-    border: 1px solid rgba(245, 240, 232, 0.1);
-    background: rgba(245, 240, 232, 0.03);
+    border: 1px solid rgba(27, 58, 87, 0.12);
+    background: rgba(27, 58, 87, 0.03);
     transition: background 0.2s ease, transform 0.2s ease;
   }
   .app-link:hover { transform: translateX(4px); }
@@ -232,7 +234,7 @@
   footer.page-footer {
     margin-top: 3.5rem;
     padding-top: 1.6rem;
-    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    border-top: 1px solid rgba(27, 58, 87, 0.12);
     font-size: 0.75rem;
     color: var(--footer);
     letter-spacing: 0.04em;

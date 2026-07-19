@@ -780,6 +780,38 @@
   .dpv-badge-neu { background:rgba(60,120,80,0.25); color:#9AE090; border:1px solid rgba(90,160,110,0.4); }
 
   /* ─────────────────────────────────────
+     DEMO-DATEN-KENNZEICHNUNG (bindend, Anne Juli 2026)
+     Badge + Info-Icon für alle Medikations-Screens
+  ───────────────────────────────────── */
+  .demo-badge-wrap { display:flex; align-items:center; gap:4px; }
+  .demo-badge {
+    display:inline-block; font-size:var(--fs-xs); font-weight:700;
+    padding:2px 7px; border-radius:4px;
+    background:var(--color-akzent) !important; color:var(--color-akzent-dunkel) !important;
+    border:1px solid var(--color-akzent-tief); letter-spacing:.03em;
+  }
+  .demo-info-icon {
+    width:17px; height:17px; border-radius:50%; cursor:pointer;
+    background:#2196F3 !important; color:#FFFFFF !important;
+    font-size:11px; font-weight:700; font-style:italic; font-family:'DM Sans',sans-serif;
+    display:flex; align-items:center;
+    justify-content:center; border:none;
+    box-shadow:1px 1px 3px rgba(0,0,0,0.3);
+  }
+  .demo-info-popup {
+    position:fixed; z-index:9999; max-width:280px; left:50%; top:50%;
+    transform:translate(-50%,-50%); background:var(--color-bg-hell) !important;
+    border:1px solid rgba(245,200,64,0.5); border-radius:10px;
+    padding:14px 16px; font-size:var(--fs-sm); color:var(--color-text) !important;
+    box-shadow:3px 3px 12px rgba(0,0,0,0.15); display:none;
+  }
+  .demo-info-popup.active { display:block; }
+  .demo-info-overlay {
+    position:fixed; inset:0; z-index:9998; background:rgba(0,0,0,0.2); display:none;
+  }
+  .demo-info-overlay.active { display:block; }
+
+  /* ─────────────────────────────────────
      BENJAMIN · MOTORIK TOOLBAR (Set "XXL")
      größere Touchflächen für Parkinson
   ───────────────────────────────────── */
@@ -1788,16 +1820,6 @@ body {
 
 
   <!-- GHOST PANEL MIA -->
-  <div class="tool-panel" id="ghostMia" style="display:none;">
-    <div class="tp-title">MIA <span class="tp-close" data-panel="ghostMia">✕</span></div>
-    <div class="tp-row"><span class="tp-icon">📱</span><span class="tp-rname">TikTok · öffnen</span></div>
-    <div class="tp-row"><span class="tp-icon">📸</span><span class="tp-rname">Instagram · öffnen</span></div>
-    <div class="tp-row"><span class="tp-icon">🎵</span><span class="tp-rname">Spotify · öffnen</span></div>
-    <div class="tp-row"><span class="tp-icon">📞</span><span class="tp-rname">Telefon · Mama anrufen</span></div>
-    <div class="tp-row"><span class="tp-icon">📷</span><span class="tp-rname">Kamera · öffnen</span></div>
-  </div>
-
-
   <!-- ELENI HINWEIS-MODAL -->
   <div id="eleniHinweisModal" style="display:none;position:absolute;inset:0;z-index:9000;background:rgba(10,74,128,0.45);align-items:center;justify-content:center;border-radius:20px;">
     <div id="eleniHinweisCard" style="background:#F5F8FF;border-radius:16px;padding:28px 24px 20px;max-width:320px;width:90%;box-shadow:0 4px 24px rgba(26,111,173,0.18);border:1.5px solid #1A6FAD;">
@@ -2044,9 +2066,12 @@ body {
 
     <!-- S2 MEDIKATION -->
     <div class="screen" id="s-outtake">
-      <div class="med-header">
-        <div class="med-name" id="name-outtake">Benjamin</div>
-        <div class="med-date" id="date-outtake">28. APRIL 2026</div>
+      <div class="med-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" id="name-outtake">Benjamin</div>
+          <div class="med-date" id="date-outtake">28. APRIL 2026</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;">
         <div class="timeline-wrap">
@@ -2093,9 +2118,12 @@ body {
 
     <!-- INTAKE -->
     <div class="screen" id="s-intake">
-      <div class="med-header">
-        <div class="med-name" id="name-intake">Benjamin</div>
-        <div class="med-date" id="date-intake">VORRAT · REZEPTE</div>
+      <div class="med-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" id="name-intake">Benjamin</div>
+          <div class="med-date" id="date-intake">VORRAT · REZEPTE</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;">
         <div class="intake-section" id="intakeSection1">MEDIKAMENTE</div>
@@ -2127,9 +2155,12 @@ body {
 
     <!-- HISTORY -->
     <div class="screen" id="s-history">
-      <div class="med-header">
-        <div class="med-name" id="name-history">Benjamin</div>
-        <div class="med-date" id="date-history">ARCHIV · 24 STD</div>
+      <div class="med-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" id="name-history">Benjamin</div>
+          <div class="med-date" id="date-history">ARCHIV · 24 STD</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;" id="archivListe"></div>
       <div class="bottom-bar" id="barBenjaminHistory">
@@ -3332,9 +3363,12 @@ body {
     <!-- SCANNER ERGEBNIS: Ibuprofen ↔ Benjamin -->
     <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Scan/Sprache/Text) -->
     <div class="screen" id="s-scan-confirm" style="background:#FFF8E4;">
-      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:var(--color-text);font-size:18px;">Ibuprofen 400mg</div>
-        <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;" id="scanConfirmName">20 Filmtabletten</div>
+      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:var(--color-text);font-size:18px;">Ibuprofen 400mg</div>
+          <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;" id="scanConfirmName">20 Filmtabletten</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
         <div style="font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
@@ -3355,9 +3389,12 @@ body {
 
     <!-- BESTÄTIGUNG: DOSIERUNG -->
     <div class="screen" id="s-dose-confirm" style="background:#FFF8E4;">
-      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:var(--color-text);font-size:18px;">Dosierung</div>
-        <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:var(--color-text);font-size:18px;">Dosierung</div>
+          <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
         <div style="background:#FFF8E8;border:1px solid #E8C860;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
@@ -3374,9 +3411,12 @@ body {
 
     <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Herbert) -->
     <div class="screen" id="s-scan-confirm-herbert" style="background:#EEF4F8;">
-      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#1A3A50;font-size:18px;">Ibuprofen 600mg</div>
-        <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">20 Filmtabletten</div>
+      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#1A3A50;font-size:18px;">Ibuprofen 600mg</div>
+          <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">20 Filmtabletten</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
         <div style="font-size:var(--fs-sm);color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
@@ -3397,9 +3437,12 @@ body {
 
     <!-- BESTÄTIGUNG: DOSIERUNG (Herbert) -->
     <div class="screen" id="s-dose-confirm-herbert" style="background:#EEF4F8;">
-      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#1A3A50;font-size:18px;">Dosierung</div>
-        <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#1A3A50;font-size:18px;">Dosierung</div>
+          <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
         <div style="background:#D8E8F0;border:1px solid #B0C8DC;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
@@ -3415,9 +3458,12 @@ body {
     </div><!-- /s-dose-confirm-herbert -->
 
     <div class="screen" id="s-ibu-result" style="background:#FDFBF3;">
-      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:var(--color-text);">Wechselwirkungen</div>
-        <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">IBUPROFEN 400mg · ERKANNT</div>
+      <div class="med-header" style="border-bottom:1px solid #E8D8A0;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:var(--color-text);">Wechselwirkungen</div>
+          <div class="med-date" style="color:#7A5820;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">IBUPROFEN 400mg · ERKANNT</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="padding:0 2px 4px;font-size:var(--fs-sm);color:#A08040;font-family:'DM Mono',monospace;letter-spacing:.1em;">ABGLEICH MIT BENJAMINS VORRAT</div>
       <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;">
@@ -3479,9 +3525,12 @@ body {
     <!-- SCANNER ERGEBNIS: Ιβουπροφένη ↔ Ελένη -->
     <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Eleni) -->
     <div class="screen" id="s-scan-confirm-eleni" style="background:#F5F8FF;">
-      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#0A4A80;font-size:18px;">Ιβουπροφένη 400mg</div>
-        <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">20 δισκία</div>
+      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#0A4A80;font-size:18px;">Ιβουπροφένη 400mg</div>
+          <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">20 δισκία</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
         <div style="font-size:var(--fs-sm);color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">ΦΥΛΛΟ ΟΔΗΓΙΩΝ</div>
@@ -3502,9 +3551,12 @@ body {
 
     <!-- BESTÄTIGUNG: DOSIERUNG (Eleni) -->
     <div class="screen" id="s-dose-confirm-eleni" style="background:#F5F8FF;">
-      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#0A4A80;font-size:18px;">Δοσολογία</div>
-        <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">ΠΑΡΑΚΑΛΩ ΕΠΙΒΕΒΑΙΩΣΤΕ</div>
+      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#0A4A80;font-size:18px;">Δοσολογία</div>
+          <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">ΠΑΡΑΚΑΛΩ ΕΠΙΒΕΒΑΙΩΣΤΕ</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
         <div style="background:#EEF4FF;border:1px solid #B8D0E8;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
@@ -3521,9 +3573,12 @@ body {
 
     <!-- BESTÄTIGUNG: ERKANNTES MEDIKAMENT (Mia) -->
     <div class="screen" id="s-scan-confirm-mia" style="background:#FAFAFA;">
-      <div class="med-header" style="border-bottom:1px solid #D0D0D0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#3A1A00;font-size:18px;">Levetiracetam 500 mg</div>
-        <div class="med-date" style="color:#6A6A6A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">50 Filmtabletten · Epilepsie</div>
+      <div class="med-header" style="border-bottom:1px solid #D0D0D0;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#3A1A00;font-size:18px;">Levetiracetam 500 mg</div>
+          <div class="med-date" style="color:#6A6A6A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">50 Filmtabletten · Epilepsie</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:1;overflow-y:auto;padding:2px 2px 8px;">
         <div style="font-size:var(--fs-sm);color:#8A8A8A;font-family:'DM Mono',monospace;letter-spacing:.1em;margin-bottom:6px;">BEIPACKZETTEL</div>
@@ -3544,9 +3599,12 @@ body {
 
     <!-- BESTÄTIGUNG: DOSIERUNG (Mia) -->
     <div class="screen" id="s-dose-confirm-mia" style="background:#FAFAFA;">
-      <div class="med-header" style="border-bottom:1px solid #D0D0D0;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#3A1A00;font-size:18px;">Dosierung</div>
-        <div class="med-date" style="color:#6A6A6A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+      <div class="med-header" style="border-bottom:1px solid #D0D0D0;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#3A1A00;font-size:18px;">Dosierung</div>
+          <div class="med-date" style="color:#6A6A6A;font-family:'DM Mono',monospace;font-size:var(--fs-sm);letter-spacing:.12em;">BITTE BESTÄTIGEN</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="flex:0 0 auto;display:flex;justify-content:center;padding:24px 0;">
         <div style="background:#F5F5F5;border:1px solid #D0D0D0;border-radius:12px;padding:10px 16px;text-align:center;min-width:45%;">
@@ -3562,9 +3620,12 @@ body {
     </div><!-- /s-dose-confirm-mia -->
 
     <div class="screen" id="s-ibu-result-eleni" style="background:#F5F8FF;">
-      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#0A4A80;">Αλληλεπιδράσεις</div>
-        <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.12em;">ΙΒΟΥΠΡΟΦΕΝΗ 400mg · ΑΝΑΓΝΩΡΙΣΤΗΚΕ</div>
+      <div class="med-header" style="border-bottom:1px solid #B8D0E8;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#0A4A80;">Αλληλεπιδράσεις</div>
+          <div class="med-date" style="color:#1A6FAD;font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.12em;">ΙΒΟΥΠΡΟΦΕΝΗ 400mg · ΑΝΑΓΝΩΡΙΣΤΗΚΕ</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="padding:0 2px 4px;font-size:var(--fs-xs);color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;">ΑΝΤΙΠΑΡΑΒΟΛΗ ΜΕ ΤΑ ΦΑΡΜΑΚΑ ΤΗΣ ΕΛΕΝΗΣ</div>
       <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;">
@@ -3601,9 +3662,12 @@ body {
     </div><!-- /s-ibu-result-eleni -->
 
     <div class="screen" id="s-ibu-result-herbert" style="background:#EEF4F8;">
-      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;">
-        <div class="med-name" style="color:#1A3A50;">Wechselwirkungen</div>
-        <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.12em;">IBUPROFEN 600mg · ERKANNT</div>
+      <div class="med-header" style="border-bottom:1px solid #B0C8DC;margin-bottom:6px;padding-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="med-name" style="color:#1A3A50;">Wechselwirkungen</div>
+          <div class="med-date" style="color:#2A5A7A;font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.12em;">IBUPROFEN 600mg · ERKANNT</div>
+        </div>
+        <span class="demoBadgeSlot"></span>
       </div>
       <div style="padding:0 2px 4px;font-size:var(--fs-xs);color:#4A7FA5;font-family:'DM Mono',monospace;letter-spacing:.1em;">ABGLEICH MIT HERBERTS VORRAT</div>
       <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px;">
@@ -4073,6 +4137,9 @@ body {
       document.getElementById(s).classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.demoBadgeSlot').forEach(function(slot){
+      if(slot.offsetParent !== null && !slot.innerHTML) slot.innerHTML = demoBadgeHTML();
+    });
     // dashBottom-Bars: jetzt Kinder von #s-dashboard — Sichtbarkeit via Screen-Klasse automatisch
     // Skin-spezifische Steuerung in activate/deactivate-Funktionen
     // ⌂-Button: auf Dashboard → "← Zurück", sonst "⌂"
@@ -4257,6 +4324,27 @@ body {
     }
     return punkte;
   }
+
+  // ── DEMO-DATEN-KENNZEICHNUNG (bindend, Anne Juli 2026) ──
+  function demoBadgeHTML(){
+    return '<div class="demo-badge-wrap">'
+      + '<span class="demo-badge">BEISPIELDATEN · Demo</span>'
+      + '<span class="demo-info-icon" onclick="zeigeDemoHinweis(event)">i</span>'
+      + '</div>';
+  }
+  window.zeigeDemoHinweis = function(ev){
+    if(ev) ev.stopPropagation();
+    var overlay = document.getElementById('demo-info-overlay');
+    var popup = document.getElementById('demo-info-popup');
+    if(overlay) overlay.classList.add('active');
+    if(popup) popup.classList.add('active');
+  };
+  window.schliesseDemoHinweis = function(){
+    var overlay = document.getElementById('demo-info-overlay');
+    var popup = document.getElementById('demo-info-popup');
+    if(overlay) overlay.classList.remove('active');
+    if(popup) popup.classList.remove('active');
+  };
 
   function renderBenjaminMedCard(time){
     if(ninaActive) return;
@@ -4816,13 +4904,6 @@ body {
   }, {passive: false});
 
   document.getElementById('presetTabBtn').addEventListener('click',function(){
-    if(presetActive === presetGeruest.mia){
-      var gm = document.getElementById('ghostMia');
-      var isOpen = gm && gm.style.display !== 'none';
-      closeAllPanels();
-      if(!isOpen && gm) gm.style.display = 'block';
-      return;
-    }
     var p=document.getElementById('presetPanel');
     var open=p.classList.contains('open');
     closeAllPanels();
@@ -5968,7 +6049,7 @@ body {
     ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
       var el = document.getElementById(id); if(el) el.textContent = config.name;
     });
-    var ptb = document.getElementById('presetTabBtn'); if(ptb) ptb.textContent = config.name.toUpperCase();
+    // presetTabBtn bleibt "PRESETS" (Ghost-Panel entfernt, Presets-Zugang immer erreichbar)
     if (config.vorratSkin) {
       initVorratForSkin(config.vorratSkin);
       renderVorrat();
@@ -6388,6 +6469,7 @@ body {
 
   document.getElementById('ppBenjamin').addEventListener('click', function() {
     closeAllPanels();
+    presetActive = null;
     if (corinnaActive)   { deactivateCorinnaSkin(); }
     else if (ninaActive) { deactivateNinaSkin(); }
     else if (lisaActive) { deactivateLisaSkin(); }
@@ -6491,6 +6573,7 @@ body {
   }
   document.getElementById('ppHerbert').addEventListener('click', function() {
     closeAllPanels();
+    presetActive = null;
     if (corinnaActive)   { deactivateCorinnaSkin(); }
     else if (ninaActive) { deactivateNinaSkin(); }
     else if (lisaActive) { deactivateLisaSkin(); }
@@ -6901,6 +6984,14 @@ body {
     }
   }
 </script>
+
+<div class="demo-info-overlay" id="demo-info-overlay" onclick="schliesseDemoHinweis()"></div>
+<div class="demo-info-popup" id="demo-info-popup">
+  Diese Medikationsdaten sind KI-generierte Beispieldaten auf Basis realer Beipackzettel — zu Demonstrationszwecken. Keine individuelle Verschreibung.
+  <div style="text-align:right;margin-top:10px;">
+    <span style="cursor:pointer;font-weight:700;color:var(--color-akzent-tief);" onclick="schliesseDemoHinweis()">Schließen</span>
+  </div>
+</div>
 
 </body>
 </html>
