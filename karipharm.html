@@ -1355,7 +1355,7 @@ body {
   <div class="preset-panel" id="presetPanel">
     <div class="pp-title">PRESETS <span class="pp-close" id="ppClose">✕</span></div>
     <div class="pp-item" id="ppBenjamin" style="border-left:3px solid #C8A010;background:rgba(200,160,10,0.08);">
-      <div class="pp-item-name" style="color:#5A4000;">👴 Benjamin · Parkinson</div>
+      <div class="pp-item-name" style="color:#5A4000;">👴 Ferdinand Schröder · Parkinson</div>
       <div class="pp-item-sub" style="color:#7A6020;">Parkinson · Diabetes · Pflegedienst Sonnenschein</div>
     </div>
     <div class="pp-item" id="ppHerbert" style="display:none;border-left:3px solid #4A7FA5;background:rgba(74,127,165,0.08);">
@@ -1620,7 +1620,7 @@ body {
       <div class="pp-item-sub" style="color:#8A8A8A;">Epilepsie · 8 J.</div>
     </div>
     <div class="pp-item" id="ppForumBenjamin" style="display:none;border-left:3px solid #C8A010;background:rgba(200,160,10,0.08);">
-      <div class="pp-item-name" style="color:#5A4000;">👴 Benjamin · Parkinson</div>
+      <div class="pp-item-name" style="color:#5A4000;">👴 Ferdinand Schröder · Parkinson</div>
       <div class="pp-item-sub" style="color:#7A6020;">Parkinson · Diabetes · Pflegedienst Sonnenschein</div>
     </div>
     <div class="pp-item" id="ppNina" style="display:block;border-left:3px solid #1A6FAD;background:rgba(26,111,173,0.08);">
@@ -1956,7 +1956,7 @@ body {
     <!-- S1 SCANNER -->
     <div class="screen active" id="s-scanner">
       <div class="med-header" id="scannerHeader" style="text-align:center;padding:2px 0 4px;border-bottom:1px solid var(--color-akzent-tief);margin-bottom:4px;">
-        <div class="med-name" id="scannerName">Benjamin</div>
+        <div class="med-name" id="scannerName">Ferdinand Schröder</div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
 
@@ -2070,7 +2070,7 @@ body {
     <div class="screen" id="s-outtake">
       <div class="med-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
         <div>
-          <div class="med-name" id="name-outtake">Benjamin</div>
+          <div class="med-name" id="name-outtake">Ferdinand Schröder</div>
           <div class="med-date" id="date-outtake">28. APRIL 2026</div>
         </div>
         <span class="demoBadgeSlot"></span>
@@ -2122,7 +2122,7 @@ body {
     <div class="screen" id="s-intake">
       <div class="med-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
         <div>
-          <div class="med-name" id="name-intake">Benjamin</div>
+          <div class="med-name" id="name-intake">Ferdinand Schröder</div>
           <div class="med-date" id="date-intake">VORRAT · REZEPTE</div>
         </div>
         <span class="demoBadgeSlot"></span>
@@ -2159,7 +2159,7 @@ body {
     <div class="screen" id="s-history">
       <div class="med-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
         <div>
-          <div class="med-name" id="name-history">Benjamin</div>
+          <div class="med-name" id="name-history">Ferdinand Schröder</div>
           <div class="med-date" id="date-history">ARCHIV · 24 STD</div>
         </div>
         <span class="demoBadgeSlot"></span>
@@ -2193,7 +2193,7 @@ body {
       <button class="dash-arrow dash-arrow-right" onclick="dashArrowNav(1)" aria-label="Nächstes Dashboard">›</button>
       <div class="med-header" style="display:flex;align-items:center;justify-content:space-between;">
         <div>
-          <div class="med-name" id="name-dashboard">Benjamin</div>
+          <div class="med-name" id="name-dashboard">Ferdinand Schröder</div>
           <div class="med-date" id="dash-date">SAMSUNG WATCH · LIVE · KONFIGURIERBAR</div>
         </div>
       </div>
@@ -3126,9 +3126,14 @@ body {
     <div class="screen" id="s-notrufkette" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
       <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:12px;text-align:center;">NOTRUFKETTE</div>
 
+      <div id="notrufSystemToggle" onclick="handleNotrufSystemToggleClick()" style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:rgba(60,168,96,0.1);border:1px solid rgba(60,168,96,0.35);border-radius:10px;margin-bottom:14px;cursor:pointer;">
+        <span style="font-size:var(--fs-sm);color:#3CA860;font-family:'DM Sans',sans-serif;">🎙 Notfallsystem „SKATA"</span>
+        <span id="notrufSystemStatus" style="font-size:var(--fs-xs);letter-spacing:.08em;color:#3CA860;font-family:'DM Mono',monospace;">AN</span>
+      </div>
+
       <!-- STUFE 1 -->
       <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 1 · ERSTE NACHRICHT</div>
-      <div id="nkContact1" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
+      <div id="nkContact1" style="padding:8px 10px;background:rgba(60,168,96,0.15);border:1px solid #3CA860;border-radius:8px;font-size:var(--fs-sm);color:#3CA860;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Sabine Krüger</div>
       <div style="height:6px;background:rgba(200,130,10,0.2);border-radius:4px;margin-bottom:8px;overflow:hidden;">
         <div id="nkBar" style="height:100%;width:100%;background:var(--color-akzent);border-radius:4px;transform-origin:left;transition:transform 30s linear;"></div>
       </div>
@@ -3138,10 +3143,10 @@ body {
       <!-- STUFE 2 -->
       <div style="font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:6px;">STUFE 2 · ALLE KONTAKTE GLEICHZEITIG</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-        <div id="nkContact2a" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Claudia</div>
-        <div id="nkContact2b" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Constantin</div>
-        <div id="nkContact2c" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Emanuel</div>
-        <div id="nkContact2d" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Cornelia</div>
+        <div id="nkContact2a" style="padding:8px 10px;background:rgba(60,168,96,0.15);border:1px solid #3CA860;border-radius:8px;font-size:var(--fs-sm);color:#3CA860;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Thorsten Weber</div>
+        <div id="nkContact2b" style="padding:8px 10px;background:rgba(60,168,96,0.15);border:1px solid #3CA860;border-radius:8px;font-size:var(--fs-sm);color:#3CA860;font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Miriam Alsen</div>
+        <div id="nkContact2c" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Jost Reimers</div>
+        <div id="nkContact2d" style="padding:8px 10px;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:8px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;transition:background 0.4s,border-color 0.4s,color 0.4s;">📡 Karin Bertram</div>
       </div>
       <button onclick="show('s-scanner')" style="width:100%;padding:12px;background:rgba(200,130,10,0.12);border:1px solid rgba(200,130,10,0.3);border-radius:10px;color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;font-size:var(--fs-md);font-weight:500;cursor:pointer;">↩ Zurück</button>
     </div>
@@ -3152,17 +3157,9 @@ body {
       <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">NOTRUFKETTE EINRICHTEN</div>
 
       <div style="margin-bottom:12px;">
-        <div id="kbNameTrigger" onclick="kbToggleName()" style="display:flex;align-items:center;justify-content:space-between;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.3);border-radius:10px;padding:10px 12px;cursor:pointer;">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(200,130,10,0.08);border:1px solid rgba(200,130,10,0.3);border-radius:10px;padding:10px 12px;">
           <span style="font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;">NAME DER KETTE</span>
-          <span id="kbNameWert" style="font-size:var(--fs-sm);color:#A07030;font-family:'DM Sans',sans-serif;flex:1;margin:0 10px;text-align:right;">Bitte wählen</span>
-          <span style="color:var(--color-akzent-tief);font-size:var(--fs-xs);">▾</span>
-        </div>
-        <div id="kbNameListe" style="display:none;margin-top:6px;">
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Claudia</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Cornelia</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Wochenende</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;margin-bottom:5px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Urlaub</div>
-          <div onclick="kbWaehleName(this)" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:8px;padding:9px 12px;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;cursor:pointer;">Krise</div>
+          <span id="kbNameWert" style="font-size:var(--fs-sm);color:var(--color-akzent-dunkel);font-family:'DM Sans',sans-serif;flex:1;margin:0 10px;text-align:right;">Notruf 1</span>
         </div>
       </div>
 
@@ -3182,7 +3179,72 @@ body {
     <div class="screen" id="s-kontaktvorrat" style="background:#FDFBF3;border-radius:20px;padding:16px;margin:-1px -32px;width:calc(100% + 64px);overflow-y:auto;">
       <div style="font-size:var(--fs-xs);letter-spacing:.15em;color:var(--color-akzent-dunkel);font-family:'DM Mono',monospace;margin-bottom:14px;text-align:center;">KONTAKTVORRAT</div>
 
-      <div id="kvListe"></div>
+      <div id="kvListe">
+        <div class="kv-kontakt" data-ok="1" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:var(--color-akzent);flex-shrink:0;"></span>
+            <input type="text" value="Sabine Krüger" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 176 22345678" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" data-ok="1" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:var(--color-akzent);flex-shrink:0;"></span>
+            <input type="text" value="Thorsten Weber" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 151 98765432" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" data-ok="1" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:var(--color-akzent);flex-shrink:0;"></span>
+            <input type="text" value="Miriam Alsen" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 160 33221144" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" data-ok="1" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:var(--color-akzent);flex-shrink:0;"></span>
+            <input type="text" value="Jost Reimers" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 172 55667788" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" data-ok="1" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:var(--color-akzent);flex-shrink:0;"></span>
+            <input type="text" value="Karin Bertram" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 157 12309876" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:rgba(200,130,10,0.2);flex-shrink:0;"></span>
+            <input type="text" value="Falk Nissen" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 163 44556677" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:rgba(200,130,10,0.2);flex-shrink:0;"></span>
+            <input type="text" value="Petra Ohlsen" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 175 88990011" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+        <div class="kv-kontakt" style="background:#FFF8E4;border:1px solid rgba(200,130,10,0.2);border-radius:10px;padding:12px 13px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span class="kv-punkt" style="width:8px;height:8px;border-radius:50%;background:rgba(200,130,10,0.2);flex-shrink:0;"></span>
+            <input type="text" value="Rüdiger Thoms" style="flex:1;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+            <span onclick="kvLoeschKontakt(this)" style="font-family:'DM Sans',sans-serif;font-size:16px;color:#A07030;cursor:pointer;padding:0 4px;">✕</span>
+          </div>
+          <input type="tel" value="+49 152 66778899" style="width:100%;box-sizing:border-box;background:#FDFBF3;border:1px solid rgba(200,130,10,0.3);border-radius:8px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--color-akzent-dunkel);">
+        </div>
+      </div>
 
       <div id="kvAddBtn" onclick="kvAddKontakt()" style="display:flex;align-items:center;justify-content:center;background:rgba(200,130,10,0.06);border:1px dashed rgba(200,130,10,0.4);border-radius:10px;padding:12px;margin-bottom:16px;font-size:var(--fs-xs);letter-spacing:.1em;color:#A07030;font-family:'DM Mono',monospace;cursor:pointer;">+ KONTAKT</div>
 
@@ -3861,7 +3923,7 @@ body {
       dpvSlide:       0
     },
     user: {
-      name:          'Benjamin',
+      name:          'Ferdinand Schröder',
       condition:     'Parkinson',
       careProvider:  'Pflegedienst Sonnenschein'
     },
@@ -4119,9 +4181,92 @@ body {
 
 
   /* ─────────────────────────────────────
-     SPRACHSTEUERUNG — Grundgerüst (Schritt 1)
-     Nur Navigation, kein Auslösewort, generisch für alle Presets
+     NOTFALLSYSTEM — eigenständige Skata-Erkennung
+     Läuft unabhängig vom Haupt-Sprachschalter (🎙️ SPRACHE).
+     Nur "SKATA" wird hier erkannt.
   ───────────────────────────────────── */
+  var notrufSystemActive = true;
+  var notrufRecognition = null;
+
+  function startNotrufSystem(){
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return;
+    notrufRecognition = new SR();
+    notrufRecognition.continuous = true;
+    notrufRecognition.interimResults = false;
+    notrufRecognition.lang = 'de-DE';
+    notrufRecognition.onresult = function(ev){
+      var last = ev.results[ev.results.length - 1];
+      if (!last.isFinal) return;
+      var t = last[0].transcript.toLowerCase();
+      if (t.indexOf('skata') !== -1) triggerBenjaminNotruf();
+    };
+    notrufRecognition.onend = function(){ if (notrufSystemActive) notrufRecognition.start(); };
+    notrufRecognition.start();
+  }
+
+  function stopNotrufSystem(){
+    if (notrufRecognition){ notrufRecognition.onend = null; notrufRecognition.stop(); notrufRecognition = null; }
+  }
+
+  function updateNotrufStatusButton(){
+    var btn = document.getElementById('notrufStatusBtn');
+    if (!btn) return;
+    btn.classList.remove('rot','gelb','gruen');
+    if (!kbHatAktiveKette){ btn.classList.add('rot'); }
+    else if (notrufSystemActive){ btn.classList.add('gruen'); }
+    else { btn.classList.add('gelb'); }
+  }
+
+  window.handleNotrufSystemToggleClick = function(){
+    if (notrufSystemActive){
+      document.getElementById('notruf-confirm-overlay').classList.add('active');
+      document.getElementById('notruf-confirm-popup').classList.add('active');
+      return;
+    }
+    notrufSystemEinschalten();
+  };
+
+  window.notrufAbschaltAbbrechen = function(){
+    document.getElementById('notruf-confirm-overlay').classList.remove('active');
+    document.getElementById('notruf-confirm-popup').classList.remove('active');
+  };
+
+  window.notrufAbschaltBestaetigen = function(){
+    document.getElementById('notruf-confirm-overlay').classList.remove('active');
+    document.getElementById('notruf-confirm-popup').classList.remove('active');
+    notrufSystemAusschalten();
+  };
+
+  function notrufSystemAusschalten(){
+    var statusEl = document.getElementById('notrufSystemStatus');
+    var rowEl = document.getElementById('notrufSystemToggle');
+    notrufSystemActive = false;
+    stopNotrufSystem();
+    statusEl.textContent = 'AUS';
+    statusEl.style.color = '#C85A30';
+    rowEl.style.background = 'rgba(200,90,48,0.1)';
+    rowEl.style.borderColor = 'rgba(200,90,48,0.35)';
+    rowEl.querySelector('span').style.color = '#C85A30';
+    updateNotrufStatusButton();
+  }
+
+  function notrufSystemEinschalten(){
+    var statusEl = document.getElementById('notrufSystemStatus');
+    var rowEl = document.getElementById('notrufSystemToggle');
+    notrufSystemActive = true;
+    startNotrufSystem();
+    statusEl.textContent = 'AN';
+    statusEl.style.color = '#3CA860';
+    rowEl.style.background = 'rgba(60,168,96,0.1)';
+    rowEl.style.borderColor = 'rgba(60,168,96,0.35)';
+    rowEl.querySelector('span').style.color = '#3CA860';
+    updateNotrufStatusButton();
+  }
+
+  // Autostart — das Notfallsystem läuft ab Programmstart, unabhängig vom 🎙️-Schalter
+  startNotrufSystem();
+  updateNotrufStatusButton();
   var voiceControlActive = false;
   var voiceRecognition = null;
 
@@ -5070,16 +5215,6 @@ body {
   window.kvBestaetigeFair = kvBestaetigeFair;
   window.kvSchliesseFair = kvSchliesseFair;
 
-  // Ketten-Bauer: Name der Kette
-  function kbToggleName(){
-    document.getElementById('kbNameListe').style.display =
-      (document.getElementById('kbNameListe').style.display === 'none') ? 'block' : 'none';
-  }
-  function kbWaehleName(opt){
-    document.getElementById('kbNameWert').textContent = opt.textContent;
-    document.getElementById('kbNameWert').style.color = 'var(--color-akzent-dunkel)';
-    document.getElementById('kbNameListe').style.display = 'none';
-  }
 
   // Ketten-Bauer: Stationen (WER · NACHRICHT · DANN WARTEN)
   var kbStationNr = 0;
@@ -5099,8 +5234,8 @@ body {
     return '<div class="kb-station" style="background:rgba(245,200,64,0.08);border:1px solid rgba(200,130,10,0.25);border-radius:10px;padding:12px 12px 4px;margin-bottom:12px;">'
       + '<div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);letter-spacing:.1em;color:var(--color-akzent-dunkel);font-family:\'DM Mono\',monospace;margin-bottom:10px;">'
       + '<span class="kb-station-kopf">STATION '+nr+'</span><span onclick="kbLoeschStation(this)" style="cursor:pointer;color:#A07030;">✕</span></div>'
-      + kbRmHTML('WER', ['Cornelia','Claudia','Emanuel','→ 112'])
-      + kbRmHTML('NACHRICHT', ['Benjamin braucht dich','Bitte ruf ihn an','Bitte übernimm','Rettungsdienst rufen'])
+      + kbRmHTML('WER', ['Sabine Krüger','Thorsten Weber','Miriam Alsen','Jost Reimers','Karin Bertram','→ 112'])
+      + kbRmHTML('NACHRICHT', ['Ferdinand braucht dich','Bitte ruf ihn an','Bitte übernimm','Rettungsdienst rufen'])
       + kbRmHTML('DANN WARTEN', ['2 Min','5 Min','10 Min'])
       + '</div>';
   }
@@ -5149,6 +5284,7 @@ body {
     if(stationen.length === 0) return;
     kbKette = stationen;
     kbHatAktiveKette = true;
+    updateNotrufStatusButton();
     kbStarteAblauf();
   }
   function kbStarteAblauf(){
@@ -5203,8 +5339,6 @@ body {
     document.getElementById('kbBuehne').style.display = 'none';
     document.getElementById('kbBuehne').innerHTML = '';
   }
-  window.kbToggleName = kbToggleName;
-  window.kbWaehleName = kbWaehleName;
   window.kbAddStation = kbAddStation;
   window.kbLoeschStation = kbLoeschStation;
   window.kbToggleRM = kbToggleRM;
@@ -5588,13 +5722,6 @@ body {
   /* Notrufketten-Status (Benjamin, linke Sidebar) — Demo: Klick wechselt
      den Zustand zyklisch rot → gelb → grün → rot, rein zur Anschauung. */
   (function(){
-    var notrufStaende = ['rot','gelb','gruen'];
-    var notrufIndex = 1; // Start: gelb (konfiguriert, nicht scharf)
-    document.getElementById('notrufStatusBtn').addEventListener('click',function(){
-      notrufIndex = (notrufIndex + 1) % notrufStaende.length;
-      this.classList.remove('rot','gelb','gruen');
-      this.classList.add(notrufStaende[notrufIndex]);
-    });
   })();
 
   /* EINGENOMMEN */
@@ -5868,7 +5995,7 @@ body {
     if (nkSeconds <= 0) {
       clearInterval(nkTimer);
       nkTimer = null;
-      // Kein Rückruf: Claudia wird rot, danach Stufe 2 grün
+      // Kein Rückruf: Sabine Krüger wird rot, danach Stufe 2 grün
       nkSetContactColor(document.getElementById('nkContact1'), 'red');
       setTimeout(function() {
         gloeckchen();
@@ -5892,7 +6019,7 @@ body {
     nkSetContactColor(document.getElementById('nkContact2b'), 'neutral');
     nkSetContactColor(document.getElementById('nkContact2c'), 'neutral');
     nkSetContactColor(document.getElementById('nkContact2d'), 'neutral');
-    // Nachricht raus: Claudia sofort grün
+    // Nachricht raus: Sabine Krüger sofort grün
     nkSetContactColor(document.getElementById('nkContact1'), 'green');
     // Goldbalken zurücksetzen, dann starten
     setTimeout(function() {
@@ -6424,7 +6551,7 @@ body {
     document.getElementById('ninaScanBtn').style.display = 'none';
     document.getElementById('scanBtn').style.display = 'flex';
     ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el = document.getElementById(id); if(el) el.textContent = 'Benjamin';
+      var el = document.getElementById(id); if(el) el.textContent = 'Ferdinand Schröder';
     });
     document.querySelectorAll('.brand').forEach(function(el){ el.textContent = 'kariPharm'; });
     document.getElementById('ghostBenjamin').style.display = 'none';
@@ -6603,7 +6730,7 @@ body {
     ['dashRow1','dashRow2','dashRow3','dashRow4'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display=''; });
     var ptb = document.getElementById('presetTabBtn'); if(ptb) ptb.textContent='PRESETS';
     ['name-outtake','name-intake','name-history','name-dashboard','scannerName'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.textContent='Benjamin';
+      var el=document.getElementById(id); if(el) el.textContent='Ferdinand Schröder';
     });
     var tbh = document.getElementById('tbHerbertHund'); if(tbh) tbh.style.display='none';
     var tbn = document.getElementById('tbBenjaminNotruf'); if(tbn) tbn.style.display='flex';
@@ -7052,6 +7179,15 @@ body {
     }
   }
 </script>
+
+<div class="demo-info-overlay" id="notruf-confirm-overlay" onclick="notrufAbschaltAbbrechen()"></div>
+<div class="demo-info-popup" id="notruf-confirm-popup">
+  Notfallsystem wirklich ausschalten? „SKATA" wird dann nicht mehr erkannt.
+  <div style="text-align:right;margin-top:10px;">
+    <span style="cursor:pointer;font-weight:500;color:var(--color-text);margin-right:16px;" onclick="notrufAbschaltAbbrechen()">Abbrechen</span>
+    <span style="cursor:pointer;font-weight:700;color:#C85A30;" onclick="notrufAbschaltBestaetigen()">Ausschalten</span>
+  </div>
+</div>
 
 <div class="demo-info-overlay" id="demo-info-overlay" onclick="schliesseDemoHinweis()"></div>
 <div class="demo-info-popup" id="demo-info-popup">
