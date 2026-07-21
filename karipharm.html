@@ -178,6 +178,8 @@
     position:relative;
     user-select:none;
   }
+  .tool-btn.voice-active{ background:#1E0E00; border-color:#3A1A00; }
+  .skin-benjamin .tool-btn.voice-active{ background:#1E0E00; border-color:#3A1A00; }
   .tool-btn:hover{background:rgba(255,255,255,0.22);}
   .tool-btn.active-tool{background:rgba(212,146,10,0.35);border-color:rgba(212,146,10,0.6);}
   .tool-icon{font-size:var(--fs-md);line-height:1;}
@@ -1736,10 +1738,10 @@ body {
       <span class="tool-label">SIGNAL</span>
       <div class="tool-tip">Signal</div>
     </div>
-    <div class="tool-btn" id="tbNote" onclick="zeigeGhostBeleg('🎙️','Sprachsteuerung')">
-      <span class="tool-icon">🎙️</span>
+    <div class="tool-btn" id="tbNote" onclick="toggleVoiceControl()">
+      <span class="tool-icon" id="tbNoteIcon">🎙️</span>
       <span class="tool-label">SPRACHE</span>
-      <div class="tool-tip">Sprachsteuerung</div>
+      <div class="tool-tip" id="tbNoteTip">Sprachsteuerung · Aus</div>
     </div>
     <!-- SPRACH-BUTTON + KLAPPE entfernt -->
   </div>
@@ -4115,6 +4117,72 @@ body {
     renderRezepte();
   })();
 
+
+  /* ─────────────────────────────────────
+     SPRACHSTEUERUNG — Grundgerüst (Schritt 1)
+     Nur Navigation, kein Auslösewort, generisch für alle Presets
+  ───────────────────────────────────── */
+  var voiceControlActive = false;
+  var voiceRecognition = null;
+
+  var voiceNavCommands = {
+    'vorrat': function(){ show('s-intake'); },
+    'ausgabe': function(){ show('s-outtake'); },
+    'archiv': function(){ show('s-history'); },
+    'scan': function(){ show('s-scanner'); },
+    'notfallkette': function(){ show('s-notrufkette'); },
+    'termine': function(){ show('s-dashboard'); switchDash(2); }
+  };
+
+  function handleVoiceResult(transcript){
+    var t = transcript.toLowerCase().trim();
+    // Aktionen: nur wirksam, wenn passender Screen bereits offen ist
+    if (t.indexOf('genommen') !== -1){
+      var outtakeScreen = document.getElementById('s-outtake');
+      if (outtakeScreen && outtakeScreen.classList.contains('active')){
+        var eb = document.getElementById('einBtn');
+        if (eb && !eb.disabled) eb.click();
+        return;
+      }
+    }
+    for (var key in voiceNavCommands){
+      if (t.indexOf(key) !== -1){ voiceNavCommands[key](); return; }
+    }
+  }
+
+  function startVoiceControl(){
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return;
+    voiceRecognition = new SR();
+    voiceRecognition.continuous = true;
+    voiceRecognition.interimResults = false;
+    voiceRecognition.lang = 'de-DE';
+    voiceRecognition.onresult = function(ev){
+      var last = ev.results[ev.results.length - 1];
+      if (last.isFinal) handleVoiceResult(last[0].transcript);
+    };
+    voiceRecognition.onend = function(){ if (voiceControlActive) voiceRecognition.start(); };
+    voiceRecognition.start();
+  }
+
+  function stopVoiceControl(){
+    if (voiceRecognition){ voiceRecognition.onend = null; voiceRecognition.stop(); voiceRecognition = null; }
+  }
+
+  window.toggleVoiceControl = function(){
+    voiceControlActive = !voiceControlActive;
+    var tip = document.getElementById('tbNoteTip');
+    var btn = document.getElementById('tbNote');
+    if (voiceControlActive){
+      startVoiceControl();
+      tip.textContent = 'Sprachsteuerung · An';
+      btn.classList.add('voice-active');
+    } else {
+      stopVoiceControl();
+      tip.textContent = 'Sprachsteuerung · Aus';
+      btn.classList.remove('voice-active');
+    }
+  };
 
   document.getElementById('settingsBtn').addEventListener('click', function(e){
     e.stopPropagation();
