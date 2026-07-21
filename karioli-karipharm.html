@@ -257,6 +257,11 @@
     <p>Der Kern von kariPharm ist das Bemühen, chronisch kranken Menschen und ihren Angehörigen ein Instrument an die Hand zu geben, mit dem sie die komplexe Welt von Medikation und Risiko steuern können.</p>
     <p>kariPharm wurde nicht für ein einzelnes Krankheitsbild entwickelt. Die App ist konditionsunabhängig, hochflexibel und individualisierbar. Sie eignet sich für Menschen mit Parkinson ebenso wie für Menschen mit einer Behinderung oder komplexer Medikation, sowie für Familien, die überprüfen möchten, ob ihr Kind das Medikament in der Schule oder im Ferienlager zuverlässig eingenommen hat.</p>
     <p>Diese Mappe richtet sich an Träger, Wissenschaft und Politik, nicht in erster Linie an Pflegedienste oder einzelne Nutzer. Sie stellt die App vor, ordnet sie rechtlich und finanzierungsseitig ein und benennt die gesellschaftliche Relevanz auf Basis verifizierter Daten.</p>
+
+    <div class="card">
+      <p>kariPharm setzt bewusst auf das, was neben den offiziellen Stellen existiert — auf Angehörige, persönliche Kontakte, das eigene soziale Umfeld — und nicht auf eine möglichst weitgehende Einbettung in staatlich organisierte Versorgungs- und Rettungsstrukturen. Die App verortet sich damit im Feld zwischen Nutzer und Angehörigen, nicht im Feld zwischen dem Einzelnen und offiziellen Stellen. Ein direkter Kontakt zum Rettungsdienst (112) wird bewusst vermieden — zum einen, weil er technisch nicht zuverlässig auszulösen ist, zum anderen, weil Fehlalarme in diesem Bereich deutlich schwerer wiegen als bei einem informierten Angehörigen. Hierin unterscheidet sich kariPharm bewusst von Ansätzen, die auf eine möglichst weitgehende Einbindung staatlicher Netzwerke setzen.</p>
+      <p>Dasselbe Prinzip gilt für die Sensorik: kariPharm ist technisch offen für die Kopplung mit Sensoren aller Art, setzt dabei aber ausschließlich auf natürliche, medizinisch etablierte Schwellenwerte — etwa den Blutzuckerwert oder die Herzfrequenz (BPM, Schläge pro Minute) —, nicht auf technische Gimmicks wie Sturzsensoren, die sich in der Praxis als unzuverlässig erwiesen haben, oder Tremor-Frequenzwerte, die als Schwellenwert-Marker ungeeignet sind. Die Wahl des Indikators folgt medizinischer Plausibilität, nicht technischer Verfügbarkeit.</p>
+    </div>
   </section>
 
   <section class="chapter" id="presets">
@@ -264,21 +269,26 @@
     <h2>Die Presets</h2>
     <p>Anders als bei kariNurse beruhen die Presets bei kariPharm auf realen, anonymisierten Situationen. Aktuell bestehen drei Presets:</p>
 
-    <h3>Benjamin</h3>
-    <p>Benjamin lebt mit Parkinson. Das Preset zeigt, wie kariPharm einen komplexen, zeitkritischen Medikamentenplan unterstützt. Die Sprachsteuerung wird derzeit in der Praxis erprobt — aktuell noch mit Schwierigkeiten bei der Umsetzung über Google Access.</p>
+    <h3>Ferdinand Schröder</h3>
+    <p>Ferdinand Schröder lebt mit Parkinson. Das Preset zeigt, wie kariPharm einen komplexen, zeitkritischen Medikamentenplan unterstützt. Die Sprachsteuerung wird derzeit in der Praxis erprobt — aktuell noch mit Schwierigkeiten bei der Umsetzung über Google Access. Seine Notfallkette nutzt einen akustischen Trigger: ein individuelles, im Alltag nicht vorkommendes Wort löst sie aus — etwa bei einem schweren Sturz im Bad. Ein Stopp-Button mit einstellbarem Countdown erlaubt es ihm, eine versehentliche Auslösung selbst wieder abzubrechen, bevor Kontakte alarmiert werden.</p>
 
     <h3>Herbert</h3>
-    <p>Herbert war ein Nachbar des Entwicklers. Er lebte mit Lungenfibrose, Diabetes und Bluthochdruck und ist inzwischen verstorben. Das Preset entstand aus der direkten Beobachtung seines Alltags. Es zeigt, wie kariPharm bei fortschreitender Erkrankung entlastet, wenn die Abhängigkeit von Angehörigen wächst. Die App steuert die Medikation, zeigt Vitalwerte an und dokumentiert den Verlauf.</p>
+    <p>Herbert war ein Nachbar des Entwicklers. Er lebte mit Lungenfibrose, Diabetes und Bluthochdruck und ist inzwischen verstorben. Das Preset entstand aus der direkten Beobachtung seines Alltags. Es zeigt, wie kariPharm bei fortschreitender Erkrankung entlastet, wenn die Abhängigkeit von Angehörigen wächst. Die App steuert die Medikation, zeigt Vitalwerte an und dokumentiert den Verlauf. Seine Notfallkette nutzt einen Schwellenwert-Trigger: Sinkt sein Blutzucker unter eine kritische Grenze, aktiviert das System die Kette und versucht, ihn zu wecken. Gelingt das, muss er eine kognitive Aufgabe lösen (fünf Kacheln in der richtigen Folge zum Wort HUND antippen) — das beendet die Kette, weil es zeigt, dass er bei Bewusstsein ist und seine Situation selbst regeln kann. Gelingt ihm das nicht, läuft die Eskalation an seine Kontakte weiter.</p>
 
     <h3>Eleni</h3>
     <p>Eleni lebt in Thessaloniki und spricht Griechisch. Das Preset zeigt die Mehrsprachigkeit von kariPharm. Es belegt, dass die App nicht an ein einzelnes Land gebunden ist.</p>
 
     <h3>Architektur der App</h3>
-    <p>kariPharm legt keine eigenen medizinischen Datenbanken an. Die App spiegelt Daten aus bestehenden, geprüften Quellen: Google Lens für das Scannen von Medikamentenpackungen, ifap/THERAFOX für die Wechselwirkungsprüfung, Google Access für die Sprachsteuerung, Bluetooth-Wearables und bluetoothfähige medizinische Geräte für die Anzeige von Vitaldaten. Die Sprachsteuerung über Google Access befindet sich noch in der praktischen Erprobung und ist noch nicht durchgängig zuverlässig.</p>
+    <p>kariPharm legt keine eigenen medizinischen Datenbanken an, trifft keine ärztlichen, therapeutischen oder pharmakologischen Entscheidungen und errechnet keine eigenen medizinischen Daten oder Algorithmen. Die App spiegelt ausschließlich Daten aus bestehenden, geprüften Quellen: Google Lens für das Scannen von Medikamentenpackungen, ifap/THERAFOX für die Wechselwirkungsprüfung und für Lagerungsangaben aus dem Beipackzettel, Google Access für die Sprachsteuerung, Bluetooth-Wearables und bluetoothfähige medizinische Geräte für die Anzeige von Vitaldaten. Die Sprachsteuerung über Google Access befindet sich noch in der praktischen Erprobung und ist noch nicht durchgängig zuverlässig. kariPharm macht auf Risiken aufmerksam, übt aber keine Kontrolle aus — weder über das Verhalten des Nutzers noch über technische Abläufe. Die Entscheidung und Verantwortung bleiben stets bei ihm oder ihr selbst — dem "Kapitän", wie der Entwickler die Nutzerrolle durchgängig beschreibt.</p>
+    <p>Medikation, Termine, angeschlossene Sensoren und die eigene Notfallkette werden vom Kapitän selbst konfiguriert, nicht von außen vorgegeben. Medikamente werden von ihm selbst oder von Angehörigen eingetragen — per Scan, Text oder Sprachbefehl. Ein Hausarzt oder eine Apotheke ist an der App nicht beteiligt; es gibt keine Authentifizierung, keine Prozessintegration und keinen Mehraufwand für Praxen.</p>
+    <p>kariPharm speichert keine Daten außerhalb des Smartphones. Eine eigene Server-Infrastruktur ist weder vorhanden noch geplant. Die App funktioniert vollständig offline, mit einer einzigen Ausnahme: der Online-Abfrage bei ifap/THERAFOX. Das reduziert sowohl das Datenschutzrisiko als auch den technischen Wartungsaufwand erheblich.</p>
     <p>Ein dreistufiges Ampelsystem macht den Status jederzeit erfassbar: Grün steht für erledigt oder aktiv, Gelb für in Bearbeitung oder Aufmerksamkeit erforderlich, Rot für drängenden Handlungsbedarf.</p>
 
+    <h3>Hitzemanagement</h3>
+    <p>Jedes Medikament im Vorrat trägt eine Lagerungsstufe (normal 15–25 °C, kühl 2–8 °C, kalt ≤ -18 °C; Quelle: AVP 3/2020, Dr. Dicheva-Radev), die aus dem Beipackzettel stammt und über THERAFOX gespiegelt wird. Die App vergleicht diesen Wert mit der aktuellen Raumtemperatur und zeigt eine Warnung ausschließlich bei tatsächlichem Grenzwertverstoß — nach dem Bauprinzip "Notwendig statt möglich": eine Dauerwarnung ohne echten Anlass wäre Lärm, kein Hinweis.</p>
+
     <div class="card">
-      <p>Die Notfallkette von kariPharm nutzt eine kognitive Validierung (Buchstabenfolge, z. B. H-U-N-D). Das vermeidet Fehlalarme, bevor persönliche Kontakte alarmiert werden. Eskaliert wird an diese Kontakte, nicht automatisiert an den Rettungsdienst.</p>
+      <p>Die Notfallketten von kariPharm sind preset-individuell konfiguriert und folgen zwei Grundtypen: einem Schwellenwert-Trigger (z. B. ein kritischer Sensorwert löst die Kette aus, eine kognitive Aufgabe kann sie beenden) oder einem akustischen Trigger (ein individuelles, alltagsfremdes Wort löst die Kette aus, ein Countdown erlaubt den Abbruch). Beide Wege vermeiden Fehlalarme, bevor persönliche Kontakte alarmiert werden. Eskaliert wird stets an diese Kontakte — Telefon, SMS oder Messenger, je nach Wahl des Kapitäns —, nicht automatisiert an den Rettungsdienst.</p>
     </div>
   </section>
 
@@ -299,8 +309,14 @@
     <p>kariPharm ist nicht an Deutschland gebunden. Über ein Lizenzmodell (§ 11 Abs. 6 SGB V, Satzungsleistung) kann der Karioli-Fonds Lizenzen an Krankenkassen und Institutionen vergeben. Das funktioniert unabhängig von einer DiGA-, DiPA- oder MDR-Zulassung und erlaubt eine europäische Skalierung jenseits der Zulassungspflicht.</p>
 
     <div class="card">
-      <p>Bewusste Abgrenzung: Die konkrete Entscheidung zwischen DiPA-Weg und reinem Lizenzmodell sowie deren wirtschaftliche Bewertung obliegen ausdrücklich dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p>
+      <p>Bewusste Abgrenzung: Die konkrete Entscheidung zwischen DiPA-Weg und reinem Lizenzmodell sowie deren wirtschaftliche Bewertung obliegen ausdrücklich dem Karioli-Fonds und den von ihm beauftragten Fachleuten. Ein Weg über Selbstzahler ist nicht vorgesehen.</p>
     </div>
+
+    <h3>Verwaltung und Betrieb</h3>
+    <p>Die bürokratische Verwaltung, einschließlich des laufenden technischen Betriebs, obliegt dem Karioli-Fonds und der von ihm beauftragten Produktionsstelle. Das Ausfallrisiko ist dabei strukturell gering: Da kariPharm keine eigene Server-Infrastruktur benötigt und bis auf die Anbindung an ifap/THERAFOX offline funktioniert, entsteht kein Dauerbetrieb, der eigens abgesichert werden müsste.</p>
+
+    <h3>Nutzennachweis</h3>
+    <p>Ein wissenschaftlicher Nutzennachweis liegt noch nicht vor. kariPharm ist ein vollständig durchdachtes Konzept, aber noch keine im Feld erprobte Anwendung. Die wissenschaftliche Validierung ist ausdrücklich Aufgabe künftiger Studien, die der Karioli-Fonds gemeinsam mit wissenschaftlichen Partnern durchführen wird — ebenso wie die Erschließung geeigneter Fördermittel, die in die Zuständigkeit des Fonds und seiner Fachleute fällt.</p>
   </section>
 
   <section class="chapter" id="relevanz">
@@ -338,7 +354,12 @@
       <div class="data-row"><div class="k">Kommerzielle IT-Firma (DE)</div><div class="v">220.000 – 300.000 €</div></div>
     </div>
 
-    <p>kariPharm bindet mehr externe Datenquellen und Echtzeit-Komponenten ein als kariNurse: Wechselwirkungsprüfung, Sprachsteuerung, Bluetooth-Wearables, Notfallkette. Gegenüber kariCare hat kariPharm aber deutlich geringeren Serveraufwand. Die App spiegelt überwiegend bestehende Datenquellen, statt eigene Echtzeit-Infrastruktur für mehrere gleichzeitige Nutzer zu benötigen. Die obige Einordnung ist daher eine Analogie-Schätzung zwischen den beiden anderen Apps, keine eigenständige Kalkulation.</p>
+    <p>kariPharm bindet mehr externe Datenquellen ein als kariNurse: Wechselwirkungsprüfung, Sprachsteuerung, Bluetooth-Wearables, Notfallkette. Gegenüber kariCare hat kariPharm aber keinen Serveraufwand: Die App speichert keine Daten außerhalb des Smartphones und benötigt keine eigene Server-Infrastruktur, statt Echtzeit-Infrastruktur für mehrere gleichzeitige Nutzer vorzuhalten. Die obige Einordnung ist daher eine Analogie-Schätzung zwischen den beiden anderen Apps, keine eigenständige Kalkulation.</p>
+  </section>
+
+  <section class="chapter" id="hinweis">
+    <hr class="divider">
+    <p style="font-size: 0.85rem; color: var(--footer);">Diese Mappe wurde unter Einbeziehung externer fachlicher Rückmeldungen überarbeitet und präzisiert. Karioli dankt allen, die sich die Zeit genommen haben, das Konzept kritisch zu prüfen und einzuordnen.</p>
   </section>
 
   <footer class="page-footer">
