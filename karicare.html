@@ -790,13 +790,22 @@ window.lageChange=function(field,delta){
   document.getElementById('lageKinder').textContent=lageVals.kinder;
   document.getElementById('lageVerletzt').textContent=lageVals.verletzt;
 };
+function lageZeit(){
+  var n=new Date();
+  return (n.getHours()<10?'0'+n.getHours():n.getHours())+':'+(n.getMinutes()<10?'0'+n.getMinutes():n.getMinutes());
+}
 window.lageSenden=function(){
   var coords=document.getElementById('locCoords');
   var msg=document.getElementById('lageSentMsg');
   var pos=coords?coords.textContent:'unbekannt';
-  var text='✅ Gesendet · '+pos+' · '+lageVals.total+' Pers. · '+lageVals.kinder+' Kinder · '+lageVals.verletzt+' Verletzt';
-  if(msg)msg.textContent=text;
-  setTimeout(function(){closeLage();},2200);
+  var tGesendet=lageZeit();
+  var detail=lageVals.total+' Pers. · '+lageVals.kinder+' Kinder · '+lageVals.verletzt+' Verletzt';
+  if(msg)msg.innerHTML='✅ Gesendet · '+tGesendet+' Uhr · '+pos+'<br>⏳ Warte auf Empfangsbestätigung…';
+  setTimeout(function(){
+    var tEmpfangen=lageZeit();
+    if(msg)msg.innerHTML='✅ Gesendet · '+tGesendet+' Uhr · '+pos+'<br>✅ Empfangen · '+tEmpfangen+' Uhr · '+detail;
+    setTimeout(function(){closeLage();},2600);
+  },1800);
 };
 /* SETTINGS PANEL */
 window.toggleSettings=function(){
