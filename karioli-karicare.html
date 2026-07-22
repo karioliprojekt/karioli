@@ -14,9 +14,9 @@
     --border-card: rgba(54, 127, 90, 0.35);
     --ink: #1B3A57;
     --ink-muted: #3F5A72;
-    --ink-faint: #5F7586;
+    --ink-faint: #495D70;
     --accent: #367F5A;
-    --footer: #5F7586;
+    --footer: #495D70;
   }
 
   html { scroll-behavior: smooth; }
@@ -247,6 +247,18 @@
     h1 { font-size: 2rem; }
     h2 { font-size: 1.4rem; }
   }
+
+  /* ---------- Print / PDF pagination safety ---------- */
+  @media print {
+    .kapitel-num, h2, h3 { page-break-after: avoid; break-after: avoid; }
+    .card, .data-table, .data-row, .scene { page-break-inside: avoid; break-inside: avoid; }
+    section.chapter { page-break-inside: auto; }
+    p { orphans: 3; widows: 3; }
+  }
+  .kapitel-num, h2, h3 { page-break-after: avoid; break-after: avoid; }
+  .card, .data-table, .data-row, .scene { page-break-inside: avoid; break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+  .keep-together { page-break-inside: avoid; break-inside: avoid; }
 </style>
 </head>
 <body>
@@ -262,29 +274,29 @@
     <p class="tagline">Orientierung in der Krise, wenn gewohnte Ordnungsstrukturen nicht mehr tragen.</p>
     <div class="meta">
       <span>Erstellt von Karioli / Emanuel Schaeffer, Gartow</span>
-      <span>18. Juli 2026</span>
-      <span>DOC-KC-EXP-DE-003 · Version 3.0</span>
-      <span>Ersetzt DOC-KC-EXP-DE-002 (18.07.2026)</span>
+      <span>22. Juli 2026</span>
+      <span>DOC-KC-EXP-DE-004 · Version 4.0</span>
+      <span>Ersetzt DOC-KC-EXP-DE-003 (18.07.2026)</span>
     </div>
   </header>
 
   <hr class="divider">
 
   <section class="chapter" id="einleitung">
-    <div class="kapitel-num">Kapitel 1</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 1</div>
     <h2>Einleitung</h2>
-    <p class="lead">kariCare entstand aus der Frage: Woher wissen Menschen, was zu tun ist, wenn die gewohnten Ordnungsstrukturen nicht mehr tragen oder nicht mehr existieren? Die Türkei 2023 und die Ukraine seit 2022 zeigen dieselbe Lücke: Rettungskräfte wissen nicht, wo sie suchen sollen. Betroffene wissen nicht, ob sie gesehen werden.</p>
+    <p class="lead">kariCare entstand aus der Frage: Woher wissen Menschen, was zu tun ist, wenn die gewohnten Ordnungsstrukturen nicht mehr tragen oder nicht mehr existieren? Die Türkei 2023 und die Ukraine seit 2022 zeigen dieselbe Lücke: Rettungskräfte wissen nicht, wo sie suchen sollen. Betroffene wissen nicht, ob sie gesehen werden.</p></div>
     <p>kariCare ist eines von drei Karioli-Projekten. Neben kariPharm (Medikamenten- und Pflegekoordination) und kariNurse (Sprachbrücke für Auszubildende in Pflegeberufen) steht kariCare für Koordination und Selbstmanagement in Krisensituationen. Alle drei Apps entstehen aus der Nutzer-Perspektive und verstehen sich als Werkzeuge, die Menschen in schwierigen Situationen begleiten.</p>
     <p>kariCare ist kein Warnsystem. Es tritt nicht in Konkurrenz zu staatlichen Systemen wie NINA oder Cell Broadcast, die die Bevölkerung vor einer Gefahr warnen. kariCare setzt an der Stelle an, die diese Systeme nicht abdecken: den Stunden <em>nach</em> der Warnung, in denen Menschen nicht wissen, wohin sie sollen, ob sie gesehen werden, und ob ihre Angehörigen sicher sind.</p>
   </section>
 
   <section class="chapter" id="szenario">
-    <div class="kapitel-num">Kapitel 2</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 2</div>
     <h2>Das Szenario</h2>
-    <p>Das folgende Szenario ist fiktiv. Name, Ort und Einrichtung sind erfunden. Es folgt jedoch wiederkehrenden Mustern aus mehreren unabhängigen, öffentlich dokumentierten Berichten von Betroffenen der Ahrtal-Flut 2021: Kommunikationsausfall durch überlastete Mobilfunknetze, Rettungskräfte, die durch andere Einsätze gebunden sind, und die Ungewissheit, ob überhaupt jemand von der eigenen Lage weiß.</p>
+    <p>Das folgende Szenario ist fiktiv. Name, Ort und Einrichtung sind erfunden. Es folgt jedoch wiederkehrenden Mustern aus mehreren unabhängigen, öffentlich dokumentierten Berichten von Betroffenen der Ahrtal-Flut 2021: Kommunikationsausfall durch überlastete Mobilfunknetze, Rettungskräfte, die durch andere Einsätze gebunden sind, und die Ungewissheit, ob überhaupt jemand von der eigenen Lage weiß.</p></div>
 
-    <h3>Matthias Berger, Seniorenresidenz Talblick, Illingen an der Weser</h3>
-    <p>Matthias Berger leitet eine Seniorenresidenz mit 38 Bewohnern, sechs davon mit eingeschränkter Mobilität. Seit Tagen regnet es ununterbrochen.</p>
+    <div class="keep-together"><h3>Matthias Berger, Seniorenresidenz Talblick, Illingen an der Weser</h3>
+    <p>Matthias Berger leitet eine Seniorenresidenz mit 38 Bewohnern, sechs davon mit eingeschränkter Mobilität. Seit Tagen regnet es ununterbrochen.</p></div>
 
     <div class="scene">
       <div class="scene-time">21:40 · S2 · Warnung</div>
@@ -322,10 +334,10 @@
   </section>
 
   <section class="chapter" id="rahmen">
-    <div class="kapitel-num">Kapitel 3</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 3</div>
     <h2>Rechtlicher Rahmen &amp; Finanzierung</h2>
     <p class="lead">Ein Ergänzungssystem, kein Ersatz für staatliche Warnsysteme.</p>
-    <p>kariCare ist als opt-in-basiertes Ergänzungssystem zu staatlichen Warnsystemen wie NINA und Cell Broadcast konzipiert. Es warnt nicht selbst, sondern orientiert in den Stunden danach. Alle datenschutzrelevanten Funktionen (GPS-Übermittlung, Vitaldaten) sind vollständig konfigurierbar und werden nur mit ausdrücklicher, granularer und jederzeit widerrufbarer Zustimmung aktiviert.</p>
+    <p>kariCare ist als opt-in-basiertes Ergänzungssystem zu staatlichen Warnsystemen wie NINA und Cell Broadcast konzipiert. Es warnt nicht selbst, sondern orientiert in den Stunden danach. Alle datenschutzrelevanten Funktionen (GPS-Übermittlung, Vitaldaten) sind vollständig konfigurierbar und werden nur mit ausdrücklicher, granularer und jederzeit widerrufbarer Zustimmung aktiviert.</p></div>
 
     <div class="card">
       <p>Bewusste Abgrenzung: Eine mögliche behördliche Zertifizierung oder Akkreditierung von kariCare (etwa für den Profi-Modus im Zusammenspiel mit Leitstellen) wird in dieser Mappe nicht bewertet. Diese Entscheidung obliegt ausdrücklich dem Karioli-Fonds, den beteiligten Einsatzorganisationen und den von ihnen beauftragten Fachleuten.</p>
@@ -333,18 +345,18 @@
   </section>
 
   <section class="chapter" id="relevanz">
-    <div class="kapitel-num">Kapitel 4</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 4</div>
     <h2>Gesellschaftliche Relevanz</h2>
     <p class="lead">Warnsysteme warnen. kariCare orientiert.</p>
-    <p>Diese Mappe beschränkt sich bewusst auf Deutschland und die Europäische Union. Eine internationale oder globale Einordnung würde eine eigene, vom Karioli-Fonds beauftragte Studie erfordern und ist nicht Gegenstand dieses Dokuments.</p>
+    <p>Diese Mappe beschränkt sich bewusst auf Deutschland und die Europäische Union. Eine internationale oder globale Einordnung würde eine eigene, vom Karioli-Fonds beauftragte Studie erfordern und ist nicht Gegenstand dieses Dokuments.</p></div>
 
-    <h3>Deutschland</h3>
-    <p>Die Flutkatastrophe vom Juli 2021 kostete im Ahrtal (Landkreis Ahrweiler) 135 Menschen das Leben (134 im Landkreis Ahrweiler, eine weitere Person im Bereich Trier); deutschlandweit starben durch dasselbe Unwetterereignis mehr als 180 Menschen, davon 49 in Nordrhein-Westfalen. Der wirtschaftliche Gesamtschaden wird von verschiedenen Studien unterschiedlich beziffert. Die Schätzungen reichen von rund 33 bis 46 Milliarden Euro, je nach Studie und Bezugsgebiet: Eine Studie im Auftrag des Bundeswirtschaftsministeriums beziffert 33,4 Milliarden Euro direkte sowie 7,1 Milliarden Euro indirekte Folgeschäden, zusammen rund 40,5 Milliarden Euro. Der Rückversicherer Munich Re kommt einschließlich Nachbarländer auf rund 46 Milliarden Euro. Diese Bandbreite ist bewusst gewählt statt einer einzelnen Zahl, denn seriöse Quellen kommen hier zu unterschiedlichen Werten, je nachdem, ob nur direkte Schäden oder auch Folgeschäden und Nachbarländer einbezogen werden.</p>
+    <div class="keep-together"><h3>Deutschland</h3>
+    <p>Die Flutkatastrophe vom Juli 2021 kostete im Ahrtal (Landkreis Ahrweiler) 135 Menschen das Leben (134 im Landkreis Ahrweiler, eine weitere Person im Bereich Trier); deutschlandweit starben durch dasselbe Unwetterereignis mehr als 180 Menschen, davon 49 in Nordrhein-Westfalen. Der wirtschaftliche Gesamtschaden wird von verschiedenen Studien unterschiedlich beziffert. Die Schätzungen reichen von rund 33 bis 46 Milliarden Euro, je nach Studie und Bezugsgebiet: Eine Studie im Auftrag des Bundeswirtschaftsministeriums beziffert 33,4 Milliarden Euro direkte sowie 7,1 Milliarden Euro indirekte Folgeschäden, zusammen rund 40,5 Milliarden Euro. Der Rückversicherer Munich Re kommt einschließlich Nachbarländer auf rund 46 Milliarden Euro. Diese Bandbreite ist bewusst gewählt statt einer einzelnen Zahl, denn seriöse Quellen kommen hier zu unterschiedlichen Werten, je nachdem, ob nur direkte Schäden oder auch Folgeschäden und Nachbarländer einbezogen werden.</p></div>
     <p>Der Bundeshaushalt für Inneres und Bevölkerungsschutz sollte 2026 laut Regierungsentwurf auf rund 15,4 Milliarden Euro steigen, über eine Milliarde Euro mehr als im Vorjahr. Nach Abschluss der Haushaltsberatungen hat der Bundestag den Etat am 27. November 2025 mit rund 15,76 Milliarden Euro final beschlossen. Zusätzlich hat das Bundeskabinett am 20. Mai 2026 die Eckpunkte für einen eigenständigen „Pakt für den Bevölkerungsschutz" mit geplanten Investitionen von zehn Milliarden Euro bis 2029 beschlossen, darunter rund drei Milliarden Euro für ein Bauprogramm des Technischen Hilfswerks (THW). Ein entsprechendes Gesetzgebungsverfahren steht zum Zeitpunkt dieser Mappe noch aus. Die Budgets von Bundesamt für Bevölkerungsschutz und Katastrophenhilfe (BBK) und THW sind seit 2019 in mehreren Schritten deutlich gewachsen, beim THW etwa von 249 Millionen Euro (2019) auf rund 643 bis 728 Millionen Euro (2026, je nach Entwurfs- oder Ist-Stand), beim BBK allein von 2025 auf 2026 um 82 Prozent auf rund 606 bis 610 Millionen Euro. In der Summe kommt dies einer Verdopplung bis annähernden Verdreifachung nahe.</p>
     <p>Diese Investitionen bauen Warnsysteme (Sirenennetze, Cell Broadcast), Ausrüstung und Personal aus. Sie adressieren die erste Phase einer Katastrophe. Was danach kommt, die Stunden, in denen Menschen wie in Berger's Szenario ausharren, suchen und nicht wissen, bleibt strukturell ungelöst. Ein System wie kariCare dürfte sich in die bestehende Logik ergänzender, privater Warn- und Orientierungsangebote einfügen, wie sie das BBK grundsätzlich nicht ausschließt.</p>
 
-    <h3>Europäische Union</h3>
-    <p>Auch auf europäischer Ebene fehlt eine gemeinsame Plattform zur Bürgerorientierung in der Krise. Erdbeben in der Türkei, Waldbrände in Südeuropa und Überschwemmungen in Mitteleuropa zeigen wiederkehrend dieselbe Lücke zwischen staatlicher Warnung und individueller Orientierung.</p>
+    <div class="keep-together"><h3>Europäische Union</h3>
+    <p>Auch auf europäischer Ebene fehlt eine gemeinsame Plattform zur Bürgerorientierung in der Krise. Erdbeben in der Türkei, Waldbrände in Südeuropa und Überschwemmungen in Mitteleuropa zeigen wiederkehrend dieselbe Lücke zwischen staatlicher Warnung und individueller Orientierung.</p></div>
 
     <div class="data-table">
       <div class="data-row"><div class="k">Horizon Europe · Cluster 3 (Zivile Sicherheit)</div><div class="v">Fördert Forschungs- und Innovationsmaßnahmen; für gemeinnützige Einrichtungen gilt nach den allgemeinen Horizon-Europe-Regeln eine Förderquote von bis zu 100 %. Dies ist eine Standardregel des Programms, keine kariCare-spezifische Zusage.</div></div>
@@ -357,10 +369,10 @@
   </section>
 
   <section class="chapter" id="kosten">
-    <div class="kapitel-num">Kapitel 5</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 5</div>
     <h2>Kosten und Realisierung</h2>
     <p class="lead">Anhaltswerte zur Orientierung — keine Kalkulation.</p>
-    <p>Die folgenden Angaben sind grobe Anhaltswerte auf Basis öffentlich verfügbarer Marktdaten und Vergleichswerte. Sie dienen ausschließlich der Orientierung und ersetzen keine verbindliche Angebotskalkulation. Die endgültige Bewertung der Produktionskosten obliegt dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p>
+    <p>Die folgenden Angaben sind grobe Anhaltswerte auf Basis öffentlich verfügbarer Marktdaten und Vergleichswerte. Sie dienen ausschließlich der Orientierung und ersetzen keine verbindliche Angebotskalkulation. Die endgültige Bewertung der Produktionskosten obliegt dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p></div>
 
     <div class="data-table">
       <div class="data-row"><div class="k">Universitäre Kooperation</div><div class="v">180.000 – 260.000 €</div></div>
@@ -377,7 +389,7 @@
   <footer class="page-footer">
     <div>Karioli · Gartow · Deutschland</div>
     <div>Open Source · Gemeinnützig · Soziales Projekt · Öffentlich</div>
-    <div>DOC-KC-EXP-DE-003 · Version 3.0 · Kontakt karioli.projekt@gmail.com</div>
+    <div>DOC-KC-EXP-DE-004 · Version 4.0 · Kontakt karioli.projekt@gmail.com</div>
   </footer>
 
 </div>
