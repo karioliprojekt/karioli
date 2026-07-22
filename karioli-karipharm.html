@@ -14,9 +14,9 @@
     --border-card: rgba(145, 106, 8, 0.35);
     --ink: #1B3A57;
     --ink-muted: #3F5A72;
-    --ink-faint: #5F7586;
+    --ink-faint: #495D70;
     --gold: #916A08;
-    --footer: #5F7586;
+    --footer: #495D70;
   }
 
   html { scroll-behavior: smooth; }
@@ -228,6 +228,19 @@
     h1 { font-size: 2rem; }
     h2 { font-size: 1.4rem; }
   }
+
+  /* ---------- Print / PDF pagination safety ---------- */
+  @media print {
+    .kapitel-num, h2, h3 { page-break-after: avoid; break-after: avoid; }
+    .kapitel-num { page-break-before: auto; }
+    .card, .data-table, .data-row, .scene { page-break-inside: avoid; break-inside: avoid; }
+    section.chapter { page-break-inside: auto; }
+    p { orphans: 3; widows: 3; }
+  }
+  .kapitel-num, h2, h3 { page-break-after: avoid; break-after: avoid; }
+  .card, .data-table, .data-row { page-break-inside: avoid; break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+  .keep-together { page-break-inside: avoid; break-inside: avoid; }
 </style>
 </head>
 <body>
@@ -243,17 +256,18 @@
     <p class="tagline">Medikamenten- und Pflegekoordination für chronisch kranke Menschen und ihre Angehörigen</p>
     <div class="meta">
       <span>Erstellt von Karioli / Emanuel Schaeffer, Gartow</span>
-      <span>17. Juni 2026</span>
-      <span>DOC-KP-EXP-DE-001 · Version 1.0</span>
+      <span>22. Juli 2026</span>
+      <span>DOC-KP-EXP-DE-003 · Version 2.1</span>
+      <span>Ersetzt DOC-KP-EXP-DE-002 (22.07.2026)</span>
     </div>
   </header>
 
   <hr class="divider">
 
   <section class="chapter" id="einleitung">
-    <div class="kapitel-num">Kapitel 1</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 1</div>
     <h2>Einleitung</h2>
-    <p>kariPharm ist eines von drei Karioli-Projekten. Die anderen beiden sind kariNurse (Sprachbrücke für Auszubildende in Pflegeberufen) und kariCare (Echtzeit-Koordination in Krisenszenarien). Alle drei Apps sind Werkzeuge, die Menschen in schwierigen Situationen begleiten, und wurden aus der Perspektive der Nutzer entwickelt.</p>
+    <p>kariPharm ist eines von drei Karioli-Projekten. Die anderen beiden sind kariNurse (Sprachbrücke für Auszubildende in Pflegeberufen) und kariCare (Echtzeit-Koordination in Krisenszenarien). Alle drei Apps sind Werkzeuge, die Menschen in schwierigen Situationen begleiten, und wurden aus der Perspektive der Nutzer entwickelt.</p></div>
     <p>Der Kern von kariPharm ist das Bemühen, chronisch kranken Menschen und ihren Angehörigen ein Instrument an die Hand zu geben, mit dem sie die komplexe Welt von Medikation und Risiko steuern können.</p>
     <p>kariPharm wurde nicht für ein einzelnes Krankheitsbild entwickelt. Die App ist konditionsunabhängig, hochflexibel und individualisierbar. Sie eignet sich für Menschen mit Parkinson ebenso wie für Menschen mit einer Behinderung oder komplexer Medikation, sowie für Familien, die überprüfen möchten, ob ihr Kind das Medikament in der Schule oder im Ferienlager zuverlässig eingenommen hat.</p>
     <p>Diese Mappe richtet sich an Träger, Wissenschaft und Politik, nicht in erster Linie an Pflegedienste oder einzelne Nutzer. Sie stellt die App vor, ordnet sie rechtlich und finanzierungsseitig ein und benennt die gesellschaftliche Relevanz auf Basis verifizierter Daten.</p>
@@ -265,78 +279,93 @@
   </section>
 
   <section class="chapter" id="presets">
-    <div class="kapitel-num">Kapitel 2</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 2</div>
     <h2>Die Presets</h2>
-    <p>Anders als bei kariNurse beruhen die Presets bei kariPharm auf realen, anonymisierten Situationen. Aktuell bestehen drei Presets:</p>
+    <p>Anders als bei kariNurse beruhen die Presets bei kariPharm auf realen, anonymisierten Situationen. Aktuell bestehen drei Presets:</p></div>
 
-    <h3>Ferdinand Schröder</h3>
-    <p>Ferdinand Schröder lebt mit Parkinson. Das Preset zeigt, wie kariPharm einen komplexen, zeitkritischen Medikamentenplan unterstützt. Die Sprachsteuerung wird derzeit in der Praxis erprobt — aktuell noch mit Schwierigkeiten bei der Umsetzung über Google Access. Seine Notfallkette nutzt einen akustischen Trigger: ein individuelles, im Alltag nicht vorkommendes Wort löst sie aus — etwa bei einem schweren Sturz im Bad. Ein Stopp-Button mit einstellbarem Countdown erlaubt es ihm, eine versehentliche Auslösung selbst wieder abzubrechen, bevor Kontakte alarmiert werden.</p>
+    <div class="keep-together"><h3>Ferdinand Schröder</h3>
+    <p>Ferdinand Schröder lebt mit Parkinson. Das Preset zeigt, wie kariPharm einen komplexen, zeitkritischen Medikamentenplan unterstützt. Die Sprachsteuerung wird derzeit in der Praxis erprobt — aktuell noch mit Schwierigkeiten bei der Umsetzung über Google Access. Seine Notfallkette nutzt einen akustischen Trigger: ein individuelles, im Alltag nicht vorkommendes Wort löst sie aus — etwa bei einem schweren Sturz im Bad. Ein Stopp-Button mit einstellbarem Countdown erlaubt es ihm, eine versehentliche Auslösung selbst wieder abzubrechen, bevor Kontakte alarmiert werden.</p></div>
 
-    <h3>Herbert</h3>
-    <p>Herbert war ein Nachbar des Entwicklers. Er lebte mit Lungenfibrose, Diabetes und Bluthochdruck und ist inzwischen verstorben. Das Preset entstand aus der direkten Beobachtung seines Alltags. Es zeigt, wie kariPharm bei fortschreitender Erkrankung entlastet, wenn die Abhängigkeit von Angehörigen wächst. Die App steuert die Medikation, zeigt Vitalwerte an und dokumentiert den Verlauf. Seine Notfallkette nutzt einen Schwellenwert-Trigger: Sinkt sein Blutzucker unter eine kritische Grenze, aktiviert das System die Kette und versucht, ihn zu wecken. Gelingt das, muss er eine kognitive Aufgabe lösen (fünf Kacheln in der richtigen Folge zum Wort HUND antippen) — das beendet die Kette, weil es zeigt, dass er bei Bewusstsein ist und seine Situation selbst regeln kann. Gelingt ihm das nicht, läuft die Eskalation an seine Kontakte weiter.</p>
+    <div class="keep-together"><h3>Herbert</h3>
+    <p>Herbert war ein Nachbar des Entwicklers. Er lebte mit Lungenfibrose, Diabetes und Bluthochdruck und ist inzwischen verstorben. Das Preset entstand aus der direkten Beobachtung seines Alltags. Es zeigt, wie kariPharm bei fortschreitender Erkrankung entlastet, wenn die Abhängigkeit von Angehörigen wächst. Die App steuert die Medikation, zeigt Vitalwerte an und dokumentiert den Verlauf. Seine Notfallkette nutzt einen Schwellenwert-Trigger: Sinkt sein Blutzucker unter eine kritische Grenze, aktiviert das System die Kette und versucht, ihn zu wecken. Gelingt das, muss er eine kognitive Aufgabe lösen (fünf Kacheln in der richtigen Folge zum Wort HUND antippen) — das beendet die Kette, weil es zeigt, dass er bei Bewusstsein ist und seine Situation selbst regeln kann. Gelingt ihm das nicht, läuft die Eskalation an seine Kontakte weiter.</p></div>
 
-    <h3>Eleni</h3>
-    <p>Eleni lebt in Thessaloniki und spricht Griechisch. Das Preset zeigt die Mehrsprachigkeit von kariPharm. Es belegt, dass die App nicht an ein einzelnes Land gebunden ist.</p>
+    <div class="keep-together"><h3>Eleni</h3>
+    <p>Eleni lebt in Thessaloniki und spricht Griechisch. Das Preset zeigt die Mehrsprachigkeit von kariPharm. Es belegt, dass die App nicht an ein einzelnes Land gebunden ist.</p></div>
 
-    <h3>Architektur der App</h3>
-    <p>kariPharm legt keine eigenen medizinischen Datenbanken an, trifft keine ärztlichen, therapeutischen oder pharmakologischen Entscheidungen und errechnet keine eigenen medizinischen Daten oder Algorithmen. Die App spiegelt ausschließlich Daten aus bestehenden, geprüften Quellen: Google Lens für das Scannen von Medikamentenpackungen, ifap/THERAFOX für die Wechselwirkungsprüfung und für Lagerungsangaben aus dem Beipackzettel, Google Access für die Sprachsteuerung, Bluetooth-Wearables und bluetoothfähige medizinische Geräte für die Anzeige von Vitaldaten. Die Sprachsteuerung über Google Access befindet sich noch in der praktischen Erprobung und ist noch nicht durchgängig zuverlässig. kariPharm macht auf Risiken aufmerksam, übt aber keine Kontrolle aus — weder über das Verhalten des Nutzers noch über technische Abläufe. Die Entscheidung und Verantwortung bleiben stets bei ihm oder ihr selbst — dem "Kapitän", wie der Entwickler die Nutzerrolle durchgängig beschreibt.</p>
+    <p>Alle drei Presets — so unterschiedlich ihre Situationen sind — laufen auf derselben Architektur. Wie diese Architektur im Einzelnen aufgebaut ist, beschreibt das folgende Kapitel.</p>
+  </section>
+
+  <section class="chapter" id="architektur">
+    <div class="keep-together"><div class="kapitel-num">Kapitel 3</div>
+    <h2>Architektur der App</h2>
+    <p class="lead">Eine App, die spiegelt statt entscheidet.</p>
+    <p>kariPharm legt keine eigenen medizinischen Datenbanken an, trifft keine ärztlichen, therapeutischen oder pharmakologischen Entscheidungen und errechnet keine eigenen medizinischen Daten oder Algorithmen. Die App spiegelt ausschließlich Daten aus bestehenden, geprüften Quellen: Google Lens für das Scannen von Medikamentenpackungen, ifap/THERAFOX für die Wechselwirkungsprüfung und für Lagerungsangaben aus dem Beipackzettel, Google Access für die Sprachsteuerung, Bluetooth-Wearables und bluetoothfähige medizinische Geräte für die Anzeige von Vitaldaten. Die Sprachsteuerung über Google Access befindet sich noch in der praktischen Erprobung und ist noch nicht durchgängig zuverlässig. kariPharm macht auf Risiken aufmerksam, übt aber keine Kontrolle aus — weder über das Verhalten des Nutzers noch über technische Abläufe. Die Entscheidung und Verantwortung bleiben stets bei ihm oder ihr selbst — dem "Kapitän", wie der Entwickler die Nutzerrolle durchgängig beschreibt.</p></div>
     <p>Medikation, Termine, angeschlossene Sensoren und die eigene Notfallkette werden vom Kapitän selbst konfiguriert, nicht von außen vorgegeben. Medikamente werden von ihm selbst oder von Angehörigen eingetragen — per Scan, Text oder Sprachbefehl. Ein Hausarzt oder eine Apotheke ist an der App nicht beteiligt; es gibt keine Authentifizierung, keine Prozessintegration und keinen Mehraufwand für Praxen.</p>
     <p>kariPharm speichert keine Daten außerhalb des Smartphones. Eine eigene Server-Infrastruktur ist weder vorhanden noch geplant. Die App funktioniert vollständig offline, mit einer einzigen Ausnahme: der Online-Abfrage bei ifap/THERAFOX. Das reduziert sowohl das Datenschutzrisiko als auch den technischen Wartungsaufwand erheblich.</p>
     <p>Ein dreistufiges Ampelsystem macht den Status jederzeit erfassbar: Grün steht für erledigt oder aktiv, Gelb für in Bearbeitung oder Aufmerksamkeit erforderlich, Rot für drängenden Handlungsbedarf.</p>
 
-    <h3>Hitzemanagement</h3>
-    <p>Jedes Medikament im Vorrat trägt eine Lagerungsstufe (normal 15–25 °C, kühl 2–8 °C, kalt ≤ -18 °C; Quelle: AVP 3/2020, Dr. Dicheva-Radev), die aus dem Beipackzettel stammt und über THERAFOX gespiegelt wird. Die App vergleicht diesen Wert mit der aktuellen Raumtemperatur und zeigt eine Warnung ausschließlich bei tatsächlichem Grenzwertverstoß — nach dem Bauprinzip "Notwendig statt möglich": eine Dauerwarnung ohne echten Anlass wäre Lärm, kein Hinweis.</p>
+    <div class="keep-together"><h3>Schnittstellen-Menü</h3>
+    <p>E-Rezept und elektronische Patientenakte sind für Leistungserbringer in Deutschland inzwischen flächendeckend verpflichtend, auch wenn die aktive Nutzung durch Versicherte noch hinter den Erwartungen zurückbleibt. Für eine nutzerseitige Anwendung wie kariPharm ist der direkte Zugang zu diesen Systemen dennoch ein eigener, hoher technischer und regulatorischer Aufwand — Zertifizierung, Anbindung an die Telematikinfrastruktur, Schnittstellen zu Praxisverwaltungssystemen. kariPharm ist auf eine spätere Anbindung vorbereitet, aber nicht von ihr abhängig.</p></div>
+    <p>Bei der Installation durchläuft der Kapitän ein Menü, in dem er jede externe Schnittstelle einzeln aktiviert oder deaktiviert — ePA, Praxis- und Apothekenanbindung, Kassensysteme. Jede Option wird so erklärt, dass wirklich verstanden wird, was damit freigegeben wird: nicht nur, welche Daten sichtbar würden, sondern für wen genau, und ebenso, was garantiert verborgen bleibt. Ein knapper Rechtshinweis reicht dafür nicht aus — kariPharm versteht informierte Einwilligung als eigenständige Gestaltungsaufgabe, nicht als Formalie. Die genaue Ausarbeitung dieser Erklärtexte ist Teil der weiteren Entwicklung und wird mit entsprechender fachlicher Prüfung begleitet.</p>
+    <p>Ohne aktivierte Schnittstelle bleiben alle Daten ausschließlich auf dem Smartphone, wie im Grundzustand der App beschrieben. Diese Entscheidung ist jederzeit änderbar und nie vorbelegt: kariPharm startet grundsätzlich ohne jede externe Anbindung.</p>
+    <p>Diese Architektur macht kariPharm zugleich einfacher für Träger: Es entsteht kein pauschaler Integrationsaufwand mit Praxen oder Apotheken, sondern nur dort, wo einzelne Nutzer ihn ausdrücklich wünschen. Ob und wie eine Schnittstelle im Einzelfall tatsächlich genutzt wird, ist eine Frage, die der Karioli-Fonds mit den jeweiligen Kassen und Behörden verhandelt — nicht kariPharm selbst. Denkbar wäre etwa, dass eine Krankenkasse, die kariPharm als Trägerin unterstützt, über ihre eigene App bereits Zugriff auf die E-Rezept-Daten ihrer Versicherten hat und von dort aus eine freiwillige Schnittstelle zu kariPharm öffnet. Karioli liefert dafür die Architektur; die konkrete Anbindung ist Sache der Träger.</p>
 
-    <div class="card">
-      <p>Die Notfallketten von kariPharm sind preset-individuell konfiguriert und folgen zwei Grundtypen: einem Schwellenwert-Trigger (z. B. ein kritischer Sensorwert löst die Kette aus, eine kognitive Aufgabe kann sie beenden) oder einem akustischen Trigger (ein individuelles, alltagsfremdes Wort löst die Kette aus, ein Countdown erlaubt den Abbruch). Beide Wege vermeiden Fehlalarme, bevor persönliche Kontakte alarmiert werden. Eskaliert wird stets an diese Kontakte — Telefon, SMS oder Messenger, je nach Wahl des Kapitäns —, nicht automatisiert an den Rettungsdienst.</p>
-    </div>
+    <div class="keep-together"><h3>Notfallketten</h3>
+    <p>Die Notfallketten von kariPharm sind preset-individuell konfiguriert und folgen zwei Grundtypen: einem Schwellenwert-Trigger (z. B. ein kritischer Sensorwert löst die Kette aus, eine kognitive Aufgabe kann sie beenden) oder einem akustischen Trigger (ein individuelles, alltagsfremdes Wort löst die Kette aus, ein Countdown erlaubt den Abbruch). Beide Wege vermeiden Fehlalarme, bevor persönliche Kontakte alarmiert werden. Eskaliert wird stets an diese Kontakte — Telefon, SMS oder Messenger, je nach Wahl des Kapitäns —, nicht automatisiert an den Rettungsdienst.</p></div>
+
+    <div class="keep-together"><h3>Hitzemanagement</h3>
+    <p>Jedes Medikament im Vorrat trägt eine Lagerungsstufe (normal 15–25 °C, kühl 2–8 °C, kalt ≤ -18 °C; Quelle: AVP 3/2020, Dr. Dicheva-Radev), die aus dem Beipackzettel stammt und über THERAFOX gespiegelt wird. Die App vergleicht diesen Wert mit der aktuellen Raumtemperatur und zeigt eine Warnung ausschließlich bei tatsächlichem Grenzwertverstoß — nach dem Bauprinzip "Notwendig statt möglich": eine Dauerwarnung ohne echten Anlass wäre Lärm, kein Hinweis.</p></div>
   </section>
 
   <section class="chapter" id="rahmen">
-    <div class="kapitel-num">Kapitel 3</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 4</div>
     <h2>Rechtlicher Rahmen &amp; Finanzierung</h2>
     <p class="lead">Ein Werkzeug für Träger — kein persönliches Geschäftsmodell.</p>
-    <p>kariPharm ist Teil eines dreisäuligen Trägermodells, das gemeinsam mit kariNurse und kariCare den geplanten gemeinnützigen Karioli-Fonds bilden soll:</p>
+    <p>kariPharm ist Teil eines dreisäuligen Trägermodells, das gemeinsam mit kariNurse und kariCare den geplanten gemeinnützigen Karioli-Fonds bilden soll:</p></div>
 
     <div class="data-table">
       <div class="data-row"><div class="k">kariPharm</div><div class="v">Krankenkassen, Pflegedienste</div></div>
       <div class="data-row"><div class="k">kariNurse</div><div class="v">Pflegeschulen, Krankenhäuser, ggf. Gewerkschaften</div></div>
-      <div class="data-row"><div class="k">kariCare</div><div class="v">Feuerwehr, THW, DRK</div></div>
+      <div class="data-row"><div class="k">kariCare</div><div class="v">Feuerwehr, THW, DRK, Kommunen</div></div>
     </div>
 
-    <h3>Status als digitale Anwendung</h3>
-    <p>kariPharm ist keine DiGA und wird auch keine DiGA sein. Das ist eine abschließende Entscheidung, keine offene Option. kariPharm ist aktuell auch keine DiPA. Sie könnte wahrscheinlich eine DiPA werden, wenn der Karioli-Fonds das über das Erprobungsjahr-Verfahren beschließt. Dieses Verfahren setzt keine MDR-Pflicht voraus.</p>
+    <div class="keep-together"><h3>Status als digitale Anwendung</h3>
+    <p>kariPharm ist keine DiGA und wird auch keine DiGA sein. Das ist eine abschließende Entscheidung, keine offene Option. kariPharm ist aktuell auch keine DiPA. Sie könnte wahrscheinlich eine DiPA werden, wenn der Karioli-Fonds das über das Erprobungsjahr-Verfahren beschließt. Dieses Verfahren setzt keine MDR-Pflicht voraus.</p></div>
     <p>kariPharm ist nicht an Deutschland gebunden. Über ein Lizenzmodell (§ 11 Abs. 6 SGB V, Satzungsleistung) kann der Karioli-Fonds Lizenzen an Krankenkassen und Institutionen vergeben. Das funktioniert unabhängig von einer DiGA-, DiPA- oder MDR-Zulassung und erlaubt eine europäische Skalierung jenseits der Zulassungspflicht.</p>
 
     <div class="card">
-      <p>Bewusste Abgrenzung: Die konkrete Entscheidung zwischen DiPA-Weg und reinem Lizenzmodell sowie deren wirtschaftliche Bewertung obliegen ausdrücklich dem Karioli-Fonds und den von ihm beauftragten Fachleuten. Ein Weg über Selbstzahler ist nicht vorgesehen.</p>
+      <p>Bewusste Abgrenzung: Die konkrete Entscheidung zwischen DiPA-Weg und reinem Lizenzmodell sowie deren wirtschaftliche Bewertung obliegen ausdrücklich dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p>
     </div>
 
-    <h3>Verwaltung und Betrieb</h3>
-    <p>Die bürokratische Verwaltung, einschließlich des laufenden technischen Betriebs, obliegt dem Karioli-Fonds und der von ihm beauftragten Produktionsstelle. Das Ausfallrisiko ist dabei strukturell gering: Da kariPharm keine eigene Server-Infrastruktur benötigt und bis auf die Anbindung an ifap/THERAFOX offline funktioniert, entsteht kein Dauerbetrieb, der eigens abgesichert werden müsste.</p>
+    <div class="keep-together"><h3>Zur Frage des Selbstzahler-Modells</h3>
+    <p>Der Gedanke, mit einer zahlungsbereiten Gruppe früh und unabhängig von Trägerentscheidungen zu erproben, ist nachvollziehbar und wurde aus der Fachwelt bereits konstruktiv an Karioli herangetragen. Er steht jedoch im Widerspruch zu einem Grundsatz, der für kariPharm nicht verhandelbar ist: Ein Selbstzahler-Modell ist nicht vorgesehen. Das ist keine offene Frage, sondern eine unmittelbare Konsequenz aus dem gemeinnützigen Grundsatz, auf dem Karioli beruht. kariPharm richtet sich gezielt an Menschen, die durch die App Unterstützung erfahren sollen, nicht an eine Kundschaft, die für diese Unterstützung selbst aufkommt — gerade weil viele dieser Menschen ohnehin unter finanziellem Druck stehen.</p></div>
+    <p>Zugleich sind es die Träger — Krankenkassen, Pflegedienste —, die durch weniger Heimeinweisungen, geringeren Koordinationsaufwand und bessere Therapietreue unmittelbar von kariPharm profitieren. Die Finanzierung folgt deshalb konsequent dem Nutzen: Wer durch die App spart, trägt die Kosten — nicht, wer ohnehin am verletzlichsten ist. Ein Selbstzahler-Modell würde diese Logik umkehren und liefe letztlich auf dieselbe Frage hinaus, die auch ein Verkauf von Karioli selbst aufwerfen würde: ob die App am Markt oder am Menschen ausgerichtet ist.</p>
 
-    <h3>Nutzennachweis</h3>
-    <p>Ein wissenschaftlicher Nutzennachweis liegt noch nicht vor. kariPharm ist ein vollständig durchdachtes Konzept, aber noch keine im Feld erprobte Anwendung. Die wissenschaftliche Validierung ist ausdrücklich Aufgabe künftiger Studien, die der Karioli-Fonds gemeinsam mit wissenschaftlichen Partnern durchführen wird — ebenso wie die Erschließung geeigneter Fördermittel, die in die Zuständigkeit des Fonds und seiner Fachleute fällt.</p>
+    <div class="keep-together"><h3>Verwaltung und Betrieb</h3>
+    <p>Die bürokratische Verwaltung, einschließlich des laufenden technischen Betriebs, obliegt dem Karioli-Fonds und der von ihm beauftragten Produktionsstelle. Das Ausfallrisiko ist dabei strukturell gering: Da kariPharm keine eigene Server-Infrastruktur benötigt und bis auf die Anbindung an ifap/THERAFOX offline funktioniert, entsteht kein Dauerbetrieb, der eigens abgesichert werden müsste.</p></div>
+
+    <div class="keep-together"><h3>Nutzennachweis</h3>
+    <p>Ein wissenschaftlicher Nutzennachweis liegt noch nicht vor. kariPharm ist ein vollständig durchdachtes Konzept, aber noch keine im Feld erprobte Anwendung. Die wissenschaftliche Validierung ist ausdrücklich Aufgabe künftiger Studien, die der Karioli-Fonds gemeinsam mit wissenschaftlichen Partnern durchführen wird — ebenso wie die Erschließung geeigneter Fördermittel, die in die Zuständigkeit des Fonds und seiner Fachleute fällt.</p></div>
   </section>
 
   <section class="chapter" id="relevanz">
-    <div class="kapitel-num">Kapitel 4</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 5</div>
     <h2>Gesellschaftliche Relevanz</h2>
     <p class="lead">Die Zahlen hinter der Medikamentenlast — Deutschland.</p>
-    <p>Diese Mappe beschränkt sich bewusst auf Deutschland. Eine internationale oder europaweite Einordnung würde eine eigene, vom Karioli-Fonds beauftragte Studie erfordern und ist nicht Gegenstand dieses Dokuments.</p>
+    <p>Diese Mappe beschränkt sich bewusst auf Deutschland. Eine internationale oder europaweite Einordnung würde eine eigene, vom Karioli-Fonds beauftragte Studie erfordern und ist nicht Gegenstand dieses Dokuments.</p></div>
 
-    <h3>Polypharmazie</h3>
-    <p>Mehr als 40 Prozent der über 65-Jährigen in Deutschland nehmen dauerhaft fünf oder mehr Medikamente ein; bei den über 80-Jährigen steigt dieser Anteil auf bis zu 60 Prozent. Pflegeheimbewohner nehmen im Durchschnitt 8,5 Dauermedikamente ein. Das Risiko unerwünschter Arzneimittelwirkungen liegt bei unter sechs Medikamenten bei rund 18 Prozent, bei mehr als sechs Medikamenten bei rund 80 Prozent.</p>
+    <div class="keep-together"><h3>Polypharmazie</h3>
+    <p>Mehr als 40 Prozent der über 65-Jährigen in Deutschland nehmen dauerhaft fünf oder mehr Medikamente ein; bei den über 80-Jährigen steigt dieser Anteil auf bis zu 60 Prozent. Pflegeheimbewohner nehmen im Durchschnitt 8,5 Dauermedikamente ein. Das Risiko unerwünschter Arzneimittelwirkungen liegt bei unter sechs Medikamenten bei rund 18 Prozent, bei mehr als sechs Medikamenten bei rund 80 Prozent.</p></div>
 
-    <h3>Therapietreue</h3>
-    <p>Bei chronischen Erkrankungen liegt die Therapietreue (Adhärenz) nach Schätzungen nur bei 50 bis 60 Prozent. Mehrere unabhängige Quellen beziffern die dadurch verursachten medizinischen Zusatzkosten in Deutschland auf bis zu 10 Milliarden Euro jährlich. Diese Größenordnung nennen frühere Studien schon länger konsistent. Eine ältere, breiter gefasste volkswirtschaftliche Schätzung (Booz &amp; Company / Bertelsmann Stiftung, 2012) schließt auch Diäten und Verhaltensweisen ein und geht von 38 bis 75 Milliarden Euro Schaden aus. Diese Zahl ist deutlich breiter gefasst. Sie ist nicht unmittelbar mit den 10-Milliarden-Schätzungen zur reinen Medikamenten-Adhärenz vergleichbar.</p>
+    <div class="keep-together"><h3>Therapietreue</h3>
+    <p>Bei chronischen Erkrankungen liegt die Therapietreue (Adhärenz) nach Schätzungen nur bei 50 bis 60 Prozent. Mehrere unabhängige Quellen beziffern die dadurch verursachten medizinischen Zusatzkosten in Deutschland auf bis zu 10 Milliarden Euro jährlich. Diese Größenordnung nennen frühere Studien schon länger konsistent. Eine ältere, breiter gefasste volkswirtschaftliche Schätzung (Booz &amp; Company / Bertelsmann Stiftung, 2012) schließt auch Diäten und Verhaltensweisen ein und geht von 38 bis 75 Milliarden Euro Schaden aus. Diese Zahl ist deutlich breiter gefasst. Sie ist nicht unmittelbar mit den 10-Milliarden-Schätzungen zur reinen Medikamenten-Adhärenz vergleichbar.</p></div>
 
     <div class="card">
       <p>Fakt / Schätzung: Die Prävalenzzahlen zur Polypharmazie stammen aus mehreren unabhängigen geriatrischen und gesundheitsökonomischen Quellen und stimmen in der Größenordnung überein (gesichert). Die Kostenschätzungen zur Non-Adherence variieren je nach Studie und Berechnungsmethode erheblich (10 Mrd. € vs. 38–75 Mrd. €) und sind als Schätzung, nicht als exakter Wert zu verstehen.</p>
     </div>
 
-    <h3>Angehörige und Isolation</h3>
-    <p>Chronisch kranke Menschen und ihre Angehörigen tragen die Koordination von Medikamenten und Terminen häufig allein, besonders dort, wo kein professioneller Pflegedienst regelmäßig im Haus ist. kariPharm setzt an dieser Lücke an. Die App erhebt nicht den Anspruch, professionelle Pflege oder ärztliche Betreuung zu ersetzen.</p>
+    <div class="keep-together"><h3>Angehörige und Isolation</h3>
+    <p>Chronisch kranke Menschen und ihre Angehörigen tragen die Koordination von Medikamenten und Terminen häufig allein, besonders dort, wo kein professioneller Pflegedienst regelmäßig im Haus ist. kariPharm setzt an dieser Lücke an. Die App erhebt nicht den Anspruch, professionelle Pflege oder ärztliche Betreuung zu ersetzen.</p></div>
 
     <div class="card">
       <p>Quellen: Magisterarbeit „Polypharmazie im Alter" (RKI-Bestand); Leading Medicine Guide / Klinik für Geriatrie; hkk-Studie zu Polypharmazie; Deutsches Ärzteblatt; PharmaWiki; Bertelsmann Stiftung / Booz &amp; Company (2012); vdek. Alle Angaben mit Bandbreite dargestellt, wo die Datenlage uneinheitlich ist.</p>
@@ -344,10 +373,10 @@
   </section>
 
   <section class="chapter" id="kosten">
-    <div class="kapitel-num">Kapitel 5</div>
+    <div class="keep-together"><div class="kapitel-num">Kapitel 6</div>
     <h2>Kosten und Realisierung</h2>
     <p class="lead">Anhaltswerte zur Orientierung — keine Kalkulation.</p>
-    <p>Die folgenden Angaben sind grobe Anhaltswerte, abgeleitet aus dem Vergleich mit den Kostenrahmen von kariNurse und kariCare. Sie ersetzen keine verbindliche Angebotskalkulation. Die endgültige Bewertung der Produktionskosten obliegt dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p>
+    <p>Die folgenden Angaben sind grobe Anhaltswerte, abgeleitet aus dem Vergleich mit den Kostenrahmen von kariNurse und kariCare. Sie ersetzen keine verbindliche Angebotskalkulation. Die endgültige Bewertung der Produktionskosten obliegt dem Karioli-Fonds und den von ihm beauftragten Fachleuten.</p></div>
 
     <div class="data-table">
       <div class="data-row"><div class="k">Universitäre Kooperation</div><div class="v">90.000 – 130.000 €</div></div>
@@ -365,7 +394,7 @@
   <footer class="page-footer">
     <div>Karioli · Gartow · Deutschland</div>
     <div>Open Source · Gemeinnützig · Soziales Projekt · Öffentlich</div>
-    <div>DOC-KP-EXP-DE-001 · Version 1.0 · Kontakt karioli.projekt@gmail.com</div>
+    <div>DOC-KP-EXP-DE-003 · Version 2.1 · Kontakt karioli.projekt@gmail.com</div>
   </footer>
 
 </div>
