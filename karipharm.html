@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<script>
+(function(){
+  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia('(pointer: coarse)').matches;
+  document.documentElement.classList.toggle('is-touch-device', isTouch);
+})();
+</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1069,6 +1075,17 @@ body {
     height: var(--app-height, 100vh) !important;
   }
 }
+  /* Force fullbleed for confirmed touch devices, regardless of what pointer/width the browser reports (covers "Desktop site" mode on tablets) */
+  html.is-touch-device body { padding: 0 !important; align-items: stretch !important; }
+  html.is-touch-device .phone, html.is-touch-device .kp-wrap > div {
+    width: 100% !important;
+    min-width: unset !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    min-height: var(--app-height, 100vh) !important;
+    height: var(--app-height, 100vh) !important;
+  }
 
   .intake-section{font-size:var(--fs-md);font-weight:700;letter-spacing:.08em;color:var(--color-akzent-tief);font-family:'DM Sans',sans-serif;margin:10px 0 5px;}
   .msi{background:#FDFBF3;border:1px solid rgba(43,43,40,0.12);border-radius:9px;padding:7px 9px;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;}
@@ -1319,6 +1336,10 @@ body {
       width: 100% !important;
       padding: 0 !important;
     }
+  }
+  html.is-touch-device .phone-scaler, html.is-touch-device .kp-wrap {
+    width: 100% !important;
+    padding: 0 !important;
   }
 </style>
 </head>
