@@ -1032,7 +1032,7 @@ body {
     
     body { align-items: center; }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (pointer: fine) {
     .phone {
       width: 380px !important;
       min-height: 700px !important;
@@ -1049,7 +1049,7 @@ body {
     .med-card { padding: 12px !important; }
     .timeline-dot { width: 13px !important; height: 13px !important; }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1024px) and (pointer: fine) {
     body { padding: 2rem 0 3rem; }
     .phone {
       width: 420px !important;
@@ -1057,7 +1057,7 @@ body {
     }
     .scan-btn-wrap { width: 190px !important; height: 190px !important; }
   }
-  @media (max-width: 480px) {
+  @media (max-width: 480px), (pointer: coarse) {
   body { padding: 0; align-items: stretch; }
   .phone, .kp-wrap > div {
     width: 100% !important;
@@ -1309,8 +1309,8 @@ body {
   .dn-text{font-size:var(--fs-md);color:#F5E8C0;font-weight:600;}
   .dn-sub{font-size:var(--fs-sm);color:#C8A060;font-family:'DM Sans',sans-serif;}
 
-  /* Pixel 9 Pro fix - full width on all mobile */
-  @media (max-width: 480px) {
+  /* Pixel 9 Pro fix - full width on all mobile (and any touch device, incl. tablets) */
+  @media (max-width: 480px), (pointer: coarse) {
     html, body {
       width: 100%;
       overflow-x: hidden;
