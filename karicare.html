@@ -2,12 +2,6 @@
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<script>
-(function(){
-  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia('(pointer: coarse)').matches;
-  document.documentElement.classList.toggle('is-touch-device', isTouch);
-})();
-</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -34,7 +28,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-start;padding:2rem 0;font-family:var(--font);min-height:100vh;}
 
-@media (min-width: 768px) and (pointer: fine) {
+@media (min-width: 768px) {
     .phone {
       width: 380px !important;
       min-height: 700px !important;
@@ -45,7 +39,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
     .notch { width: 96px !important; height: 12px !important; }
     .ring-wrap { width: 190px !important; height: 190px !important; }
   }
-  @media (min-width: 1024px) and (pointer: fine) {
+  @media (min-width: 1024px) {
     body { padding: 2rem 0 3rem; }
     .phone {
       width: 420px !important;
@@ -53,7 +47,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
     }
     .ring-wrap { width: 210px !important; height: 210px !important; }
   }
-  @media (max-width: 400px), (pointer: coarse) {
+  @media (max-width: 400px) {
     body { padding: 0; align-items: stretch; }
     .phone {
       width: 100% !important;
@@ -63,17 +57,6 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
       border-right: none !important;
       min-height: 100dvh !important;
     }
-  }
-  /* Force fullbleed for confirmed touch devices, regardless of what pointer/width the browser reports (covers "Desktop site" mode on tablets) */
-  html.is-touch-device body { padding: 0 !important; align-items: stretch !important; }
-  html.is-touch-device .phone {
-    width: 100% !important;
-    min-width: unset !important;
-    border-radius: 0 !important;
-    border-left: none !important;
-    border-right: none !important;
-    min-height: 100dvh !important;
-    height: calc(var(--app-height, 100dvh)) !important;
   }
   .phone{width:300px;min-height:610px;height:calc(var(--app-height, 100vh) - 2rem);background:linear-gradient(160deg,#0E7A1E 0%,#0A5A14 40%,#084A10 100%);border-radius:38px;padding:14px;border:3px solid #084010;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 5px rgba(8,64,16,.4),0 32px 80px rgba(0,0,0,.5);}
 .notch{width:70px;height:8px;background:#063A0C;border-radius:6px;margin:0 auto 12px;}
