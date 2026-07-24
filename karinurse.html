@@ -737,6 +737,16 @@
   font-size: 48px;
   margin-top: 24px;
 }
+#welcome-hinweis {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-xs);
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  padding: 0 32px;
+  line-height: 1.5;
+  margin-top: 20px;
+}
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1010,6 +1020,7 @@
     <div id="welcome-flag"></div>
     <div id="welcome-karioli">Karioli · DRK</div>
     <div id="welcome-text">Willkommen</div>
+    <div id="welcome-hinweis"></div>
   </div>
 
   <!-- HEADER -->
@@ -1482,7 +1493,6 @@
       </div>
 
       <div id="screen-home" style="display:flex; width:100%; height:100%; align-items:center; justify-content:center; position:relative;">
-      <div id="home-mock-hinweis" data-i18n="home_mock_hinweis" style="position:absolute; top:12px; left:0; right:0; text-align:center; font-family:'DM Sans',sans-serif; font-size:11px; color:#666666; padding:0 24px; pointer-events:none;">Demo-Inhalte — echte Angaben folgen von Trägern &amp; Instituten.</div>
       <div class="scanner-wrap">
         <div class="scanner-btn">
           <!-- Camera icon SVG -->
@@ -2550,8 +2560,7 @@
             ablage_titel: 'Meine Ablage', ablage_leer: 'Noch nichts gespeichert.', ablage_pdf_oeffnen: 'PDF öffnen', ablage_pdf_laden: 'PDF laden', ablage_loeschen: 'löschen', ablage_loeschen_bestaetigen: 'wirklich löschen?',
             forum_unterzeile: 'Forum des DRK Niedersachsen', forum_hinweis: 'kariNurse verlinkt dich dorthin. Das Forum wird eigenständig vom DRK betrieben.', forum_button: 'Zum Forum',
             geraet_speichern: 'In Ablage speichern', geraet_gespeichert: '✓ Gespeichert', geraet_pdf_ergaenzen: 'PDF selbst ergänzen', geraet_nicht_richtig: 'Nicht das Richtige? Eigenes Foto speichern',
-            geraet_foto_vollstaendig: 'PDF vollständig geladen', geraet_foto_uebersetzung_fehlt: 'Übersetzung fehlt noch',
-            home_mock_hinweis: 'Demo-Inhalte — echte Angaben folgen von Trägern &amp; Instituten.' },
+            geraet_foto_vollstaendig: 'PDF vollständig geladen', geraet_foto_uebersetzung_fehlt: 'Übersetzung fehlt noch' },
       en: { onboarding_intro: 'Choose your mother tongue.<br>Wähle deine Sprache.', header_ausbildung: 'Nursing Training',
             tab_home: 'Home', tab_ausbildung: 'Training', tab_suche: 'Search', tab_ablage: 'Archive', tab_forum: 'Forum',
             profil_titel: 'Settings', profil_sprache: 'Language', profil_textgroesse: 'Text Size',
@@ -2566,8 +2575,7 @@
             ablage_titel: 'My Archive', ablage_leer: 'Nothing saved yet.', ablage_pdf_oeffnen: 'Open PDF', ablage_pdf_laden: 'Load PDF', ablage_loeschen: 'delete', ablage_loeschen_bestaetigen: 'really delete?',
             forum_unterzeile: 'DRK Lower Saxony Forum', forum_hinweis: 'kariNurse links you there. The forum is run independently by the DRK.', forum_button: 'Go to Forum',
             geraet_speichern: 'Save to archive', geraet_gespeichert: '✓ Saved', geraet_pdf_ergaenzen: 'Add PDF yourself', geraet_nicht_richtig: 'Not the right one? Save your own photo',
-            geraet_foto_vollstaendig: 'PDF fully loaded', geraet_foto_uebersetzung_fehlt: 'Translation still missing',
-            home_mock_hinweis: 'Demo content — real details to be added by providers &amp; institutions.' }
+            geraet_foto_vollstaendig: 'PDF fully loaded', geraet_foto_uebersetzung_fehlt: 'Translation still missing' }
     };
     let aktuelleUiSprache = 'de';
     function applyLang(lang) {
@@ -2608,12 +2616,18 @@
 
     // S34-STEP-2+3: Sprachauswahl + Willkommen
     const willkommen = {
-      es: { text: 'Bienvenida',    flag: '🇪🇸' },
-      en: { text: 'Welcome',       flag: '🇬🇧' },
-      fr: { text: 'Bienvenue',     flag: '🇫🇷' },
-      el: { text: 'Καλώς ήρθες',  flag: '🇬🇷' },
-      tr: { text: 'Hoş geldin',    flag: '🇹🇷' },
-      ar: { text: 'أهلاً بك',      flag: '🇸🇦' },
+      es: { text: 'Bienvenida',    flag: '🇪🇸',
+            hinweis: 'Contenido de demostración — los datos reales los aportarán entidades e institutos.' },
+      en: { text: 'Welcome',       flag: '🇬🇧',
+            hinweis: 'Demo content — real details to be added by providers & institutions.' },
+      fr: { text: 'Bienvenue',     flag: '🇫🇷',
+            hinweis: 'Contenus de démonstration — les données réelles viendront des organismes et instituts.' },
+      el: { text: 'Καλώς ήρθες',  flag: '🇬🇷',
+            hinweis: 'Περιεχόμενο επίδειξης — τα πραγματικά στοιχεία θα δοθούν από φορείς και ινστιτούτα.' },
+      tr: { text: 'Hoş geldin',    flag: '🇹🇷',
+            hinweis: 'Demo içerikler — gerçek bilgiler kurum ve enstitülerden gelecektir.' },
+      ar: { text: 'أهلاً بك',      flag: '🇸🇦',
+            hinweis: 'محتوى تجريبي — البيانات الحقيقية ستُقدَّم من الجهات والمعاهد.' },
     };
     function setLang2(lang) {
       aktiveSprache2 = lang;
@@ -2622,6 +2636,7 @@
       const w = willkommen[lang];
       document.getElementById('welcome-text').textContent = w.text;
       document.getElementById('welcome-flag').textContent = w.flag;
+      document.getElementById('welcome-hinweis').textContent = w.hinweis || '';
       ws.classList.add('active');
       setTimeout(() => { ws.classList.remove('active'); renderHomeBegriffe(); }, 3000);
     }
