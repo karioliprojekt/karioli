@@ -2,6 +2,12 @@
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<script>
+(function(){
+  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia('(pointer: coarse)').matches;
+  document.documentElement.classList.toggle('is-touch-device', isTouch);
+})();
+</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,7 +34,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-start;padding:2rem 0;font-family:var(--font);min-height:100vh;}
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (pointer: fine) {
     .phone {
       width: 380px !important;
       min-height: 700px !important;
@@ -39,7 +45,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
     .notch { width: 96px !important; height: 12px !important; }
     .ring-wrap { width: 190px !important; height: 190px !important; }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1024px) and (pointer: fine) {
     body { padding: 2rem 0 3rem; }
     .phone {
       width: 420px !important;
@@ -47,7 +53,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
     }
     .ring-wrap { width: 210px !important; height: 210px !important; }
   }
-  @media (max-width: 400px) {
+  @media (max-width: 400px), (pointer: coarse) {
     body { padding: 0; align-items: stretch; }
     .phone {
       width: 100% !important;
@@ -57,6 +63,17 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
       border-right: none !important;
       min-height: 100dvh !important;
     }
+  }
+  /* Force fullbleed for confirmed touch devices, regardless of what pointer/width the browser reports (covers "Desktop site" mode on tablets) */
+  html.is-touch-device body { padding: 0 !important; align-items: stretch !important; }
+  html.is-touch-device .phone {
+    width: 100% !important;
+    min-width: unset !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    min-height: 100dvh !important;
+    height: calc(var(--app-height, 100dvh)) !important;
   }
   .phone{width:300px;min-height:610px;height:calc(var(--app-height, 100vh) - 2rem);background:linear-gradient(160deg,#0E7A1E 0%,#0A5A14 40%,#084A10 100%);border-radius:38px;padding:14px;border:3px solid #084010;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 5px rgba(8,64,16,.4),0 32px 80px rgba(0,0,0,.5);}
 .notch{width:70px;height:8px;background:#063A0C;border-radius:6px;margin:0 auto 12px;}
@@ -307,7 +324,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
     <!-- S0 HAUPTSCREEN -->
     <div class="screen active" id="s0">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:0;">
-        <div class="main-badge"><div class="bp"></div>KARICARE · AKTIV</div>
+        <div class="main-badge"><div class="bp"></div><span data-i18n="badgeActive">KARICARE · AKTIV</span></div>
         <div class="ring-wrap" onclick="go(&#39;s1&#39;)">
           <div class="ring-o"></div><div class="ring-m"></div>
           <div class="ring-i" id="gpsRing" style="box-shadow: var(--shadow-l),0 0 0 6px rgba(160,120,32,.18),inset 0 2px 8px rgba(26,107,114,.07);">
@@ -315,53 +332,53 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
             <div class="ring-bpm" id="mainBpm" style="margin-top:2px;">54 BPM</div>
           </div>
         </div>
-        <div class="gesehen-title" id="gpsTitle">GPS Standort<br>erfasst<span class="gesehen-line"></span></div>
-        <div class="gesehen-sub" id="gpsSub">Standort wird übertragen</div>
+        <div class="gesehen-title" id="gpsTitle"><span data-i18n="gpsTitleL1">GPS Standort</span><br><span data-i18n="gpsTitleL2">erfasst</span><span class="gesehen-line"></span></div>
+        <div class="gesehen-sub" id="gpsSub" data-i18n="gpsSubText">Standort wird übertragen</div>
         <div class="loc-bar">
           <div class="loc-dot"></div>
-          <div class="loc-txt">Koordinaten aktiv</div>
+          <div class="loc-txt" data-i18n="locActive">Koordinaten aktiv</div>
           <div class="loc-coords" id="locCoords">52.9833° N</div>
         </div>
-        <button class="lage-btn" onclick="openLage()">🆘 Lagemeldung senden</button>
+        <button class="lage-btn" onclick="openLage()">🆘 <span data-i18n="lageSend">Lagemeldung senden</span></button>
       </div>
       <div class="bnav">
-        <div class="bnav-btn on" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div>Status</div>
-        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div>Karte</div>
-        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div>News</div>
-        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div>Schutz</div>
-        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div>Seele</div>
+        <div class="bnav-btn on" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div><span data-i18n="navStatus">Status</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div><span data-i18n="navKarte">Karte</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div><span data-i18n="navNews">News</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div><span data-i18n="navSchutz">Schutz</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div><span data-i18n="navSeele">Seele</span></div>
       </div>
     </div>
 
     <!-- S1 KARTE -->
     <div class="screen" id="s1">
       <div class="map-hdr">
-        <div class="map-title" id="mapTitle">Einsatzkarte</div>
+        <div class="map-title" id="mapTitle" data-i18n="mapTitleBuerger">Einsatzkarte</div>
         <div class="mtoggle">
-          <button class="mbtn on" id="mB" onclick="setMode('b',this)">Bürger</button>
-          <button class="mbtn off" id="mR" onclick="setMode('r',this)">🔒 Profi</button>
+          <button class="mbtn on" id="mB" onclick="setMode('b',this)"><span data-i18n="btnBuerger">Bürger</span></button>
+          <button class="mbtn off" id="mR" onclick="setMode('r',this)">🔒 <span data-i18n="btnProfi">Profi</span></button>
         </div>
       </div>
       <div id="viewBuerger">
       <div class="map-wrap">
         <canvas id="mapCvs" width="268" height="200"></canvas>
         <div class="map-infobox">
-          <div style="color:var(--green-l);font-weight:600;">● 12 Personen erfasst</div>
-          <div style="color:var(--text-dim);">Umkreis 500m</div>
-          <div style="color:var(--warn);">▲ 3 Hilfeanfragen</div>
+          <div style="color:var(--green-l);font-weight:600;">● 12 <span data-i18n="personsDetected">Personen erfasst</span></div>
+          <div style="color:var(--text-dim);"><span data-i18n="radiusLabel">Umkreis</span> 500m</div>
+          <div style="color:var(--warn);">▲ 3 <span data-i18n="helpRequests">Hilfeanfragen</span></div>
         </div>
         <div class="map-legendbox">
-          <div class="legend-row"><div class="ldot" style="background:#0A5A14;"></div>Geortet</div>
-          <div class="legend-row"><div class="ldot" style="background:#D97706;"></div>Hilfe</div>
-          <div class="legend-row"><div class="ldot" style="background:#DC2626;"></div>Kritisch</div>
-          <div class="legend-row"><div class="ldot" style="background:#2563EB;"></div>Rettung</div>
+          <div class="legend-row"><div class="ldot" style="background:#0A5A14;"></div><span data-i18n="legGeortet">Geortet</span></div>
+          <div class="legend-row"><div class="ldot" style="background:#D97706;"></div><span data-i18n="legHilfe">Hilfe</span></div>
+          <div class="legend-row"><div class="ldot" style="background:#DC2626;"></div><span data-i18n="legKritisch">Kritisch</span></div>
+          <div class="legend-row"><div class="ldot" style="background:#2563EB;"></div><span data-i18n="legRettung">Rettung</span></div>
         </div>
       </div>
       <div class="map-stats">
-        <div class="mstat"><div class="mstat-val" style="color:var(--green);">12</div><div class="mstat-lbl">Geortet</div></div>
-        <div class="mstat"><div class="mstat-val" style="color:var(--warn);">3</div><div class="mstat-lbl">Hilfe</div></div>
-        <div class="mstat"><div class="mstat-val" style="color:var(--danger);">1</div><div class="mstat-lbl">Kritisch</div></div>
-        <div class="mstat"><div class="mstat-val" style="color:var(--blue);">4</div><div class="mstat-lbl">Rettung</div></div>
+        <div class="mstat"><div class="mstat-val" style="color:var(--green);">12</div><div class="mstat-lbl" data-i18n="legGeortet">Geortet</div></div>
+        <div class="mstat"><div class="mstat-val" style="color:var(--warn);">3</div><div class="mstat-lbl" data-i18n="legHilfe">Hilfe</div></div>
+        <div class="mstat"><div class="mstat-val" style="color:var(--danger);">1</div><div class="mstat-lbl" data-i18n="legKritisch">Kritisch</div></div>
+        <div class="mstat"><div class="mstat-val" style="color:var(--blue);">4</div><div class="mstat-lbl" data-i18n="legRettung">Rettung</div></div>
       </div>
       </div><!-- end viewBuerger -->
 
@@ -369,71 +386,71 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
       <div id="viewProfi" style="display:none;flex:1;overflow-y:auto;padding-bottom:4px;">
         <div style="background:#0A2A0E;border-radius:10px;padding:8px;margin-bottom:7px;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="font-size:8px;font-weight:600;letter-spacing:.12em;color:#5AB86A;font-family:var(--mono);">LAGE · GARTOW · ECHTZEIT</span>
-            <span style="font-size:8px;color:#5AB86A;font-family:var(--mono);">● LIVE</span>
+            <span style="font-size:8px;font-weight:600;letter-spacing:.12em;color:#5AB86A;font-family:var(--mono);" data-i18n="proHeader">LAGE · GARTOW · ECHTZEIT</span>
+            <span style="font-size:8px;color:#5AB86A;font-family:var(--mono);">● <span data-i18n="proLive">LIVE</span></span>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin-bottom:6px;">
             <div style="background:#0E3A12;border-radius:7px;padding:5px 4px;text-align:center;">
               <div style="font-size:16px;font-weight:700;color:#5AB86A;font-family:var(--mono);">12</div>
-              <div style="font-size:7px;color:#3A7A42;font-family:var(--mono);">GEORTET</div>
+              <div style="font-size:7px;color:#3A7A42;font-family:var(--mono);" data-i18n="legGeortet">GEORTET</div>
             </div>
             <div style="background:#2A1A08;border-radius:7px;padding:5px 4px;text-align:center;">
               <div style="font-size:16px;font-weight:700;color:#E0B830;font-family:var(--mono);">3</div>
-              <div style="font-size:7px;color:#8B6914;font-family:var(--mono);">HILFE</div>
+              <div style="font-size:7px;color:#8B6914;font-family:var(--mono);" data-i18n="legHilfe">HILFE</div>
             </div>
             <div style="background:#2A0808;border-radius:7px;padding:5px 4px;text-align:center;">
               <div style="font-size:16px;font-weight:700;color:#E05050;font-family:var(--mono);">1</div>
-              <div style="font-size:7px;color:#8A3030;font-family:var(--mono);">KRITISCH</div>
+              <div style="font-size:7px;color:#8A3030;font-family:var(--mono);" data-i18n="legKritisch">KRITISCH</div>
             </div>
             <div style="background:#080E2A;border-radius:7px;padding:5px 4px;text-align:center;">
               <div style="font-size:16px;font-weight:700;color:#5080E0;font-family:var(--mono);">4</div>
-              <div style="font-size:7px;color:#304880;font-family:var(--mono);">RETTUNG</div>
+              <div style="font-size:7px;color:#304880;font-family:var(--mono);" data-i18n="legRettung">RETTUNG</div>
             </div>
           </div>
           <canvas id="mapProfi" width="248" height="100" style="border-radius:6px;display:block;"></canvas>
         </div>
-        <div style="font-size:7px;font-weight:600;letter-spacing:.12em;color:var(--text-soft);font-family:var(--mono);margin-bottom:5px;">WIDGETS · KONFIGURIERBAR</div>
+        <div style="font-size:7px;font-weight:600;letter-spacing:.12em;color:var(--text-soft);font-family:var(--mono);margin-bottom:5px;" data-i18n="widgetsConfig">WIDGETS · KONFIGURIERBAR</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:6px;">
           <div style="background:var(--white);border:1px solid var(--border2);border-radius:9px;padding:8px;">
-            <div style="font-size:7px;font-weight:600;letter-spacing:.1em;color:var(--text-soft);font-family:var(--mono);margin-bottom:4px;">SCHUTZRÄUME</div>
-            <div style="font-size:9px;color:var(--text);margin-bottom:2px;">Schule Am Hang <span style="color:#16a34a;font-weight:600;">OFFEN</span></div>
+            <div style="font-size:7px;font-weight:600;letter-spacing:.1em;color:var(--text-soft);font-family:var(--mono);margin-bottom:4px;" data-i18n="schutzraeume">SCHUTZRÄUME</div>
+            <div style="font-size:9px;color:var(--text);margin-bottom:2px;">Schule Am Hang <span style="color:#16a34a;font-weight:600;" data-i18n="statusOffen">OFFEN</span></div>
             <div style="font-size:8px;color:var(--text-soft);">76/180 · 320m</div>
             <div style="height:3px;background:var(--bg2);border-radius:2px;margin-top:3px;margin-bottom:5px;"><div style="width:42%;height:100%;background:#16a34a;border-radius:2px;"></div></div>
-            <div style="font-size:9px;color:var(--text);margin-bottom:2px;">Rathaus UG <span style="color:#dc2626;font-weight:600;">VOLL</span></div>
+            <div style="font-size:9px;color:var(--text);margin-bottom:2px;">Rathaus UG <span style="color:#dc2626;font-weight:600;" data-i18n="statusVoll">VOLL</span></div>
             <div style="font-size:8px;color:var(--text-soft);">40/40 · 200m</div>
             <div style="height:3px;background:var(--bg2);border-radius:2px;margin-top:3px;"><div style="width:100%;height:100%;background:#dc2626;border-radius:2px;"></div></div>
           </div>
           <div style="background:var(--white);border:1px solid var(--border2);border-radius:9px;padding:8px;">
-            <div style="font-size:7px;font-weight:600;letter-spacing:.1em;color:var(--text-soft);font-family:var(--mono);margin-bottom:4px;">EINHEITEN</div>
+            <div style="font-size:7px;font-weight:600;letter-spacing:.1em;color:var(--text-soft);font-family:var(--mono);margin-bottom:4px;" data-i18n="einheiten">EINHEITEN</div>
             <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px;">
               <div style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;"></div>
               <div style="font-size:9px;color:var(--text);">THW Gartow</div>
-              <div style="font-size:7px;color:#16a34a;margin-left:auto;font-family:var(--mono);">AKTIV</div>
+              <div style="font-size:7px;color:#16a34a;margin-left:auto;font-family:var(--mono);" data-i18n="statusAktiv">AKTIV</div>
             </div>
             <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px;">
               <div style="width:6px;height:6px;border-radius:50%;background:#dc2626;flex-shrink:0;"></div>
-              <div style="font-size:9px;color:var(--text);">Feuerwehr</div>
-              <div style="font-size:7px;color:#16a34a;margin-left:auto;font-family:var(--mono);">AKTIV</div>
+              <div style="font-size:9px;color:var(--text);" data-i18n="feuerwehr">Feuerwehr</div>
+              <div style="font-size:7px;color:#16a34a;margin-left:auto;font-family:var(--mono);" data-i18n="statusAktiv">AKTIV</div>
             </div>
             <div style="display:flex;align-items:center;gap:5px;">
               <div style="width:6px;height:6px;border-radius:50%;background:#16a34a;flex-shrink:0;"></div>
               <div style="font-size:9px;color:var(--text);">DRK</div>
-              <div style="font-size:7px;color:#E0B830;margin-left:auto;font-family:var(--mono);">ANFAHRT</div>
+              <div style="font-size:7px;color:#E0B830;margin-left:auto;font-family:var(--mono);" data-i18n="statusAnfahrt">ANFAHRT</div>
             </div>
           </div>
         </div>
         <div style="background:#FEF9E7;border:1px solid #E0B830;border-radius:9px;padding:7px;">
-          <div style="font-size:7px;font-weight:600;letter-spacing:.1em;color:#8B6914;font-family:var(--mono);margin-bottom:2px;">⚙ DASHBOARD KONFIGURIEREN</div>
-          <div style="font-size:8px;color:#8B6914;">Widgets anpassen · Behörden-Skin · Export CSV/API</div>
+          <div style="font-size:7px;font-weight:600;letter-spacing:.1em;color:#8B6914;font-family:var(--mono);margin-bottom:2px;">⚙ <span data-i18n="dashConfig">DASHBOARD KONFIGURIEREN</span></div>
+          <div style="font-size:8px;color:#8B6914;" data-i18n="dashDesc">Widgets anpassen · Behörden-Skin · Export CSV/API</div>
         </div>
       </div><!-- end viewProfi -->
 
       <div class="bnav">
-        <div class="bnav-btn off" onclick="go('s0')"><div class="bnav-ico">🛡</div>Status</div>
-        <div class="bnav-btn on" onclick="go('s1')"><div class="bnav-ico">🗺</div>Karte</div>
-        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div>News</div>
-        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div>Schutz</div>
-        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div>Seele</div>
+        <div class="bnav-btn off" onclick="go('s0')"><div class="bnav-ico">🛡</div><span data-i18n="navStatus">Status</span></div>
+        <div class="bnav-btn on" onclick="go('s1')"><div class="bnav-ico">🗺</div><span data-i18n="navKarte">Karte</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div><span data-i18n="navNews">News</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div><span data-i18n="navSchutz">Schutz</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div><span data-i18n="navSeele">Seele</span></div>
       </div>
     </div>
 
@@ -442,71 +459,71 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
       <div class="scroll-area">
         <div class="upgrade" onclick="go(&#39;s1&#39;)">
           <div class="upg-ico">🔒</div>
-          <div><div class="upg-title">Koordinations-Upgrade</div><div class="upg-sub">THW · Feuerwehr · DRK · Behörden</div></div>
+          <div><div class="upg-title" data-i18n="upgTitle">Koordinations-Upgrade</div><div class="upg-sub" data-i18n="upgSub">THW · Feuerwehr · DRK · Behörden</div></div>
           <div class="upg-arr">›</div>
         </div>
-        <div class="sec-lbl">AKTUELLE LAGE · 2KM</div>
-        <div class="news-card urgent"><div class="news-tag r">⚠ DRINGEND</div><div class="news-txt">Gasleitung Hauptstraße 14–22 beschädigt. Bereich meiden. Feuerwehr im Einsatz.</div><div class="news-time">vor 4 Min</div></div>
-        <div class="news-card warn"><div class="news-tag y">HINWEIS</div><div class="news-txt">Trinkwasser Nordviertel unterbrochen. Ausgabe: Schule Am Hang, Eingang Nord.</div><div class="news-time">vor 12 Min</div></div>
-        <div class="news-card"><div class="news-tag g">INFO</div><div class="news-txt">Notaufnahme Klinikum Süd geöffnet. Leichtverletzte bitte THW-Anlaufstelle.</div><div class="news-time">vor 28 Min</div></div>
-        <div class="sec-lbl">VERBINDUNGEN</div>
+        <div class="sec-lbl" data-i18n="currentSituation">AKTUELLE LAGE · 2KM</div>
+        <div class="news-card urgent"><div class="news-tag r">⚠ <span data-i18n="tagDringend">DRINGEND</span></div><div class="news-txt" data-i18n="news1Txt">Gasleitung Hauptstraße 14–22 beschädigt. Bereich meiden. Feuerwehr im Einsatz.</div><div class="news-time" data-i18n="news1Time">vor 4 Min</div></div>
+        <div class="news-card warn"><div class="news-tag y" data-i18n="tagHinweis">HINWEIS</div><div class="news-txt" data-i18n="news2Txt">Trinkwasser Nordviertel unterbrochen. Ausgabe: Schule Am Hang, Eingang Nord.</div><div class="news-time" data-i18n="news2Time">vor 12 Min</div></div>
+        <div class="news-card"><div class="news-tag g" data-i18n="tagInfo">INFO</div><div class="news-txt" data-i18n="news3Txt">Notaufnahme Klinikum Süd geöffnet. Leichtverletzte bitte THW-Anlaufstelle.</div><div class="news-time" data-i18n="news3Time">vor 28 Min</div></div>
+        <div class="sec-lbl" data-i18n="verbindungen">VERBINDUNGEN</div>
         <div class="cgrid">
-          <div class="cbtn"><div class="cico">🚒</div><div class="cname">Feuerwehr</div><div class="csub">112</div></div>
-          <div class="cbtn"><div class="cico">🔧</div><div class="cname">THW</div><div class="csub">Technisches Hilfswerk</div></div>
-          <div class="cbtn"><div class="cico"><img src="data:image/webp;base64,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" style="width:28px;height:18px;object-fit:contain;" alt="DRK"/></div><div class="cname">Rotes Kreuz</div><div class="csub">Erstversorgung</div></div>
-          <div class="cbtn"><div class="cico">🍞</div><div class="cname">Tafel</div><div class="csub">Versorgung</div></div>
-          <div class="cbtn"><div class="cico">🚔</div><div class="cname">Polizei</div><div class="csub">110</div></div>
-          <div class="cbtn" onclick="openWetter('hitze')"><div class="cico">🌡</div><div class="cname">Hitze</div><div class="csub">Kühle Orte · Wasser</div></div>
-          <div class="cbtn" onclick="openWetter('kaelte')"><div class="cico">❄️</div><div class="cname">Kälte</div><div class="csub">Wärme · Essen · Decken</div></div>
-          <div class="cbtn" onclick="openWetter('unwetter')"><div class="cico">🌩</div><div class="cname">Unwetter</div><div class="csub">Schutzräume · Notunterkünfte</div></div>
+          <div class="cbtn"><div class="cico">🚒</div><div class="cname" data-i18n="feuerwehr">Feuerwehr</div><div class="csub">112</div></div>
+          <div class="cbtn"><div class="cico">🔧</div><div class="cname">THW</div><div class="csub" data-i18n="thwSub">Technisches Hilfswerk</div></div>
+          <div class="cbtn"><div class="cico"><img src="data:image/webp;base64,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" style="width:28px;height:18px;object-fit:contain;" alt="DRK"/></div><div class="cname" data-i18n="redCross">Rotes Kreuz</div><div class="csub" data-i18n="firstAid">Erstversorgung</div></div>
+          <div class="cbtn"><div class="cico">🍞</div><div class="cname">Tafel</div><div class="csub" data-i18n="supplies">Versorgung</div></div>
+          <div class="cbtn"><div class="cico">🚔</div><div class="cname" data-i18n="police">Polizei</div><div class="csub">110</div></div>
+          <div class="cbtn" onclick="openWetter('hitze')"><div class="cico">🌡</div><div class="cname" data-i18n="heatName">Hitze</div><div class="csub" data-i18n="heatSub">Kühle Orte · Wasser</div></div>
+          <div class="cbtn" onclick="openWetter('kaelte')"><div class="cico">❄️</div><div class="cname" data-i18n="coldName">Kälte</div><div class="csub" data-i18n="coldSub">Wärme · Essen · Decken</div></div>
+          <div class="cbtn" onclick="openWetter('unwetter')"><div class="cico">🌩</div><div class="cname" data-i18n="stormName">Unwetter</div><div class="csub" data-i18n="stormSub">Schutzräume · Notunterkünfte</div></div>
         </div>
       </div>
       <div class="bnav">
-        <div class="bnav-btn off" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div>Status</div>
-        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div>Karte</div>
-        <div class="bnav-btn on" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div>News</div>
-        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div>Schutz</div>
-        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div>Seele</div>
+        <div class="bnav-btn off" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div><span data-i18n="navStatus">Status</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div><span data-i18n="navKarte">Karte</span></div>
+        <div class="bnav-btn on" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div><span data-i18n="navNews">News</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div><span data-i18n="navSchutz">Schutz</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div><span data-i18n="navSeele">Seele</span></div>
       </div>
     </div>
 
     <!-- S3 SCHUTZRÄUME -->
     <div class="screen" id="s3">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-shrink:0;">
-        <div style="font-size:13px;font-weight:600;color:var(--text);">Schutzräume</div>
-        <div style="font-size:9px;color:var(--text-soft);font-family:var(--mono);">Umkreis 1km</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);" data-i18n="screenTitleSchutz">Schutzräume</div>
+        <div style="font-size:9px;color:var(--text-soft);font-family:var(--mono);"><span data-i18n="radiusLabel">Umkreis</span> 1km</div>
       </div>
       <div class="scroll-area">
-        <div class="shelter ok"><div class="sh-row"><div class="sh-name">Schule Am Hang</div><div class="sh-badge ok">OFFEN</div></div><div class="sh-meta">Turnhalle · 320m · Kapazität 180</div><div class="cap-bar"><div class="cap-fill" style="width:42%;background:var(--green-l);"></div></div><div class="cap-txt" style="color:var(--green);">76 / 180 belegt</div></div>
-        <div class="shelter ok"><div class="sh-row"><div class="sh-name">Pfarrkirche St. Maria</div><div class="sh-badge ok">OFFEN</div></div><div class="sh-meta">Gemeindesaal · 550m · Kapazität 60</div><div class="cap-bar"><div class="cap-fill" style="width:28%;background:var(--green-l);"></div></div><div class="cap-txt" style="color:var(--green);">17 / 60 belegt</div></div>
-        <div class="shelter full"><div class="sh-row"><div class="sh-name">Rathaus Untergeschoss</div><div class="sh-badge full">VOLL</div></div><div class="sh-meta">Bunkerraum · 200m · Kapazität 40</div><div class="cap-bar"><div class="cap-fill" style="width:100%;background:var(--danger);"></div></div><div class="cap-txt" style="color:var(--danger);">40 / 40 belegt</div></div>
-        <div class="shelter warn"><div class="sh-row"><div class="sh-name">Sporthalle Westpark</div><div class="sh-badge warn">75%</div></div><div class="sh-meta">Haupthalle · 820m · Kapazität 250</div><div class="cap-bar"><div class="cap-fill" style="width:75%;background:var(--warn);"></div></div><div class="cap-txt" style="color:var(--warn);">188 / 250 belegt</div></div>
+        <div class="shelter ok"><div class="sh-row"><div class="sh-name">Schule Am Hang</div><div class="sh-badge ok" data-i18n="statusOffen">OFFEN</div></div><div class="sh-meta"><span data-i18n="facTurnhalle">Turnhalle</span> · 320m · <span data-i18n="capacityLabel">Kapazität</span> 180</div><div class="cap-bar"><div class="cap-fill" style="width:42%;background:var(--green-l);"></div></div><div class="cap-txt" style="color:var(--green);">76 / 180 <span data-i18n="occupiedLabel">belegt</span></div></div>
+        <div class="shelter ok"><div class="sh-row"><div class="sh-name">Pfarrkirche St. Maria</div><div class="sh-badge ok" data-i18n="statusOffen">OFFEN</div></div><div class="sh-meta"><span data-i18n="facGemeindesaal">Gemeindesaal</span> · 550m · <span data-i18n="capacityLabel">Kapazität</span> 60</div><div class="cap-bar"><div class="cap-fill" style="width:28%;background:var(--green-l);"></div></div><div class="cap-txt" style="color:var(--green);">17 / 60 <span data-i18n="occupiedLabel">belegt</span></div></div>
+        <div class="shelter full"><div class="sh-row"><div class="sh-name">Rathaus Untergeschoss</div><div class="sh-badge full" data-i18n="statusVoll">VOLL</div></div><div class="sh-meta"><span data-i18n="facBunkerraum">Bunkerraum</span> · 200m · <span data-i18n="capacityLabel">Kapazität</span> 40</div><div class="cap-bar"><div class="cap-fill" style="width:100%;background:var(--danger);"></div></div><div class="cap-txt" style="color:var(--danger);">40 / 40 <span data-i18n="occupiedLabel">belegt</span></div></div>
+        <div class="shelter warn"><div class="sh-row"><div class="sh-name">Sporthalle Westpark</div><div class="sh-badge warn">75%</div></div><div class="sh-meta"><span data-i18n="facHaupthalle">Haupthalle</span> · 820m · <span data-i18n="capacityLabel">Kapazität</span> 250</div><div class="cap-bar"><div class="cap-fill" style="width:75%;background:var(--warn);"></div></div><div class="cap-txt" style="color:var(--warn);">188 / 250 <span data-i18n="occupiedLabel">belegt</span></div></div>
       </div>
       <div class="bnav">
-        <div class="bnav-btn off" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div>Status</div>
-        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div>Karte</div>
-        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div>News</div>
-        <div class="bnav-btn on" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div>Schutz</div>
-        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div>Seele</div>
+        <div class="bnav-btn off" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div><span data-i18n="navStatus">Status</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div><span data-i18n="navKarte">Karte</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div><span data-i18n="navNews">News</span></div>
+        <div class="bnav-btn on" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div><span data-i18n="navSchutz">Schutz</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div><span data-i18n="navSeele">Seele</span></div>
       </div>
     </div>
 
     <!-- S4 SEELE -->
     <div class="screen" id="s4">
       <div class="scroll-area">
-        <div class="soul-intro"><div class="soul-intro-txt">In dieser Stunde ist nicht alles sagbar. Aber du musst es nicht alleine tragen. Diese Angebote sind da — ohne Wartezeit, ohne Urteil.</div></div>
-        <div class="soul-btn"><div class="soul-ico">💬</div><div><div class="soul-name">Ich brauche jemanden zum Reden</div><div class="soul-sub">Bot · verfügbar · keine Wartezeit</div></div></div>
-        <div class="soul-btn"><div class="soul-ico">🕯</div><div><div class="soul-name">Jemand ist gestorben</div><div class="soul-sub">Trauerbegleitung · diskret · still</div></div></div>
-        <div class="soul-btn"><div class="soul-ico">😮‍💨</div><div><div class="soul-name">Ich bin in Panik</div><div class="soul-sub">Atemübung · sofort · 3 Minuten</div></div></div>
-        <div class="soul-btn"><div class="soul-ico">👶</div><div><div class="soul-name">Ich bin mit Kindern</div><div class="soul-sub">Für Kinder erklären · beruhigen</div></div></div>
-        <div class="soul-btn"><div class="soul-ico">📞</div><div><div class="soul-name">Krisentelefon</div><div class="soul-sub">0800 111 0 111 · kostenlos · 24h</div></div></div>
+        <div class="soul-intro"><div class="soul-intro-txt" data-i18n="soulIntro">In dieser Stunde ist nicht alles sagbar. Aber du musst es nicht alleine tragen. Diese Angebote sind da — ohne Wartezeit, ohne Urteil.</div></div>
+        <div class="soul-btn"><div class="soul-ico">💬</div><div><div class="soul-name" data-i18n="soul1Name">Ich brauche jemanden zum Reden</div><div class="soul-sub" data-i18n="soul1Sub">Bot · verfügbar · keine Wartezeit</div></div></div>
+        <div class="soul-btn"><div class="soul-ico">🕯</div><div><div class="soul-name" data-i18n="soul2Name">Jemand ist gestorben</div><div class="soul-sub" data-i18n="soul2Sub">Trauerbegleitung · diskret · still</div></div></div>
+        <div class="soul-btn"><div class="soul-ico">😮‍💨</div><div><div class="soul-name" data-i18n="soul3Name">Ich bin in Panik</div><div class="soul-sub" data-i18n="soul3Sub">Atemübung · sofort · 3 Minuten</div></div></div>
+        <div class="soul-btn"><div class="soul-ico">👶</div><div><div class="soul-name" data-i18n="soul4Name">Ich bin mit Kindern</div><div class="soul-sub" data-i18n="soul4Sub">Für Kinder erklären · beruhigen</div></div></div>
+        <div class="soul-btn"><div class="soul-ico">📞</div><div><div class="soul-name" data-i18n="soul5Name">Krisentelefon</div><div class="soul-sub"><span data-i18n="soul5Sub">0800 111 0 111 · kostenlos · 24h</span></div></div></div>
       </div>
       <div class="bnav">
-        <div class="bnav-btn off" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div>Status</div>
-        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div>Karte</div>
-        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div>News</div>
-        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div>Schutz</div>
-        <div class="bnav-btn on" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div>Seele</div>
+        <div class="bnav-btn off" onclick="go(&#39;s0&#39;)"><div class="bnav-ico">🛡</div><span data-i18n="navStatus">Status</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s1&#39;)"><div class="bnav-ico">🗺</div><span data-i18n="navKarte">Karte</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s2&#39;)"><div class="bnav-ico">📡</div><span data-i18n="navNews">News</span></div>
+        <div class="bnav-btn off" onclick="go(&#39;s3&#39;)"><div class="bnav-ico">🏠</div><span data-i18n="navSchutz">Schutz</span></div>
+        <div class="bnav-btn on" onclick="go(&#39;s4&#39;)"><div class="bnav-ico">🕊</div><span data-i18n="navSeele">Seele</span></div>
       </div>
     </div>
 
@@ -527,10 +544,10 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
   <div class="lage-overlay" id="lageOverlay">
     <div class="lage-modal">
       <button class="lage-close" onclick="closeLage()">✕</button>
-      <div class="lage-modal-title">LAGEMELDUNG</div>
-      <div class="lage-modal-sub" id="lageCoordsLabel">Koordinaten werden geladen…</div>
+      <div class="lage-modal-title" data-i18n="lageModalTitle">LAGEMELDUNG</div>
+      <div class="lage-modal-sub" id="lageCoordsLabel" data-i18n="lageCoordsLoading">Koordinaten werden geladen…</div>
       <div class="lage-row">
-        <div class="lage-label">👥 Personen gesamt</div>
+        <div class="lage-label">👥 <span data-i18n="personsTotal">Personen gesamt</span></div>
         <div class="lage-counter">
           <button class="lage-pm" onclick="lageChange('total',-1)">−</button>
           <div class="lage-val" id="lageTotal">1</div>
@@ -538,7 +555,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
         </div>
       </div>
       <div class="lage-row">
-        <div class="lage-label">👶 Kinder</div>
+        <div class="lage-label">👶 <span data-i18n="childrenLabel">Kinder</span></div>
         <div class="lage-counter">
           <button class="lage-pm" onclick="lageChange('kinder',-1)">−</button>
           <div class="lage-val" id="lageKinder">0</div>
@@ -546,14 +563,14 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
         </div>
       </div>
       <div class="lage-row">
-        <div class="lage-label">🩹 Verletzte</div>
+        <div class="lage-label">🩹 <span data-i18n="injuredLabel">Verletzte</span></div>
         <div class="lage-counter">
           <button class="lage-pm" onclick="lageChange('verletzt',-1)">−</button>
           <div class="lage-val" id="lageVerletzt">0</div>
           <button class="lage-pm" onclick="lageChange('verletzt',1)">+</button>
         </div>
       </div>
-      <button class="lage-send" onclick="lageSenden()">Signal senden</button>
+      <button class="lage-send" onclick="lageSenden()"><span data-i18n="sendSignal">Signal senden</span></button>
       <div class="lage-sent" id="lageSentMsg"></div>
     </div>
   </div>
@@ -561,11 +578,11 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
   <!-- SETTINGS PANEL (gear in sbar triggers this) -->
   <div class="settings-panel" id="settingsPanel">
     <div class="sp-title">EINSTELLUNGEN <span class="sp-close" onclick="toggleSettings()">✕</span></div>
-    <div class="sp-item"><div class="sp-ico">🌐</div><div><div class="sp-name">Sprache</div><div class="sp-sub">Deutsch</div></div></div>
-    <div class="sp-item"><div class="sp-ico">🔔</div><div><div class="sp-name">Benachrichtigungen</div><div class="sp-sub">Push · Ton · Vibration</div></div></div>
-    <div class="sp-item"><div class="sp-ico">📍</div><div><div class="sp-name">GPS-Genauigkeit</div><div class="sp-sub">Hoch · Akku sparen</div></div></div>
-    <div class="sp-item"><div class="sp-ico">🔒</div><div><div class="sp-name">Datenschutz</div><div class="sp-sub">Ende-zu-Ende</div></div></div>
-    <div class="sp-item"><div class="sp-ico">ℹ️</div><div><div class="sp-name">Über kariCare</div><div class="sp-sub">v1.0 · Karioli</div></div></div>
+    <div class="sp-item" onclick="toggleLang()"><div class="sp-ico">🌐</div><div><div class="sp-name">Sprache</div><div class="sp-sub" id="langSub">Deutsch</div></div></div>
+    <div class="sp-item"><div class="sp-ico">🔔</div><div><div class="sp-name" data-i18n="notifName">Benachrichtigungen</div><div class="sp-sub" data-i18n="notifSub">Push · Ton · Vibration</div></div></div>
+    <div class="sp-item"><div class="sp-ico">📍</div><div><div class="sp-name" data-i18n="gpsAccName">GPS-Genauigkeit</div><div class="sp-sub" data-i18n="gpsAccSub">Hoch · Akku sparen</div></div></div>
+    <div class="sp-item"><div class="sp-ico">🔒</div><div><div class="sp-name" data-i18n="privacyName">Datenschutz</div><div class="sp-sub" data-i18n="privacySub">Ende-zu-Ende</div></div></div>
+    <div class="sp-item"><div class="sp-ico">ℹ️</div><div><div class="sp-name" data-i18n="aboutName">Über kariCare</div><div class="sp-sub">v1.0 · Karioli</div></div></div>
   </div>
 
 
@@ -576,6 +593,7 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
     <a class="ghost-btn" href="https://open.spotify.com/" target="_blank" title="Musik">🎵</a>
     <a class="ghost-btn" href="mailto:" title="Email">✉️</a>
     <a class="ghost-btn" href="https://news.google.com/" target="_blank" title="News">📰</a>
+    <a class="ghost-btn" href="https://www.wetteronline.de/" target="_blank" title="Wetter">🌦</a>
   </div>
 
 </div>
@@ -583,10 +601,131 @@ body{background:#0A3A10;display:flex;justify-content:center;align-items:flex-sta
 function tick(){var n=new Date(),h=n.getHours(),m=n.getMinutes();document.getElementById('clock').textContent=(h<10?'0'+h:h)+':'+(m<10?'0'+m:m);}
 tick();setInterval(tick,1000);
 
+/* SPRACH-WÖRTERBUCH — Grundgerüst */
+var I18N={
+  de:{
+    aboutName:'Über kariCare',
+    badgeActive:'KARICARE · AKTIV',
+    gpsTitleL1:'GPS Standort', gpsTitleL2:'erfasst',
+    gpsSubText:'Standort wird übertragen',
+    locActive:'Koordinaten aktiv',
+    lageSend:'Lagemeldung senden',
+    navStatus:'Status', navKarte:'Karte', navNews:'News', navSchutz:'Schutz', navSeele:'Seele',
+    mapTitleBuerger:'Einsatzkarte', mapTitleProfi:'Profi-Dashboard',
+    btnBuerger:'Bürger', btnProfi:'Profi',
+    personsDetected:'Personen erfasst', radiusLabel:'Umkreis', helpRequests:'Hilfeanfragen',
+    legGeortet:'Geortet', legHilfe:'Hilfe', legKritisch:'Kritisch', legRettung:'Rettung',
+    proHeader:'LAGE · GARTOW · ECHTZEIT', proLive:'LIVE',
+    widgetsConfig:'WIDGETS · KONFIGURIERBAR', schutzraeume:'SCHUTZRÄUME',
+    statusOffen:'OFFEN', statusVoll:'VOLL', statusAktiv:'AKTIV', statusAnfahrt:'ANFAHRT',
+    einheiten:'EINHEITEN', feuerwehr:'Feuerwehr',
+    dashConfig:'DASHBOARD KONFIGURIEREN', dashDesc:'Widgets anpassen · Behörden-Skin · Export CSV/API',
+    upgTitle:'Koordinations-Upgrade', upgSub:'THW · Feuerwehr · DRK · Behörden',
+    currentSituation:'AKTUELLE LAGE · 2KM',
+    tagDringend:'DRINGEND', tagHinweis:'HINWEIS', tagInfo:'INFO',
+    news1Txt:'Gasleitung Hauptstraße 14–22 beschädigt. Bereich meiden. Feuerwehr im Einsatz.', news1Time:'vor 4 Min',
+    news2Txt:'Trinkwasser Nordviertel unterbrochen. Ausgabe: Schule Am Hang, Eingang Nord.', news2Time:'vor 12 Min',
+    news3Txt:'Notaufnahme Klinikum Süd geöffnet. Leichtverletzte bitte THW-Anlaufstelle.', news3Time:'vor 28 Min',
+    verbindungen:'VERBINDUNGEN', thwSub:'Technisches Hilfswerk',
+    redCross:'Rotes Kreuz', firstAid:'Erstversorgung', supplies:'Versorgung', police:'Polizei',
+    heatName:'Hitze', heatSub:'Kühle Orte · Wasser',
+    coldName:'Kälte', coldSub:'Wärme · Essen · Decken',
+    stormName:'Unwetter', stormSub:'Schutzräume · Notunterkünfte',
+    screenTitleSchutz:'Schutzräume',
+    facTurnhalle:'Turnhalle', facGemeindesaal:'Gemeindesaal', facBunkerraum:'Bunkerraum', facHaupthalle:'Haupthalle',
+    capacityLabel:'Kapazität', occupiedLabel:'belegt',
+    soulIntro:'In dieser Stunde ist nicht alles sagbar. Aber du musst es nicht alleine tragen. Diese Angebote sind da — ohne Wartezeit, ohne Urteil.',
+    soul1Name:'Ich brauche jemanden zum Reden', soul1Sub:'Bot · verfügbar · keine Wartezeit',
+    soul2Name:'Jemand ist gestorben', soul2Sub:'Trauerbegleitung · diskret · still',
+    soul3Name:'Ich bin in Panik', soul3Sub:'Atemübung · sofort · 3 Minuten',
+    soul4Name:'Ich bin mit Kindern', soul4Sub:'Für Kinder erklären · beruhigen',
+    soul5Name:'Krisentelefon', soul5Sub:'0800 111 0 111 · kostenlos · 24h',
+    wetterHitzeTitle:'🌡 Hitze-Hilfe', wetterKaelteTitle:'❄️ Kälte-Hilfe', wetterUnwetterTitle:'🌩 Unwetter-Schutz',
+    secKuehleOrte:'KÜHLE ORTE', secWasserstellen:'WASSERSTELLEN', secSchattenplaetze:'SCHATTENPLÄTZE',
+    secWaermestuben:'WÄRMESTUBEN', secWarmesEssen:'WARMES ESSEN', secDeckenKleidung:'DECKEN & KLEIDUNG',
+    secNotunterkuenfte:'NOTUNTERKÜNFTE', secSchutzraeumeLc:'SCHUTZRÄUME',
+    lageModalTitle:'LAGEMELDUNG', lageCoordsLoading:'Koordinaten werden geladen…',
+    personsTotal:'Personen gesamt', childrenLabel:'Kinder', injuredLabel:'Verletzte', sendSignal:'Signal senden',
+    signalActive:'Signal aktiv', unknownLabel:'unbekannt',
+    sentLabel:'Gesendet', waitingConfirm:'Warte auf Empfangsbestätigung…', receivedLabel:'Empfangen',
+    personsAbbr:'Pers.', childrenAbbr:'Kinder', injuredAbbr:'Verletzt',
+    notifName:'Benachrichtigungen', notifSub:'Push · Ton · Vibration',
+    gpsAccName:'GPS-Genauigkeit', gpsAccSub:'Hoch · Akku sparen',
+    privacyName:'Datenschutz', privacySub:'Ende-zu-Ende'
+  },
+  en:{
+    aboutName:'About kariCare',
+    badgeActive:'KARICARE · ACTIVE',
+    gpsTitleL1:'GPS Location', gpsTitleL2:'detected',
+    gpsSubText:'Location being transmitted',
+    locActive:'Coordinates active',
+    lageSend:'Send situation report',
+    navStatus:'Status', navKarte:'Map', navNews:'News', navSchutz:'Shelter', navSeele:'Soul',
+    mapTitleBuerger:'Operations Map', mapTitleProfi:'Pro Dashboard',
+    btnBuerger:'Citizen', btnProfi:'Pro',
+    personsDetected:'people detected', radiusLabel:'Radius', helpRequests:'help requests',
+    legGeortet:'Located', legHilfe:'Help', legKritisch:'Critical', legRettung:'Rescue',
+    proHeader:'SITUATION · GARTOW · LIVE', proLive:'LIVE',
+    widgetsConfig:'WIDGETS · CONFIGURABLE', schutzraeume:'SHELTERS',
+    statusOffen:'OPEN', statusVoll:'FULL', statusAktiv:'ACTIVE', statusAnfahrt:'EN ROUTE',
+    einheiten:'UNITS', feuerwehr:'Fire department',
+    dashConfig:'CONFIGURE DASHBOARD', dashDesc:'Adjust widgets · Agency skin · Export CSV/API',
+    upgTitle:'Coordination Upgrade', upgSub:'THW · Fire dept. · Red Cross · Authorities',
+    currentSituation:'CURRENT SITUATION · 2KM',
+    tagDringend:'URGENT', tagHinweis:'NOTICE', tagInfo:'INFO',
+    news1Txt:'Gas leak on Hauptstraße 14–22. Avoid the area. Fire department on site.', news1Time:'4 min ago',
+    news2Txt:'Drinking water in the north district interrupted. Distribution: Schule Am Hang, north entrance.', news2Time:'12 min ago',
+    news3Txt:'Emergency room at Klinikum Süd open. Minor injuries please use THW contact point.', news3Time:'28 min ago',
+    verbindungen:'CONNECTIONS', thwSub:'Technical Relief Agency',
+    redCross:'Red Cross', firstAid:'First aid', supplies:'Supplies', police:'Police',
+    heatName:'Heat', heatSub:'Cool spots · Water',
+    coldName:'Cold', coldSub:'Warmth · Food · Blankets',
+    stormName:'Storm', stormSub:'Shelters · Emergency housing',
+    screenTitleSchutz:'Shelters',
+    facTurnhalle:'Gymnasium', facGemeindesaal:'Parish hall', facBunkerraum:'Bunker room', facHaupthalle:'Main hall',
+    capacityLabel:'Capacity', occupiedLabel:'occupied',
+    soulIntro:'Not everything can be put into words right now. But you don\'t have to carry it alone. These offers are here — no waiting, no judgment.',
+    soul1Name:'I need someone to talk to', soul1Sub:'Bot · available · no waiting time',
+    soul2Name:'Someone has died', soul2Sub:'Grief support · discreet · quiet',
+    soul3Name:'I\'m panicking', soul3Sub:'Breathing exercise · instant · 3 minutes',
+    soul4Name:'I\'m with children', soul4Sub:'Explaining to children · calming down',
+    soul5Name:'Crisis hotline', soul5Sub:'0800 111 0 111 · free · 24h',
+    wetterHitzeTitle:'🌡 Heat Help', wetterKaelteTitle:'❄️ Cold Help', wetterUnwetterTitle:'🌩 Storm Protection',
+    secKuehleOrte:'COOL SPOTS', secWasserstellen:'WATER POINTS', secSchattenplaetze:'SHADED AREAS',
+    secWaermestuben:'WARMING ROOMS', secWarmesEssen:'HOT MEALS', secDeckenKleidung:'BLANKETS & CLOTHING',
+    secNotunterkuenfte:'EMERGENCY SHELTERS', secSchutzraeumeLc:'SHELTERS',
+    lageModalTitle:'SITUATION REPORT', lageCoordsLoading:'Loading coordinates…',
+    personsTotal:'Total people', childrenLabel:'Children', injuredLabel:'Injured', sendSignal:'Send signal',
+    signalActive:'Signal active', unknownLabel:'unknown',
+    sentLabel:'Sent', waitingConfirm:'Waiting for confirmation…', receivedLabel:'Received',
+    personsAbbr:'people', childrenAbbr:'children', injuredAbbr:'injured',
+    notifName:'Notifications', notifSub:'Push · Sound · Vibration',
+    gpsAccName:'GPS Accuracy', gpsAccSub:'High · Battery saving',
+    privacyName:'Privacy', privacySub:'End-to-end'
+  }
+};
+var currentLang = localStorage.getItem('kariCareLang') || 'de';
+
+function applyLang(){
+  var dict = I18N[currentLang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(dict[key]) el.textContent = dict[key];
+  });
+  var sub = document.getElementById('langSub');
+  if(sub) sub.textContent = currentLang === 'de' ? 'Deutsch' : 'English';
+}
+window.toggleLang = function(){
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  localStorage.setItem('kariCareLang', currentLang);
+  applyLang();
+};
+applyLang();
+
 window.go=function(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});document.getElementById(id).classList.add('active');if(id==='s1')drawMap();};
 
 var mapMode='b',mapT=0;
-window.setMode=function(m,btn){mapMode=m;document.getElementById('mB').className='mbtn '+(m==='b'?'on':'off');document.getElementById('mR').className='mbtn '+(m==='r'?'on':'off');var vb=document.getElementById('viewBuerger');var vr=document.getElementById('viewProfi');if(vb&&vr){vb.style.display=m==='b'?'block':'none';vr.style.display=m==='r'?'block':'none';}if(m==='b')drawMap();if(m==='r'){drawProfiMap();}document.getElementById('mapTitle').textContent=m==='b'?'Einsatzkarte':'Profi-Dashboard';};
+window.setMode=function(m,btn){mapMode=m;document.getElementById('mB').className='mbtn '+(m==='b'?'on':'off');document.getElementById('mR').className='mbtn '+(m==='r'?'on':'off');var vb=document.getElementById('viewBuerger');var vr=document.getElementById('viewProfi');if(vb&&vr){vb.style.display=m==='b'?'block':'none';vr.style.display=m==='r'?'block':'none';}if(m==='b')drawMap();if(m==='r'){drawProfiMap();}document.getElementById('mapTitle').textContent=m==='b'?I18N[currentLang].mapTitleBuerger:I18N[currentLang].mapTitleProfi;};
 
 var people=[
   {x:.36,y:.40,t:'me'},{x:.52,y:.44,t:'s'},{x:.62,y:.28,t:'s'},{x:.28,y:.55,t:'s'},
@@ -674,24 +813,24 @@ setTimeout(function(){
   var t = document.getElementById('gpsTitle');
   var s = document.getElementById('gpsSub');
   var r = document.getElementById('gpsRing');
-  if(t) t.innerHTML = 'GPS Standort<br>erfasst<span class="gesehen-line"></span>';
-  if(s) s.textContent = 'Standort wird übertragen';
+  if(t) t.innerHTML = '<span data-i18n="gpsTitleL1">'+I18N[currentLang].gpsTitleL1+'</span><br><span data-i18n="gpsTitleL2">'+I18N[currentLang].gpsTitleL2+'</span><span class="gesehen-line"></span>';
+  if(s) s.textContent = I18N[currentLang].gpsSubText;
   if(r) r.style.boxShadow = 'var(--shadow-l),0 0 0 6px rgba(160,120,32,.18),inset 0 2px 8px rgba(26,107,114,.07)';
 }, 3500);
 
 /* WETTER-MODAL */
 var wetterDaten={
   hitze:{
-    title:'🌡 Hitze-Hilfe',
+    titleKey:'wetterHitzeTitle',
     sektionen:[
-      {label:'KÜHLE ORTE',eintraege:[
+      {labelKey:'secKuehleOrte',eintraege:[
         {name:'Stadtbibliothek',addr:'Hauptstraße 5',dist:'0.4 km',lat:52.985,lng:11.142},
         {name:'Rathaus Foyer',addr:'Marktplatz 1',dist:'0.6 km',lat:52.984,lng:11.140},
         {name:'Pfarrkirche St. Maria',addr:'Kirchgasse 3',dist:'0.5 km',lat:52.983,lng:11.138},
         {name:'Einkaufszentrum City',addr:'Bahnhofstr. 12',dist:'0.9 km',lat:52.982,lng:11.145},
         {name:'Sporthalle Westpark',addr:'Parkweg 8',dist:'1.1 km',lat:52.981,lng:11.135},
       ]},
-      {label:'WASSERSTELLEN',eintraege:[
+      {labelKey:'secWasserstellen',eintraege:[
         {name:'🚰 Trinkbrunnen Marktplatz',addr:'Marktplatz',dist:'0.6 km',lat:52.984,lng:11.140},
         {name:'🚰 Trinkbrunnen Stadtpark',addr:'Parkweg 1',dist:'0.8 km',lat:52.981,lng:11.135},
         {name:'🚰 Trinkbrunnen Bahnhof',addr:'Bahnhofsplatz',dist:'1.0 km',lat:52.982,lng:11.145},
@@ -700,7 +839,7 @@ var wetterDaten={
         {name:'🛒 REWE · kostenloses Wasser',addr:'Hauptstraße 22',dist:'0.7 km',lat:52.985,lng:11.142},
         {name:'🛒 Lidl · kostenloses Wasser',addr:'Bahnhofstr. 8',dist:'0.9 km',lat:52.983,lng:11.146},
       ]},
-      {label:'SCHATTENPLÄTZE',eintraege:[
+      {labelKey:'secSchattenplaetze',eintraege:[
         {name:'🌳 Stadtpark · große Bäume',addr:'Parkweg 1',dist:'0.8 km',lat:52.981,lng:11.135},
         {name:'🌳 Schlossgarten',addr:'Schlossallee 1',dist:'1.3 km',lat:52.980,lng:11.137},
         {name:'🌳 Baumreihe Bahnhofsallee',addr:'Bahnhofsallee',dist:'1.0 km',lat:52.982,lng:11.145},
@@ -711,36 +850,36 @@ var wetterDaten={
     ]
   },
   kaelte:{
-    title:'❄️ Kälte-Hilfe',
+    titleKey:'wetterKaelteTitle',
     sektionen:[
-      {label:'WÄRMESTUBEN',eintraege:[
+      {labelKey:'secWaermestuben',eintraege:[
         {name:'Caritas Wärmestube',addr:'Kirchgasse 7',dist:'0.5 km',lat:52.983,lng:11.138},
         {name:'Diakonie Tagesraum',addr:'Lindenstr. 4',dist:'0.7 km',lat:52.985,lng:11.137},
         {name:'Pfarrgemeinde Johannis',addr:'Johannisplatz 2',dist:'0.9 km',lat:52.982,lng:11.139},
       ]},
-      {label:'WARMES ESSEN',eintraege:[
+      {labelKey:'secWarmesEssen',eintraege:[
         {name:'Tafel Ausgabe',addr:'Bahnhofstr. 18',dist:'1.0 km',lat:52.982,lng:11.145},
         {name:'Suppenküche Diakonie',addr:'Lindenstr. 6',dist:'0.8 km',lat:52.985,lng:11.136},
       ]},
-      {label:'DECKEN & KLEIDUNG',eintraege:[
+      {labelKey:'secDeckenKleidung',eintraege:[
         {name:'Kleiderkammer Caritas',addr:'Kirchgasse 9',dist:'0.5 km',lat:52.983,lng:11.138},
         {name:'DRK Ausgabestelle',addr:'Marktplatz',dist:'0.6 km',lat:52.984,lng:11.140},
       ]},
-      {label:'NOTUNTERKÜNFTE',eintraege:[
+      {labelKey:'secNotunterkuenfte',eintraege:[
         {name:'Notunterkunft Schulturnhalle',addr:'Hangweg 10',dist:'1.2 km',lat:52.987,lng:11.141},
         {name:'Obdachlosenheim St. Josef',addr:'Josefstr. 3',dist:'1.5 km',lat:52.980,lng:11.143},
       ]},
     ]
   },
   unwetter:{
-    title:'🌩 Unwetter-Schutz',
+    titleKey:'wetterUnwetterTitle',
     sektionen:[
-      {label:'SCHUTZRÄUME',eintraege:[
+      {labelKey:'secSchutzraeumeLc',eintraege:[
         {name:'Rathaus Untergeschoss',addr:'Marktplatz 1',dist:'0.6 km',lat:52.984,lng:11.140},
         {name:'Schule Am Hang · Keller',addr:'Hangweg 10',dist:'1.2 km',lat:52.987,lng:11.141},
         {name:'Pfarrkirche Krypta',addr:'Kirchgasse 3',dist:'0.5 km',lat:52.983,lng:11.138},
       ]},
-      {label:'NOTUNTERKÜNFTE',eintraege:[
+      {labelKey:'secNotunterkuenfte',eintraege:[
         {name:'Sporthalle Westpark',addr:'Parkweg 8',dist:'1.1 km',lat:52.981,lng:11.135},
         {name:'Stadtbibliothek',addr:'Hauptstraße 5',dist:'0.4 km',lat:52.985,lng:11.142},
         {name:'Feuerwehr Depot',addr:'Feuerwehrstr. 2',dist:'0.8 km',lat:52.986,lng:11.143},
@@ -751,11 +890,11 @@ var wetterDaten={
 
 window.openWetter=function(typ){
   var d=wetterDaten[typ];if(!d)return;
-  document.getElementById('wetterTitle').textContent=d.title;
+  document.getElementById('wetterTitle').textContent=I18N[currentLang][d.titleKey];
   var list=document.getElementById('wetterList');
   list.innerHTML='';
   d.sektionen.forEach(function(sek){
-    var sec=document.createElement('div');sec.className='wetter-sec';sec.textContent=sek.label;list.appendChild(sec);
+    var sec=document.createElement('div');sec.className='wetter-sec';sec.textContent=I18N[currentLang][sek.labelKey];list.appendChild(sec);
     sek.eintraege.forEach(function(e){
       var item=document.createElement('div');item.className='wetter-item';
       item.innerHTML='<div class="wetter-item-l"><div class="wetter-item-name">'+e.name+'</div><div class="wetter-item-addr">'+e.addr+'</div></div><div class="wetter-item-r"><div class="wetter-dist">'+e.dist+'</div><div class="wetter-arr">›</div></div>';
@@ -776,7 +915,7 @@ window.openLage=function(){
   var o=document.getElementById('lageOverlay');
   var cl=document.getElementById('lageCoordsLabel');
   var coords=document.getElementById('locCoords');
-  if(cl&&coords)cl.textContent='📍 '+coords.textContent+' · Signal aktiv';
+  if(cl&&coords)cl.textContent='📍 '+coords.textContent+' · '+I18N[currentLang].signalActive;
   document.getElementById('lageSentMsg').textContent='';
   o.classList.add('open');
 };
@@ -797,14 +936,14 @@ function lageZeit(){
 window.lageSenden=function(){
   var coords=document.getElementById('locCoords');
   var msg=document.getElementById('lageSentMsg');
-  var pos=coords?coords.textContent:'unbekannt';
+  var pos=coords?coords.textContent:I18N[currentLang].unknownLabel;
   var tGesendet=lageZeit();
-  var detail=lageVals.total+' Pers. · '+lageVals.kinder+' Kinder · '+lageVals.verletzt+' Verletzt';
-  if(msg)msg.innerHTML='✅ Gesendet · '+tGesendet+' Uhr · '+pos+'<br>⏳ Warte auf Empfangsbestätigung…';
+  var dict=I18N[currentLang];
+  var detail=lageVals.total+' '+dict.personsAbbr+' · '+lageVals.kinder+' '+dict.childrenAbbr+' · '+lageVals.verletzt+' '+dict.injuredAbbr;
+  if(msg)msg.innerHTML='✅ '+dict.sentLabel+' · '+tGesendet+' · '+pos+'<br>⏳ '+dict.waitingConfirm;
   setTimeout(function(){
     var tEmpfangen=lageZeit();
-    if(msg)msg.innerHTML='✅ Gesendet · '+tGesendet+' Uhr · '+pos+'<br>✅ Empfangen · '+tEmpfangen+' Uhr · '+detail;
-    setTimeout(function(){closeLage();},2600);
+    if(msg)msg.innerHTML='✅ '+dict.sentLabel+' · '+tGesendet+' · '+pos+'<br>✅ '+dict.receivedLabel+' · '+tEmpfangen+' · '+detail;
   },1800);
 };
 /* SETTINGS PANEL */
